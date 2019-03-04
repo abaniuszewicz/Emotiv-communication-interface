@@ -66,10 +66,6 @@
 	bindingoffset	= 15mm
 ]{geometry}
 
-% ~~~~~~~~~~~~~~~~~~MOJE PACZKI~~~~~~~~~~~~~~~~~~~
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 % Paragraph indent 10mm, skip 0
 \setlength\parskip{0mm}%
 \setlength\parindent{10mm}%
@@ -657,9 +653,5 @@
 	\lstlistoflistings
 	\addcontentsline{toc}{chapter}{Spis kodów źródłowych}
 }
-
-% ~~~~~~~~~~~~~~~~~~MOJE KOMENDY~~~~~~~~~~~~~~~~~~~
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput
