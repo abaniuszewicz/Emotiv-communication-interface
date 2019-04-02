@@ -659,7 +659,14 @@
 }
 
 % ~~~~~~~~~~~~~~~~~~MOJE KOMENDY~~~~~~~~~~~~~~~~~~~
-
+%
+\newcommand{\rysunekbig}[4]{
+\begin{figure}[htb]
+	\centering\includegraphics[height=0.4\textheight,width=\textwidth,keepaspectratio]{graphic/#1}\\
+	\caption{#2}\source{#3}
+\end{figure}
+}
+%
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput
