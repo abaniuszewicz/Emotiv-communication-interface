@@ -67,7 +67,7 @@
 ]{geometry}
 
 % ~~~~~~~~~~~~~~~~~~MOJE PACZKI~~~~~~~~~~~~~~~~~~~
-
+\RequirePackage[polish]{varioref}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
@@ -666,6 +666,10 @@
 	\caption{#2}\source{#3}
 \end{figure}
 }
+%
+\newcommand{\aob}[0]{ą}
+\newcommand{\eob}[0]{ę}
+\newcommand{\zkb}[0]{ż}
 %
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
