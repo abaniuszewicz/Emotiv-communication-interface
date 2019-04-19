@@ -671,6 +671,9 @@
 \newcommand{\eob}[0]{ę}
 \newcommand{\zkb}[0]{ż}
 %
+\DefineBibliographyStrings{polish}{%
+  urlseen = {dostęp:},
+}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput

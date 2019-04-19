@@ -94,18 +94,18 @@ TODO
 \subsection{ECG}
 \subsection{EOG}
 \section{Charakterystyka wybranych urządzeń komercyjnych}
-\subsection{EMOTIV Insight}
-Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę EMOTIV przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą smukłego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań. Jest wyposażony w pięć czujników właściwych oraz dwa referencyjne. Lokalizacja czujników została przedstawiona na rysunku \vref{fig:insight_area}. Parametry urządzenia zostały zestawione w tabeli \vref{tab:insight}.
+\subsection{Emotiv Insight}
+Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę Emotiv przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą minimalistycznego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań. Jest wyposażony w pięć czujników właściwych oraz dwa referencyjne. Lokalizacja czujników została przedstawiona na rysunku \vref{fig:insight_area}. Parametry urządzenia zostały zestawione w tabeli \vref{tab:insight}.
 
 \rysunekbig{insight}
-{Hełm EMOTIV Insight\label{fig:insight}}
+{Hełm Emotiv Insight\label{fig:insight}}
 {www.emotiv.com}
 
 \rysunekbig{insight_area}
-{Rozmieszczenie sensorów w hełmie EMOTIV Insight\label{fig:insight_area}}
+{Rozmieszczenie sensorów w hełmie Emotiv Insight\label{fig:insight_area}}
 {www.emotiv.com}
 
-\tabela{Parametry EMOTIV Insight\label{tab:insight}}
+\tabela{Parametry Emotiv Insight\label{tab:insight}}
 {Na podstawie \cite{emotiv_comparison}}
 {
     \begin{tabular}{l|l}
@@ -121,15 +121,47 @@ Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek 
     \end{tabular}
 }
 
+Firma Emotiv dostarcza do swoich rozwiązań API\footnote{API (\textit{ang.} application programming interface) -- Interfejs programistyczny aplikacji.} o nazwie Cortex. Stanowi on podstawę do budowania aplikacji wykorzystujących pobrane z hełmów strumienie danych dzięki wykorzystaniu JSON oraz WebSocket\cite{emotiv_developer}. Cortex ułatwia tworzenie gier, aplikacji oraz rejestrowania danych do późniejszego ich wykorzystania do badań.
 
-\subsection{EMOTIV EPOC+\label{subsection:epoc}}
-pisze dalej
+Cortex jest wrapperem SDK\footnote{SDK (\textit{ang.} software development kit) -- Zestaw narzędzi dla programistów niezbędny w tworzeniu aplikacji korzystających z danej biblioteki.} firmy EMOTIV. Zapewnia on, w zależności od rodzaju zakupionej licencji, dostęp do różnych strumieni danych z hełmów. Jest kompatybilny z systemami Mac OS oraz Windows. Umożliwia programowanie w językach Java, C\#, C++, Python, Ruby, JavaScript (Node.js) oraz PHP.
+
+Licencja Cortex jest dostępna w trzech planach:
+\begin{description}
+    \item [Darmowa] \hfill
+    \begin{itemize}
+        \item Mental Commands API,
+        \item Performance Metrics API (do 0,1 Hz),
+        \item Frequency Bands API,
+        \item Facial Expressions API,
+        \item Motion data API,
+        \item nielimitowana ilość sesji na 3 urządzeniach.
+    \end{itemize}
+    \item [Niekomercyjna pro -- \$55-99/miesiąc] \hfill
+    \begin{itemize}
+        \item Wszystkie API z licencji darmowej,
+        \item Raw EEG API,
+        \item oprogramowanie EmotivPRO,
+        \item nielimitowana ilość sesji na 3 urządzeniach.
+    \end{itemize}
+    \item [Komercyjna] \hfill
+    \begin{itemize}
+        \item Performance Metrics API o wysokiej rozdzielczości,
+        \item konfigurowanie API pod swoje potrzeby,
+        \item tworzenie komercyjnych rozwiązań.
+    \end{itemize}
+\end{description}
+
+Oprogramowanie EmotivPRO, dostępne w licencjach niekomercyjnej pro oraz komercyjnej, stanowi wsparcie dla badań wykorzystujących EEG. Pozwala ono na akwizycję oraz prezentację strumieni danych w czasie zbliżonym do rzeczywistego, zapisywanie sesji w chmurze oraz szybką analizę wbudowanym algorytmem FFT\footnote{FFT (\textit{ang.} Fast Fourier Transform) -- Szybka transformacja Fouriera.}, bez konieczności eksportu danych.
+
+
+\subsection{Emotiv EPOC+\label{subsection:epoc}}
+
 \rysunekbig{epoc}
-{Hełm EMOTIV EPOC+}
+{Hełm Emotiv EPOC+}
 {www.emotiv.com}
 
 \rysunekbig{epoc_area}
-{Rozmieszczenie sensorów w hełmie EMOTIV EPOC+}
+{Rozmieszczenie sensorów w hełmie Emotiv EPOC+}
 {www.emotiv.com}
 
 \subsection{Muse 2}
@@ -138,7 +170,7 @@ pisze dalej
 
 \chapter{Przegląd dostępnych rozwiązań}
 
-\chapter{Analiza istniejących algorytmów ekstracji cech}
+\chapter{Analiza istniejących algorytmów ekstrakcji cech}
 
 \chapter{Projekt systemu}
 
@@ -162,7 +194,7 @@ TODO
 % Spis kodów źródłowych (jeżeli jest potrzebny)
 \listoflistings
 
-% TODO: Przenieść generowanie do pakietu glossaries i wyemilinować potrzebę manualnego wykonywania polecenia makeindex w terminalu. !! Dyskusyjne, indeksy należy definiować w preambule lub w osobnym pliku (tak samo jak acronyms), ale pozwala na większą swobodę w definiowaniu wpisów i nie wymaga wywoływania makeindex !!
+% TODO: Przenieść generowanie do pakietu glossaries i wyeliminować potrzebę manualnego wykonywania polecenia makeindex w terminalu. !! Dyskusyjne, indeksy należy definiować w preambule lub w osobnym pliku (tak samo jak acronyms), ale pozwala na większą swobodę w definiowaniu wpisów i nie wymaga wywoływania makeindex !!
 
 % Skorowidz (opcjonalnie), po skompilowaniu dokumentu należy użyć opcji Narzędzia -> Indeks,
 % aby wygenerować wpisy, po czym powtórnie skompilować dokument.
