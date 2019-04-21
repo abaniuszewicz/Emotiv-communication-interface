@@ -94,16 +94,16 @@ TODO
 \subsection{ECG}
 \subsection{EOG}
 \section{Charakterystyka wybranych urządzeń komercyjnych}
-\subsection{Emotiv Insight}
-Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę Emotiv przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą minimalistycznego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań. Jest wyposażony w pięć czujników właściwych oraz dwa referencyjne. Lokalizacja czujników została przedstawiona na rysunku \vref{fig:insight_area}. Parametry urządzenia zostały zestawione w tabeli \vref{tab:insight}.
+\subsection{Emotiv Insight\label{subsection:insight}}
+Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę Emotiv przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą minimalistycznego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań. Jest wyposażony w pięć czujników właściwych oraz dwa referencyjne. Lokalizacja czujników została przedstawiona na rysunku \vref{fig:insight_area}. Czas ubrania oraz ustawienia urządzenia oscyluje w granicach 1--2 minut. Parametry urządzenia zostały zestawione w tabeli \vref{tab:insight}. Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 299\$.
 
 \rysunekbig{insight}
 {Hełm Emotiv Insight\label{fig:insight}}
-{www.emotiv.com}
+{\cite{emotiv_insight}}
 
 \rysunekbig{insight_area}
 {Rozmieszczenie sensorów w hełmie Emotiv Insight\label{fig:insight_area}}
-{www.emotiv.com}
+{\cite{emotiv_insight}}
 
 \tabela{Parametry Emotiv Insight\label{tab:insight}}
 {Na podstawie \cite{emotiv_comparison}}
@@ -114,14 +114,14 @@ Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek 
         Czujniki referencyjne & DMS/DRL\\
         Rozdzielczość & 14 bitów na kanał\\
         Rozdzielczość LSB & 0,51 µV @ 14 bit\\
-        Rodzaj czujników & Semi-dry polymer\\
+        Rodzaj czujników & Półsuchy polimer\\
         Detekcja ruchu & 9-osiowy czujnik (3x żyroskop, 3x akcelerometr, 3x magnetometr)\\
         Łączność & Bezprzewodowa 2,4GHz/Bluetooth 4.0\\
         Zasilanie & Li-Pol 480 mAh, do 8 godzin pracy
     \end{tabular}
 }
 
-Firma Emotiv dostarcza do swoich rozwiązań API\footnote{API (\textit{ang.} application programming interface) -- Interfejs programistyczny aplikacji.} o nazwie Cortex. Stanowi on podstawę do budowania aplikacji wykorzystujących pobrane z hełmów strumienie danych dzięki wykorzystaniu JSON oraz WebSocket\cite{emotiv_developer}. Cortex ułatwia tworzenie gier, aplikacji oraz rejestrowania danych do późniejszego ich wykorzystania do badań.
+Firma Emotiv dostarcza do swoich rozwiązań API\footnote{API (\textit{ang.} application programming interface) -- Interfejs programistyczny aplikacji. Zawiera zestaw reguł i ich opisów, które definiują sposób komunikacji między programami komputerowymi.} o nazwie Cortex. Stanowi on podstawę do budowania aplikacji wykorzystujących pobrane z hełmów strumienie danych dzięki wykorzystaniu JSON oraz WebSocket\cite{emotiv_developer}. Cortex ułatwia tworzenie gier, aplikacji oraz rejestrowania danych do późniejszego ich wykorzystania do badań.
 
 Cortex jest wrapperem SDK\footnote{SDK (\textit{ang.} software development kit) -- Zestaw narzędzi dla programistów niezbędny w tworzeniu aplikacji korzystających z danej biblioteki.} firmy EMOTIV. Zapewnia on, w zależności od rodzaju zakupionej licencji, dostęp do różnych strumieni danych z hełmów. Jest kompatybilny z systemami Mac OS oraz Windows. Umożliwia programowanie w językach Java, C\#, C++, Python, Ruby, JavaScript (Node.js) oraz PHP.
 
@@ -151,18 +151,37 @@ Licencja Cortex jest dostępna w trzech planach:
     \end{itemize}
 \end{description}
 
-Oprogramowanie EmotivPRO, dostępne w licencjach niekomercyjnej pro oraz komercyjnej, stanowi wsparcie dla badań wykorzystujących EEG. Pozwala ono na akwizycję oraz prezentację strumieni danych w czasie zbliżonym do rzeczywistego, zapisywanie sesji w chmurze oraz szybką analizę wbudowanym algorytmem FFT\footnote{FFT (\textit{ang.} Fast Fourier Transform) -- Szybka transformacja Fouriera.}, bez konieczności eksportu danych.
+Oprogramowanie EmotivPRO\cite{emotiv_pro}, dostępne w licencjach niekomercyjnej pro oraz komercyjnej, stanowi wsparcie dla badań wykorzystujących EEG. Pozwala ono na akwizycję oraz prezentację strumieni danych w czasie zbliżonym do rzeczywistego, zapisywanie sesji w chmurze oraz szybką analizę wbudowanym algorytmem FFT\footnote{FFT (\textit{ang.} Fast Fourier Transform) -- Szybka transformacja Fouriera.}, bez konieczności eksportu danych.
 
 
 \subsection{Emotiv EPOC+\label{subsection:epoc}}
+EPOC+, pokazany na rysunku \vref{fig:epoc}, został wprowadzony na rynek w 2013 roku przez firmę Emotiv. Został zaprojektowany do badań wykorzystujących EEG oraz zaawansowanych zastosowań BCI\cite{emotiv_epoc}. Jest wyposażony w 14 kanałów właściwych oraz 2 referencyjne (dokładna lokalizacja sensorów została przedstawiona na rysunku \vref{fig:epoc_area}). W odróżnieniu od Emotiv Insight, omówionego w rozdziale \vref{subsection:insight}, wymaga stosowania \textit{mokrych} elektrod, pokrytych nasączonym solą fizjologiczną filcem. Ze względu na większą ilość czujników niż w Emotiv Insight, czas ubrania oraz przygotowania urządzenia do pracy wynosi około 3--5 minut. Parametry hełmu zostały przedstawione w tabeli \vref{tab:epoc}. Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799\$.
 
 \rysunekbig{epoc}
-{Hełm Emotiv EPOC+}
-{www.emotiv.com}
+{Hełm Emotiv EPOC+\label{fig:epoc}}
+{\cite{emotiv_epoc}}
 
 \rysunekbig{epoc_area}
-{Rozmieszczenie sensorów w hełmie Emotiv EPOC+}
-{www.emotiv.com}
+{Rozmieszczenie sensorów w hełmie Emotiv EPOC+\label{fig:epoc_area}}
+{\cite{emotiv_epoc}}
+
+\tabela{Parametry Emotiv EPOC+\label{tab:epoc}}
+{Na podstawie \cite{emotiv_comparison}}
+{
+    \begin{tabular}{l|l}
+        Ilość kanałów & 14 (+2 referencyjne)\\
+        Umiejscowienie elektrod & AF3, AF4, F3, F4, FC5, FC6, F7, F8, T7, T8, P7, P8, O1, O2\\
+        Czujniki referencyjne & DMS/DRL\\
+        Rozdzielczość & 14/16 bitów na kanał\\
+        Rozdzielczość LSB & 0,51 µV @ 14 bit/0,13 µV @ 16 bit\\
+        Rodzaj czujników & Nasączane solą fizjologiczną\\
+        Detekcja ruchu & 9-osiowy czujnik (3x żyroskop, 3x akcelerometr, 3x magnetometr)\\
+        Łączność & Bezprzewodowa 2,4GHz/Bluetooth 4.0\\
+        Zasilanie & Li-Pol 680 mAh, do 12 godzin pracy
+    \end{tabular}
+}
+
+Od strony programistycznej urządzenie wykorzystuje to samo API oraz SDK co Emotiv Insight; zostały one omówione w rozdziale \vref{subsection:insight}.
 
 \subsection{Muse 2}
 \subsection{MindWave Mobile 2}
