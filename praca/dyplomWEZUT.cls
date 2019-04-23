@@ -68,6 +68,9 @@
 
 % ~~~~~~~~~~~~~~~~~~MOJE PACZKI~~~~~~~~~~~~~~~~~~~
 \RequirePackage[polish]{varioref}
+\RequirePackage{ulem}
+\RequirePackage{threeparttable}
+\RequirePackage{placeins}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
