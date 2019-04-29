@@ -195,7 +195,7 @@ Od strony programistycznej urządzenie wykorzystuje to samo API oraz SDK co Emot
 \subsection{Muse/Muse 2}
 Muse/Muse 2 są urządzeniami wspomagającymi medytację, które pozwalają na rejestrację w czasie rzeczywistym aktywności mózgu, tętna, oddechu oraz ruchu ciała\footnote{Rejestracja poszczególnych parametrów w zależności od wersji opaski.}\cite{muse2}. Przekształcają one zmierzoną aktywność mózgu w predefiniowane dźwięki, takie jak szum wody czy deszczu; w zależności od poziomu skupienia dźwięk będzie spokojny lub gwałtowny, co pozwala osobom uczącym się medytować na efektywniejszą naukę wyciszenia umysłu.
 
-Oba urządzenia są z wyglądu bardzo do siebie podobne. Nowsze, Muse 2 (pokazane na rysunku \vref{fig:muse2}), zostało \textit{odchudzone}, przez co nabrało bardziej eleganckiego wyglądu oraz zyskało niższy profil z dodatkowymi czujnikami\cite{muse_comparison_article}. Dodano również miękkie w dotyku wykończenie.
+Oba urządzenia są z wyglądu bardzo do siebie podobne. Nowsze, Muse 2 (pokazane na rysunku \vref{fig:muse2}), w odniesieniu do poprzedniej wersji, zostało \textit{odchudzone}, przez co nabrało bardziej eleganckiego wyglądu oraz zyskało niższy profil z dodatkowymi czujnikami\cite{muse_comparison_article}. Dodano również miękkie w dotyku wykończenie.
 
 \rysunek{muse2}
 {Opaska Muse 2\label{fig:muse2}}
@@ -204,8 +204,8 @@ Oba urządzenia są z wyglądu bardzo do siebie podobne. Nowsze, Muse 2 (pokazan
 Obie opaski są wyposażone w 7 czujników, w tym 3 referencyjne (patrz rysunek \vref{fig:muse_area}). Zestawienie parametrów oferowanych przez obie opaski znajduje się w tabeli \vref{tab:muse}.
 
 \rysunekbig{muse_area}
-{aaa}
-{aaaa}
+{Rozmieszczenie sensorów w opasce Muse\label{fig:muse_area}}
+{\cite{muse_specification}}
 
 Koszt Muse wynosi 219€; Muse 2 -- 269€.
 
@@ -249,8 +249,37 @@ Muse posiada oferty skierowane do następujących grup:
      W ramach narzędzi dla naukowców Muse oferuje dostęp do MusePlayer oraz MuseLab. MusePlayer służy do rejestrowania, ponownego odtwarzania, przekierowywania oraz przetwarzania danych z opasek. Umożliwia konwersję z natywnego typu danych (.muse) na inne (.txt, .mat, .csv). MuseLab wykorzystuje się do wizualizacji danych.
 \end{description}
 
-\subsection{MindWave Mobile 2}
+\subsection{Mindwave Mobile 2}
+
 \subsection{OpenBCI Ultracortex \textit{Mark IV}}
+Ultracortex jest open-source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{wolpaw2012brain}.}.
+
+W projekcie zastosowano \textit{suche} sensory EEG. Ich rozmieszczenie pokazano na rysunku \vref{fig:markiv_area}.
+
+Czas założenia oraz uruchomienia hełmu wynosi poniżej 30 sekund.
+
+Produkt można kupić w trzech wariantach:
+\begin{enumerate}
+    \item Do samodzielnego druku --- dostarczane są wszystkie części hełmu oprócz tych, które można wydrukować na drukarce 3D. Hełm należy zmontować samodzielnie na podstawie \href{https://docs.openbci.com/Headware/01-Ultracortex-Mark-IV#ultracortex-mark-iv-assembly-instructions}{dokumentacji}. Cena: 300--400\$.
+    \item Niezmontowany --- dostarczane są wszystkie części hełmu, również z tymi, które można wydrukować na drukarce 3D. Hełm należy zmontować samodzielnie na podstawie \href{https://docs.openbci.com/Headware/01-Ultracortex-Mark-IV#ultracortex-mark-iv-assembly-instructions}{dokumentacji}. Cena: 500--600\$.
+    \item Zmontowany --- dostarczany jest całkowicie zmontowany hełm. Cena: 700--850\$.
+\end{enumerate}
+
+Dodatkowo należy zakupić wybrany układ OpenBCI. Poniżej zamieszczono opis trzech dostępnych układów.
+
+\subsubsection{Ganglion Board}
+\subsubsection{Cyton Board}
+\subsubsection{Cyton + Daisy Board}
+
+\rysunekbig{markiv}
+{Hełm Ultracortex \textit{Mark IV}}
+{\cite{markiv}}
+
+\rysunekbig{markiv_area}
+{Rozmieszczenie sensorów w hełmie Ultracortex Mark IV\label{fig:markiv_area}}
+{\cite{markiv_shop}}
+
+
 
 \chapter{Przegląd dostępnych rozwiązań}
 

@@ -69,6 +69,7 @@
 % ~~~~~~~~~~~~~~~~~~MOJE PACZKI~~~~~~~~~~~~~~~~~~~
 \RequirePackage[polish]{varioref}
 \RequirePackage{ulem}
+\normalem
 \RequirePackage{threeparttable}
 \RequirePackage{placeins}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
