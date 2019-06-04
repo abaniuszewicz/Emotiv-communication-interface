@@ -1,4 +1,4 @@
-% !TEX encoding = UTF-8 Unicode
+ % !TEX encoding = UTF-8 Unicode
 % !TeX spellcheck = pl_PL
 % !~~TEX TS-program = xelatex
 % !TeX TXS-program:bibliography = txs:///biber
@@ -116,9 +116,9 @@ Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 299\$.
         Ilość kanałów & 5 (+2 referencyjne)\\
         Umiejscowienie elektrod & AF3, AF4, T7, T8, Pz\\
         Czujniki referencyjne & DMS/DRL\\
+        Rodzaj czujników & Półsuchy polimer\\
         Rozdzielczość & 14 bit na kanał\\
         Rozdzielczość LSB & 0,51 µV @ 14 bit\\
-        Rodzaj czujników & Półsuchy polimer\\
         Detekcja ruchu & 9-osiowy czujnik (3x żyroskop, 3x akcelerometr, 3x magnetometr)\\
         Łączność & Bezprzewodowa 2,4GHz/Bluetooth 4.0\\
         Zasilanie & Li-Pol 480 mAh, do 8 godzin pracy
@@ -180,9 +180,9 @@ Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799\$.
         Ilość kanałów & 14 (+2 referencyjne)\\
         Umiejscowienie elektrod & AF3, AF4, F3, F4, FC5, FC6, F7, F8, T7, T8, P7, P8, O1, O2\\
         Czujniki referencyjne & DMS/DRL\\
+        Rodzaj czujników & Nasączane solą fizjologiczną\\
         Rozdzielczość & 14/16 bit na kanał\\
         Rozdzielczość LSB & 0,51 µV @ 14 bit/0,13 µV @ 16 bit\\
-        Rodzaj czujników & Nasączane solą fizjologiczną\\
         Detekcja ruchu & 9-osiowy czujnik (3x żyroskop, 3x akcelerometr, 3x magnetometr)\\
         Łączność & Bezprzewodowa 2,4GHz/Bluetooth 4.0\\
         Zasilanie & Li-Pol 680 mAh, do 12 godzin pracy
@@ -218,8 +218,8 @@ Koszt Muse wynosi 219€; Muse 2 -- 269€.
             Ilość kanałów & 4 (+ 3 referencyjne) & 4 (+3 referencyjne)\\
             Umiejscowienie elektrod & TP9, AF7, AF8, TP10\tnote{a} & TP9, AF7, AF8, TP10\tnote{a} \\
             Czujniki referencyjne & CMS/DRL & CMS/DRL \\
-            Rozdzielczość & 12 bit na próbkę & 12 bit na próbkę \\
             Rodzaj czujników & Suche srebrne/silikonowe & Suche srebrne/silikonowe \\
+            Rozdzielczość & 12 bit na próbkę & 12 bit na próbkę \\
             Rejestrowane parametry & EEG & EEG, tętno, ruch ciała, oddech \\
             Kompatybilność & iOS, Android & iOS, Android \\
             Łączność & Bezprzewodowa Bluetooth 4.0 & Bezprzewodowa Bluetooth 5.0 \\
@@ -252,7 +252,7 @@ Muse posiada oferty skierowane do następujących grup:
 \subsection{Mindwave Mobile 2}
 
 \subsection{OpenBCI Ultracortex \textit{Mark IV}}
-Ultracortex jest open-source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{wolpaw2012brain}.}.
+Ultracortex, pokazany na rysunku \vref{fig:markiv}, jest open-source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{wolpaw2012brain}.}.
 
 W projekcie zastosowano \textit{suche} sensory EEG. Ich rozmieszczenie pokazano na rysunku \vref{fig:markiv_area}.
 
@@ -265,21 +265,87 @@ Produkt można kupić w trzech wariantach:
     \item Zmontowany --- dostarczany jest całkowicie zmontowany hełm. Cena: 700--850\$.
 \end{enumerate}
 
-Dodatkowo należy zakupić wybrany układ OpenBCI. Poniżej zamieszczono opis trzech dostępnych układów.
-
-\subsubsection{Ganglion Board}
-\subsubsection{Cyton Board}
-\subsubsection{Cyton + Daisy Board}
-
 \rysunekbig{markiv}
-{Hełm Ultracortex \textit{Mark IV}}
+{Hełm Ultracortex \textit{Mark IV}\label{fig:markiv}}
 {\cite{markiv}}
 
 \rysunekbig{markiv_area}
 {Rozmieszczenie sensorów w hełmie Ultracortex Mark IV\label{fig:markiv_area}}
 {\cite{markiv_shop}}
 
+\FloatBarrier
 
+Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwięzłe opisy dostępnych układów. Parametry hełmu \textit{Mark IV} w połączeniu z kompatybilnymi płytkami zamieszczono w tabeli \vref{tab:markiv}.
+
+\begin{description}
+    \item [Ganglion Board] \hfill\\
+    Ganglion (patrz rysunek \vref{fig:ganglion}) posiada 4 kanały, które mogą być użyte do mierzenia sygnałów EMG, EKG lub EEG\cite{ganglion_shop}. Częstotliwość próbkowania wynosi 200 Hz.
+
+    \rysunek{ganglion}
+    {OpenBCI Ganglion Board\label{fig:ganglion}}
+    {\cite{ganglion_shop}}
+
+    Komunikacja bezprzewodowa jest realizowana z wykorzystaniem \href{https://www.sparkfun.com/simblee}{Simblee BLE}, modułu Bluetooth 4.0 kompatybilnego z Arduino, który pozwala na łatwą integrację z IoT\footnote{IoT (\textit{ang.} Internet of Things) -- Internet rzeczy. Koncepcja zgodnie z którą urządzenia mogą komunikować się ze sobą, wykorzystując do tego celu internet.}. Moduł umieszczony na płytce Ganglion jest zaprogramowany i gotowy do pracy, jednak część jego wyprowadzeń pozostaje dostępna dla użytkownika do celów własnych.
+
+    Koszt układu to 200\$.
+
+    \item[Cyton Board] \hfill\\
+    Cyton, pokazany na rysunku \vref{fig:cyton}, jest kompatybilny z Arduino, posiada 8 kanałów oraz 32-bitowy procesor\cite{cyton_shop}. Podobnie jak Gangalion, może być wykorzystany do mierzenia aktywności mięśni, serca lub mózgu. Dane próbkowane są z częstotliwością 250 Hz.
+
+    \rysunek{cyton}
+    {OpenBCI Cyton Board\label{fig:cyton}}
+    {\cite{cyton_shop}}
+
+    Do komunikacji bezprzewodowej wykorzystywany jest moduł \href{https://eu.mouser.com/new/rfdigital/rf-digital-rfduino/}{RFduino}. Komunikacja z komputerem może być realizowana przy pomocy adaptera OpenBCI USB lub, jeżeli komputer posiada tę opcję, wbudowanego modułu BLE\footnote{BLE (\textit{ang.} Bluetooth Low Energy) -- technologia sieci bezprzewodowej o poborze mocy niższym niż w konwencjonalnych modułach Bluetooth.}.
+
+    Koszt płytki to 500\$.
+
+    \item[Cyton + Daisy Board] \hfill\\
+    Ten układ zawiera opisaną wcześniej płytkę Cyton oraz Daisy, która jest \textit{wpinana} w płytkę Cyton. Układ pokazano na rysunku \vref{fig:cyton_daisy}.
+
+    Daisy zapewnia dodatkowe 8 kanałów, które mogą być użyte do mierzenia EMG, EKG lub EEG\cite{cytondaisy_shop}. Częstotliwość próbkowania wynosi 250 Hz.
+
+    \rysunek{cyton_daisy}
+    {OpenBCI Cyton + Daisy Board\label{fig:cyton_daisy}}
+    {\cite{cytondaisy_shop}}
+
+    Koszt układu to 950 \$. Płytka Daisy nie może być zakupiona oddzielnie.
+\end{description}
+
+
+\tabela{Parametry Ultracortex \textit{Mark IV} w połączeniu z kompatybilnymi układami\label{tab:markiv}}
+{Opracowanie własne na podstawie \cite{markiv_shop}, \cite{ganglion_shop},\cite{cyton_shop} oraz \cite{cytondaisy_shop}}
+{
+    \begin{threeparttable}
+        \begin{tabular}{l|l|l|l}
+            Parametr & Ganglion & Cyton & Cyton + Daisy \\\hline\hline
+            Ilość kanałów & 4 & 8 & 16\\
+            Umiejscowienie elektrod & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a}\\
+            Rodzaj czujników & Suche & Suche & Suche\\
+            Rozdzielczość & 24 bit & 24 bit & 24 bit\\
+            Częstotliwość próbkowania & 200 Hz & 250 Hz & 250 Hz\\
+            Rejestrowane parametry & EMG, EKG, EEG\tnote{b} & EMG, EKG, EEG\tnote{b}  & EMG, EKG, EEG\tnote{b}\\
+            Detekcja ruchu & 3 osiowy akcelerometr & 3 osiowy akcelerometr & 3 osiowy akcelerometr\\
+            Kompatybilność & macOS, Windows, Linux & macOS, Windows, Linux & macOS, Windows, Linux\\
+            Łączność & BLE 4.0 przez adapter & BLE & BLE\\
+            Zasilanie & 6V (4 baterie AA) & 6V (4 baterie AA) & 6V (4 baterie AA)\\
+        \end{tabular}
+        \begin{tablenotes}
+            \item[a] \footnotesize \textit{Mark IV} wspiera 35 lokalizacji według standardu 10-20. Punkty w których można umieścić elektrody pokazano na rysunku \vref{fig:markiv_area}.
+            \item[b] \footnotesize Sensory nie są dołączane do płytek i należy je zakupić oddzielnie.
+        \end{tablenotes}
+    \end{threeparttable}
+}
+
+Oprogramowanie OpenBCI jest open source'owe i jest dostępne na \href{https://github.com/OpenBCI}{ich profilu na GitHubie}.
+
+Głównym narzędziem do wizualizacji, nagrywania oraz komunikacji z płytkami jest OpenBCI GUI\cite{markiv_software_gui}. Narzędzie jest kompatybilne z systemami macOS, Windows oraz Linux. Pozwala na filtrowanie oraz przetwarzanie danych w czasie rzeczywistym. Dodatkowo pozwala na przekierowywanie danych wykorzystując protokoły UDP, OSC, LSL oraz port szeregowy.
+
+Do komunikacji z płytkami używane są OpenBCI Ganglion SDK oraz OpenBCI Cyton SDK. Wykorzystują one protokół oparty na znakach ASCII\footnote{ASCII (\textit{ang.} American Standard Code for Information Interchange) -- siedmiobitowy system służący do kodowania znaków.}.
+
+OpenBCI dostarcza również bibliotekę Brainflow, która służy do analizy danych EMG, EKG oraz EEG\cite{markiv_software_brainflow}. Została ona napisana w języku C/C++, jednak zawiera nakładki na języki Python, Java, R, C++\footnote{Pomimo, że sama biblioteka napisana jest w C/C++, dodano nakładkę na język C++ w celu zapewnienia wysokopoziomowej warstwy abstrakcji.}, Matlab oraz C\#.
+
+Platforma OpenBCI umożliwia również współpracę z innymi programami do analizy sygnałów, m.in. \href{https://www.mathworks.com/products/matlab.html}{MATLAB}, \href{https://www.neuromore.com/}{Neuromore}, \href{http://openvibe.inria.fr/}{OpenVIBE}, \href{https://github.com/sccn/labstreaminglayer}{LabStreamingLayer} oraz \href{http://www.shifz.org/brainbay/}{BrainBay}.
 
 \chapter{Przegląd dostępnych rozwiązań}
 

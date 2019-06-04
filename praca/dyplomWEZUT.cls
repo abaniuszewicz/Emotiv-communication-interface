@@ -72,6 +72,7 @@
 \normalem
 \RequirePackage{threeparttable}
 \RequirePackage{placeins}
+\RequirePackage{multirow}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
