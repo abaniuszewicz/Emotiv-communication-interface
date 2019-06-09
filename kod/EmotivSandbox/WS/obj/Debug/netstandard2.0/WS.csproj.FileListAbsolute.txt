@@ -1,0 +1,9 @@
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\bin\Debug\netstandard2.0\WS.deps.json
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\bin\Debug\netstandard2.0\WS.dll
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\obj\Debug\netstandard2.0\WS.csprojAssemblyReference.cache
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\obj\Debug\netstandard2.0\WS.csproj.CoreCompileInputs.cache
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\obj\Debug\netstandard2.0\WS.AssemblyInfoInputs.cache
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\obj\Debug\netstandard2.0\WS.AssemblyInfo.cs
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\bin\Debug\netstandard2.0\WS.pdb
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\obj\Debug\netstandard2.0\WS.dll
+C:\Users\abani\Desktop\Praca magisterska\kod\EmotivSandbox\WS\obj\Debug\netstandard2.0\WS.pdb
