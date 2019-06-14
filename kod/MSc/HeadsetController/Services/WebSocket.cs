@@ -4,7 +4,6 @@ namespace HeadsetController.Services
 {
     internal class WebSocket
     {
-        private readonly string _cortexServiceUrl = "wss://localhost:6868";
         private readonly WebSocketSharp.WebSocket _webSocket;
 
         internal event Action OnOpen;
@@ -12,9 +11,9 @@ namespace HeadsetController.Services
         internal event Action<string> OnMessage;
         internal event Action<string> OnError;
 
-        internal WebSocket()
+        internal WebSocket(string cortexServiceUrl)
         {
-            _webSocket = new WebSocketSharp.WebSocket(_cortexServiceUrl);
+            _webSocket = new WebSocketSharp.WebSocket(cortexServiceUrl);
 
             _webSocket.OnOpen += (s, e) => OnOpen?.Invoke();
             _webSocket.OnClose += (s, e) => OnClose?.Invoke();
