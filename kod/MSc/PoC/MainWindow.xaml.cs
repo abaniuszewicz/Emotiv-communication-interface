@@ -18,7 +18,10 @@ using System.Windows.Shapes;
 using HeadsetController.Headset;
 using HeadsetController.Services;
 using HeadsetController.Services.Communication.Requests;
+using HeadsetController.Services.Communication.Requests.Authentication;
+using HeadsetController.Services.Communication.Requests.DataSubscription;
 using HeadsetController.Services.Communication.Requests.Parameters;
+using HeadsetController.Services.Communication.Requests.Sessions;
 using Newtonsoft.Json.Linq;
 
 namespace PoC

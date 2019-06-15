@@ -1,0 +1,17 @@
+﻿using HeadsetController.Services.Communication.Requests.Parameters;
+using Newtonsoft.Json;
+
+namespace HeadsetController.Services.Communication.Requests.AdvancedBCI
+{
+    public class MentalCommandActionLevelRequest : Request
+    {
+        public override string Method { get; } = "mentalCommandActionLevel";
+        [JsonProperty("params")]
+        public MentalCommandActionLevelParameter Parameter { get; }
+
+        public MentalCommandActionLevelRequest(int id, MentalCommandActionLevelParameter parameter) : base(id)
+        {
+            Parameter = parameter;
+        }
+    }
+}

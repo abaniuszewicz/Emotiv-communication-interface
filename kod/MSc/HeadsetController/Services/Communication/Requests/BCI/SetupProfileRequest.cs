@@ -1,0 +1,17 @@
+﻿using HeadsetController.Services.Communication.Requests.Parameters;
+using Newtonsoft.Json;
+
+namespace HeadsetController.Services.Communication.Requests.BCI
+{
+    public class SetupProfileRequest : Request
+    {
+        public override string Method { get; } = "setupProfile";
+        [JsonProperty("params")]
+        public SetupProfileParameter Parameter { get; }
+
+        public SetupProfileRequest(int id, SetupProfileParameter parameter) : base(id)
+        {
+            Parameter = parameter;
+        }
+    }
+}

@@ -8,11 +8,11 @@ namespace HeadsetController.Services.Communication.Requests.Parameters
 {
     public class GetLicenseInfoParameter
     {
-        public string Authentication { get; set; }
+        public string cortexToken { get; set; }
 
-        public GetLicenseInfoParameter(string authentication)
+        public GetLicenseInfoParameter(string cortexToken)
         {
-            Authentication = authentication;
+            this.cortexToken = cortexToken;
         }
     }
 }
