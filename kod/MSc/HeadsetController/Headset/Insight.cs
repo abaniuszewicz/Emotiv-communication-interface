@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HeadsetController.Services;
-using HeadsetController.Services.Communication.Requests;
+﻿using HeadsetController.Services.API.Requests.Headsets;
+using HeadsetController.Services.API.Responses.Headsets;
 
 namespace HeadsetController.Headset
 {
     public class Insight : Headset
     {
+        public HeadsetObject HeadsetObject { get; }
     }
 }
