@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadsetController", "Headse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoC", "PoC\PoC.csproj", "{FEC42EE0-ED5A-4BEA-9000-003479063EB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualKeyboard", "VirtualKeyboard\VirtualKeyboard.csproj", "{FD4D046E-A08F-4D77-9166-CF2D5E8AC597}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FEC42EE0-ED5A-4BEA-9000-003479063EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEC42EE0-ED5A-4BEA-9000-003479063EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEC42EE0-ED5A-4BEA-9000-003479063EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD4D046E-A08F-4D77-9166-CF2D5E8AC597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4D046E-A08F-4D77-9166-CF2D5E8AC597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4D046E-A08F-4D77-9166-CF2D5E8AC597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4D046E-A08F-4D77-9166-CF2D5E8AC597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

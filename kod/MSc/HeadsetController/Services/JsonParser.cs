@@ -8,6 +8,7 @@ namespace HeadsetController.Services
     internal class JsonParser
     {
         internal string Serialize(object obj) => JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore});
-        internal T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(str, new JsonSerializerSettings());
+        internal T Deserialize<T>(string json) => JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings());
+        internal string GetTokenAsString(string json, string token) => JObject.Parse(json).SelectToken(token).ToString();
     }
 }
