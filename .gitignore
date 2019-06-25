@@ -1,3 +1,6 @@
+## MOJE WYKLUCZENIA
+literatura/*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

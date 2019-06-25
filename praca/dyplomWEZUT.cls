@@ -672,6 +672,24 @@
 \end{figure}
 }
 %
+\newcommand{\rysunektwo}[7]{
+	\begin{figure}
+		\centering
+		\begin{subfigure}{.5\textwidth}
+		  \centering
+		  \includegraphics[width=.4\linewidth,keepaspectratio]{graphic/#1}
+		  \caption{#3}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+		  \centering
+		  \includegraphics[width=.4\linewidth,keepaspectratio]{graphic/#2}
+		  \caption{#4}
+		\end{subfigure}
+		\caption{#5}
+		\source{#6}
+	\end{figure}
+}
+%
 \newcommand{\aob}[0]{ą}
 \newcommand{\eob}[0]{ę}
 \newcommand{\zkb}[0]{ż}

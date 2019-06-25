@@ -84,15 +84,12 @@ TODO
 
 \zakres{TODO}
 
+\chapter{Wstęp do tematyki interfejsów mózg-komputer}
+
 \chapter{Analiza rozwiązań BCI}
 \section{Rodzaje interfejsów}
 \subsection{Inwazyjne}
 \subsection{Nieinwazyjne}
-\section{Rodzaje rejestrowanych sygnałów}
-\subsection{EEG}
-\subsection{EMG}
-\subsection{ECG}
-\subsection{EOG}
 \section{Charakterystyka wybranych urządzeń komercyjnych}
 \subsection{Emotiv Insight\label{subsection:insight}}
 Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę Emotiv przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą minimalistycznego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań.
@@ -233,11 +230,9 @@ Koszt Muse wynosi 219€; Muse 2 -- 269€.
 
 Muse posiada oferty skierowane do następujących grup:
 \begin{description}
-    \item [\sout{Deweloperów}] \hfill\\
-    Na dzień 23 kwietnia 2019 roku Muse nie wspiera aktywnie swojego SDK\footnote{SDK -- Patrz przyp. \vref{foot:sdk}.}. Ostatnią dostępną wersją jest v6.0.3, wydana w marcu 2018 roku. Opaska Muse 2, z racji późniejszej daty premiery, \textbf{nie jest wspierana przez SDK}. Na stronie dla deweloperów\cite{muse_developer} znajduje się odnośnik do innych narzędzi, takich jak \href{https://choosemuse.com/muse-direct/}{Muse Direct} czy projektów open source, np. \href{https://github.com/alexandrebarachant/muse-lsl}{MuseLSL}, \href{https://github.com/NeuroTechX/eeg-notebooks}{EEG Notebooks}.
+    \item [\sout{Deweloperów}] -- na dzień 23 kwietnia 2019 roku Muse nie wspiera aktywnie swojego SDK\footnote{SDK -- Patrz przyp. \vref{foot:sdk}.}. Ostatnią dostępną wersją jest v6.0.3, wydana w marcu 2018 roku. Opaska Muse 2, z racji późniejszej daty premiery, \textbf{nie jest wspierana przez SDK}. Na stronie dla deweloperów\cite{muse_developer} znajduje się odnośnik do innych narzędzi, takich jak \href{https://choosemuse.com/muse-direct/}{Muse Direct} czy projektów open source, np. \href{https://github.com/alexandrebarachant/muse-lsl}{MuseLSL}, \href{https://github.com/NeuroTechX/eeg-notebooks}{EEG Notebooks}.
 
-    \item [Profesjonalistów] \hfill\\
-    W ramach subskrypcji Muse Connect profesjonaliści otrzymują program wspomagający rozwój ich biznesu poprzez uczenie ich klientów technik medytacji\cite{muse_professional}. W ten sposób otrzymują dostęp do różnych wskazówek m.in. webinariów\footnote{Webinarium -- Internetowe seminarium realizowane przy wykorzystaniu streamingu wideo.}, studiów przypadków oraz informacji, które pomogą wprowadzić Muse do ich biznesu. Muse Connect wspomaga prowadzenie podopiecznych: ustalanie dla nich celów do realizacji oraz śledzenie ich progresu (również w czasie rzeczywistym).
+    \item [Profesjonalistów] -- w ramach subskrypcji Muse Connect profesjonaliści otrzymują program wspomagający rozwój ich biznesu poprzez uczenie ich klientów technik medytacji\cite{muse_professional}. W ten sposób otrzymują dostęp do różnych wskazówek m.in. webinariów\footnote{Webinarium -- Internetowe seminarium realizowane przy wykorzystaniu streamingu wideo.}, studiów przypadków oraz informacji, które pomogą wprowadzić Muse do ich biznesu. Muse Connect wspomaga prowadzenie podopiecznych: ustalanie dla nich celów do realizacji oraz śledzenie ich progresu (również w czasie rzeczywistym).
 
     Aplikacja oferuje dwa rodzaje subskrypcji:
     \begin{enumerate}
@@ -245,14 +240,56 @@ Muse posiada oferty skierowane do następujących grup:
         \item roczną w cenie 33\$/miesiąc; w tej opcji dodatkowo otrzymujemy za darmo urządzenie Muse.
     \end{enumerate}
 
-    \item [Naukowców] \hfill\\
-     W ramach narzędzi dla naukowców Muse oferuje dostęp do MusePlayer oraz MuseLab. MusePlayer służy do rejestrowania, ponownego odtwarzania, przekierowywania oraz przetwarzania danych z opasek. Umożliwia konwersję z natywnego typu danych (.muse) na inne (.txt, .mat, .csv). MuseLab wykorzystuje się do wizualizacji danych.
+    \item [Naukowców] -- w ramach narzędzi dla naukowców Muse oferuje dostęp do MusePlayer oraz MuseLab. MusePlayer służy do rejestrowania, ponownego odtwarzania, przekierowywania oraz przetwarzania danych z opasek. Umożliwia konwersję z natywnego typu danych (.muse) na inne (.txt, .mat, .csv). MuseLab wykorzystuje się do wizualizacji danych.
 \end{description}
 
-\subsection{Mindwave Mobile 2}
+\FloatBarrier
+\subsection{MindWave Mobile 2}
+MindWave Mobile 2 zbudowane jest z opaski na głowę, klipsu na ucho oraz ramienia z zamocowanym czujnikiem (patrz rysunek \vref{fig:mindwave}). Elektrody referencyjne oraz uziemiające znajdują się na klipsie na uchu, a elektroda EEG na ramieniu dotykającym czoła w pozycji FP1. Umożliwia pomiar sygnałów EEG, sygnałów \textit{NeuroSky eSense}, na które składają się skupienie oraz medytacja, oraz mrugnięć. Do zasilania wykorzystywana jest pojedyncza bateria AAA, która starcza na 8 godzin pracy\cite{mindwave}.
 
+Parametry urządzenia zostały zestawione w tabeli \vref{tab:mindwave}.
+
+Koszt urządzenia na dzień 25 czerwca 2019 roku wynosi 100\$.
+
+\rysunekbig{mindwave}
+{Hełm MindWave Mobile 2\label{fig:mindwave}}
+{\cite{mindwave}}
+
+\tabela{Parametry MindWave Mobile 2\label{tab:mindwave}}
+{Opracowanie własne na podstawie \cite{mindwave}}
+{
+    \begin{tabular}{l|l}
+        Ilość kanałów & 1\\
+        Umiejscowienie elektrod & FP1\\
+        Czujniki referencyjne & \textit{brak danych}\\
+        Rodzaj czujników & \textit{brak danych}\\
+        Rozdzielczość & 12 bit\\
+        Częstotliwość próbkowania & 512 Hz\\
+        Detekcja ruchu & Brak\\
+        Łączność & Bezprzewodowa Bluetooth (BT/BLE)\\
+        Zasilanie & 1,5 V (1 bateria AAA), do 8 godzin pracy
+    \end{tabular}
+}
+
+NeuroSky dostarcza swoje API dla systemów iOS, Android, macOS oraz Windows. Darmowe narzędzia dla deweloperów składają się z trzech osobnych API\cite{mindwave_software}:
+
+\begin{description}
+    \item [ThinkGear Connector (TGC)] -- program działający w tle systemu operacyjnego; zarządza komunikacją z hełmem przy pomocy TCP/IP.
+    \item [ThinkGear Communication Driver (TGCD)] -- biblioteka zawierająca funkcje pozwalające na połączenie oraz przetwarzanie danych z hełmu. Można ją wykorzystywać z językami C/C++, Java oraz C\#.
+    \item [Protokół komunikacji MindSet] -- zawiera specyfikacje protokołu komunikacyjnego; pozwala na integrację hełmu z dowolną platformą/językiem programowania.
+\end{description}
+
+Dodatkowo można wykupić narzędzia dla naukowców w cenie 500\$, na które składają się\cite{mindwave_research}:
+
+\begin{description}
+    \item [NeuroView] -- aplikacja do wyświetlania oraz zapisywania danych EEG w czasie rzeczywistym. Pozwala na rejestrację \textit{czystego} sygnału EEG, jego poszczególnych składowych oraz odczytów \textit{NeuroSky eSense} dla skupienia oraz medytacji. Umożliwia eksport do plików CSV.
+    \item [NeuroSkyLab] -- aplikacja zapewniająca integrację ze środowiskiem MATLAB.
+\end{description}
+
+
+\FloatBarrier
 \subsection{OpenBCI Ultracortex \textit{Mark IV}}
-Ultracortex, pokazany na rysunku \vref{fig:markiv}, jest open-source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{wolpaw2012brain}.}.
+Ultracortex, pokazany na rysunku \vref{fig:markiv}, jest open source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{wolpaw2012brain}.}.
 
 W projekcie zastosowano \textit{suche} sensory EEG. Ich rozmieszczenie pokazano na rysunku \vref{fig:markiv_area}.
 
@@ -278,8 +315,7 @@ Produkt można kupić w trzech wariantach:
 Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwięzłe opisy dostępnych układów. Parametry hełmu \textit{Mark IV} w połączeniu z kompatybilnymi płytkami zamieszczono w tabeli \vref{tab:markiv}.
 
 \begin{description}
-    \item [Ganglion Board] \hfill\\
-    Ganglion (patrz rysunek \vref{fig:ganglion}) posiada 4 kanały, które mogą być użyte do mierzenia sygnałów EMG, EKG lub EEG\cite{ganglion_shop}. Częstotliwość próbkowania wynosi 200 Hz.
+    \item [Ganglion Board] -- Ganglion (patrz rysunek \vref{fig:ganglion}) posiada 4 kanały, które mogą być użyte do mierzenia sygnałów EMG, EKG lub EEG\cite{ganglion_shop}. Częstotliwość próbkowania wynosi 200 Hz.
 
     \rysunek{ganglion}
     {OpenBCI Ganglion Board\label{fig:ganglion}}
@@ -289,8 +325,7 @@ Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwi�
 
     Koszt układu to 200\$.
 
-    \item[Cyton Board] \hfill\\
-    Cyton, pokazany na rysunku \vref{fig:cyton}, jest kompatybilny z Arduino, posiada 8 kanałów oraz 32-bitowy procesor\cite{cyton_shop}. Podobnie jak Gangalion, może być wykorzystany do mierzenia aktywności mięśni, serca lub mózgu. Dane próbkowane są z częstotliwością 250 Hz.
+    \item[Cyton Board] -- Cyton, pokazany na rysunku \vref{fig:cyton}, jest kompatybilny z Arduino, posiada 8 kanałów oraz 32-bitowy procesor\cite{cyton_shop}. Podobnie jak Gangalion, może być wykorzystany do mierzenia aktywności mięśni, serca lub mózgu. Dane próbkowane są z częstotliwością 250 Hz.
 
     \rysunek{cyton}
     {OpenBCI Cyton Board\label{fig:cyton}}
@@ -300,8 +335,7 @@ Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwi�
 
     Koszt płytki to 500\$.
 
-    \item[Cyton + Daisy Board] \hfill\\
-    Ten układ zawiera opisaną wcześniej płytkę Cyton oraz Daisy, która jest \textit{wpinana} w płytkę Cyton. Układ pokazano na rysunku \vref{fig:cyton_daisy}.
+    \item[Cyton + Daisy Board] -- Ten układ zawiera opisaną wcześniej płytkę Cyton oraz Daisy, która jest \textit{wpinana} w płytkę Cyton. Układ pokazano na rysunku \vref{fig:cyton_daisy}.
 
     Daisy zapewnia dodatkowe 8 kanałów, które mogą być użyte do mierzenia EMG, EKG lub EEG\cite{cytondaisy_shop}. Częstotliwość próbkowania wynosi 250 Hz.
 
@@ -347,13 +381,24 @@ OpenBCI dostarcza również bibliotekę Brainflow, która służy do analizy dan
 
 Platforma OpenBCI umożliwia również współpracę z innymi programami do analizy sygnałów, m.in. \href{https://www.mathworks.com/products/matlab.html}{MATLAB}, \href{https://www.neuromore.com/}{Neuromore}, \href{http://openvibe.inria.fr/}{OpenVIBE}, \href{https://github.com/sccn/labstreaminglayer}{LabStreamingLayer} oraz \href{http://www.shifz.org/brainbay/}{BrainBay}.
 
-\chapter{Przegląd dostępnych rozwiązań}
+\section{Przegląd potencjalnych zastosowań}
+\subsection{Zastosowanie medyczne}
+\subsubsection{Interfejs komunikacyjny}
+\subsubsection{Sterowanie wózkiem inwalidzkim}
+\subsubsection{Rehabilitacja}
 
-\chapter{Analiza istniejących algorytmów ekstrakcji cech}
+\subsection{Zastosowania niemedyczne}
+\subsubsection{Nadzór skupienia}
+\subsubsection{Rozrywka}
+\subsubsection{Kontrola egzoszkieletu}
 
 \chapter{Projekt systemu}
+\section{Wybór urządzenia BCI}
+\section{*Resztę rzeczy dodam po napisaniu programu*}
 
 \chapter{Badania opracowanego systemu}
+\section{Badanie wpływu zakłóceń}
+\section{Badanie wpływu parametrów algorytmu}
 
 
 
