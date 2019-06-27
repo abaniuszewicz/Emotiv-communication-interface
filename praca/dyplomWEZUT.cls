@@ -696,6 +696,7 @@
 %
 \DefineBibliographyStrings{polish}{%
   urlseen = {dostęp:},
+  andothers = {i\addabbrvspace in\adddot}
 }
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
