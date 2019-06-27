@@ -21,10 +21,10 @@
 \nralbumu{33816}
 
 % Tytuł pracy
-\title{Algorytmy poleceń mentalnych w~interfejsach mózg-komputer}
+\title{Algorytmy poleceń mentalnych w~interfejsach mózg--komputer}
 
 % Tytuł pracy w języku angielskim
-\tytulang{Algorithms of~mental commands in~brain-computer interfaces}
+\tytulang{Algorithms of~mental commands in~brain--computer interfaces}
 
 % Kierunek studiów
 \kierunek{Teleinformatyka}
@@ -84,7 +84,7 @@ TODO
 
 \zakres{TODO}
 
-\chapter{Wstęp do tematyki interfejsów mózg-komputer}
+\chapter{Wstęp do tematyki interfejsów mózg--komputer}
 
 \chapter{Analiza rozwiązań BCI}
 \section{Rodzaje interfejsów}
@@ -385,6 +385,15 @@ Platforma OpenBCI umożliwia również współpracę z innymi programami do anal
 \subsection{Zastosowanie medyczne}
 \subsubsection{Interfejs komunikacyjny}
 \subsubsection{Sterowanie wózkiem inwalidzkim}
+Osoby sparaliżowane niekiedy są w stanie sterować wózkiem inwalidzkim, używając do tego celu wydmuchiwanego powietrza, mowy lub, w przypadku częściowego paraliżu, sprawnych części ciała. Integracja z interfejsami mózg--komputer stwarza nowe możliwości dla osób, które z powodu daleko idącej choroby nie są w stanie skorzystać z wyżej wymieniowych metod sterowania.
+
+Kontrola wózka inwalidzkiego może odbywać się przy wykorzystaniu sterowania \textit{nisko-} lub \textit{wysokopoziomowego}.
+
+Sterowanie niskopoziomowe można zrealizować przez translację sygnałów odebranych z urządzenia rejestrującego aktywność mózgu na komendy opisujące ruch wózka (\textit{ruch do przodu}, \textit{zawróć}, \textit{przyspiesz}), z zastrzeżeniem, że użytkownik wydaje je w sposób bezpośredni. Ten rodzaj sterowania wymaga zamontowania czujników na wózku, które nie pozwolą na wykonanie niedozwolonych manewrów, na przykład uderzenia w inną osobę lub przedmiot. Do zalet rozwiązania można zaliczyć większą kontrolę osoby użytkującej wózek nad sposobem przemieszczania oraz stosunkowo małą ilość wymaganych komend mentalnych do podstawowego sterowania. Do wad należy konieczność wydawania poleceń ruchu w sposób ciągły, co może prowadzić do znużenia użytkownika, a w konsekwencji samoczynnego \textit{rozstrajania się} układu sterowania.
+
+Sterowanie wysokopoziomowe polega na wydawaniu poleceń dotyczących celu ruchu (\textit{kuchnia}, \textit{łazienka}). Podejście to wiąże się z koniecznością stosowania wózków o wysokim stopniu autonomiczności. Zaletą tego rozwiązania jest odciążenie użytkownika od konieczności utrzymywania ciągłego skupienia na kierunku oraz prędkości ruchu, wyeliminowanie wpływu zakłóceń odbieranych w trakcie przemieszczania się oraz, po zapewnieniu skutecznych algorytmów i odpowiedniej ilości czujników, bezpieczniejsze poruszanie się w środowisku. Do wad zaliczyć należy większą ilość komend, które należy zdefiniować (co najmniej po jednej dla każdego pomieszczenia), mniejszą precyzję ruchu, spowodowaną odgórnym określeniem miejsca w pomieszczeniu, do którego użytkownik chce się przemieścić oraz konieczność zmapowania i zdefiniowania każdego środowiska, w którym będzie poruszał się wózek.
+
+Mimo obiecujących wstępnych rezultatów, wykorzystanie interfejsów mózg--kom\-pu\-ter do zadania sterowania wózkami inwalidzkimi jest trudne do zrealizowania z powodu braku niezawodnych, przenośnych i łatwych w użyciu urządzeń rejestrujących. Inną przeszkodą jest brak wózków o wystarczającym stopniu autonomiczności, które byłyby zdalne do pracy w codziennym środowisku\cite{bci_introduction}.
 \subsubsection{Rehabilitacja}
 
 \subsection{Zastosowania niemedyczne}
