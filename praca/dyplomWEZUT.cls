@@ -73,6 +73,7 @@
 \RequirePackage{threeparttable}
 \RequirePackage{placeins}
 \RequirePackage{multirow}
+\RequirePackage{subcaption}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
@@ -696,7 +697,9 @@
 %
 \DefineBibliographyStrings{polish}{%
   urlseen = {dostęp:},
-  andothers = {i\addabbrvspace in\adddot}
+  andothers = {i\addabbrvspace in\adddot},
+  pages = {s\adddot},
+  volume = {t\adddot}
 }
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
