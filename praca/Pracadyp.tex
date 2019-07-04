@@ -103,13 +103,13 @@ Typowymi technikami usunięcia artefaktów z sygnału EEG są\cite{bci_introduct
 \begin{description}
     \item [Progowanie] --- jeżeli jakakolwiek charakterystyka sygnału EOG lub EMG przekracza zdefiniowany próg (\textit{ang.} threshold), próbki sygnałów EEG w tej epoce zostają uznane za skażone i są odrzucane. Ten sposób może być zastosowany również dla akwizycji wyłącznie sygnałów EEG, jednak to podejście wymaga wstępnej kalibracji z użytkownikiem. Wadą tego rozwiązania jest utrata informacji zawartych w odrzuconych próbkach.
     
-    \item [Filtracja] --- polega na wycięciu z pobranego sygnału składowych o określonym paśmie częstotliwości przy użyciu filtru pasmowo--zaporowego. W celu przeprowadzenia filtracji należy przekształcić sygnał do dziedziny częstotliwości (na przykład przy użyciu FFT), wyciąć składowe o niepożądanej częstotliwości, a następnie przekształcić sygnał z powrotem do dziedziny czasu. Usunąć w ten sposób można między innymi zakłócenia sieci energetycznej\footnote{W zależności od kraju zakłócenia te mogą występować w innym paśmie częstotliwości. W Europie jest to 50 Hz, ale na przykład w większości państw Ameryki Północnej częstotliwość sieci wynosi 60 Hz.} oraz artefakty EOG (około 1÷4 Hz). Filtrację należy stosować, tylko jeżeli podlegające jej składowe mają inną częstotliwość niż sygnały, które chcemy uzyskać.
+    \item [Filtracja] --- wycięcie z pobranego sygnału składowych o określonym paśmie częstotliwości przy użyciu filtru pasmowo--zaporowego. W celu przeprowadzenia filtracji należy przekształcić sygnał do dziedziny częstotliwości (na przykład przy użyciu FFT), wyciąć składowe o niepożądanej częstotliwości, a następnie przekształcić sygnał z powrotem do dziedziny czasu. Usunąć w ten sposób można między innymi zakłócenia sieci energetycznej\footnote{W zależności od kraju zakłócenia te mogą występować w innym paśmie częstotliwości. W Europie jest to 50 Hz, ale na przykład w większości państw Ameryki Północnej częstotliwość sieci wynosi 60 Hz.} oraz artefakty EOG (około 1÷4 Hz). Filtrację należy stosować, tylko jeżeli podlegające jej składowe mają inną częstotliwość niż sygnały, które chcemy uzyskać.
     
     \item [Regresja liniowa] --- przy założeniu, iż szum sygnału EEG jest addytywny można sformułować zależność w postaci\cite{bci_introduction}:
     $$ EEG_i(t) = EEG^{true}_i(t) + K \times EOG(t) $$
-    gdzie $EEG^{true}_i(t)$ jest \textit{czystym} sygnałem EEG pozyskanym z elektrody $i$ w czasie $t$, $EOG(t)$ jest sygnałem EOG w czasie $t$, a $K$ stałą, która może być estymowana. Posiadając estymację stałej $K$, na podstawie prostego przekształcenia możemy uzyskać estymację czystego sygnału EEG:
+    gdzie $EEG^{true}_i(t)$ jest \textit{czystym} sygnałem EEG pozyskanym z elektrody $i$ w czasie $t$, $EOG(t)$ jest sygnałem EOG w czasie $t$, a $K$ stałą, która może być estymowana. Posiadając estymację stałej $K$, na podstawie prostego przekształcenia możemy uzyskać estymację czystego sygnału EEG w postaci:
     $$ EEG^{true}_i(t) = EEG_i(t) - K \times EOG(t) $$
-    Ten sposób usunięcia szumów jest trudniejszy do zastosowania dla artefaktów EMG, ponieważ zakłócenia te pochodzą z wielu źródeł i wymagają opracowania bardziej skomplikowanego modelu.
+    Ten sposób trudniejszy do usunięcia artefaktów EMG, ponieważ pochodzą one z wielu źródeł (wielu grup mięśni) i wymagają opracowania bardziej skomplikowanego modelu.
 
     \item [Analiza składowych głównych] --- inaczej PCA (\textit{ang.} Principal Component Analysis); polega na redukcji współczynników potrzebnych do opisania dużej liczby skorelowanych ze sobą zmiennych, przy jednoczesnym zachowaniu jak największej liczby składowych znajdujących się w sygnale właściwym. Umożliwia zmniejszenie ilości informacji zawartych w sygnale poprzez eliminację pewnych składowych zawierających artefakty\cite{eeg_noise}. PCA pozwala na usunięcie szumów związanych z EOG\cite{bci_introduction}.
     
@@ -153,6 +153,18 @@ Typowymi technikami usunięcia artefaktów z sygnału EEG są\cite{bci_introduct
 
 
 \subsection{Ekstrakcja cech}
+Celem ekstrakcji cech jest przekształcenie \textit{surowych} danych EEG do postaci nadającej się do wykorzystania w procesie klasyfikacji sygnałów\cite{bci_robotics}. Cecha jest właściwością opisującą sygnał EEG\cite{bci_foundations}, na przykład jego amplitudą lub rozkładem widmowym. Cechy są zazwyczaj grupowane w wektory cech\cite{bci_foundations}. Przykładem wykorzystania ekstrakcji cech może być rozpoznanie wyobrażenia ruchu ręką -- cechą używaną do detekcji jest moc pasma μ (8÷12 Hz) oraz β (16÷24 Hz)\cite{bci_foundations}.
+
+W interfejsach mózg--komputer najczęściej wykorzystywane są cechy opisujące sygnał\cite{eeg_features}:
+\begin{description}
+    \item [Przestrzennie] --- służą do przybliżonego wyznaczania źródeł sygnału\cite{eeg_features}.
+    \item [Spektralnie] --- opisują moc sygnału w zależności od częstotliwości\cite{bci_foundations}.
+    \item [Czasowo] --- opisują zmianę sygnału w czasie.
+\end{description}
+
+Innymi cechami wykorzystywanymi w BCI są reprezentacje czasowo--czę\-sto\-tli\-wo\-ścio\-we sygnałów, transformacja Hilberta oraz parametry Hjortha\cite{bci_robotics}. 
+
+
 \subsection{Klasyfikacja sygnałów}
 
 \section{Przegląd potencjalnych zastosowań}
