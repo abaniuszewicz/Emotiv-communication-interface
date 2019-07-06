@@ -153,7 +153,11 @@ Typowymi technikami usunięcia artefaktów z sygnału EEG są\cite{bci_introduct
 
 
 \subsection{Ekstrakcja cech}
-Celem ekstrakcji cech jest przekształcenie \textit{surowych} danych EEG do postaci nadającej się do wykorzystania w procesie klasyfikacji sygnałów\cite{bci_robotics}. Cecha jest właściwością opisującą sygnał EEG\cite{bci_foundations}, na przykład jego amplitudą lub rozkładem widmowym. Cechy są zazwyczaj grupowane w wektory cech\cite{bci_foundations}. Przykładem wykorzystania ekstrakcji cech może być rozpoznanie wyobrażenia ruchu ręką -- cechą używaną do detekcji jest moc pasma μ (8÷12 Hz) oraz β (16÷24 Hz)\cite{bci_foundations}.
+Celem ekstrakcji cech (\textit{ang.} feature extraction) jest przekształcenie \textit{surowych} danych EEG do postaci nadającej się do wykorzystania w procesie klasyfikacji sygnałów\cite{bci_robotics}.
+
+Cecha jest właściwością opisującą sygnał EEG\cite{bci_foundations}. Cechą podstawową sygnału jest jego bezpośredni pomiar\cite{bci_principles}, na przykład różnica potencjałów pomiędzy dwoma elektrodami w chwili $t$. Podstawowe cechy są zazwyczaj przedstawiane w postaci cech złożonych, które stanowią ich liniowe oraz nieliniowe kombinacje, stosunki lub miary statystyczne. W celu jak najdokładniejszej detekcji intencji użytkownika wiele cech jest pozyskiwanych jednocześnie; są one zazwyczaj grupowane w tak zwane wektory cech\cite{bci_foundations}. 
+
+Przykładem wykorzystania ekstrakcji cech może być rozpoznanie wyobrażenia ruchu ręką -- cechą używaną do detekcji jest moc pasma μ (8÷12 Hz) oraz β (16÷24 Hz)\cite{bci_foundations}.
 
 W interfejsach mózg--komputer najczęściej wykorzystywane są cechy opisujące sygnał\cite{eeg_features}:
 \begin{description}
@@ -161,11 +165,51 @@ W interfejsach mózg--komputer najczęściej wykorzystywane są cechy opisujące
     \item [Spektralnie] --- opisują moc sygnału w zależności od częstotliwości\cite{bci_foundations}.
     \item [Czasowo] --- opisują zmianę sygnału w czasie.
 \end{description}
+Innymi cechami wykorzystywanymi w BCI są reprezentacje czasowo--czę\-sto\-tli\-wo\-ścio\-we sygnałów, transformacja Hilberta oraz parametry Hjortha\cite{bci_robotics}.
 
-Innymi cechami wykorzystywanymi w BCI są reprezentacje czasowo--czę\-sto\-tli\-wo\-ścio\-we sygnałów, transformacja Hilberta oraz parametry Hjortha\cite{bci_robotics}. 
+Problem ekstrakcji cech został poruszony szerzej w literaturze \cite{eeg_features,bci_foundations,bci_introduction,bci_robotics,bci_principles}.
 
 
 \subsection{Klasyfikacja sygnałów}
+Klasyfikatory służą do rozpoznawania wzorców w wektorach cech sygnałów EEG. Ich zadaniem jest przekształcenie aktywności mózgu w sygnały użyteczne dla komputera.
+
+Wśród klasyfikatorów możemy wyróżnić między innymi:
+\begin{description}
+    \item [Klasyfikator liniowy] --- algorytm dyskryminacyjny posługujący się funkcjami liniowymi w celu rozróżnienia poszczególnych klas\cite{eeg_classification}. Wśród tego rodzaju klasyfikatorów w BCI najczęściej wykorzystywane są LDA\footnote{LDA (\textit{ang.} linear discriminant analysis) -- liniowa analiza dyskryminacyjna} oraz SVM\footnote{SVM (\textit{ang.} support vector machine) -- maszyna wektorów nośnych}\cite{bci_trends}.
+    
+    LDA jest liniowym klasyfikatorem binarnym, który przy pomocy hiperpłaszczyzny rozdziela dane reprezentujące różne klasy\cite{eeg_classification}. Metoda jest stosunkowo prosta i posiada małą złożoność obliczeniową, przez co jest często stosowana w BCI. Jej wadą jest osiąganie słabych rezultatów klasyfikacji w przypadku złożonych, nieliniowych wektorów cech sygnałów EEG\cite{bci_trends}. 
+
+    SVM, podobnie jak LDA, używa hiperpłaszczyzny w celu rozdzielenia poszczególnych klas. W przypadku SVM poszukiwana hiperpłaszczyzna powinna rozdzielać z maksymalnym marginesem dane należące do odrębnych klas. Metoda posiada dobre właściwości generalizacji oraz jest niewrażliwa na przetrenowanie\cite{eeg_features}.
+
+    \item [Sieci neuronowe] --- wśród sieci neuronowych wykorzystywanych w BCI najczęściej zastosowanie znajduje MLP\footnote{MLP (\textit{ang.} multilayer perceptron) -- wielowarstwowy perceptron}\cite{eeg_classification}.
+    
+    MLP składa się z kilku warstw neuronów: warstwy wejściowej, warstw ukrytych oraz warstwy wyjściowej. Wielowarstwowy perceptron jest wrażliwy na przetrenowanie, w szczególności w przypadku zaszumionych danych, takich jak sygnały EEG\cite{bci_trends}.
+
+    Innymi rodzajami sieci neuronowych wykorzystywanymi w BCI są między innymi LVQ, Fuzzy ARTMAP, RBF oraz BLRNN, ALN oraz PeGNC\cite{eeg_classification}.
+    
+    \item [Naiwny klasyfikator bayesowski] --- jest klasyfikatorem probabilistycznym opartym na założeniu niezależności cech. Z tego powodu jest również zwany modelem cech niezależnych (\textit{ang.} independent feature model). Rozpatrując klasyfikację jako zadanie przyporządkowania klasy do konkretnego wejścia na podstawie wektorów cech $F_1$, $F_2$,\dots,$F_n$, decyzję otrzymujemy poprzez wybranie klasy z największym prawdopodobieństwem:
+    $$P(C=i|F_1, \dots ,F_n)$$
+    Na drodze przekształceń, korzystając z twierdzenia Bayesa, otrzymujemy prawdopodobieństwo w postaci:
+    $$P(C=i|F_1, \dots ,F_n) = P(C=i)P(F_1|C=i)P(F_2|C=i) \dots P(F_n|C=i)$$
+    Mając równanie w tej postaci, wynik klasyfikacji otrzymujemy poprzez obliczenie prawdopodobieństwa dla każdej z klas, a następnie wybranie tej o największym prawdopodobieństwie\cite{bci_introduction}.    
+
+    \item [Algorytm najbliższego sąsiada] --- klasa wyjściowa jest przydzielana na podstawie najbliższego sąsiada, który jest wyłaniany na przykład przy pomocy odległości euklidesowej między wektorami, danej wzorem\cite{bci_introduction}: 
+    $$d_{x,y} = \sqrt{\sum_{n=1}^{M}(x_n-y_n)^2}$$
+    gdzie $d_{x,y}$ jest odległością między wektorami $x$ oraz $y$.
+
+    Klasyfikacja algorytmem najbliższego sąsiada NN (\textit{ang.} nearest neighbor) jest podatna na szum\cite{bci_introduction}. Z tego powodu często jest zastępowana bardziej odporną odmianą w postaci algorytmu \textit{k} najbliższych sąsiadów k-NN (\textit{ang.} \textit{k} nearest neighbors), w którym klasa jest przyporządkowywana na podstawie klasyfikacji \textit{k} najbliższych sąsiadów.
+\end{description}
+
+W celu poprawy klasyfikacji można zastosować połączenie kilku różnych algorytmów. Ostateczne przyporządkowanie do konkretnej klasy następuje wtedy na drodze wzmacniania, głosowania lub nakładania.
+
+Wzmacnianie (\textit{ang.} boosting) wykorzystuje klasyfikatory połączone w kaskadę. Każdy klasyfikator stara się wyeliminować błąd wprowadzony przez poprzednie. Ten sposób łączenia pozwala na stworzenie wydajnego klasyfikatora z połączenia kilku słabych. Charakteryzuje się odpornością na przetrenowanie\cite{bci_trends}.
+
+Przy głosowaniu (\textit{ang.} voting) kilka klasyfikatorów samodzielnie dokonuje przydzielenia danych wejściowych do odpowiedniej klasy. Klasa wynikowa zostaje wyłoniona na drodze głosowania, to jest zostaje nią klasa, która została wyłoniona najwięcej razy podczas samodzielnych klasyfikacji.
+
+Nakładanie (\textit{ang.} stacking) wykorzystuje dwa poziomy klasyfikatorów. Pierwszy, tak zwany poziom 0, klasyfikuje dane wejściowe do odpowiednich klas. Wyjścia klasyfikatorów poziomu 0 są połączone z wejściami klasyfikatora poziomu wyższego, zwanego poziomem 1, który podejmuje ostateczną decyzję dotyczącej przynależności do danej klasy\cite{eeg_classification}.
+
+Połączone klasyfikatory uzyskują lepsze rezultaty. Ich połączenie obniża wariancję oraz błąd klasyfikacji\cite{eeg_classification}.
+
 
 \section{Przegląd potencjalnych zastosowań}
 \subsection{Interfejs komunikacyjny}
@@ -428,7 +472,7 @@ Dodatkowo można wykupić narzędzia dla naukowców w cenie 500\$, na które sk�
 
 
 \section{OpenBCI Ultracortex \textit{Mark IV}}
-Ultracortex, pokazany na rysunku \vref{fig:markiv}, jest open source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{wolpaw2012brain}.}.
+Ultracortex, pokazany na rysunku \vref{fig:markiv}, jest open source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{bci_principles}.}.
 
 W projekcie zastosowano \textit{suche} sensory EEG. Ich rozmieszczenie pokazano na rysunku \vref{fig:markiv_area}.
 
