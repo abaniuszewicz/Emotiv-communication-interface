@@ -40,6 +40,7 @@
 	citestyle=numeric,
 	maxnames=6,
 	sorting=nyt,
+	giveninits=true,
 	backend=biber]{biblatex}
 \addbibresource{bibliografia.bib}
 \RequirePackage[
@@ -701,6 +702,7 @@
   pages = {s\adddot},
   volume = {t\adddot}
 }
+\DeclareNameAlias{default}{family-given}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput
