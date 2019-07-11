@@ -703,6 +703,7 @@
   volume = {t\adddot}
 }
 \DeclareNameAlias{default}{family-given}
+\renewcommand*{\revsdnamepunct}{}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput

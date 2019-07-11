@@ -88,9 +88,24 @@ TODO
 \section{Czym jest BCI}
 \section{Rodzaje BCI}
 \subsection{Inwazyjne}
-Interfejsy pozwalające na pozyskiwanie sygnałów bezpośrednio z komórek mózgowych nazywane są inwazyjnymi. W celu \textit{zainstalowania} wymagają one operacji, w której część czaszki jest usuwana, elektroda lub implant jest umieszczany w mózgu, a następnie czaszka jest przytwierdzana z powrotem\cite{bci_introduction}. Technika inwazyjna stosowana jest najczęściej w badaniach przeprowadzanych z wykorzystaniem zwierząt\cite{bci_introduction}. W przypadku ludzi pomiary inwazyjne pobierane są najczęściej w warunkach klinicznych, podczas operacji mózgu lub monitorowania pacjenta bezpośrednio przed operacją.
+Interfejsy pozwalające na pozyskiwanie sygnałów bezpośrednio z komórek mózgowych nazywane są inwazyjnymi. Technika ta stosowana jest najczęściej w badaniach przeprowadzanych z wykorzystaniem zwierząt\cite{bci_introduction}. U ludzi pomiary inwazyjne pobierane są zazwyczaj w warunkach klinicznych, podczas operacji mózgu lub monitorowania pacjenta bezpośrednio przed lub po operacji.
 
-Interfejsy inwazyjne charakteryzują się najwyższą jakością pozyskanych sygnałów. Spowodowane jest to brakiem zniekształceń sygnałów powodowanych przez czaszkę, która ma 20÷80 krotnie mniejszą przewodność\cite{bci_technology}.
+Umieszczenie inwazyjnego BCI wymaga skomplikowanej operacji neurochirurgicznej, w której część czaszki jest usuwana, elektroda lub implant jest umieszczany w mózgu, a następnie kość jest przytwierdzana z powrotem\cite{bci_introduction}. Operacja obarczona jest ryzykiem uszkodzenia tkanki oraz w konsekwencji połączeń pomiędzy neuronami\cite{bci_revolutionizing}.
+
+Interfejsy inwazyjne charakteryzują się najwyższą jakością pozyskanych sygnałów. Spowodowane jest to wyeliminowaniem problemów związanych z niską przewodnością czaszki\footnote{Przewodność czaszki jest około 20÷80 krotnie niższa niż mózgu\cite{bci_technology}} oraz zredukowaniem artefaktów poprzez zapewnienie dodatkowej warstwy filtrującej sygnały. Inną zaletą jest możliwość ich pozycjonowania bezpośrednio w płatach istotnych z perspektywy konkretnego zastosowania, na przykład w obszarach odpowiedzialnych za funkcje ruchowe lub emocje.
+
+Do inwazyjnej akwizycji sygnałów wykorzystywane są:
+\begin{description}
+    \item [Mikroelektrody] --- zostały opracowane do akwizycji sygnałów oraz stymulacji mózgu. Przenikając oponę miękką oraz korę mózgową, umieszczane są w odległości około 150 μm od docelowego neuronu\cite{bci_signals_invasive}. Są w stanie rejestrować aktywność na poziomie pojedynczych neuronów.
+    \item [MEA] --- Układy mikroelektrod (\textit{ang.} multielectrode array, również microelectrode array) umieszczanych w korze mózgowej. Są pozycjonowane w pobliżu docelowej populacji neuronów. Odległości między poszczególnymi elektrodami są różne w zależności od realizacji i wynoszą przykładowo 400 μm dla układów Utah oraz 100 μm dla układów Michigan\cite{bci_mea}. Ze względu na sposób wykonania wśród głównych typów mikroelektrod możemy wyróżnić tak zwane \textit{microwire arrays}, \textit{micro-machined arrays} oraz \textit{flexible arrays}\cite{bci_mea}. Więcej na temat MEA można znaleźć w literaturze \cite{bci_signals_invasive,bci_mea,bci_principles}.
+    \item [ECoG] --- Elektrokortykografia (\textit{ang.} electrocorticography), czasem nazywana iEEG (\textit{ang.} intracranial electroencephalogram -- wewnątrzczaszkowa elektroencefalografia), jest wykonywana przy użyciu elektrod umieszczonych w warstwie podtwardówkowej\cite{bci_signals_invasive}. Jest wykorzystywana do rejestracji aktywności neuronalnej bez konieczności penetracji tkanki korowej. Jest najmniej inwazyjną metodą z omówionych w tym rozdziale, ponieważ nie ingeruje w strukturę opony miękkiej oraz kory mózgowej. Z racji umieszczenia bliżej kory charakteryzuje się wyższą amplitudą rejestrowanych sygnałów, szerszym zakresem ich częstotliwości oraz lepszymi parametrami topograficznymi niż zewnątrzczaszkowe badanie EEG\cite{bci_revolutionizing}.
+\end{description}
+
+\rysunek{invasive}
+{Umiejscowienie elektrod wykorzystywanych w inwazyjnych BCI w zależności od zastosowanej technologii}
+{\cite{bci_signals_invasive}}
+
+Wprowadzenie na rynek inwazyjnych interfejsów mózg--komputer wymaga dalszych badań w zakresie ich wpływu na mózg przy długotrwałym użytkowaniu\cite{bci_revolutionizing}. Ze względu na ich specjalistyczny charakter oraz skomplikowaną procedurę umieszczenia urządzenia, ich koszt będzie prawdopodobnie znacznie wyższy niż interfejsów nieinwazyjnych. 
 
 \subsection{Nieinwazyjne}
 \subsection{Stymulujące oraz dwukierunkowe}
