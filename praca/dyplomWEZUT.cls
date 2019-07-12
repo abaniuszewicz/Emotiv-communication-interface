@@ -41,6 +41,7 @@
 	maxnames=6,
 	sorting=nyt,
 	giveninits=true,
+	sortcites,
 	backend=biber]{biblatex}
 \addbibresource{bibliografia.bib}
 \RequirePackage[
@@ -667,10 +668,10 @@
 
 % ~~~~~~~~~~~~~~~~~~MOJE KOMENDY~~~~~~~~~~~~~~~~~~~
 %
-\newcommand{\rysunekbig}[4]{
+\newcommand{\rysunekbig}[4][default]{
 \begin{figure}[htb]
-	\centering\includegraphics[height=0.4\textheight,width=\textwidth,keepaspectratio]{graphic/#1}\\
-	\caption{#2}\source{#3}
+	\centering\includegraphics[height=0.4\textheight,width=\textwidth,keepaspectratio]{graphic/#2}\\
+	\ifthenelse{\equal{#1}{default}}{\caption{#3}}{\caption[#1]{#3}}\source{#4}
 \end{figure}
 }
 %

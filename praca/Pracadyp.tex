@@ -97,17 +97,38 @@ Interfejsy inwazyjne charakteryzują się najwyższą jakością pozyskanych syg
 Do inwazyjnej akwizycji sygnałów wykorzystywane są:
 \begin{description}
     \item [Mikroelektrody] --- zostały opracowane do akwizycji sygnałów oraz stymulacji mózgu. Przenikając oponę miękką oraz korę mózgową, umieszczane są w odległości około 150 μm od docelowego neuronu\cite{bci_signals_invasive}. Są w stanie rejestrować aktywność na poziomie pojedynczych neuronów.
-    \item [MEA] --- Układy mikroelektrod (\textit{ang.} multielectrode array, również microelectrode array) umieszczanych w korze mózgowej. Są pozycjonowane w pobliżu docelowej populacji neuronów. Odległości między poszczególnymi elektrodami są różne w zależności od realizacji i wynoszą przykładowo 400 μm dla układów Utah oraz 100 μm dla układów Michigan\cite{bci_mea}. Ze względu na sposób wykonania wśród głównych typów mikroelektrod możemy wyróżnić tak zwane \textit{microwire arrays}, \textit{micro-machined arrays} oraz \textit{flexible arrays}\cite{bci_mea}. Więcej na temat MEA można znaleźć w literaturze \cite{bci_signals_invasive,bci_mea,bci_principles}.
-    \item [ECoG] --- Elektrokortykografia (\textit{ang.} electrocorticography), czasem nazywana iEEG (\textit{ang.} intracranial electroencephalogram -- wewnątrzczaszkowa elektroencefalografia), jest wykonywana przy użyciu elektrod umieszczonych w warstwie podtwardówkowej\cite{bci_signals_invasive}. Jest wykorzystywana do rejestracji aktywności neuronalnej bez konieczności penetracji tkanki korowej. Jest najmniej inwazyjną metodą z omówionych w tym rozdziale, ponieważ nie ingeruje w strukturę opony miękkiej oraz kory mózgowej. Z racji umieszczenia bliżej kory charakteryzuje się wyższą amplitudą rejestrowanych sygnałów, szerszym zakresem ich częstotliwości oraz lepszymi parametrami topograficznymi niż zewnątrzczaszkowe badanie EEG\cite{bci_revolutionizing}.
+    \item [MEA] --- układy mikroelektrod (\textit{ang.} multielectrode array, również microelectrode array) umieszczanych w korze mózgowej. Są pozycjonowane w pobliżu docelowej populacji neuronów. Odległości między poszczególnymi elektrodami są różne w zależności od realizacji i wynoszą przykładowo 400 μm dla układów Utah oraz 100 μm dla układów Michigan\cite{bci_mea}. Ze względu na sposób wykonania wśród głównych typów mikroelektrod możemy wyróżnić tak zwane \textit{microwire arrays}, \textit{micro-machined arrays} oraz \textit{flexible arrays}\cite{bci_mea}. Więcej na temat MEA można znaleźć w literaturze \cite{bci_signals_invasive,bci_mea,bci_principles}.
+    \item [ECoG] --- elektrokortykografia (\textit{ang.} electrocorticography), czasem nazywana iEEG (\textit{ang.} intracranial electroencephalogram -- wewnątrzczaszkowa elektroencefalografia), jest wykonywana przy użyciu elektrod umieszczonych w warstwie podtwardówkowej\cite{bci_signals_invasive}. Jest wykorzystywana do rejestracji aktywności neuronalnej bez konieczności penetracji tkanki korowej. Jest najmniej inwazyjną metodą z omówionych w tym rozdziale, ponieważ nie ingeruje w strukturę opony miękkiej oraz kory mózgowej. Z racji umieszczenia bliżej kory charakteryzuje się wyższą amplitudą rejestrowanych sygnałów, szerszym zakresem ich częstotliwości oraz lepszymi parametrami topograficznymi niż zewnątrzczaszkowe badanie EEG\cite{bci_revolutionizing}.
 \end{description}
+Ich typowe umiejscowienie zostało pokazane na rysunku \vref{fig:invasive}.
 
 \rysunek{invasive}
-{Umiejscowienie elektrod wykorzystywanych w inwazyjnych BCI w zależności od zastosowanej technologii}
+{Umiejscowienie elektrod wykorzystywanych w inwazyjnych BCI w zależności od zastosowanej technologii\label{fig:invasive}}
 {\cite{bci_signals_invasive}}
 
-Wprowadzenie na rynek inwazyjnych interfejsów mózg--komputer wymaga dalszych badań w zakresie ich wpływu na mózg przy długotrwałym użytkowaniu\cite{bci_revolutionizing}. Ze względu na ich specjalistyczny charakter oraz skomplikowaną procedurę umieszczenia urządzenia, ich koszt będzie prawdopodobnie znacznie wyższy niż interfejsów nieinwazyjnych. 
+Wprowadzenie na rynek inwazyjnych interfejsów mózg--komputer wymaga dalszych badań w zakresie ich wpływu na użytkownika podczas długotrwałego stosowania\cite{bci_revolutionizing}. Ze względu na ich specjalistyczny charakter oraz skomplikowaną procedurę umieszczenia urządzenia, ich koszt będzie prawdopodobnie znacznie wyższy niż interfejsów nieinwazyjnych. 
 
 \subsection{Nieinwazyjne}
+Nieinwazyjne interfejsy mózg--komputer pozwalają na akwizycję sygnałów niewymagającą ingerencji w strukturę czaszki ani nawet skórę głowy. Technologie nieinwazyjne do estymacji sygnałów wykorzystują zmiany w ciśnieniu krwi lub fluktuacje pola elektrycznego oraz magnetycznego, spowodowane aktywnością neuronów w konkretnej części mózgu\cite{bci_introduction}.
+
+Trendem na przestrzeni ostatnich lat jest stosowanie interfejsów wykorzystujących EEG. Pomiary elektroencefalograficzne są niedrogim, wygodnym oraz uniwersalnym pod względem środowiska wykorzystania sposobem rejestracji aktywności mózgu, czego konsekwencją jest rozwój komercyjnych rozwiązań\footnote{Przykłady dostępnych komercyjnie nieinwazyjnych interfejsów mózg--komputer wykorzystujących sygnały EEG zostały omówione w rozdziale \ref{chap:headsets}.} oraz narastająca liczba publikacji naukowych w tym temacie. Z drugiej strony, interfejsy wykorzystujące MEG\footnote{MEG (\textit{ang.} magnetoencephalography) -- magnetoencefalografia} są kosztowne oraz niepraktyczne w codziennym użytkowaniu, przez co stanowią jedynie narzędzie badawcze dla technologii BCI\cite{bci_principles}.
+
+Interfejsy nieinwazyjne są bardziej podatne na zakłócenia pochodzące ze środowiska z racji braku ekranowania elektrod czaszką, jak ma to miejsce w pomiarach inwazyjnych.
+
+Jako nieinwazyjne sposoby rejestracji aktywności mózgu stosuje się:
+\begin{description}
+    \item [EEG] --- badanie elektroencefalograficzne (\textit{ang.} electroencephalography) jest rejestracją aktywności neuronów, które podczas swojej aktywacji wytwarzają potencjał elektryczny. W zależności od miejsca wzmożonej aktywności mózgu, możliwe jest określenie aktualnego stanu psychofizycznego użytkownika urządzenia. Amplitudy sygnałów EEG są zazwyczaj rzędu dziesiątek do setek mikrowoltów\cite{bci_signals_invasive}. Badanie elektroencefalograficzne wykonuje się poprzez elektrody umieszczone na skalpie. Sensory EEG są małe,  lekkie oraz łatwe do założenia\cite{bci_trends,bci_signals_invasive}.
+    \item [MEG] --- badanie magnetoencefalograficzne (\textit{ang.} magnetoencephalography) rejestruje zmiany pola magnetycznego wywołane przez prąd przepływający przez akson. Do pozyskiwania sygnałów wykorzystywane są bardzo czułe czujniki magnetyczne, na przykład SQUID (\textit{ang.} superconducting quantum interference device), które są w stanie rejestrować pole magnetyczne rzędu 50÷500 fT\footnote{fT = $10^{-15}$ Tesli}\cite{bci_signals_invasive}. Ta metoda pozyskiwania sygnałów wymaga specjalistycznych osłon przed zakłóceniami elektromagnetycznymi, co dyskwalifikuje możliwość jej użycia poza warunkami laboratoryjnymi.
+    \item [MRI] --- obrazowanie metodą rezonansu magnetycznego (\textit{ang.} magnetic resonance imaging) wykorzystuje rezonowanie płynów, głównie krwi, pod wpływem silnego pola magnetycznego\cite{bci_signals_invasive}. W BCI wykorzystywane są jego dwie odmiany: fMRI oraz dMRI, kolejno funkcjonalne oraz dyfuzyjne MRI. Najczęściej stosowaną techniką rejestracji fMRI jest detekcja lokalnego natlenienia krwi BOLD (\textit{ang.} blood oxygenation level dependent) podczas aktywacji neuronów przy użyciu ważonych sekwencji T2-zależnych\cite{bci_neuroimaging}. 
+\end{description}
+Literatura \cite{bci_neuroimaging} wyszczególnia również metody NIRS oraz fTCD, jednak z racji ich małej popularności zostały pominięte w niniejszej pracy. Schematyczną zasadę działania poszczególnych interfejsów nieinwazyjnych przedstawiono na rysunku \vref{fig:non_invasive}.
+
+\rysunekbig{non_invasive}
+{Sposoby nieinwazyjnej akwizycji aktywności mózgu\label{fig:non_invasive}}
+{Opracowanie własne na podstawie \cite{bci_neuroimaging}}
+
+Nieinwazyjne interfejsy mózg--komputer są postrzegane jako najbezpieczniejsze oraz najtańsze BCI\cite{bci_trends}. Należy mieć jednak na uwadze, że w tej gamie interfejsów istnieje znaczna rozpiętość cenowa, od około 200\$ za urządzenie w przypadku tych wykorzystujących EEG, do aż 2--3 milionów \$ w przypadku rejestratorów magnetoencefalograficznych\cite{bci_neuroimaging}.
+
 \subsection{Stymulujące oraz dwukierunkowe}
 
 \section{Przetwarzanie sygnałów}
@@ -128,7 +149,7 @@ Typowymi technikami usunięcia artefaktów z sygnału EEG są\cite{bci_introduct
     $$ EEG_i(t) = EEG^{true}_i(t) + K \times EOG(t) $$
     gdzie $EEG^{true}_i(t)$ jest \textit{czystym} sygnałem EEG pozyskanym z elektrody $i$ w czasie $t$, $EOG(t)$ jest sygnałem EOG w czasie $t$, a $K$ stałą, która może być estymowana. Posiadając estymację stałej $K$, na podstawie prostego przekształcenia możemy uzyskać estymację czystego sygnału EEG w postaci:
     $$ EEG^{true}_i(t) = EEG_i(t) - K \times EOG(t) $$
-    Ten sposób trudniejszy do usunięcia artefaktów EMG, ponieważ pochodzą one z wielu źródeł (wielu grup mięśni) i wymagają opracowania bardziej skomplikowanego modelu.
+    Ta metoda jest trudniejsza do usunięcia artefaktów EMG, ponieważ pochodzą one z wielu źródeł (wielu grup mięśni) i wymagają opracowania bardziej skomplikowanego modelu.
 
     \item [Analiza składowych głównych] --- inaczej PCA (\textit{ang.} Principal Component Analysis); polega na redukcji współczynników potrzebnych do opisania dużej liczby skorelowanych ze sobą zmiennych, przy jednoczesnym zachowaniu jak największej liczby składowych znajdujących się w sygnale właściwym. Umożliwia zmniejszenie ilości informacji zawartych w sygnale poprzez eliminację pewnych składowych zawierających artefakty\cite{eeg_noise}. PCA pozwala na usunięcie szumów związanych z EOG\cite{bci_introduction}.
     
@@ -278,7 +299,7 @@ W związku z postępującą automatyzacją pojazdów, kierowca jest odciążany 
 
 Badania przeprowadzone przez naukowców z \textit{Berlin BCI} wykazały, iż istnieje zależność pomiędzy spadkiem koncentracji, a wzrostem mocy w paśmie alpha\footnote{Pasmo alpha - pasmo fal elektromagnetycznych o częstotliwości 8÷12 Hz i amplitudzie w zakresie 20÷80 μV\cite[str. 17]{bci_handbook}.}\cite{berlinbci_attention}. Badanie polegało na sklasyfikowaniu 2000 bagaży jako bezpiecznych lub niebezpiecznych na podstawie ich prześwietleń. Wykonano je w 10 turach po 200 bagaży. Na podstawie rysunku \vref{fig:attention} można wywnioskować, iż spadek koncentracji (wzrost parametru CII) prowadził do wzmożenia ilości popełnianych błędów. Uczestnicy rzeczonego badania na okres następujący bezpośrednio po przerwie wykazywali znacznie niższy stopień błędu. Tę zależność można wykorzystać do określenia momentów, w których pracownik powinien udać się na przerwę lub, w przypadku długotrwałej nikłej koncentracji, zakończyć swoją zmianę.
 
-\rysunekbig{attention}
+\rysunekbig[Zależność między stopniem skupienia, a stopą błędu]{attention}
 {Zależność pomiędzy stopniem skupienia CII (\textit{ang.} concentration insufficiency index), a stopą błędu. Pionowe linie po zakończeniu dwustupróbkowych bloków oznaczają moment przerwy.\label{fig:attention}}
 {\cite{berlinbci_attention}}
 
@@ -293,7 +314,7 @@ Innym zastosowaniem interfejsów mózg--komputer jest wydawanie poleceń za pomo
 Zintegrowanie BCI z grami komputerowymi wiąże się nie tylko ze znacznymi inwestycjami ze strony producentów gier, ale również samych graczy, którzy będą musieli zakupić urządzenia rejestrujące aktywność mózgu. Należy zwrócić uwagę na fakt, że rozgrywki często prowadzone są przez długi okres, a więc wymogiem stawianym przed systemami rejestrującymi jest ich wygoda. Nie mogą one ograniczać ruchów użytkownika ani jego pola widzenia. Wadą rozwiązania jest fakt, iż gracze często generują napięcia mięśniowe, co będzie prowadziło do powstawania artefaktów w przypadku urządzeń rejestrujących sygnały EEG. Rozwiązaniem tego problemu może być ulepszenie algorytmów filtracji sygnałów lub stosowanie systemów hybrydowych EEG/EMG, a więc rejestrujących oraz wykorzystujących aktywność zarówno mózgu, jak i mięśni\cite{bci_introduction}.
 
 
-\chapter{Charakterystyka wybranych urządzeń komercyjnych}
+\chapter{Charakterystyka wybranych urządzeń komercyjnych\label{chap:headsets}}
 \section{Emotiv Insight\label{section:insight}}
 Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę Emotiv przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą minimalistycznego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań.
 
@@ -490,7 +511,7 @@ Dodatkowo można wykupić narzędzia dla naukowców w cenie 500\$, na które sk�
 \end{description}
 
 
-\section{OpenBCI Ultracortex \textit{Mark IV}}
+\section{OpenBCI Ultracortex \textit{Mark IV}\label{sec:markiv}}
 Ultracortex, pokazany na rysunku \vref{fig:markiv}, jest open source'owym hełmem zaprojektowanym do pracy ze wszystkimi układami OpenBCI\cite{markiv_shop}. Pozwala na rejestrację sygnałów EEG, EMG oraz ECG. Wspiera do 16 kanałów rozmieszczonych na 35 różnych lokalizacjach według systemu 10-20\footnote{System 10-20 -- system opisu umiejscowienia elektrod; składa się z 21 elektrod. Podstawą tego standardu jest zdefiniowanie konturów między punktami orientacyjnymi czaszki (np. nasion, inion), a następnie podzielenie ich na proporcjonalne odległości 20\% całkowitej długości. Istnieją również systemy pokrewne, np. 10-10 oraz 10-5, które używają odpowiednio 10\% oraz 5\% całkowitej długości\cite[rozdz. 6]{bci_principles}.}.
 
 W projekcie zastosowano \textit{suche} sensory EEG. Ich rozmieszczenie pokazano na rysunku \vref{fig:markiv_area}.
