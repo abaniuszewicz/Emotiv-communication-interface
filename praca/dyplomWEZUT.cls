@@ -76,6 +76,7 @@
 \RequirePackage{placeins}
 \RequirePackage{multirow}
 \RequirePackage{subcaption}
+\RequirePackage{float}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
@@ -564,14 +565,14 @@
 }
 %
 \newcommand{\rysunek}[4]{
-\begin{figure}[htb]
+\begin{figure}[!htb]
 	\centering\includegraphics[height=6cm,width=0.8\textwidth,keepaspectratio]{graphic/#1}\\
 	\caption{#2}\source{#3}
 \end{figure}
 }
 %
 \newcommand{\tabela}[3]{
-\begin{table}[ht]
+\begin{table}[!ht]
 	\caption{#1}\source{#2}
 	\centering\small\fbox{#3}
 \end{table}
@@ -669,7 +670,7 @@
 % ~~~~~~~~~~~~~~~~~~MOJE KOMENDY~~~~~~~~~~~~~~~~~~~
 %
 \newcommand{\rysunekbig}[4][default]{
-\begin{figure}[htb]
+\begin{figure}[!htb]
 	\centering\includegraphics[height=0.4\textheight,width=\textwidth,keepaspectratio]{graphic/#2}\\
 	\ifthenelse{\equal{#1}{default}}{\caption{#3}}{\caption[#1]{#3}}\source{#4}
 \end{figure}
@@ -701,7 +702,8 @@
   urlseen = {dostęp:},
   andothers = {i\addabbrvspace in\adddot},
   pages = {s\adddot},
-  volume = {t\adddot}
+  volume = {t\adddot},
+  number = {nr}
 }
 \DeclareNameAlias{default}{family-given}
 \renewcommand*{\revsdnamepunct}{}

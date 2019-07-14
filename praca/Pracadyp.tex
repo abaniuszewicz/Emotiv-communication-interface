@@ -87,7 +87,7 @@ TODO
 \chapter{Wstęp do tematyki interfejsów mózg--komputer}
 \section{Czym jest BCI}
 \section{Rodzaje BCI}
-\subsection{Inwazyjne}
+\subsection{Interfejsy inwazyjne\label{subsec:inwazyjne}}
 Interfejsy pozwalające na pozyskiwanie sygnałów bezpośrednio z komórek mózgowych nazywane są inwazyjnymi. Technika ta stosowana jest najczęściej w badaniach przeprowadzanych z wykorzystaniem zwierząt\cite{bci_introduction}. U ludzi pomiary inwazyjne pobierane są zazwyczaj w warunkach klinicznych, podczas operacji mózgu lub monitorowania pacjenta bezpośrednio przed lub po operacji.
 
 Umieszczenie inwazyjnego BCI wymaga skomplikowanej operacji neurochirurgicznej, w której część czaszki jest usuwana, elektroda lub implant jest umieszczany w mózgu, a następnie kość jest przytwierdzana z powrotem\cite{bci_introduction}. Operacja obarczona jest ryzykiem uszkodzenia tkanki oraz w konsekwencji połączeń pomiędzy neuronami\cite{bci_revolutionizing}.
@@ -97,18 +97,18 @@ Interfejsy inwazyjne charakteryzują się najwyższą jakością pozyskanych syg
 Do inwazyjnej akwizycji sygnałów wykorzystywane są:
 \begin{description}
     \item [Mikroelektrody] --- zostały opracowane do akwizycji sygnałów oraz stymulacji mózgu. Przenikając oponę miękką oraz korę mózgową, umieszczane są w odległości około 150 μm od docelowego neuronu\cite{bci_signals_invasive}. Są w stanie rejestrować aktywność na poziomie pojedynczych neuronów.
-    \item [MEA] --- układy mikroelektrod (\textit{ang.} multielectrode array, również microelectrode array) umieszczanych w korze mózgowej. Są pozycjonowane w pobliżu docelowej populacji neuronów. Odległości między poszczególnymi elektrodami są różne w zależności od realizacji i wynoszą przykładowo 400 μm dla układów Utah oraz 100 μm dla układów Michigan\cite{bci_mea}. Ze względu na sposób wykonania wśród głównych typów mikroelektrod możemy wyróżnić tak zwane \textit{microwire arrays}, \textit{micro-machined arrays} oraz \textit{flexible arrays}\cite{bci_mea}. Więcej na temat MEA można znaleźć w literaturze \cite{bci_signals_invasive,bci_mea,bci_principles}.
+    \item [MEA] --- układy mikroelektrod (\textit{ang.} multielectrode array, również microelectrode array) umieszczanych w korze mózgowej. Są pozycjonowane w pobliżu docelowej populacji neuronów. Odległości między poszczególnymi elektrodami są różne w zależności od realizacji i wynoszą przykładowo 400 μm dla układów Utah oraz 100 μm dla układów Michigan\cite{bci_mea}. Ze względu na sposób wykonania wśród głównych typów mikroelektrod można wyróżnić tak zwane \textit{microwire arrays}, \textit{micro-machined arrays} oraz \textit{flexible arrays}\cite{bci_mea}. Więcej na temat MEA można znaleźć w literaturze \cite{bci_signals_invasive,bci_mea,bci_principles}.
     \item [ECoG] --- elektrokortykografia (\textit{ang.} electrocorticography), czasem nazywana iEEG (\textit{ang.} intracranial electroencephalogram -- wewnątrzczaszkowa elektroencefalografia), jest wykonywana przy użyciu elektrod umieszczonych w warstwie podtwardówkowej\cite{bci_signals_invasive}. Jest wykorzystywana do rejestracji aktywności neuronalnej bez konieczności penetracji tkanki korowej. Jest najmniej inwazyjną metodą z omówionych w tym rozdziale, ponieważ nie ingeruje w strukturę opony miękkiej oraz kory mózgowej. Z racji umieszczenia bliżej kory charakteryzuje się wyższą amplitudą rejestrowanych sygnałów, szerszym zakresem ich częstotliwości oraz lepszymi parametrami topograficznymi niż zewnątrzczaszkowe badanie EEG\cite{bci_revolutionizing}.
 \end{description}
 Ich typowe umiejscowienie zostało pokazane na rysunku \vref{fig:invasive}.
 
-\rysunek{invasive}
+\rysunekbig{invasive}
 {Umiejscowienie elektrod wykorzystywanych w inwazyjnych BCI w zależności od zastosowanej technologii\label{fig:invasive}}
 {\cite{bci_signals_invasive}}
 
 Wprowadzenie na rynek inwazyjnych interfejsów mózg--komputer wymaga dalszych badań w zakresie ich wpływu na użytkownika podczas długotrwałego stosowania\cite{bci_revolutionizing}. Ze względu na ich specjalistyczny charakter oraz skomplikowaną procedurę umieszczenia urządzenia, ich koszt będzie prawdopodobnie znacznie wyższy niż interfejsów nieinwazyjnych. 
 
-\subsection{Nieinwazyjne}
+\subsection{Interfejsy nieinwazyjne}
 Nieinwazyjne interfejsy mózg--komputer pozwalają na akwizycję sygnałów niewymagającą ingerencji w strukturę czaszki ani nawet skórę głowy. Technologie nieinwazyjne do estymacji sygnałów wykorzystują zmiany w ciśnieniu krwi lub fluktuacje pola elektrycznego oraz magnetycznego, spowodowane aktywnością neuronów w konkretnej części mózgu\cite{bci_introduction}.
 
 Trendem na przestrzeni ostatnich lat jest stosowanie interfejsów wykorzystujących EEG. Pomiary elektroencefalograficzne są niedrogim, wygodnym oraz uniwersalnym pod względem środowiska wykorzystania sposobem rejestracji aktywności mózgu, czego konsekwencją jest rozwój komercyjnych rozwiązań\footnote{Przykłady dostępnych komercyjnie nieinwazyjnych interfejsów mózg--komputer wykorzystujących sygnały EEG zostały omówione w rozdziale \ref{chap:headsets}.} oraz narastająca liczba publikacji naukowych w tym temacie. Z drugiej strony, interfejsy wykorzystujące MEG\footnote{MEG (\textit{ang.} magnetoencephalography) -- magnetoencefalografia} są kosztowne oraz niepraktyczne w codziennym użytkowaniu, przez co stanowią jedynie narzędzie badawcze dla technologii BCI\cite{bci_principles}.
@@ -118,7 +118,7 @@ Interfejsy nieinwazyjne są bardziej podatne na zakłócenia pochodzące ze śro
 Jako nieinwazyjne sposoby rejestracji aktywności mózgu stosuje się:
 \begin{description}
     \item [EEG] --- badanie elektroencefalograficzne (\textit{ang.} electroencephalography) jest rejestracją aktywności neuronów, które podczas swojej aktywacji wytwarzają potencjał elektryczny. W zależności od miejsca wzmożonej aktywności mózgu, możliwe jest określenie aktualnego stanu psychofizycznego użytkownika urządzenia. Amplitudy sygnałów EEG są zazwyczaj rzędu dziesiątek do setek mikrowoltów\cite{bci_signals_invasive}. Badanie elektroencefalograficzne wykonuje się poprzez elektrody umieszczone na skalpie. Sensory EEG są małe,  lekkie oraz łatwe do założenia\cite{bci_trends,bci_signals_invasive}.
-    \item [MEG] --- badanie magnetoencefalograficzne (\textit{ang.} magnetoencephalography) rejestruje zmiany pola magnetycznego wywołane przez prąd przepływający przez akson. Do pozyskiwania sygnałów wykorzystywane są bardzo czułe czujniki magnetyczne, na przykład SQUID (\textit{ang.} superconducting quantum interference device), które są w stanie rejestrować pole magnetyczne rzędu 50÷500 fT\footnote{fT = $10^{-15}$ Tesli}\cite{bci_signals_invasive}. Ta metoda pozyskiwania sygnałów wymaga specjalistycznych osłon przed zakłóceniami elektromagnetycznymi, co dyskwalifikuje możliwość jej użycia poza warunkami laboratoryjnymi.
+    \item [MEG] --- badanie magnetoencefalograficzne (\textit{ang.} magnetoencephalography) rejestruje zmiany pola magnetycznego wywołane przez prąd przepływający przez akson. Do pozyskiwania sygnałów wykorzystywane są bardzo czułe czujniki magnetyczne, na przykład SQUID (\textit{ang.} superconducting quantum interference device), które są w stanie rejestrować pole magnetyczne rzędu 50÷500 fT\footnote{$1$ fT $ = 1 \times 10^{-15}$ T; T -- Tesla}\cite{bci_signals_invasive}. Ta metoda pozyskiwania sygnałów wymaga specjalistycznych osłon przed zakłóceniami elektromagnetycznymi, co dyskwalifikuje możliwość jej użycia poza warunkami laboratoryjnymi.
     \item [MRI] --- obrazowanie metodą rezonansu magnetycznego (\textit{ang.} magnetic resonance imaging) wykorzystuje rezonowanie płynów, głównie krwi, pod wpływem silnego pola magnetycznego\cite{bci_signals_invasive}. W BCI wykorzystywane są jego dwie odmiany: fMRI oraz dMRI, kolejno funkcjonalne oraz dyfuzyjne MRI. Najczęściej stosowaną techniką rejestracji fMRI jest detekcja lokalnego natlenienia krwi BOLD (\textit{ang.} blood oxygenation level dependent) podczas aktywacji neuronów przy użyciu ważonych sekwencji T2-zależnych\cite{bci_neuroimaging}. 
 \end{description}
 Literatura \cite{bci_neuroimaging} wyszczególnia również metody NIRS oraz fTCD, jednak z racji ich małej popularności zostały pominięte w niniejszej pracy. Schematyczną zasadę działania poszczególnych interfejsów nieinwazyjnych przedstawiono na rysunku \vref{fig:non_invasive}.
@@ -129,13 +129,46 @@ Literatura \cite{bci_neuroimaging} wyszczególnia również metody NIRS oraz fTC
 
 Nieinwazyjne interfejsy mózg--komputer są postrzegane jako najbezpieczniejsze oraz najtańsze BCI\cite{bci_trends}. Należy mieć jednak na uwadze, że w tej gamie interfejsów istnieje znaczna rozpiętość cenowa, od około 200\$ za urządzenie w przypadku tych wykorzystujących EEG, do aż 2--3 milionów \$ w przypadku rejestratorów magnetoencefalograficznych\cite{bci_neuroimaging}.
 
-\subsection{Stymulujące oraz dwukierunkowe}
+
+\subsection{Inne rodzaje interfejsów}
+Pomimo iż w literaturze dominuje klasyfikacja na interfejsy inwazyjne oraz nieinwazyjne, niektórzy autorzy definiują również inne rodzaje BCI. Wśród nich możemy wyróżnić interfejsy częściowo--inwazyjne, stymulujące oraz dwukierunkowe. Ponieważ nie znajdą one zastosowania w niniejszej pracy oraz są w pewnym sensie pochodnymi omówionych rodzajów, w celu dopełnienia tematu postanowiono zamieścić jedynie ich zwięzły opis oraz odniesienia do literatury, w której można uzyskać na ich temat więcej informacji.
+
+\subsubsection{Interfejsy częściowo--inwazyjne}
+W zależności od definicji inwazyjności, ten interfejs może zawierać się w interfejsach inwazyjnych, omówionych w rozdziale \vref{subsec:inwazyjne}. Rajesh P.N. Rao definiuje interfejsy częściowo--inwazyjne jako urządzenia, które nie ingerują w strukturę mózgu\cite{bci_introduction}. Autor niniejszej pracy nie zgadza się z taką klasyfikacją i postrzega jakąkolwiek ingerencję w czaszkę jako przejaw inwazyjności.
+
+Interfejsy częściowo--inwazyjne wykorzystują na przykład elektrokortykografię, czyli wewnątrzczaszkową elektroencefalografię, lub sygnały pozyskane z nerwów znajdujących się poza mózgiem. W celu instalacji wymagają operacji, jednak nie wiąże się ona z penetracją mózgu. Ten typ interfejsów charakteryzuje się słabszymi parametrami sygnałów niż interfejsy inwazyjne, jednak posiada mniejsze ryzyko uszkodzenia mózgu\cite{bci_trends}.
+
+Interfejsy częściowo--inwazyjne zostały poruszone w literaturze \cite{bci_introduction,bci_trends,bci_revolutionizing}.
+
+\subsubsection{Interfejsy stymulujące}
+Interfejsy stymulujące pozwalają na przesyłanie informacji do mózgu. Możliwość stymulacji mózgu pozwala BCI na bezpośrednie przekazanie danych do mózgu\cite{bci_introduction}, zapewniając tym samym swoisty \textit{dodatkowy zmysł}. Stymulatory mogą być realizowane zarówno w technologii IBS (\textit{ang.} invasive brain stimulation -- inwazyjnej stymulacji mózgu) jak i NIBS (\textit{ang.} non-invasive brain stimulation -- nieinwazyjnej stymulacji mózgu).
+
+Interfejsy stymulujące znajdują aktualnie zastosowanie przede wszystkim w medycynie. Rozwiązania oparte o DBS (\textit{ang.} deep brain stimulation -- głęboką stymulację mózgu) są uznawaną metodą terapii między innymi w przypadku choroby Parkinsona oraz drżenia samoistnego. Przeprowadzane są również badania dotyczące przywrócenia zmysłu wzroku osobom niewidomym\cite{bci_introduction}.
+
+Interfejsy stymulujące zostały poruszone w literaturze \cite{bci_introduction,bci_stimulate1,bci_stimulate2}.
+
+\subsubsection{Interfejsy dwukierunkowe}
+Dwukierunkowe interfejsy mózg--komputer, zwane również rekurencyjnymi, pozwalają na jednoczesne odczytywanie sygnałów z mózgu oraz przesyłanie do niego informacji. Są realizowane z wykorzystaniem dekodera, który tłumaczy aktywność neuronów na sygnały dla urządzenia wykonawczego, oraz enkodera, który dostarcza informacje z otoczenia bezpośrednio do mózgu, tworząc w ten sposób zamknięty układ sterowania\cite{bci_bidir1}.
+
+Dzięki zastosowaniu interfejsów rekurencyjnych mózg nie musi polegać już wyłącznie na ciele w kwestii pozyskiwania sygnałów oraz wykonywania różnych czynności\cite{bci_introduction}. Jest to szczególnie istotne w odniesieniu do osób niepełnosprawnych, w których przypadku interfejsy te mogą zastąpić uszkodzone struktury organizmu.
+
+Wyzwaniami stawianymi przed tym rodzajem interfejsów są\cite{bci_introduction}:
+\begin{itemize}
+    \item opracowanie sposobu dostarczenia rozmaitych informacji do mózgu przez jego stymulację, rejestrując w tym samym czasie sygnały pochodzące zeń,
+    \item utrzymanie komunikacji dwukierunkowej przez maksymalnie długi czas,
+    \item uwzględnienie oraz wykorzystanie plastyczności mózgu, czyli możliwości do tworzenia nowych połączeń w celu adaptacji oraz w wyniku rozwoju.
+\end{itemize}
+
+Interfejsy dwukierunkowe zostały poruszone w literaturze \cite{bci_introduction,bci_bidir1,bci_bidir2}.
+
+
+
 
 \section{Przetwarzanie sygnałów}
 \subsection{Usunięcie szumów}
 Sygnały EEG charakteryzują się bardzo niskim współczynnikiem SNR\footnote{SNR (\textit{ang.} signal-to-noise ratio) -- stosunek sygnału do szumu}\cite{bci_trends}. Z tego powodu przed przystąpieniem do ich analizy należy najpierw usunąć z nich możliwie największą ilość artefaktów. Przykładowe przebiegi zakłóceń zostały pokazane na rysunku \vref{fig:eeg_noise}.
 
-Pierwszym typem zakłóceń są zakłócenia pochodzące ze środowiska, w którym jest rejestrowany sygnał EEG. Możemy do nich zaliczyć między innymi zakłócenia od sieci energetycznej oraz elektroniki (komputerów, telefonów, routerów Wi-Fi i tym podobnych). Najprostszym sposobem minimalizacji ich wpływu na sygnał wyjściowy jest eliminacja źródeł zakłóceń -- przeprowadzenie akwizycji sygnałów z dala od miast, usunięcie zbędnych urządzeń z otoczenia, zastąpienie, o ile to możliwe, zasilania niezbędnych urządzeń prądem przemiennym na rzecz prądu stałego. Innym sposobem jest wykorzystanie klatki Faradaya.
+Pierwszym typem zakłóceń są zakłócenia pochodzące ze środowiska, w którym jest rejestrowany sygnał EEG. Można do nich zaliczyć między innymi zakłócenia od sieci energetycznej oraz elektroniki (komputerów, telefonów, routerów Wi-Fi i tym podobnych). Najprostszym sposobem minimalizacji ich wpływu na sygnał wyjściowy jest eliminacja źródeł zakłóceń -- przeprowadzenie akwizycji sygnałów z dala od miast, usunięcie zbędnych urządzeń z otoczenia, zastąpienie, o ile to możliwe, zasilania niezbędnych urządzeń prądem przemiennym na rzecz prądu stałego. Innym sposobem jest wykorzystanie klatki Faradaya.
 
 Drugim typem zakłóceń są tak zwane zakłócenia fizjologiczne. Powstają one na skutek ruchu ciała lub innych fluktuacji potencjałów bioelektrycznych. Ich źródła są niemożliwe do wyeliminowania. Typowymi przykładami takich zakłóceń są sygnały EOG, EMG oraz EKG. W szczególności dwa pierwsze, z racji małej odległości od miejsca akwizycji sygnałów EEG, mają duży wpływ na SNR. Wpływ EOG oraz EMG można zminimalizować poprzez uniknięcie nadmiernego mrugania, ruchu oczu oraz napinania mięśni.
 
@@ -147,7 +180,7 @@ Typowymi technikami usunięcia artefaktów z sygnału EEG są\cite{bci_introduct
     
     \item [Regresja liniowa] --- przy założeniu, iż szum sygnału EEG jest addytywny można sformułować zależność w postaci\cite{bci_introduction}:
     $$ EEG_i(t) = EEG^{true}_i(t) + K \times EOG(t) $$
-    gdzie $EEG^{true}_i(t)$ jest \textit{czystym} sygnałem EEG pozyskanym z elektrody $i$ w czasie $t$, $EOG(t)$ jest sygnałem EOG w czasie $t$, a $K$ stałą, która może być estymowana. Posiadając estymację stałej $K$, na podstawie prostego przekształcenia możemy uzyskać estymację czystego sygnału EEG w postaci:
+    gdzie $EEG^{true}_i(t)$ jest \textit{czystym} sygnałem EEG pozyskanym z elektrody $i$ w czasie $t$, $EOG(t)$ jest sygnałem EOG w czasie $t$, a $K$ stałą, która może być estymowana. Posiadając estymację stałej $K$, na podstawie prostego przekształcenia można uzyskać estymację czystego sygnału EEG w postaci:
     $$ EEG^{true}_i(t) = EEG_i(t) - K \times EOG(t) $$
     Ta metoda jest trudniejsza do usunięcia artefaktów EMG, ponieważ pochodzą one z wielu źródeł (wielu grup mięśni) i wymagają opracowania bardziej skomplikowanego modelu.
 
@@ -213,7 +246,7 @@ Problem ekstrakcji cech został poruszony szerzej w literaturze \cite{eeg_featur
 \subsection{Klasyfikacja sygnałów}
 Klasyfikatory służą do rozpoznawania wzorców w wektorach cech sygnałów EEG. Ich zadaniem jest przekształcenie aktywności mózgu w sygnały użyteczne dla komputera.
 
-Wśród klasyfikatorów możemy wyróżnić między innymi:
+Wśród klasyfikatorów można wyróżnić między innymi:
 \begin{description}
     \item [Klasyfikator liniowy] --- algorytm dyskryminacyjny posługujący się funkcjami liniowymi w celu rozróżnienia poszczególnych klas\cite{eeg_classification}. Wśród tego rodzaju klasyfikatorów w BCI najczęściej wykorzystywane są LDA\footnote{LDA (\textit{ang.} linear discriminant analysis) -- liniowa analiza dyskryminacyjna} oraz SVM\footnote{SVM (\textit{ang.} support vector machine) -- maszyna wektorów nośnych}\cite{bci_trends}.
     
@@ -285,7 +318,7 @@ Można wyróżnić trzy główne sposoby wsparcia rehabilitacji medycznej przez 
     \item [mózg--kończyna] --- polega na wykorzystaniu BCI do kontroli urządzenia wspierającego poruszanie się, a w konsekwencji odbudowania połączeń potrzebnych do poruszania się bez niego,
     \item [mózg--mózg] --- na podstawie informacji odebranych z systemu BCI następuje stymulacja mózgu w celu poprawy jego aktywności, aż do osiągnięcia zadowalających rezultatów.
 \end{description}
-Należy nadmienić, iż te sposoby nie wykluczają się wzajemnie -- ich połączenie pozwala na zwiększenie znaczenia BCI w tej dziedzinie nauki.
+Należy nadmienić, iż te sposoby nie są wzajemnie wykluczające -- ich połączenie pozwala na zwiększenie znaczenia BCI w tej dziedzinie nauki.
 
 Interfejsy mózg--komputer, poprzez stopniową integrację z neurorehabilitacją, mogą pomóc między innymi osobom dotkniętym udarem mózgu, który często powoduje długotrwałą niepełnosprawność ruchową oraz zaburzenia funkcji poznawczych. Wiele badań wykazuje, iż technika nieinwazyjnej stymulacji mózgu jest skuteczna, nawet w przypadku przewlekłego uszkodzenia mózgu\cite{bci_lab}. Duża ilość osób rokrocznie dotykanych udarem stanowi badania w tym zakresie niezwykle istotnymi dla społeczeństwa.
 
@@ -297,11 +330,11 @@ Wykorzystanie interfejsów mózg--komputer do nadzorowania skupienia użytkownik
 
 W związku z postępującą automatyzacją pojazdów, kierowca jest odciążany od wykonywania żmudnych zadań, takich jak utrzymywanie stałej prędkości czy przełączanie między światłami mijania oraz drogowymi. Wraz z dalszym progresem coraz więcej czynności wykonywanych jest przez sam samochód, podczas kiedy rola osoby znajdującej się w fotelu kierowcy sprowadza się do nadzoru i reagowania w niebezpiecznych sytuacjach. Może to prowadzić, w szczególności na trasach o znacznej długości, do sytuacji nadmiernego zaufania do systemu sterowania, w której to kierowca przestanie zwracać uwagę na działania pojazdu. Interfejs mózg--komputer mógłby w tym momencie sygnalizować spadek skupienia kierowcy lub wymuszać bezpieczny postój pojazdu do momentu, w którym kierujący pojazdem będzie w stanie kontynuować podróż.
 
-Badania przeprowadzone przez naukowców z \textit{Berlin BCI} wykazały, iż istnieje zależność pomiędzy spadkiem koncentracji, a wzrostem mocy w paśmie alpha\footnote{Pasmo alpha - pasmo fal elektromagnetycznych o częstotliwości 8÷12 Hz i amplitudzie w zakresie 20÷80 μV\cite[str. 17]{bci_handbook}.}\cite{berlinbci_attention}. Badanie polegało na sklasyfikowaniu 2000 bagaży jako bezpiecznych lub niebezpiecznych na podstawie ich prześwietleń. Wykonano je w 10 turach po 200 bagaży. Na podstawie rysunku \vref{fig:attention} można wywnioskować, iż spadek koncentracji (wzrost parametru CII) prowadził do wzmożenia ilości popełnianych błędów. Uczestnicy rzeczonego badania na okres następujący bezpośrednio po przerwie wykazywali znacznie niższy stopień błędu. Tę zależność można wykorzystać do określenia momentów, w których pracownik powinien udać się na przerwę lub, w przypadku długotrwałej nikłej koncentracji, zakończyć swoją zmianę.
+Badania przeprowadzone przez naukowców z \textit{Berlin BCI} wykazały, iż istnieje zależność pomiędzy spadkiem koncentracji, a wzrostem mocy w paśmie alpha\footnote{Pasmo alpha - pasmo fal elektromagnetycznych o częstotliwości 8÷12 Hz i amplitudzie w zakresie 20÷80 μV\cite[str. 17]{bci_handbook}.}\cite{bci_applications}. Badanie polegało na sklasyfikowaniu 2000 bagaży jako bezpiecznych lub niebezpiecznych na podstawie ich prześwietleń. Wykonano je w 10 turach po 200 bagaży. Zarejestrowaną zależność pomiędzy parametrem CII (\textit{ang.} concentration insufficiency index), a stopą błędu przedstawiono na rysunku \vref{fig:attention}. Na podstawie badania można wywnioskować, iż spadek koncentracji (wzrost parametru CII) prowadził do wzmożenia ilości popełnianych błędów. Uczestnicy rzeczonego badania na okres następujący bezpośrednio po przerwie wykazywali znacznie niższy stopień błędu. Tę zależność można wykorzystać do określenia momentów, w których pracownik powinien udać się na przerwę lub, w przypadku długotrwałej nikłej koncentracji, zakończyć swoją zmianę.
 
 \rysunekbig[Zależność między stopniem skupienia, a stopą błędu]{attention}
-{Zależność pomiędzy stopniem skupienia CII (\textit{ang.} concentration insufficiency index), a stopą błędu. Pionowe linie po zakończeniu dwustupróbkowych bloków oznaczają moment przerwy.\label{fig:attention}}
-{\cite{berlinbci_attention}}
+{Zależność pomiędzy stopniem skupienia CII, a stopą błędu. Pionowe linie po zakończeniu dwustupróbkowych bloków oznaczają moment przerwy.\label{fig:attention}}
+{\cite{bci_applications}}
 
 
 \subsection{Gry komputerowe}
@@ -322,7 +355,7 @@ Jest wyposażony w pięć czujników właściwych oraz dwa referencyjne. Lokaliz
 
 Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 299\$.
 
-\rysunekbig{insight}
+\rysunek{insight}
 {Hełm Emotiv Insight\label{fig:insight}}
 {\cite{emotiv_insight}}
 
@@ -386,7 +419,7 @@ Jest wyposażony w 14 kanałów właściwych oraz 2 referencyjne (dokładna loka
 
 Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799\$.
 
-\rysunekbig{epoc}
+\rysunek{epoc}
 {Hełm Emotiv EPOC+\label{fig:epoc}}
 {\cite{emotiv_epoc}}
 
@@ -418,6 +451,7 @@ Muse/Muse 2 są urządzeniami wspomagającymi medytację, które pozwalają na r
 
 Oba urządzenia są z wyglądu bardzo do siebie podobne. Nowsze, Muse 2 (pokazane na rysunku \vref{fig:muse2}), w odniesieniu do poprzedniej wersji, zostało \textit{odchudzone}, przez co nabrało bardziej eleganckiego wyglądu oraz zyskało niższy profil z dodatkowymi czujnikami\cite{muse_comparison_article}. Dodano również miękkie w dotyku wykończenie.
 
+\FloatBarrier
 \rysunek{muse2}
 {Opaska Muse 2\label{fig:muse2}}
 {\cite{muse2}}
