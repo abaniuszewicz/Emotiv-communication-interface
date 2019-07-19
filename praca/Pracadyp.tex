@@ -85,8 +85,29 @@ TODO
 \zakres{TODO}
 
 \chapter{Wstęp do tematyki interfejsów mózg--komputer}
-\section{Czym jest BCI}
-\section{Rodzaje BCI}
+\section{Czym jest oraz jak działa interfejs mózg--komputer}
+Interfejs mózg--komputer (\textit{ang.} BCI -- brain--computer interface) jest układem, który przekształca aktywność ośrodkowego układu nerwowego w polecenia dla zewnętrznego urządzenia wykonawczego. BCI pracuje w zamkniętej pętli, w której można wyróżnić sześć etapów: (1) rejestrację aktywności mózgu, (2) usunięcie szumów, (3) ekstrakcję cech, (4) klasyfikację sygnałów, (5) wydanie polecenia oraz (6) sprzężenie zwrotne\cite{bci_foundations}. Taka definicja prowadzi do konkluzji, iż interfejs mózg--komputer stwarza dodatkowy efektor dla układu nerwowego\cite{bci_principles}.
+
+Jak wcześniej wspomniano, BCI przekształca sygnały pozyskane z ośrodkowego układu nerwowego (\textit{ang.} CNS -- central nervous system), który razem z obwodowym układem nerwowym (\textit{ang.} PNS -- peripheral nervous system) składa się na układ nerwowy człowieka.
+
+W skład PNS wchodzi układ somatyczny, który stanowi połączenie z narządami zmysłu, mięśniami szkieletowymi i skórą, oraz układ autonomiczny, który unerwia narządy wewnętrzne, przez co zapewnia reakcje niezależne od woli, na przykład bicie serca i oddychanie\cite{bci_introduction}.
+
+CNS składa się z mózgowia oraz rdzenia kręgowego. Rdzeń kręgowy przewodzi impulsy nerwowe pomiędzy mózgowiem a obwodowym układem nerwowym. Neurony w rdzeniu kręgowym tworzą również lokalne pętle sprzężenia zwrotnego, które odpowiadają za odruchy bezwarunkowe\cite{bci_introduction}. Mózgowie odpowiada za kontrolę działań, samoregulację procesów biologicznych oraz funkcje poznawcze, takie jak na przykład uczenie się oraz pamięć.
+
+Wspomniana w sformułowanej definicji \textit{aktywność CNS} obejmuje zjawiska elektrofizjologiczne, neurochemiczne oraz metaboliczne, które mogą być rejestrowane przez monitorowanie pola elektrycznego, magnetycznego albo innych parametrów za pomocą czujników na skórze głowy, powierzchni mózgu lub wewnątrz mózgu\cite{bci_principles}; charakter rejestrowanych parametrów zależy od przyjętej koncepcji realizacji BCI. 
+
+Większość współczesnych interfejsów mózg--komputer działa w oparciu o potencjały wywołane\cite{bci_revolutionizing,eeg_features}. Inną często wykorzystywaną metodą jest detekcja wyobrażenia ruchu\cite{bci_revolutionizing}.
+
+Potencjały wywołane (\textit{ang.} ERP -- event--related potentials) są odpowiedzią na bodźce poznawcze, czuciowe lub ruchowe\cite{eeg_features}. Wymagają one zewnętrznej stymulacji, która może być na przykład słuchowa lub wzrokowa. Przykładem może być BCI oparte o potencjały P300, które zostało omówione w rozdziale \vref{subsec:p300}. Inną metodą jest wykorzystanie wzrokowych potencjałów wywołanych stanu ustalonego (\textit{ang.} SSVEP -- steady--state visual evoked potentials). W tym podejściu każda komenda jest podświetlana ze stałą, unikalną częstotliwością\cite{bci_revolutionizing}. W aktywności CNS użytkownika skupiającego się na komendzie o danej częstotliwości możliwe będzie zaobserwowanie SSVEP o takiej samej częstotliwości.
+
+Wyobrażenia ruchu powodują zmiany w rytmach sensoromotorycznych (\textit{ang.} SMR -- sensorimotor rhythms), rejestrowane w obszarach odpowiedzialnych za czucie oraz motorykę\cite{bci_revolutionizing}. Zmiana jest szczególnie widoczna w paśmie \textit{mu} (8÷12 Hz) oraz \textit{beta} (13÷30 Hz)\cite{bci_introduction}. Jest to tak zwana desynchronizacja/synchronizacja wywołana (\textit{ang.} ERD/ERS -- event--related desynchronization/synchronization), czyli kolejno spadek oraz wzrost mocy w rzeczonych pasmach. Na podstawie \textit{map neurologicznych}, takich jak na przykład przedstawiona na rysunku \vref{fig:homunculus}, możliwe jest określenie części ciała, której wyobrażenie ruchu spowodowało aktywność neuronów w danym miejscu mózgu.
+
+
+\rysunekbig[Homunkulus ruchowy Penfielda]{homunculus.pdf}
+{Homunkulus ruchowy Penfielda; mapa kory mózgu odzwierciedlająca ośrodki ruchowe\label{fig:homunculus}}
+{\cite{bci_principles}}
+
+\section{Rodzaje interfejsów mózg--komputer}
 \subsection{Interfejsy inwazyjne\label{subsec:inwazyjne}}
 Interfejsy pozwalające na pozyskiwanie sygnałów bezpośrednio z komórek mózgowych nazywane są inwazyjnymi. Technika ta stosowana jest najczęściej w badaniach przeprowadzanych z wykorzystaniem zwierząt\cite{bci_introduction}. U ludzi pomiary inwazyjne pobierane są zazwyczaj w warunkach klinicznych, podczas operacji mózgu lub monitorowania pacjenta bezpośrednio przed lub po operacji.
 
@@ -102,7 +123,7 @@ Do inwazyjnej akwizycji sygnałów wykorzystywane są:
 \end{description}
 Ich typowe umiejscowienie zostało pokazane na rysunku \vref{fig:invasive}.
 
-\rysunekbig{invasive}
+\rysunekbig[Umiejscowienie elektrod wykorzystywanych w inwazyjnych BCI]{invasive}
 {Umiejscowienie elektrod wykorzystywanych w inwazyjnych BCI w zależności od zastosowanej technologii\label{fig:invasive}}
 {\cite{bci_signals_invasive}}
 
@@ -285,14 +306,14 @@ Połączone klasyfikatory uzyskują lepsze rezultaty. Ich połączenie obniża w
 
 
 \section{Przegląd potencjalnych zastosowań}
-\subsection{Interfejs komunikacyjny}
+\subsection{Interfejs komunikacyjny\label{subsec:p300}}
 Najprostsze interfejsy komunikacyjne można zrealizować dając użytkownikowi do wyboru dwie opcje: \textit{tak} lub \textit{nie}. Podejście dwuwartościowe pozwala na stosowanie różnorodnych technik akwizycji wyboru, między innymi poprzez analizę mrugnięć, ruchu gałek ocznych, czy sygnałów pochodzących z BCI. Przy tak skonstruowanym interfejsie osoba z niego korzystająca jest w stanie odpowiadać na pytania rozmówcy.
 
 Taki sposób komunikacji może być zmodyfikowany w celu umożliwienia osobie użytkującej interfejs nadawania toku rozmowy. Dzięki zastosowaniu tablicy ze znakami, jej rozmówca może przemieszczać  po kolei swój palec po literach alfabetu i notować te, dla których osoba korzystająca z interfejsu zakomunikowała odpowiedź \textit{tak}. Wadą takiego rozwiązania jest fakt, iż rozmówca musi asystować osobie niepełnosprawnej, co może wprowadzać uczestników rozmowy w zakłopotanie. Taki interfejs charakteryzuje się małą stopą błędu, jednak komunikacja przy jego użyciu jest długotrwała i wynosi około jedno słowo na minutę\cite{bci_trends}.
 
 Innym podejściem jest stworzenie systemu opartego o wirtualny kursor, który pozwoliłby użytkownikowi na samodzielnie wybieranie liter lub całych wyrazów spośród dostępnych opcji. Taki system może zawierać elementy autokorekty, aby zminimalizować występujące błędy.
 
-W literaturze można również spotkać się z systemami badającymi potencjały wymuszone. Taką metodą jest \textit{P300}. W takim interfejsie użytkownik skupia swoją uwagę na literze, którą chce wybrać. Litery są samoczynnie podświetlane w losowej kolejności. 300 milisekund po podświetleniu litery, na której użytkownik systemu jest aktualnie skupiony, można zaobserwować zmianę amplitudy rejestrowanego sygnału EEG\cite{bci_introduction}. Przykładową realizację interfejsu opartego o analizę potencjału P300 pokazano na rysunku \vref{fig:p300_interface}.
+W literaturze można również spotkać się z systemami badającymi potencjały wywołane. Taką metodą jest \textit{P300}. W takim interfejsie użytkownik skupia swoją uwagę na literze, którą chce wybrać. Litery są samoczynnie podświetlane w losowej kolejności. 300 milisekund po podświetleniu litery, na której użytkownik systemu jest aktualnie skupiony, można zaobserwować zmianę amplitudy rejestrowanego sygnału EEG\cite{bci_introduction}. Przykładową realizację interfejsu opartego o analizę potencjału P300 pokazano na rysunku \vref{fig:p300_interface}.
 
 \rysunek{p300}
 {Struktura interfejsu opartego o potencjał P300\label{fig:p300_interface}}
