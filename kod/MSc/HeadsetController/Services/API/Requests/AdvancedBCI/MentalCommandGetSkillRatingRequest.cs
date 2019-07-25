@@ -5,7 +5,7 @@
         public override string method { get; } = "mentalCommandGetSkillRating";
         public MentalCommandGetSkillRatingParameter @params { get; }
 
-        public MentalCommandGetSkillRatingRequest(int id, MentalCommandGetSkillRatingParameter parameter) : base(id)
+        public MentalCommandGetSkillRatingRequest(MentalCommandGetSkillRatingParameter parameter)
         {
             @params = parameter;
         }

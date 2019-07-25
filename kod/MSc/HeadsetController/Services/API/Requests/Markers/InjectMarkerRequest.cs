@@ -5,7 +5,7 @@
         public override string method { get; } = "injectMarker";
         public InjectMarkerParameter @params { get; }
 
-        public InjectMarkerRequest(int id, InjectMarkerParameter parameter) : base(id)
+        public InjectMarkerRequest(InjectMarkerParameter parameter)
         {
             @params = parameter;
         }

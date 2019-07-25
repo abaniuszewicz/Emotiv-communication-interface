@@ -5,7 +5,7 @@
         public override string method { get; } = "mentalCommandActiveAction";
         public MentalCommandActiveActionParameter @params { get; }
 
-        public MentalCommandActiveActionRequest(int id, MentalCommandActiveActionParameter parameter) : base(id)
+        public MentalCommandActiveActionRequest(MentalCommandActiveActionParameter parameter)
         {
             @params = parameter;
         }

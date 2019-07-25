@@ -5,7 +5,7 @@
         public override string method { get; } = "loadGuestProfile";
         public LoadGuestProfileParameter @params { get; }
 
-        public LoadGuestProfileRequest(int id, LoadGuestProfileParameter parameter) : base(id)
+        public LoadGuestProfileRequest(LoadGuestProfileParameter parameter)
         {
             @params = parameter;
         }

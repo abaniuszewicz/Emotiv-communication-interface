@@ -5,7 +5,7 @@
         public override string method { get; } = "mentalCommandBrainMap";
         public MentalCommandBrainMapParameter @params { get; }
 
-        public MentalCommandBrainMapRequest(int id, MentalCommandBrainMapParameter parameter) : base(id)
+        public MentalCommandBrainMapRequest(MentalCommandBrainMapParameter parameter)
         {
             @params = parameter;
         }

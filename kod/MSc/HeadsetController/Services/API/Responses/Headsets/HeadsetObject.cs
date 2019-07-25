@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace HeadsetController.Services.API.Responses.Headsets
 {
-    public class HeadsetObject
+    public class HeadsetObject : IResult
     {
         public string id { get; }
         public Enums.StatusHeadsetEnum status { get; }

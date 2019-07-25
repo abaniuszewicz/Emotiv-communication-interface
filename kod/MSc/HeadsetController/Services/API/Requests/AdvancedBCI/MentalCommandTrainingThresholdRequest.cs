@@ -5,7 +5,7 @@
         public override string method { get; } = "mentalCommandTrainingThreshold";
         public MentalCommandTrainingThresholdParameter @params { get; }
 
-        public MentalCommandTrainingThresholdRequest(int id, MentalCommandTrainingThresholdParameter parameter) : base(id)
+        public MentalCommandTrainingThresholdRequest(MentalCommandTrainingThresholdParameter parameter)
         {
             @params = parameter;
         }

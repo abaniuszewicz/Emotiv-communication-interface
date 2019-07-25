@@ -4,7 +4,7 @@
     {
         public override string method { get; } = "getUserLogin";
 
-        public GetUserLoginRequest(int id) : base(id)
+        public GetUserLoginRequest()
         {
         }
     }

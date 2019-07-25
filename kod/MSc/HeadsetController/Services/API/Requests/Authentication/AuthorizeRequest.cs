@@ -5,7 +5,7 @@
         public override string method { get; } = "authorize";
         public AuthorizeParameter @params { get; }
 
-        public AuthorizeRequest(int id, AuthorizeParameter parameter) : base(id)
+        public AuthorizeRequest(AuthorizeParameter parameter)
         {
             @params = parameter;
         }

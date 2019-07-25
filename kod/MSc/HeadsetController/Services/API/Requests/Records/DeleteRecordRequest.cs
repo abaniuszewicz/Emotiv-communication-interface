@@ -5,7 +5,7 @@
         public override string method { get; } = "deleteRecord";
         public DeleteRecordParameter @params { get; }
 
-        public DeleteRecordRequest(int id, DeleteRecordParameter parameter) : base(id)
+        public DeleteRecordRequest(DeleteRecordParameter parameter)
         {
             @params = parameter;
         }

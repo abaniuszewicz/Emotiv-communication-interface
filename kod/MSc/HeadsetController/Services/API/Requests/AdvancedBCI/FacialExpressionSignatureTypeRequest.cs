@@ -5,7 +5,7 @@
         public override string method { get; } = "facialExpressionSignatureType";
         public FacialExpressionSignatureTypeParameter @params { get; }
 
-        public FacialExpressionSignatureTypeRequest(int id, FacialExpressionSignatureTypeParameter parameter) : base(id)
+        public FacialExpressionSignatureTypeRequest(FacialExpressionSignatureTypeParameter parameter)
         {
             @params = parameter;
         }

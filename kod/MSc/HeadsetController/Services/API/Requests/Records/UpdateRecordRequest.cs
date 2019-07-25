@@ -5,7 +5,7 @@
         public override string method { get; } = "updateRecord";
         public UpdateRecordParameter @params { get; }
 
-        public UpdateRecordRequest(int id, UpdateRecordParameter parameter) : base(id)
+        public UpdateRecordRequest(UpdateRecordParameter parameter)
         {
             @params = parameter;
         }

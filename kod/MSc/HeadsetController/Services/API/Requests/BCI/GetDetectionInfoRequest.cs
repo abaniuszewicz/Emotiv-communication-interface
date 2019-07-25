@@ -5,7 +5,7 @@
         public override string method { get; } = "getDetectionInfo";
         public GetDetectionInfoParameter @params { get; }
 
-        public GetDetectionInfoRequest(int id, GetDetectionInfoParameter parameter) : base(id)
+        public GetDetectionInfoRequest(GetDetectionInfoParameter parameter)
         {
             @params = parameter;
         }

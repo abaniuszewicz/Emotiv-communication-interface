@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="VirtualKeyboard.Views.DPadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualKeyboard.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ProgressBar}">
+            <Setter Property="Minimum" Value="0"/>
+            <Setter Property="Maximum" Value="1"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <!--#region Row/Column definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <ProgressBar x:Name="PowerUp" Grid.Row="0" Grid.Column="2">
+            <ProgressBar.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </ProgressBar.LayoutTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="PowerRight" Grid.Row="2" Grid.Column="4">
+            <ProgressBar.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </ProgressBar.LayoutTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="PowerDown" Grid.Row="4" Grid.Column="2">
+            <ProgressBar.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </ProgressBar.LayoutTransform>
+        </ProgressBar>
+        <ProgressBar x:Name="PowerLeft" Grid.Row="2" Grid.Column="0">
+            <ProgressBar.LayoutTransform>
+                <RotateTransform Angle="180"/>
+            </ProgressBar.LayoutTransform>
+        </ProgressBar>
+    </Grid>
+</UserControl>

@@ -5,7 +5,7 @@
         public override string method { get; } = "hasAccessRight";
         public HasAccessRightParameter @params { get; }
 
-        public HasAccessRightRequest(int id, HasAccessRightParameter parameter) : base(id)
+        public HasAccessRightRequest(HasAccessRightParameter parameter)
         {
             @params = parameter;
         }

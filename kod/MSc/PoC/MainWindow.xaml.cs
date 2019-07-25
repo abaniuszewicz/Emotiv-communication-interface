@@ -1,14 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using HeadsetController.Headset;
 using HeadsetController.Services.API.Requests;
+using HeadsetController.Services.API.Requests.Authentication;
+using HeadsetController.Services.API.Requests.BCI;
+using HeadsetController.Services.API.Requests.DataSubscription;
+using HeadsetController.Services.API.Requests.Headsets;
 using HeadsetController.Services.API.Requests.Information;
+using HeadsetController.Services.API.Requests.Sessions;
+using HeadsetController.Services.API.Responses;
+using HeadsetController.Services.API.Responses.Authentication;
+using HeadsetController.Services.API.Responses.BCI;
+using HeadsetController.Services.API.Responses.DataSubscriptions;
+using HeadsetController.Services.API.Responses.Headsets;
 using HeadsetController.Services.API.Responses.Information;
+using HeadsetController.Services.API.Responses.Sessions;
+using HeadsetController.Services.API.Utils;
 using Newtonsoft.Json.Linq;
 
 namespace PoC
@@ -18,11 +31,17 @@ namespace PoC
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged 
     {
-        public Insight Insight { get; } = new Insight();
+        #region Fields
+
         private string session = string.Empty;
         private string _sendText;
         private string _receiveText;
 
+        #endregion
+
+        #region Properties
+
+        public Insight Insight { get; } = new Insight();
 
         public string SendText
         {
@@ -44,6 +63,10 @@ namespace PoC
             }
         }
 
+        #endregion
+
+        #region Constructor
+
         public MainWindow()
         {
             InitializeComponent();
@@ -61,44 +84,30 @@ namespace PoC
 
                 ReceiveText += Environment.NewLine + msg;
             };
+            Insight.OnMentalCommandUpdate += o =>
+            {
+
+            };
 
             SendMessage();
         }
 
+        #endregion
+
         private async void SendMessage()
         {
-            var id = 1;
-            var clientId = "BQhJjFmrJVcWqLmyU9XCIKmNdUOMrTG1eo9RNYwu";
-            var clientSecret = "fCp33VZDrAj8zduFjJJvYWBaePAupZyBqzszdQfG9DlVPiVX87xPRkQDuPXNc7QAef2d1sJi6rMbO5SeoM14RYoP6uJRMxigk2dirdIduDg98EIKifOcmDqA6RfX5pNs";
-            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6ImNvbS5hYmFuaXVzemV3aWN6LmljdF9tYXN0ZXIiLCJhcHBWZXJzaW9uIjoiMS4wIiwiZXhwIjoxNTYxMjEwODc4LCJsaWNlbnNlSWQiOiJjZjg3MjEyOS02NmQ5LTRlMzItODk3MC1lNDc1YWJmZjg2YTUiLCJuYmYiOjE1NjA5NTE2NzgsInVzZXJJZCI6ImIxZDM5MTVkLTdhODQtNDljNi04NDIzLTY3Mzc1MTYzYTU0MiIsInVzZXJuYW1lIjoiYWJhbml1c3pld2ljeiIsInZlcnNpb24iOiIyLjAifQ==.85c9orcJnjBhN4t0KzUOuWA7LwnCLRn6A5uReVTJejI=";
-
-            //await Send(new GetCortexInfoRequest(id++));
-
-            var co =  Insight.SendRequest<GetCortexInfoResponse>(new GetCortexInfoRequest(id++));
-            var co1 = Insight.SendRequest<GetCortexInfoResponse>(new GetCortexInfoRequest(id++));
-            var co2 = Insight.SendRequest<GetCortexInfoResponse>(new GetCortexInfoRequest(id++));
-            var co3 = Insight.SendRequest<GetCortexInfoResponse>(new GetCortexInfoRequest(id++));
-            var co4 = await Insight.SendRequest<GetCortexInfoResponse>(new GetCortexInfoRequest(id++));
-            var co5 = await Insight.SendRequest<GetCortexInfoResponse>(new GetCortexInfoRequest(id++));
-
-
-
-            //await Send(new GetUserLoginRequest(id++));
-            //await Send(new RequestAccessRequest(id++, new RequestAccessParameter(clientId, clientSecret)));
-            //await Send(new QueryHeadsetsRequest(id++, new QueryHeadsetsParameter()));
-            //await Send(new CreateSessionRequest(id++, new CreateSessionParameter(token, Enums.StatusCreateEnum.open)));
-            //await Send(new SubscribeRequest(id++, new SubscribeParameter(token, session, new List<Enums.StreamsEnum>() {Enums.StreamsEnum.mot})));
-            //await Send(new UnsubscribeRequest(id++, new UnsubscribeParameter(token, session, new List<Enums.StreamsEnum>() {Enums.StreamsEnum.mot})));
+            await Insight.Initialize();
+            await Insight.CreateSession();
+            await Insight.LoadProfile("Adam");
+            await SubscribeMentalCommandStream();
         }
 
-        private async Task Send(IRequest request)
+        private async Task SubscribeMentalCommandStream()
         {
-            await Task.Run(() =>
-            {
-                Insight.SendRequest(request);
-                Thread.Sleep(5000);
-            });
+            var response = await Insight.SendRequest<SubscribeResponse>(new SubscribeRequest(new SubscribeParameter(Insight.CortexToken, Insight.SessionObject?.id, new List<Enums.StreamsEnum>() {Enums.StreamsEnum.com})));
         }
+
+        #region PropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -106,5 +115,7 @@ namespace PoC
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 }

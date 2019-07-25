@@ -5,7 +5,7 @@
         public override string method { get; } = "requestAccess";
         public RequestAccessParameter @params { get; }
         
-        public RequestAccessRequest(int id, RequestAccessParameter parameter) : base(id)
+        public RequestAccessRequest(RequestAccessParameter parameter)
         {
             @params = parameter;
         }

@@ -5,7 +5,7 @@
         public override string method { get; } = "querySessions";
         public QuerySessionsParameter @params { get; }
 
-        public QuerySessionsRequest(int id, QuerySessionsParameter parameter) : base(id)
+        public QuerySessionsRequest(QuerySessionsParameter parameter)
         {
             @params = parameter;
         }

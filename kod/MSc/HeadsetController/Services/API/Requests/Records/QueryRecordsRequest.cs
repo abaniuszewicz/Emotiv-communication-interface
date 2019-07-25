@@ -5,7 +5,7 @@
         public override string method { get; } = "queryRecords";
         public QueryRecordsParameter @params { get; }
 
-        public QueryRecordsRequest(int id, QueryRecordsParameter parameter) : base(id)
+        public QueryRecordsRequest(QueryRecordsParameter parameter)
         {
             @params = parameter;
         }

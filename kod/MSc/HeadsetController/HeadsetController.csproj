@@ -73,6 +73,7 @@
     <Compile Include="Services\API\Responses\BCI\QueryProfileResponse.cs" />
     <Compile Include="Services\API\Responses\BCI\SetupProfileResponse.cs" />
     <Compile Include="Services\API\Responses\BCI\TrainingResponse.cs" />
+    <Compile Include="Services\API\Responses\DataSubscriptions\DataSampleObject.cs" />
     <Compile Include="Services\API\Responses\DataSubscriptions\SubscribeResponse.cs" />
     <Compile Include="Services\API\Responses\DataSubscriptions\UnsubscribeResponse.cs" />
     <Compile Include="Services\API\Responses\Headsets\ControlDeviceResponse.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Services\API\Requests\Records\GetRecordInfosRequest.cs" />
     <Compile Include="Services\API\Requests\Records\QueryRecordsParameter.cs" />
     <Compile Include="Services\API\Requests\Records\QueryRecordsRequest.cs" />
+    <Compile Include="Services\API\Responses\ListResponse.cs" />
     <Compile Include="Services\API\Responses\Markers\InjectMarkerResponse.cs" />
     <Compile Include="Services\API\Responses\Markers\MarkerObject.cs" />
     <Compile Include="Services\API\Responses\Markers\UpdateMarkerResponse.cs" />
@@ -174,7 +176,6 @@
     <Compile Include="Services\API\Responses\IResponse.cs" />
     <Compile Include="Services\API\Responses\IResult.cs" />
     <Compile Include="Services\API\Responses\Response.cs" />
-    <Compile Include="Services\API\Responses\Sessions\CreateSessionResponse.cs" />
     <Compile Include="Services\API\Responses\Sessions\UpdateSession.cs" />
     <Compile Include="Services\API\Utils\Enums.cs" />
     <Compile Include="Services\JsonParser.cs" />

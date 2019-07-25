@@ -5,7 +5,7 @@
         public override string method { get; } = "generateUserInformation";
         public GetUserInformationParameter @params { get; }
 
-        public GetUserInformationRequest(int id, GetUserInformationParameter parameter) : base(id)
+        public GetUserInformationRequest(GetUserInformationParameter parameter)
         {
             @params = parameter;
         }

@@ -8,7 +8,7 @@ namespace HeadsetController.Services.API.Requests.Information
     {
         public override string method { get; } = "getCortexInfo";
 
-        public GetCortexInfoRequest(int id) : base(id)
+        public GetCortexInfoRequest()
         {
         }
     }

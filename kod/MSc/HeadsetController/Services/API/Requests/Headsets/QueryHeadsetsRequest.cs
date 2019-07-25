@@ -5,7 +5,7 @@
         public override string method { get; } = "queryHeadsets";
         public QueryHeadsetsParameter @params { get; }
 
-        public QueryHeadsetsRequest(int id, QueryHeadsetsParameter parameter) : base(id)
+        public QueryHeadsetsRequest(QueryHeadsetsParameter parameter)
         {
             @params = parameter;
         }

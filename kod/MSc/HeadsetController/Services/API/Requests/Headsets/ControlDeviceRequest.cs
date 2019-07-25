@@ -5,7 +5,7 @@
         public override string method { get; } = "controlDevice";
         public ControlDeviceParameter @params { get; }
 
-        public ControlDeviceRequest(int id, ControlDeviceParameter parameter) : base(id)
+        public ControlDeviceRequest(ControlDeviceParameter parameter)
         {
             @params = parameter;
         }

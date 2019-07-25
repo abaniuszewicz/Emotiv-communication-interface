@@ -5,7 +5,7 @@
         public override string method { get; } = "unsubscribe";
         public UnsubscribeParameter @params { get; }
 
-        public UnsubscribeRequest(int id, UnsubscribeParameter parameter) : base(id)
+        public UnsubscribeRequest(UnsubscribeParameter parameter)
         {
             @params = parameter;
         }

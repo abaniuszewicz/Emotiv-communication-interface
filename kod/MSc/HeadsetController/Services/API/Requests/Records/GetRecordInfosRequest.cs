@@ -5,7 +5,7 @@
         public override string method { get; } = "getRecordInfos";
         public GetRecordInfosParameter @params { get; }
 
-        public GetRecordInfosRequest(int id, GetRecordInfosParameter parameter) : base(id)
+        public GetRecordInfosRequest(GetRecordInfosParameter parameter)
         {
             @params = parameter;
         }

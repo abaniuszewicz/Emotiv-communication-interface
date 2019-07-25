@@ -5,7 +5,7 @@
         public override string method { get; } = "facialExpressionThreshold";
         public FacialExpressionThresholdParameter @params { get; }
 
-        public FacialExpressionThresholdRequest(int id, FacialExpressionThresholdParameter parameter) : base(id)
+        public FacialExpressionThresholdRequest(FacialExpressionThresholdParameter parameter)
         {
             @params = parameter;
         }

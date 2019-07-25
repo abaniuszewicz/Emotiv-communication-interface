@@ -5,7 +5,7 @@
         public override string method { get; } = "exportRecord";
         public ExportRecordParameter @params { get; }
 
-        public ExportRecordRequest(int id, ExportRecordParameter parameter) : base(id)
+        public ExportRecordRequest(ExportRecordParameter parameter)
         {
             this.@params = parameter;
         }

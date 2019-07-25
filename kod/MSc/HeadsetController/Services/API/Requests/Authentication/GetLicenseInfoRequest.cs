@@ -5,7 +5,7 @@
         public override string method { get; } = "getLicenseInfo";
         public GetLicenseInfoParameter @params { get; }
 
-        public GetLicenseInfoRequest(int id, GetLicenseInfoParameter parameter) : base(id)
+        public GetLicenseInfoRequest(GetLicenseInfoParameter parameter)
         {
             @params = parameter;
         }

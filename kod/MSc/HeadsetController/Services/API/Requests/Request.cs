@@ -2,14 +2,10 @@
 {
     public abstract class Request : IRequest
     {
-        public int id { get; }
+        private static int _id;
+
+        public int id { get; } = _id++;
         public string jsonrpc { get; } = "2.0";
         public abstract string method { get; }
-
-
-        protected Request(int id)
-        {
-            this.id = id;
-        }
     }
 }

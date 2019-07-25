@@ -5,7 +5,7 @@
         public override string method { get; } = "generateNewToken";
         public GenerateNewTokenParameter @params { get; }
 
-        public GenerateNewTokenRequest(int id, GenerateNewTokenParameter parameter) : base(id)
+        public GenerateNewTokenRequest(GenerateNewTokenParameter parameter)
         {
             @params = parameter;
         }

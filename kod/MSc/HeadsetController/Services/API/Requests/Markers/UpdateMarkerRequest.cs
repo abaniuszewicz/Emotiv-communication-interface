@@ -5,7 +5,7 @@
         public override string method { get; } = "updateMarker";
         public UpdateMarkerParameter @params { get; }
 
-        public UpdateMarkerRequest(int id, UpdateMarkerParameter parameter) : base(id)
+        public UpdateMarkerRequest(UpdateMarkerParameter parameter)
         {
             @params = parameter;
         }

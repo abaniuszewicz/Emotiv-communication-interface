@@ -5,7 +5,7 @@
         public override string method { get; } = "stopRecord";
         public StopRecordParameter @params { get; }
 
-        public StopRecordRequest(int id, StopRecordParameter parameter) : base(id)
+        public StopRecordRequest(StopRecordParameter parameter)
         {
             @params = parameter;
         }

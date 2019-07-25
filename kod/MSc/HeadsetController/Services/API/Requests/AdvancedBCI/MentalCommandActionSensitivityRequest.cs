@@ -5,7 +5,7 @@
         public override string method { get; } = "mentalCommandActionSensitivity";
         public MentalCommandActionSensitivityParameter @params { get; }
 
-        public MentalCommandActionSensitivityRequest(int id, MentalCommandActionSensitivityParameter parameter) : base(id)
+        public MentalCommandActionSensitivityRequest(MentalCommandActionSensitivityParameter parameter)
         {
             @params = parameter;
         }

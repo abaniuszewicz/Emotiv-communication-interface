@@ -5,7 +5,7 @@
         public override string method { get; } = "getCurrentProfile";
         public GetCurrentProfileParameter @params { get; }
 
-        public GetCurrentProfileRequest(int id, GetCurrentProfileParameter parameter) : base(id)
+        public GetCurrentProfileRequest(GetCurrentProfileParameter parameter)
         {
             @params = parameter;
         }

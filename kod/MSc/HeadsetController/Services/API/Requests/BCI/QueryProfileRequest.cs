@@ -5,7 +5,7 @@
         public override string method { get; } = "queryProfile";
         public QueryProfileParameter @params { get; }
 
-        public QueryProfileRequest(int id, QueryProfileParameter parameter) : base(id)
+        public QueryProfileRequest(QueryProfileParameter parameter)
         {
             @params = parameter;
         }

@@ -5,7 +5,7 @@
         public override string method { get; } = "updateSession";
         public UpdateSessionParameter @params { get; }
 
-        public UpdateSessionRequest(int id, UpdateSessionParameter parameter) : base(id)
+        public UpdateSessionRequest(UpdateSessionParameter parameter)
         {
             @params = parameter;
         }

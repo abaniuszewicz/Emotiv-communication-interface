@@ -5,7 +5,7 @@
         public override string method { get; } = "getTrainingTime";
         public GetTrainingTimeParameter @params { get; }
 
-        public GetTrainingTimeRequest(int id, GetTrainingTimeParameter parameter) : base(id)
+        public GetTrainingTimeRequest(GetTrainingTimeParameter parameter)
         {
             @params = parameter;
         }
