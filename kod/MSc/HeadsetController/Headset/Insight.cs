@@ -36,11 +36,26 @@ namespace HeadsetController.Headset
 
         public async Task CreateSession()
         {
-            if (HeadsetObject?.status != Enums.StatusHeadsetEnum.connected)
-                return; //headset not connected
+            if (HeadsetObject == null)
+                return; //headset not detected
+
+            if (HeadsetObject.status != Enums.StatusHeadsetEnum.connected)
+            {
+                await SendRequest<ControlDeviceResponse>(new ControlDeviceRequest(new ControlDeviceParameter(Enums.CommandEnum.connect) { headset = HeadsetObject.id }));
+                HeadsetObject = (await SendRequest<ListResponse<HeadsetObject>>(new QueryHeadsetsRequest(new QueryHeadsetsParameter() { id = HeadsetObject.id }))).result.FirstOrDefault();
+            }
 
             var createSessionResponse = SendRequest<SessionObject>(new CreateSessionRequest(new CreateSessionParameter(CortexToken, Enums.StatusCreateEnum.open)));
             SessionObject = (await createSessionResponse).result;
+        }
+
+        public async Task CloseSession()
+        {
+            if (HeadsetObject?.status != Enums.StatusHeadsetEnum.connected || SessionObject?.status != Enums.StatusSessionEnum.opened)
+                return; //headset not connected or session already closed
+
+            var updateSessionResponse = SendRequest<SessionObject>(new UpdateSessionRequest(new UpdateSessionParameter(CortexToken, SessionObject.id, Enums.StatusUpdateEnum.close)));
+            SessionObject = (await updateSessionResponse).result;
         }
 
         public async Task<List<string>> GetAvailableProfiles()

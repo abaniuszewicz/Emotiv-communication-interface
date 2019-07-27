@@ -6,7 +6,6 @@ namespace HeadsetController.Services.API.Requests.Headsets
     {
         public string command { get; }
         public string headset { get; set; }
-        private object mappings { get; set; }
 
         public ControlDeviceParameter(Enums.CommandEnum command)
         {

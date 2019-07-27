@@ -11,6 +11,7 @@ using HeadsetController.Headset;
 using HeadsetController.Services.API.Requests.Headsets;
 using HeadsetController.Services.API.Responses;
 using HeadsetController.Services.API.Responses.Headsets;
+using HeadsetController.Services.API.Utils;
 
 namespace VirtualKeyboard.ViewModels
 {
@@ -21,6 +22,7 @@ namespace VirtualKeyboard.ViewModels
         private string _clientId = "BQhJjFmrJVcWqLmyU9XCIKmNdUOMrTG1eo9RNYwu";
         private string _clientSecret = "fCp33VZDrAj8zduFjJJvYWBaePAupZyBqzszdQfG9DlVPiVX87xPRkQDuPXNc7QAef2d1sJi6rMbO5SeoM14RYoP6uJRMxigk2dirdIduDg98EIKifOcmDqA6RfX5pNs";
         private bool _isBusy;
+        private bool _isSessionOpen;
         private HeadsetObject _selectedHeadset;
         private string _selectedProfile;
 
@@ -38,7 +40,7 @@ namespace VirtualKeyboard.ViewModels
                 _clientId = value;
                 Insight.ClientId = ClientId;
                 NotifyOfPropertyChange(() => ClientId);
-                NotifyOfPropertyChange(() => CanConnect);
+                NotifyOfPropertyChange(() => CanCreateSession);
             }
         }
 
@@ -50,7 +52,7 @@ namespace VirtualKeyboard.ViewModels
                 _clientSecret = value;
                 Insight.ClientSecret = ClientSecret;
                 NotifyOfPropertyChange(() => ClientSecret);
-                NotifyOfPropertyChange(() => CanConnect);
+                NotifyOfPropertyChange(() => CanCreateSession);
             }
         }
 
@@ -64,7 +66,17 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-        public bool CanConnect => !string.IsNullOrWhiteSpace(ClientId)
+        public bool IsSessionOpen
+        {
+            get => _isSessionOpen;
+            set
+            {
+                _isSessionOpen = value;
+                NotifyOfPropertyChange(() => IsSessionOpen);
+            }
+        }
+
+        public bool CanCreateSession => !string.IsNullOrWhiteSpace(ClientId)
                                   && !string.IsNullOrWhiteSpace(ClientSecret)
                                   && SelectedHeadset != null
                                   && !string.IsNullOrWhiteSpace(SelectedProfile);
@@ -77,7 +89,7 @@ namespace VirtualKeyboard.ViewModels
                 _selectedHeadset = value;
                 Insight.HeadsetObject = SelectedHeadset;
                 NotifyOfPropertyChange(() => SelectedHeadset);
-                NotifyOfPropertyChange(() => CanConnect);
+                NotifyOfPropertyChange(() => CanCreateSession);
             }
         }
 
@@ -88,7 +100,7 @@ namespace VirtualKeyboard.ViewModels
             {
                 _selectedProfile = value;
                 NotifyOfPropertyChange(() => SelectedProfile);
-                NotifyOfPropertyChange(() => CanConnect);
+                NotifyOfPropertyChange(() => CanCreateSession);
             }
         }
 
@@ -114,49 +126,51 @@ namespace VirtualKeyboard.ViewModels
 
         #region Methods
 
-        public async void RefreshHeadsets()
+        public async void RefreshInsight()
         {
             IsBusy = true;
-
-            await Task.Run(async () =>
-            {
-                var headsets = await Insight.GetAvailableHeadsets();
-                
-                Headsets.Clear();
-                foreach (var headset in headsets)
-                    Headsets.Add(headset);
-            });
-            NotifyOfPropertyChange(() => Headsets);
-            IsBusy = false;
-        }
-
-        public async void RefreshProfiles()
-        {
-            IsBusy = true;
-
             await Task.Run(async () =>
             {
                 await Insight.Authorize();
-                var profiles = await Insight.GetAvailableProfiles();
+                var headsets = Insight.GetAvailableHeadsets();
+                var profiles = Insight.GetAvailableProfiles();
 
+                Headsets.Clear();
                 Profiles.Clear();
-                foreach (var profile in profiles)
+                NotifyOfPropertyChange(() => Headsets);
+                NotifyOfPropertyChange(() => Profiles);
+
+                await Task.WhenAll(headsets, profiles);
+
+                foreach (var headset in headsets.Result)
+                    Headsets.Add(headset);
+
+                foreach (var profile in profiles.Result)
                     Profiles.Add(profile);
             });
+            NotifyOfPropertyChange(() => Headsets);
             NotifyOfPropertyChange(() => Profiles);
+
             IsBusy = false;
         }
 
-        public async void Connect()
+        public async void ChangeSessionStatus()
         {
             IsBusy = true;
 
-            await Task.Run(async () =>
-            {
-                await Insight.CreateSession();
-                await Insight.LoadProfile(SelectedProfile);
-            });
+            if (IsSessionOpen)
+                await Task.Run(async () =>
+                {
+                    await Insight.CloseSession(); //close session
+                });
+            else
+                await Task.Run(async () =>
+                {
+                    await Insight.CreateSession(); //open session
+                    await Insight.LoadProfile(SelectedProfile);
+                });
 
+            IsSessionOpen = Insight.SessionObject?.status == Enums.StatusSessionEnum.opened;
             IsBusy = false;
         }
 

@@ -14,6 +14,7 @@
         <converters:ObjectToBooleanConverter x:Key="ObjectToBooleanConverter"/>
         <converters:BooleanAndConverter x:Key="BooleanAndConverter"/>
         <converters:CountToBooleanConverter x:Key="CountToBooleanConverter"/>
+        <converters:BooleanToStringSelectConverter x:Key="BooleanToStringSelectConverter"/>
     </UserControl.Resources>
 
     <materialDesign:DialogHost x:Name="DialogHost" IsOpen="{Binding IsBusy}">
@@ -34,19 +35,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Grid.Resources>
-                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFloatingActionButton}">
-                        <Setter Property="Height" Value="{Binding ElementName=Headsets, Path=Height}"/>
-                        <Setter Property="Width" Value="{Binding ElementName=Headsets, Path=Height}"/>
-                    </Style>
-                </Grid.Resources>
-
-                <TextBox materialDesign:HintAssist.Hint="Client ID" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox materialDesign:HintAssist.Hint="Client ID" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
                     <Binding Path="ClientId" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
@@ -54,7 +49,8 @@
                     </Binding>
                 </TextBox>
 
-                <TextBox materialDesign:HintAssist.Hint="Client Secret" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox materialDesign:HintAssist.Hint="Client Secret" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
                     <Binding Path="ClientSecret" UpdateSourceTrigger="PropertyChanged" Mode="OneWay">
                         <Binding.ValidationRules>
                             <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
@@ -62,59 +58,46 @@
                     </Binding>
                 </TextBox>
 
-                <DockPanel Grid.Row="2" LastChildFill="True">
-                    <Button x:Name="RefreshHeadsets" DockPanel.Dock="Right"
-                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        Content="{materialDesign:PackIcon Refresh}"
-                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsBusy}"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Headset"
-                          materialDesign:HintAssist.IsFloating="True"
-                          x:Name="Headsets" DockPanel.Dock="Left" 
-                          DisplayMemberPath="id" Margin="0,0,10,0"
-                          IsEnabled="{Binding Headsets, Converter={StaticResource CountToBooleanConverter}}">
-                        <ComboBox.Text>
-                            <Binding
-                            Path="SelectedHeadset" Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </ComboBox.Text>
-                    </ComboBox>
+                <ComboBox materialDesign:HintAssist.Hint="Headset"
+                      materialDesign:HintAssist.IsFloating="True"
+                      x:Name="Headsets"
+                      DisplayMemberPath="id" Grid.Row="2"
+                      IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
+                    <ComboBox.Text>
+                        <Binding Path="SelectedHeadset" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.Text>
+                </ComboBox>
+
+                <ComboBox materialDesign:HintAssist.Hint="Profile"
+                      materialDesign:HintAssist.IsFloating="True"
+                      x:Name="Profiles" Grid.Row="3"
+                      IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
+                    <ComboBox.Text>
+                        <Binding Path="SelectedProfile" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.Text>
+                </ComboBox>
+
+                <DockPanel Grid.Row="4" LastChildFill="False">
+                    <Button x:Name="ChangeSessionStatus" Margin="5" 
+                            Content="{Binding IsSessionOpen, Converter={StaticResource BooleanToStringSelectConverter},
+                            ConverterParameter=Close Session|Create Session}" 
+                            DockPanel.Dock="Right" VerticalAlignment="Bottom"
+                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+
+                    <Button x:Name="RefreshInsight" Content="Refresh" Margin="5"
+                            DockPanel.Dock="Right" VerticalAlignment="Bottom"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}"/>
                 </DockPanel>
 
-                <DockPanel Grid.Row="3" LastChildFill="True">
-                    <Button x:Name="RefreshProfiles" DockPanel.Dock="Right"
-                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        Content="{materialDesign:PackIcon Refresh}"
-                        IsEnabled="{Binding SelectedHeadset, Converter={StaticResource ObjectToBooleanConverter}}"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Profile"
-                          materialDesign:HintAssist.IsFloating="True"
-                          x:Name="Profiles" DockPanel.Dock="Left"
-                          Margin="0,0,10,0">
-                        <ComboBox.IsEnabled>
-                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
-                                <Binding Path="Profiles" Converter="{StaticResource CountToBooleanConverter}"/>
-                                <Binding Path="SelectedHeadset" Converter="{StaticResource ObjectToBooleanConverter}"/>
-                            </MultiBinding>
-                        </ComboBox.IsEnabled>
-                        <ComboBox.Text>
-                            <Binding
-                            Path="SelectedProfile" Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </ComboBox.Text>
-                    </ComboBox>
-                </DockPanel>
-
-                <Button x:Name="Connect" Content="Connect" Grid.Row="4" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Style="{StaticResource MaterialDesignRaisedButton}"/>
             </Grid>
         </Border>
     </materialDesign:DialogHost>

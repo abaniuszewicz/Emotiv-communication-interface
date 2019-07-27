@@ -81,6 +81,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\BooleanAndConverter.cs" />
     <Compile Include="Converters\BooleanToIntegerConverter.cs" />
+    <Compile Include="Converters\BooleanToStringSelectConverter.cs" />
     <Compile Include="Converters\CountToBooleanConverter.cs" />
     <Compile Include="Converters\EnumerableToStringConverter.cs" />
     <Compile Include="Converters\InvertBooleanConverter.cs" />
