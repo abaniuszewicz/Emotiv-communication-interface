@@ -6,59 +6,73 @@
         xmlns:controls="clr-namespace:VirtualKeyboard.Views.Controls"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:converters="clr-namespace:VirtualKeyboard.Converters"
         mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="controls:KeyView">
-            <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
-        </Style>
+        <converters:EnumerableToStringConverter x:Key="EnumerableToStringConverter"/>
     </UserControl.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
+    <Viewbox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" LastChildFill="False">
-            <controls:KeyView Key="Q" cal:Message.Attach="[Event Pressed] = [Action Pressed('Q')]"/>
-            <controls:KeyView Key="W" cal:Message.Attach="[Event Pressed] = [Action Pressed('W')]"/>
-            <controls:KeyView Key="E" cal:Message.Attach="[Event Pressed] = [Action Pressed('E')]"/>
-            <controls:KeyView Key="R" cal:Message.Attach="[Event Pressed] = [Action Pressed('R')]"/>
-            <controls:KeyView Key="T" cal:Message.Attach="[Event Pressed] = [Action Pressed('T')]"/>
-            <controls:KeyView Key="Y" cal:Message.Attach="[Event Pressed] = [Action Pressed('Y')]"/>
-            <controls:KeyView Key="U" cal:Message.Attach="[Event Pressed] = [Action Pressed('U')]"/>
-            <controls:KeyView Key="I" cal:Message.Attach="[Event Pressed] = [Action Pressed('I')]"/>
-            <controls:KeyView Key="O" cal:Message.Attach="[Event Pressed] = [Action Pressed('O')]"/>
-            <controls:KeyView Key="P" cal:Message.Attach="[Event Pressed] = [Action Pressed('P')]"/>
-        </DockPanel>
-        <DockPanel Grid.Row="1" LastChildFill="False">
-            <controls:KeyView Key="A" cal:Message.Attach="[Event Pressed] = [Action Pressed('A')]"/>
-            <controls:KeyView Key="S" cal:Message.Attach="[Event Pressed] = [Action Pressed('S')]"/>
-            <controls:KeyView Key="D" cal:Message.Attach="[Event Pressed] = [Action Pressed('D')]"/>
-            <controls:KeyView Key="F" cal:Message.Attach="[Event Pressed] = [Action Pressed('F')]"/>
-            <controls:KeyView Key="G" cal:Message.Attach="[Event Pressed] = [Action Pressed('G')]"/>
-            <controls:KeyView Key="H" cal:Message.Attach="[Event Pressed] = [Action Pressed('H')]"/>
-            <controls:KeyView Key="J" cal:Message.Attach="[Event Pressed] = [Action Pressed('J')]"/>
-            <controls:KeyView Key="K" cal:Message.Attach="[Event Pressed] = [Action Pressed('K')]"/>
-            <controls:KeyView Key="L" cal:Message.Attach="[Event Pressed] = [Action Pressed('L')]"/>
-            <controls:KeyView Key="↵" cal:Message.Attach="[Event Pressed] = [Action Pressed('&#10;')]"/>
-        </DockPanel>
-        <DockPanel Grid.Row="2" LastChildFill="False">
-            <controls:KeyView Key="Z" cal:Message.Attach="[Event Pressed] = [Action Pressed('Z')]"/>
-            <controls:KeyView Key="X" cal:Message.Attach="[Event Pressed] = [Action Pressed('X')]"/>
-            <controls:KeyView Key="C" cal:Message.Attach="[Event Pressed] = [Action Pressed('C')]"/>
-            <controls:KeyView Key="V" cal:Message.Attach="[Event Pressed] = [Action Pressed('V')]"/>
-            <controls:KeyView Key="B" cal:Message.Attach="[Event Pressed] = [Action Pressed('B')]"/>
-            <controls:KeyView Key="N" cal:Message.Attach="[Event Pressed] = [Action Pressed('N')]"/>
-            <controls:KeyView Key="M" cal:Message.Attach="[Event Pressed] = [Action Pressed('M')]"/>
-            <controls:KeyView Key="," cal:Message.Attach="[Event Pressed] = [Action Pressed(',')]"/>
-            <controls:KeyView Key="." cal:Message.Attach="[Event Pressed] = [Action Pressed('.')]"/>
-            <controls:KeyView Key="␣" cal:Message.Attach="[Event Pressed] = [Action Pressed(' ')]"/>
-        </DockPanel>
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                    <Setter Property="MaxWidth" Value="{Binding ActualWidth, ElementName=DockPanel}"/>
+                    <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                    <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="CharacterCasing" Value="Upper"/>
+                </Style>
+            </Grid.Resources>
 
-        <TextBox x:Name="Message" IsReadOnly="True" Grid.Row="3" TextWrapping="Wrap" AcceptsReturn="True"/>
-    </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <controls:KeyView Key="Q" cal:Message.Attach="[Event Pressed] = [Action Pressed('Q')]"/>
+                <controls:KeyView Key="W" cal:Message.Attach="[Event Pressed] = [Action Pressed('W')]"/>
+                <controls:KeyView Key="E" cal:Message.Attach="[Event Pressed] = [Action Pressed('E')]"/>
+                <controls:KeyView Key="R" cal:Message.Attach="[Event Pressed] = [Action Pressed('R')]"/>
+                <controls:KeyView Key="T" cal:Message.Attach="[Event Pressed] = [Action Pressed('T')]"/>
+                <controls:KeyView Key="Y" cal:Message.Attach="[Event Pressed] = [Action Pressed('Y')]"/>
+                <controls:KeyView Key="U" cal:Message.Attach="[Event Pressed] = [Action Pressed('U')]"/>
+                <controls:KeyView Key="I" cal:Message.Attach="[Event Pressed] = [Action Pressed('I')]"/>
+                <controls:KeyView Key="O" cal:Message.Attach="[Event Pressed] = [Action Pressed('O')]"/>
+                <controls:KeyView Key="P" cal:Message.Attach="[Event Pressed] = [Action Pressed('P')]"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <controls:KeyView Key="A" cal:Message.Attach="[Event Pressed] = [Action Pressed('A')]"/>
+                <controls:KeyView Key="S" cal:Message.Attach="[Event Pressed] = [Action Pressed('S')]"/>
+                <controls:KeyView Key="D" cal:Message.Attach="[Event Pressed] = [Action Pressed('D')]"/>
+                <controls:KeyView Key="F" cal:Message.Attach="[Event Pressed] = [Action Pressed('F')]"/>
+                <controls:KeyView Key="G" cal:Message.Attach="[Event Pressed] = [Action Pressed('G')]"/>
+                <controls:KeyView Key="H" cal:Message.Attach="[Event Pressed] = [Action Pressed('H')]"/>
+                <controls:KeyView Key="J" cal:Message.Attach="[Event Pressed] = [Action Pressed('J')]"/>
+                <controls:KeyView Key="K" cal:Message.Attach="[Event Pressed] = [Action Pressed('K')]"/>
+                <controls:KeyView Key="L" cal:Message.Attach="[Event Pressed] = [Action Pressed('L')]"/>
+                <controls:KeyView Key="↵" cal:Message.Attach="[Event Pressed] = [Action Enter()]"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <controls:KeyView Key="Z" cal:Message.Attach="[Event Pressed] = [Action Pressed('Z')]"/>
+                <controls:KeyView Key="X" cal:Message.Attach="[Event Pressed] = [Action Pressed('X')]"/>
+                <controls:KeyView Key="C" cal:Message.Attach="[Event Pressed] = [Action Pressed('C')]"/>
+                <controls:KeyView Key="V" cal:Message.Attach="[Event Pressed] = [Action Pressed('V')]"/>
+                <controls:KeyView Key="B" cal:Message.Attach="[Event Pressed] = [Action Pressed('B')]"/>
+                <controls:KeyView Key="N" cal:Message.Attach="[Event Pressed] = [Action Pressed('N')]"/>
+                <controls:KeyView Key="M" cal:Message.Attach="[Event Pressed] = [Action Pressed('M')]"/>
+                <controls:KeyView Key="," cal:Message.Attach="[Event Pressed] = [Action Pressed(',')]"/>
+                <controls:KeyView Key="." cal:Message.Attach="[Event Pressed] = [Action Pressed('.')]"/>
+                <controls:KeyView Key="␠" cal:Message.Attach="[Event Pressed] = [Action Pressed(' ')]"/>
+            </StackPanel>
+
+            <TextBox Text="{Binding MessageHistory, Converter={StaticResource EnumerableToStringConverter}, Mode=OneWay}" 
+                         IsReadOnly="True" Focusable="False" Grid.Row="3" Height="100"/>
+            <TextBox x:Name="Message" Grid.Row="4"/>
+        </Grid>
+    </Viewbox>
 </UserControl>

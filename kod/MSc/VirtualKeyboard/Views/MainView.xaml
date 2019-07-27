@@ -5,22 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VirtualKeyboard.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:cal="http://www.caliburnproject.org"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="BCI Virtual Keyboard" Height="450" Width="800">
 
-    <Grid>
-        <!--#region Row/Column definitions-->
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <!--#endregion-->
+    <materialDesign:DialogHost>
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsDrawerOpen}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="200">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                  DockPanel.Dock="Top" HorizontalAlignment="Right"
+                                  IsChecked="{Binding IsDrawerOpen}"/>
+                    <ListBox x:Name="Views" ItemsSource="{Binding Views}" DisplayMemberPath="Name">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel cal:Message.Attach="[Event MouseUp] = [Action CloseDrawer()]"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel>
+                <materialDesign:ColorZone DockPanel.Dock="Top" Mode="PrimaryMid">
+                    <DockPanel>
+                        <ToggleButton x:Name="MenuToggleButton"
+                                      Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                      IsChecked="{Binding IsDrawerOpen}"/>
+                        <Button x:Name="Exit" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignFlatAccentButton}">
+                            <materialDesign:PackIcon Kind="WindowClose" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
+                        </Button>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" StaysOpen="True" PlacementMode="LeftAndAlignTopEdges">
+                            <ContentControl cal:View.Model="{Binding Settings}"/>
+                        </materialDesign:PopupBox>
+                        <TextBlock Text="BCI Virtual Keyboard" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <ContentControl cal:View.Model="{Binding ElementName=Views, Path=SelectedItem}"/>
+            </DockPanel>
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
 
-        <ContentControl x:Name="Keyboard" Grid.Row="0" Grid.Column="0"/>
-        <ContentControl x:Name="DPad" Grid.Row="1" Grid.Column="1"
-                        Width="200" Height="200"/>
-    </Grid>
 </Window>

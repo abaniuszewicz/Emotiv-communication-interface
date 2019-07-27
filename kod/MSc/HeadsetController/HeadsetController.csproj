@@ -170,7 +170,6 @@
     <Compile Include="Services\API\Responses\Authentication\HasAccessRightResponse.cs" />
     <Compile Include="Services\API\Responses\Authentication\RequestAccessResponse.cs" />
     <Compile Include="Services\API\Responses\Headsets\HeadsetObjectSettings.cs" />
-    <Compile Include="Services\API\Responses\Headsets\QueryHeadsetsResponse.cs" />
     <Compile Include="Services\API\Responses\Headsets\UpdateHeadsetResponse.cs" />
     <Compile Include="Services\API\Responses\Information\GetCortexInfoResponse.cs" />
     <Compile Include="Services\API\Responses\IResponse.cs" />

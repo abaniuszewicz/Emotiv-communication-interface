@@ -96,7 +96,7 @@ namespace PoC
 
         private async void SendMessage()
         {
-            await Insight.Initialize();
+            await Insight.Authorize();
             await Insight.CreateSession();
             await Insight.LoadProfile("Adam");
             await SubscribeMentalCommandStream();

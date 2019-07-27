@@ -6,28 +6,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualKeyboard.Views"
              xmlns:converters="clr-namespace:VirtualKeyboard.Converters"
-             mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="50">
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <converters:BooleanToIntegerConverter x:Key="BooleanToIntegerConverter"/>
     </UserControl.Resources>
 
-    <Grid MouseEnter="UIElement_OnMouseEnter" MouseLeave="UIElement_OnMouseLeave" Background="#FFFFFFFF">
-        <Border Padding="{Binding IsSelected, ElementName=KeyUserControl, 
-        Converter={StaticResource BooleanToIntegerConverter}, ConverterParameter=0|5}">
-            <Button Click="ButtonBase_OnClick">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border BorderThickness="1" CornerRadius="5" BorderBrush="Black">
-                            <TextBlock Text="{Binding Key, ElementName=KeyUserControl}" 
-                                       FontSize="{Binding IsSelected, ElementName=KeyUserControl, 
-                                       Converter={StaticResource BooleanToIntegerConverter}, ConverterParameter=25|20}"
-                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </Border>
-    </Grid>
+    <Viewbox Width="{Binding Height, RelativeSource={RelativeSource Self}}">
+        <Button Click="ButtonBase_OnClick"
+                MouseEnter="UIElement_OnMouseEnter" MouseLeave="UIElement_OnMouseLeave"
+                FontFamily="Courier New"
+                Content="{Binding Key, ElementName=KeyUserControl}"
+                Margin="{Binding IsSelected, ElementName=KeyUserControl, 
+                Converter={StaticResource BooleanToIntegerConverter}, ConverterParameter=0|1}">
+        </Button>
+    </Viewbox>
 </UserControl>
