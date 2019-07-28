@@ -47,7 +47,9 @@
                         <TextBlock Text="BCI Virtual Keyboard" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </DockPanel>
                 </materialDesign:ColorZone>
-                <ContentControl cal:View.Model="{Binding ElementName=Views, Path=SelectedItem}"/>
+                <Border Padding="20">
+                    <ContentControl cal:View.Model="{Binding ElementName=Views, Path=SelectedItem}"/>
+                </Border>
             </DockPanel>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>

@@ -3,11 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using HeadsetController.Services.API.Requests.Authentication;
 using HeadsetController.Services.API.Requests.BCI;
+using HeadsetController.Services.API.Requests.DataSubscription;
 using HeadsetController.Services.API.Requests.Headsets;
 using HeadsetController.Services.API.Requests.Sessions;
 using HeadsetController.Services.API.Responses;
 using HeadsetController.Services.API.Responses.Authentication;
 using HeadsetController.Services.API.Responses.BCI;
+using HeadsetController.Services.API.Responses.DataSubscriptions;
 using HeadsetController.Services.API.Responses.Headsets;
 using HeadsetController.Services.API.Responses.Sessions;
 using HeadsetController.Services.API.Utils;
@@ -62,6 +64,11 @@ namespace HeadsetController.Headset
         {
             var profiles = SendRequest<ListResponse<QueryProfileResponse>>(new QueryProfileRequest(new QueryProfileParameter(CortexToken)));
             return (await profiles).result?.Select(p => p.name).ToList() ?? new List<string>();
+        }
+
+        public async void Subscribe(IEnumerable<Enums.StreamsEnum> streams)
+        {
+            await SendRequest<SubscribeResponse>(new SubscribeRequest(new SubscribeParameter(CortexToken, SessionObject?.id, streams)));
         }
 
         public async Task LoadProfile(string name)

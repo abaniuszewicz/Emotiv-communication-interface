@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -82,17 +83,25 @@
     <Compile Include="Converters\BooleanAndConverter.cs" />
     <Compile Include="Converters\BooleanToIntegerConverter.cs" />
     <Compile Include="Converters\BooleanToStringSelectConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\CountToBooleanConverter.cs" />
     <Compile Include="Converters\EnumerableToStringConverter.cs" />
     <Compile Include="Converters\InvertBooleanConverter.cs" />
     <Compile Include="Converters\ObjectToBooleanConverter.cs" />
+    <Compile Include="Converters\PercentageToBrushConverter.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="ViewModels\DPadViewModel.cs" />
+    <Compile Include="ViewModels\HeadsetInformationViewModel.cs" />
     <Compile Include="ViewModels\KeyboardViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Views\AttachedProperties\TextBoxExtensions.cs" />
+    <Compile Include="Views\Controls\IKey.cs" />
     <Compile Include="Views\DPadView.xaml.cs">
       <DependentUpon>DPadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeadsetInformationView.xaml.cs">
+      <DependentUpon>HeadsetInformationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KeyboardView.xaml.cs">
       <DependentUpon>KeyboardView.xaml</DependentUpon>
@@ -149,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\HeadsetInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\KeyboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +178,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\headtop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

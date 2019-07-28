@@ -6,6 +6,7 @@ using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Caliburn.Micro;
 using VirtualKeyboard.Views.Controls;
 
@@ -17,7 +18,7 @@ namespace VirtualKeyboard.ViewModels
 
         public string Name => "Virtual Keyboard";
         public SpeechSynthesizer Synthesizer { get; set; }
-        public ObservableCollection<string> MessageHistory { get; } = new ObservableCollection<string>();
+        public HeadsetInformationViewModel HeadsetInformationViewModel { get; } = new HeadsetInformationViewModel();
 
         public string Message
         {
@@ -29,7 +30,6 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-
         public KeyboardViewModel()
         {
             Synthesizer = new SpeechSynthesizer();
@@ -39,16 +39,30 @@ namespace VirtualKeyboard.ViewModels
                 CultureInfo.GetCultureInfo("en-US"));
         }
 
-        public void Pressed(string key)
+        public void Pressed(IKey key)
         {
-            Message += key;
+            if (key == null)
+                return;
+
+            switch (key.Key)
+            {
+                case "←":
+                    if (Message.Length > 0)
+                        Message = Message.Remove(Message.Length - 1);
+                    break;
+                case "↵":
+                    Enter();
+                    break;
+
+                default:
+                    Message += key.Key;
+                    break;
+            }
         }
 
         public void Enter()
         {
             Synthesizer.SpeakAsync(Message.ToLower());
-            MessageHistory.Insert(0, $"{DateTime.Now}: {Message}");
-            NotifyOfPropertyChange(() => MessageHistory);
             Message = string.Empty;
         }
     }

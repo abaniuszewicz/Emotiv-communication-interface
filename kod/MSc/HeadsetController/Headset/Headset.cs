@@ -21,7 +21,8 @@ namespace HeadsetController.Headset
 
         public event Action<string> OnResponse;
         public event Action<string> OnRequest;
-        public event Action<DataSampleObject> OnMentalCommandUpdate;
+        public event Action<ComDataSampleObject> OnMentalCommandUpdate;
+        public event Action<DevDataSampleObject> OnDeviceInformationUpdate;
 
         #endregion
 
@@ -82,9 +83,13 @@ namespace HeadsetController.Headset
         private void ReadResponse(string message)
         {
             var jObject = JObject.Parse(message);
-            if (!jObject.ContainsKey("id") && jObject.ContainsKey("com"))
+            if (!jObject.ContainsKey("id"))
             {
-                OnMentalCommandUpdate?.Invoke(Parser.Deserialize<DataSampleObject>(message));
+                //subscribe data sample arrived
+                if (jObject.ContainsKey("com")) //mental command update
+                    OnMentalCommandUpdate?.Invoke(Parser.Deserialize<ComDataSampleObject>(message));
+                else if (jObject.ContainsKey("dev")) //device information update
+                    OnDeviceInformationUpdate?.Invoke(Parser.Deserialize<DevDataSampleObject>(message));
                 return;
             }
 

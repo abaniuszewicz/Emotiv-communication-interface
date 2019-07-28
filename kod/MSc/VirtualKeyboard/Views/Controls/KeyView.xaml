@@ -9,16 +9,18 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converters:BooleanToIntegerConverter x:Key="BooleanToIntegerConverter"/>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
 
-    <Viewbox Width="{Binding Height, RelativeSource={RelativeSource Self}}">
-        <Button Click="ButtonBase_OnClick"
-                MouseEnter="UIElement_OnMouseEnter" MouseLeave="UIElement_OnMouseLeave"
-                FontFamily="Courier New"
-                Content="{Binding Key, ElementName=KeyUserControl}"
-                Margin="{Binding IsSelected, ElementName=KeyUserControl, 
-                Converter={StaticResource BooleanToIntegerConverter}, ConverterParameter=0|1}">
-        </Button>
-    </Viewbox>
+    <Grid>
+        <Border x:Name="Border" BorderThickness="5" CornerRadius="3"
+                BorderBrush="{StaticResource SecondaryAccentBrush}" 
+                Visibility="{Binding IsSelected, ElementName=KeyUserControl, 
+                    Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Button x:Name="Button" Click="ButtonBase_OnClick"  Margin="5" 
+                    MouseEnter="Button_OnMouseEnter" MouseLeave="Button_OnMouseLeave"
+                    GotFocus="Button_OnGotFocus" LostFocus="Button_OnLostFocus"
+                    Content="{Binding Key, ElementName=KeyUserControl}"
+                    Height="{Binding}"/>
+    </Grid>
 </UserControl>

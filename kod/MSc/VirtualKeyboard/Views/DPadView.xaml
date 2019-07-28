@@ -10,46 +10,50 @@
         <Style TargetType="{x:Type ProgressBar}">
             <Setter Property="Minimum" Value="0"/>
             <Setter Property="Maximum" Value="1"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Width" Value="50"/>
         </Style>
     </UserControl.Resources>
 
-    <Grid Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
-        <!--#region Row/Column definitions-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <!--#endregion-->
+    <Viewbox>
+        <Grid Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+            <!--#region Row/Column definitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
 
-        <ProgressBar x:Name="PowerUp" Grid.Row="0" Grid.Column="2">
-            <ProgressBar.LayoutTransform>
-                <RotateTransform Angle="270"/>
-            </ProgressBar.LayoutTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="PowerRight" Grid.Row="2" Grid.Column="4">
-            <ProgressBar.LayoutTransform>
-                <RotateTransform Angle="0"/>
-            </ProgressBar.LayoutTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="PowerDown" Grid.Row="4" Grid.Column="2">
-            <ProgressBar.LayoutTransform>
-                <RotateTransform Angle="90"/>
-            </ProgressBar.LayoutTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="PowerLeft" Grid.Row="2" Grid.Column="0">
-            <ProgressBar.LayoutTransform>
-                <RotateTransform Angle="180"/>
-            </ProgressBar.LayoutTransform>
-        </ProgressBar>
-    </Grid>
+            <ProgressBar x:Name="PowerUp" Grid.Row="0" Grid.Column="2">
+                <ProgressBar.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </ProgressBar.LayoutTransform>
+            </ProgressBar>
+            <ProgressBar x:Name="PowerRight" Grid.Row="2" Grid.Column="4">
+                <ProgressBar.LayoutTransform>
+                    <RotateTransform Angle="0"/>
+                </ProgressBar.LayoutTransform>
+            </ProgressBar>
+            <ProgressBar x:Name="PowerDown" Grid.Row="4" Grid.Column="2">
+                <ProgressBar.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </ProgressBar.LayoutTransform>
+            </ProgressBar>
+            <ProgressBar x:Name="PowerLeft" Grid.Row="2" Grid.Column="0">
+                <ProgressBar.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </ProgressBar.LayoutTransform>
+            </ProgressBar>
+        </Grid>
+    </Viewbox>
 </UserControl>
