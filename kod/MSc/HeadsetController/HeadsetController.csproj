@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Headset\Headset.cs" />
     <Compile Include="Headset\Insight.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\API\Requests\Authentication\AuthorizeRequest.cs" />
     <Compile Include="Services\API\Requests\Authentication\GenerateNewTokenParameter.cs" />
     <Compile Include="Services\API\Requests\Authentication\GenerateNewTokenRequest.cs" />

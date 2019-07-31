@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Caliburn.Micro;
+using VirtualKeyboard.Utilities;
 
 namespace VirtualKeyboard.ViewModels
 {
@@ -16,9 +18,8 @@ namespace VirtualKeyboard.ViewModels
         private bool _isDrawerOpen;
 
         public ObservableCollection<PropertyChangedBase> Views { get; } = new ObservableCollection<PropertyChangedBase>();
-
         public ConnectionViewModel ConnectionViewModel { get; } = new ConnectionViewModel();
-        public SettingsViewModel SettingsViewModel { get; } = new SettingsViewModel();
+        public SettingsViewModel SettingsViewModel { get; }
 
         public bool IsDrawerOpen
         {
@@ -37,8 +38,15 @@ namespace VirtualKeyboard.ViewModels
 
         public MainViewModel()
         {
+            Application.Current.Exit += Current_Exit;
+            SettingsViewModel = new SettingsViewModel() { Settings = SettingsSerializer.Deserialize() };
             Views.Add(new KeyboardViewModel(SettingsViewModel, ConnectionViewModel));
             Views.Add(new MessengerViewModel(ConnectionViewModel.Insight));
+        }
+
+        private void Current_Exit(object sender, ExitEventArgs e)
+        {
+            SettingsSerializer.Serialize(SettingsViewModel.Settings);
         }
     }
 }

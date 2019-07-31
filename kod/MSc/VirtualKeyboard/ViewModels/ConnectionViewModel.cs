@@ -19,10 +19,7 @@ namespace VirtualKeyboard.ViewModels
     {
         #region Fields
 
-        private string _clientId = "BQhJjFmrJVcWqLmyU9XCIKmNdUOMrTG1eo9RNYwu";
-        private string _clientSecret = "fCp33VZDrAj8zduFjJJvYWBaePAupZyBqzszdQfG9DlVPiVX87xPRkQDuPXNc7QAef2d1sJi6rMbO5SeoM14RYoP6uJRMxigk2dirdIduDg98EIKifOcmDqA6RfX5pNs";
         private bool _isBusy;
-        private bool _isSessionOpen;
         private HeadsetObject _selectedHeadset;
         private string _selectedProfile;
 
@@ -31,30 +28,6 @@ namespace VirtualKeyboard.ViewModels
         #region Properties
 
         public Insight Insight { get; }
-
-        public string ClientId
-        {
-            get => _clientId;
-            set
-            {
-                _clientId = value;
-                Insight.ClientId = ClientId;
-                NotifyOfPropertyChange(() => ClientId);
-                NotifyOfPropertyChange(() => CanCreateSession);
-            }
-        }
-
-        public string ClientSecret
-        {
-            get => _clientSecret;
-            set
-            {
-                _clientSecret = value;
-                Insight.ClientSecret = ClientSecret;
-                NotifyOfPropertyChange(() => ClientSecret);
-                NotifyOfPropertyChange(() => CanCreateSession);
-            }
-        }
 
         public bool IsBusy
         {
@@ -66,18 +39,8 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-        public bool IsSessionOpen
-        {
-            get => _isSessionOpen;
-            set
-            {
-                _isSessionOpen = value;
-                NotifyOfPropertyChange(() => IsSessionOpen);
-            }
-        }
-
-        public bool CanCreateSession => !string.IsNullOrWhiteSpace(ClientId)
-                                  && !string.IsNullOrWhiteSpace(ClientSecret)
+        public bool CanCreateSession => !string.IsNullOrWhiteSpace(Insight.ClientId)
+                                  && !string.IsNullOrWhiteSpace(Insight.ClientSecret)
                                   && SelectedHeadset != null
                                   && !string.IsNullOrWhiteSpace(SelectedProfile);
 
@@ -115,11 +78,7 @@ namespace VirtualKeyboard.ViewModels
         {
             BindingOperations.EnableCollectionSynchronization(Headsets, new object());
             BindingOperations.EnableCollectionSynchronization(Profiles, new object());
-            Insight = new Insight()
-            {
-                ClientId = ClientId,
-                ClientSecret = ClientSecret
-            };
+            Insight = new Insight();
         }
 
         #endregion
@@ -158,7 +117,7 @@ namespace VirtualKeyboard.ViewModels
         {
             IsBusy = true;
 
-            if (IsSessionOpen)
+            if (Insight.IsSessionOpen)
                 await Task.Run(async () =>
                 {
                     await Insight.CloseSession(); //close session
@@ -170,7 +129,6 @@ namespace VirtualKeyboard.ViewModels
                     await Insight.LoadProfile(SelectedProfile);
                 });
 
-            IsSessionOpen = Insight.SessionObject?.status == Enums.StatusSessionEnum.opened;
             IsBusy = false;
         }
 

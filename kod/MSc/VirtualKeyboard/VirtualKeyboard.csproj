@@ -53,9 +53,13 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -89,9 +93,14 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\CountToBooleanConverter.cs" />
     <Compile Include="Converters\EnumerableToStringConverter.cs" />
+    <Compile Include="Converters\FocusThresholdToMarginConverter.cs" />
     <Compile Include="Converters\InvertBooleanConverter.cs" />
     <Compile Include="Converters\ObjectToBooleanConverter.cs" />
     <Compile Include="Converters\PercentageToBrushConverter.cs" />
+    <Compile Include="Converters\ProgressBarBrushConverter.cs" />
+    <Compile Include="Models\ConnectionSetup.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Utilities\SettingsSerializer.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="ViewModels\DPadViewModel.cs" />
     <Compile Include="ViewModels\HeadsetInformationViewModel.cs" />
@@ -154,10 +163,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Utilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\HeadsetController\HeadsetController.csproj">
       <Project>{200e17d5-2e21-469d-bb6e-bc085b0b3926}</Project>

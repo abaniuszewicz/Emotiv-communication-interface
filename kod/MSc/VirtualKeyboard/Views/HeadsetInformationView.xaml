@@ -18,14 +18,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid>
                 <Image Source="/VirtualKeyboard;component/Resources/headtop.png"/>
-                <Ellipse Fill="{Binding T7Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="20,101,214,145"/>
-                <Ellipse Fill="{Binding T8Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="211,101,23,145"/>
-                <Ellipse Fill="{Binding PzQuality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="116,221,118,29"/>
-                <Ellipse Fill="{Binding Af3Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="80,50,150,200"/>
-                <Ellipse Fill="{Binding Af4Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="150,50,80,200"/>
+                <Ellipse Fill="{Binding Insight.T7Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="20,101,214,145"/>
+                <Ellipse Fill="{Binding Insight.T8Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="211,101,23,145"/>
+                <Ellipse Fill="{Binding Insight.PzQuality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="116,221,118,29"/>
+                <Ellipse Fill="{Binding Insight.Af3Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="80,50,150,200"/>
+                <Ellipse Fill="{Binding Insight.Af4Quality, Converter={StaticResource PercentageToBrushConverter}}" Height="25" Width="25" Margin="150,50,80,200"/>
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -42,15 +42,15 @@
                                Foreground="{Binding TotalQuality, Converter={StaticResource PercentageToBrushConverter}}"/>
 
                     <TextBlock Text="Battery Level"  Grid.Row="1" Grid.Column="0"/>
-                    <TextBlock Text="{Binding BatteryLevel, StringFormat={}{0}%}"
+                    <TextBlock Text="{Binding Insight.BatteryLevel, StringFormat={}{0}%}"
                                FontWeight="Bold" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"
-                               Foreground="{Binding BatteryLevel, Converter={StaticResource PercentageToBrushConverter}}"/>
+                               Foreground="{Binding Insight.BatteryLevel, Converter={StaticResource PercentageToBrushConverter}}"/>
                 </Grid>
                 <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center">
                 </StackPanel>
             </Grid>
         </Viewbox>
 
-        <local:DPadView cal:Bind.Model="{Binding DPadViewModel}" Grid.Row="1"/>
+        <local:DPadView DataContext="{Binding DPadViewModel, Mode=OneTime}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

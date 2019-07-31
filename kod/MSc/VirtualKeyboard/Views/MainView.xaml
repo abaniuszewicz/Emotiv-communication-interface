@@ -14,7 +14,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="BCI Virtual Keyboard" Height="450" Width="800">
+        Title="BCI Virtual Keyboard" MinHeight="720" MinWidth="1280" Height="720" Width="1280">
 
     <materialDesign:DialogHost>
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsDrawerOpen}">

@@ -10,87 +10,16 @@ using HeadsetController.Headset;
 using HeadsetController.Services.API.Responses.DataSubscriptions;
 using HeadsetController.Services.API.Utils;
 using Microsoft.Win32;
+using VirtualKeyboard.Properties;
 
 namespace VirtualKeyboard.ViewModels
 {
     public class HeadsetInformationViewModel : PropertyChangedBase
     {
-        private int _batteryLevel;
-        private int _wirelessSignalLevel;
-        private int _af3Quality, af4Quality, t7Quality, t8Quality, pzQuality;
         private int _totalQuality;
 
-        public int BatteryLevel
-        {
-            get => _batteryLevel;
-            set
-            {
-                _batteryLevel = value;
-                NotifyOfPropertyChange(() => BatteryLevel);
-            }
-        }
-
-        public int WirelessSignalLevel
-        {
-            get => _wirelessSignalLevel;
-            set
-            {
-                _wirelessSignalLevel = value;
-                NotifyOfPropertyChange(() => WirelessSignalLevel);
-            }
-        }
-
-        public Dictionary<string, int> Sensors { get; set; } = new Dictionary<string, int>();
-
-        public int Af3Quality
-        {
-            get => _af3Quality;
-            set
-            {
-                _af3Quality = value;
-                NotifyOfPropertyChange(() => Af3Quality);
-            }
-        }
-
-        public int Af4Quality
-        {
-            get => af4Quality;
-            set
-            {
-                af4Quality = value;
-                NotifyOfPropertyChange(() => Af4Quality);
-            }
-        }
-
-        public int T7Quality
-        {
-            get => t7Quality;
-            set
-            {
-                t7Quality = value;
-                NotifyOfPropertyChange(() => T7Quality);
-            }
-        }
-
-        public int T8Quality
-        {
-            get => t8Quality;
-            set
-            {
-                t8Quality = value;
-                NotifyOfPropertyChange(() => T8Quality);
-            }
-        }
-
-        public int PzQuality
-        {
-            get => pzQuality;
-            set
-            {
-                pzQuality = value;
-                NotifyOfPropertyChange(() => PzQuality);
-            }
-        }
+        public Insight Insight { get; }
+        public DPadViewModel DPadViewModel { get; }
 
         public int TotalQuality
         {
@@ -102,36 +31,18 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-        public HeadsetInformationViewModel(Insight insight)
+        public HeadsetInformationViewModel(Insight insight, Models.Settings settings)
         {
-            BindingOperations.EnableCollectionSynchronization(Sensors, new object());
-
-            insight.OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
-            insight.OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
-            insight.Subscribe(new List<Enums.StreamsEnum>() {Enums.StreamsEnum.com, Enums.StreamsEnum.dev });
+            Insight = insight;
+            Insight.PropertyChanged += Insight_PropertyChanged;
+            DPadViewModel = new DPadViewModel(settings, Insight);
         }
 
-        private void Insight_OnDeviceInformationUpdate(DevDataSampleObject dev)
+        private void Insight_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            var list = dev.dev.ToList();
-            BatteryLevel = Convert.ToInt32(list[0]) * 25; //to get percentage result
-            WirelessSignalLevel = Convert.ToInt32(list[1]);
-
-            if (!(list[2] is List<int> contactQuality) || contactQuality.Count < 5)
-                return; //corrupted data
-
-            //possible values: 0-4, multiply *25 to get 0-100 (percentage)
-            Af3Quality = contactQuality[0] * 25;
-            t7Quality = contactQuality[1] * 25;
-            pzQuality = contactQuality[2] * 25;
-            t8Quality = contactQuality[3] * 25;
-            af4Quality = contactQuality[4] * 25;
-            TotalQuality = (Af3Quality + T7Quality + PzQuality + T8Quality + Af4Quality) / 5;
-        }
-
-        private void Insight_OnMentalCommandUpdate(ComDataSampleObject com)
-        {
-            var list = com.com.ToList();
+            var prop = e.PropertyName;
+            if (prop == "Af3Quality" || prop == "Af4Quality" || prop == "T7Quality" || prop == "T8Quality" || prop == "PzQuality")
+                TotalQuality = (Insight.Af3Quality + Insight.T7Quality + Insight.PzQuality + Insight.T8Quality + Insight.Af4Quality) / 5;
         }
     }
 }

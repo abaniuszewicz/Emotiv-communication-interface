@@ -41,8 +41,8 @@
                 </Grid.RowDefinitions>
 
                 <TextBox materialDesign:HintAssist.Hint="Client ID" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
-                    <Binding Path="ClientId" UpdateSourceTrigger="PropertyChanged">
+                         IsEnabled="{Binding Insight.IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
+                    <Binding Path="Insight.ClientId" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -50,8 +50,8 @@
                 </TextBox>
 
                 <TextBox materialDesign:HintAssist.Hint="Client Secret" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
-                    <Binding Path="ClientSecret" UpdateSourceTrigger="PropertyChanged" Mode="OneWay">
+                         IsEnabled="{Binding Insight.IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
+                    <Binding Path="Insight.ClientSecret" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -62,7 +62,7 @@
                       materialDesign:HintAssist.IsFloating="True"
                       x:Name="Headsets"
                       DisplayMemberPath="id" Grid.Row="2"
-                      IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
+                      IsEnabled="{Binding Insight.IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
                     <ComboBox.Text>
                         <Binding Path="SelectedHeadset" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -75,7 +75,7 @@
                 <ComboBox materialDesign:HintAssist.Hint="Profile"
                       materialDesign:HintAssist.IsFloating="True"
                       x:Name="Profiles" Grid.Row="3"
-                      IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
+                      IsEnabled="{Binding Insight.IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
                     <ComboBox.Text>
                         <Binding Path="SelectedProfile" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -87,7 +87,7 @@
 
                 <DockPanel Grid.Row="4" LastChildFill="False">
                     <Button x:Name="ChangeSessionStatus" Margin="5" 
-                            Content="{Binding IsSessionOpen, Converter={StaticResource BooleanToStringSelectConverter},
+                            Content="{Binding Insight.IsSessionOpen, Converter={StaticResource BooleanToStringSelectConverter},
                             ConverterParameter=Close Session|Create Session}" 
                             DockPanel.Dock="Right" VerticalAlignment="Bottom"
                             Style="{StaticResource MaterialDesignRaisedButton}"/>
@@ -95,7 +95,7 @@
                     <Button x:Name="RefreshInsight" Content="Refresh" Margin="5"
                             DockPanel.Dock="Right" VerticalAlignment="Bottom"
                             Style="{StaticResource MaterialDesignRaisedButton}"
-                            IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}"/>
+                            IsEnabled="{Binding Insight.IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}"/>
                 </DockPanel>
 
             </Grid>

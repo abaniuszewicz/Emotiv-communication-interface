@@ -36,13 +36,14 @@ namespace VirtualKeyboard.ViewModels
         {
             SettingsViewModel = settingsViewModel;
             ConnectionViewModel = connectionViewModel;
-            HeadsetInformationViewModel = new HeadsetInformationViewModel(ConnectionViewModel.Insight);
+            HeadsetInformationViewModel = new HeadsetInformationViewModel(ConnectionViewModel.Insight, SettingsViewModel.Settings);
 
             Synthesizer = new SpeechSynthesizer();
             Synthesizer.SelectVoiceByHints(VoiceGender.NotSet,
                 VoiceAge.NotSet, 0,
                 CultureInfo.GetCultureInfo("en-US"));
         }
+
 
         public void Pressed(IKey key)
         {

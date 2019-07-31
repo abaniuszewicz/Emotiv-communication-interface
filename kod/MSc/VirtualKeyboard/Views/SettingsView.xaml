@@ -36,23 +36,23 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Up Command Threshold" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Slider x:Name="UpThreshold" Grid.Row="0" Grid.Column="1"/>
+            <Slider Value="{Binding Settings.UpThreshold}" Grid.Row="0" Grid.Column="1"/>
             <TextBlock Text="Right Command Threshold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Slider x:Name="RightThreshold" Grid.Row="1" Grid.Column="1"/>
+            <Slider Value="{Binding Settings.RightThreshold}" Grid.Row="1" Grid.Column="1"/>
             <TextBlock Text="Down Command Threshold" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Slider x:Name="DownThreshold" Grid.Row="2" Grid.Column="1"/>
+            <Slider Value="{Binding Settings.DownThreshold}" Grid.Row="2" Grid.Column="1"/>
             <TextBlock Text="Left Command Threshold" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Slider x:Name="LeftThreshold" Grid.Row="3" Grid.Column="1"/>
+            <Slider Value="{Binding Settings.LeftThreshold}" Grid.Row="3" Grid.Column="1"/>
             
             <Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,0"/>
 
             <TextBlock Text="Command Focus Time" Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Slider x:Name="FocusTime" Grid.Row="5" Grid.Column="1" Minimum="1" Maximum="10" TickFrequency="0.01"/>
+            <Slider Value="{Binding Settings.FocusTime}" Grid.Row="5" Grid.Column="1" Minimum="0.1" Maximum="10" TickFrequency="0.01"/>
 
             <Separator Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,40"/>
 
             <TextBlock Text="Offline Mode Enable" Grid.Row="7" Grid.Column="0"/>
-            <ToggleButton Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <ToggleButton IsChecked="{Binding Settings.IsOfflineModeEnabled}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0"/>
 
         </Grid>
     </Border>

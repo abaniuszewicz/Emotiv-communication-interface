@@ -10,7 +10,6 @@ namespace VirtualKeyboard.Views.AttachedProperties
 {
     public class TextBoxExtensions
     {
-        private static bool _autoScroll;
         public static readonly DependencyProperty AlwaysScrollToEndProperty = DependencyProperty.RegisterAttached("AlwaysScrollToEnd", typeof(bool), typeof(TextBoxExtensions), new PropertyMetadata(false, AlwaysScrollToEndChanged));
 
         private static void AlwaysScrollToEndChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

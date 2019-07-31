@@ -26,7 +26,7 @@
                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="0,0,0,10"/>
         <DockPanel Grid.Row="1" LastChildFill="True">
             <Button x:Name="Send" Style="{StaticResource MaterialDesignFloatingActionButton}" Content="{materialDesign:PackIcon Send, Size=25}"
-                    DockPanel.Dock="Right" Margin="10"/>
+                    DockPanel.Dock="Right" Margin="10" ToolTip="Send"/>
             <TextBox x:Name="Request" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                      materialDesign:HintAssist.Hint="Request" materialDesign:HintAssist.IsFloating="True"
                      AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap"

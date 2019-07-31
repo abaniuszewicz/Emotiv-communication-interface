@@ -4,49 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using HeadsetController.Headset;
 
 namespace VirtualKeyboard.ViewModels
 {
     public class DPadViewModel : PropertyChangedBase
     {
-        private double _powerUp, _powerRight, _powerDown, _powerLeft;
+        public Insight Insight { get; }
+        public Models.Settings Settings { get; }
 
-        public double PowerUp
+        public DPadViewModel(Models.Settings settings, Insight insight)
         {
-            get => _powerUp;
-            set
-            {
-                _powerUp = value;
-                NotifyOfPropertyChange(() => PowerUp);
-            }
+            Insight = insight;
+            Settings = settings;
         }
-        public double PowerRight
-        {
-            get => _powerRight;
-            set
-            {
-                _powerRight = value;
-                NotifyOfPropertyChange(() => PowerRight);
-            }
-        }
-        public double PowerDown
-        {
-            get => _powerDown;
-            set
-            {
-                _powerDown = value;
-                NotifyOfPropertyChange(() => PowerDown);
-            }
-        }
-        public double PowerLeft
-        {
-            get => _powerLeft;
-            set
-            {
-                _powerLeft = value;
-                NotifyOfPropertyChange(() => PowerLeft);
-            }
-        }
-
     }
 }

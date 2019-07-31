@@ -23,6 +23,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -111,8 +112,13 @@
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  attachedProperties:TextBoxExtensions.AlwaysScrollToEnd="True"/>
 
+        <Separator Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource MaterialDesignSeparator}">
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </Separator.LayoutTransform>
+        </Separator>
 
-        <views:HeadsetInformationView cal:Bind.Model="{Binding HeadsetInformationViewModel}" Grid.Row="0" Grid.Column="1"
+        <views:HeadsetInformationView cal:Bind.Model="{Binding HeadsetInformationViewModel}" Grid.Row="0" Grid.Column="2"
                                           Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
     </Grid>
 </UserControl>
