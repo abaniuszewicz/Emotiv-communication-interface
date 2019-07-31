@@ -18,7 +18,9 @@ namespace VirtualKeyboard.ViewModels
 
         public string Name => "Virtual Keyboard";
         public SpeechSynthesizer Synthesizer { get; set; }
-        public HeadsetInformationViewModel HeadsetInformationViewModel { get; } = new HeadsetInformationViewModel();
+        public SettingsViewModel SettingsViewModel { get; }
+        public ConnectionViewModel ConnectionViewModel { get; }
+        public HeadsetInformationViewModel HeadsetInformationViewModel { get; }
 
         public string Message
         {
@@ -30,12 +32,15 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-        public KeyboardViewModel()
+        public KeyboardViewModel(SettingsViewModel settingsViewModel, ConnectionViewModel connectionViewModel)
         {
+            SettingsViewModel = settingsViewModel;
+            ConnectionViewModel = connectionViewModel;
+            HeadsetInformationViewModel = new HeadsetInformationViewModel(ConnectionViewModel.Insight);
+
             Synthesizer = new SpeechSynthesizer();
             Synthesizer.SelectVoiceByHints(VoiceGender.NotSet,
-                VoiceAge.NotSet,
-                0,
+                VoiceAge.NotSet, 0,
                 CultureInfo.GetCultureInfo("en-US"));
         }
 

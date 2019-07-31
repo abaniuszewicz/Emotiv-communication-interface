@@ -102,17 +102,13 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-        public HeadsetInformationViewModel()
+        public HeadsetInformationViewModel(Insight insight)
         {
             BindingOperations.EnableCollectionSynchronization(Sensors, new object());
-        }
 
-        public void Initialize()
-        {
-            SettingsViewModel.Insight.OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
-            SettingsViewModel.Insight.OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
-
-            SettingsViewModel.Insight.Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.com, Enums.StreamsEnum.dev });
+            insight.OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
+            insight.OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
+            insight.Subscribe(new List<Enums.StreamsEnum>() {Enums.StreamsEnum.com, Enums.StreamsEnum.dev });
         }
 
         private void Insight_OnDeviceInformationUpdate(DevDataSampleObject dev)

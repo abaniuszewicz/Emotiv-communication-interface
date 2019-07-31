@@ -38,13 +38,21 @@
                         <ToggleButton x:Name="MenuToggleButton"
                                       Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                                       IsChecked="{Binding IsDrawerOpen}"/>
-                        <Button x:Name="Exit" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignFlatAccentButton}">
-                            <materialDesign:PackIcon Kind="WindowClose" Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
-                        </Button>
-                        <materialDesign:PopupBox DockPanel.Dock="Right" StaysOpen="True" PlacementMode="LeftAndAlignTopEdges">
-                            <ContentControl cal:View.Model="{Binding Settings}"/>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" StaysOpen="True" PlacementMode="LeftAndAlignTopEdges" Margin="10,0,10,0"
+                                                 ToolTip="Connection">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Foreground="{StaticResource MaterialDesignDarkForeground}"></materialDesign:PackIcon>
+                            </materialDesign:PopupBox.ToggleContent>
+                            <ContentControl cal:View.Model="{Binding SettingsViewModel}"/>
                         </materialDesign:PopupBox>
-                        <TextBlock Text="BCI Virtual Keyboard" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" StaysOpen="True" PlacementMode="LeftAndAlignTopEdges" Margin="10,0,10,0"
+                                                 ToolTip="Manage Connection">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Kind="BluetoothSettings" Height="25" Width="25" Foreground="{StaticResource MaterialDesignDarkForeground}"/>
+                            </materialDesign:PopupBox.ToggleContent>
+                            <ContentControl cal:View.Model="{Binding ConnectionViewModel}"/>
+                        </materialDesign:PopupBox>
+                        <TextBlock Text="BCI Virtual Keyboard" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <Border Padding="20">

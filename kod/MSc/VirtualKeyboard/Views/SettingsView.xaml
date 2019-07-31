@@ -5,100 +5,55 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualKeyboard.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:validationRules="clr-namespace:VirtualKeyboard.ValidationRules"
-             xmlns:converters="clr-namespace:VirtualKeyboard.Converters"
              mc:Ignorable="d" >
 
     <UserControl.Resources>
-        <converters:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
-        <converters:ObjectToBooleanConverter x:Key="ObjectToBooleanConverter"/>
-        <converters:BooleanAndConverter x:Key="BooleanAndConverter"/>
-        <converters:CountToBooleanConverter x:Key="CountToBooleanConverter"/>
-        <converters:BooleanToStringSelectConverter x:Key="BooleanToStringSelectConverter"/>
+        <Style TargetType="{x:Type Slider}" BasedOn="{StaticResource MaterialDesignDiscreteSlider}">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="TickFrequency" Value="0.01"/>
+            <Setter Property="Minimum" Value="0"/>
+            <Setter Property="Maximum" Value="1"/>
+            <Setter Property="Margin" Value="0,0,0,2"></Setter>
+        </Style>
     </UserControl.Resources>
 
-    <materialDesign:DialogHost x:Name="DialogHost" IsOpen="{Binding IsBusy}">
-        <materialDesign:DialogHost.DialogContent>
-            <StackPanel>
-                <ProgressBar
-                    Style="{DynamicResource MaterialDesignCircularProgressBar}"
-                    Height="50" Width="50" Margin="50,20,50,10"
-                    HorizontalAlignment="Center"
-                    IsIndeterminate="True"
-                    Value="0">
-                </ProgressBar>
-                <TextBlock Text="Please wait" HorizontalAlignment="Center" Margin="10"/>
-            </StackPanel>
-        </materialDesign:DialogHost.DialogContent>
-        <Border Padding="10" BorderThickness="1">
-            <Grid Width="300" Height="300">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
 
-                <TextBox materialDesign:HintAssist.Hint="Client ID" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
-                    <Binding Path="ClientId" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
+    <Border Padding="10" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-                <TextBox materialDesign:HintAssist.Hint="Client Secret" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
-                    <Binding Path="ClientSecret" UpdateSourceTrigger="PropertyChanged" Mode="OneWay">
-                        <Binding.ValidationRules>
-                            <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
+            <TextBlock Text="Up Command Threshold" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider x:Name="UpThreshold" Grid.Row="0" Grid.Column="1"/>
+            <TextBlock Text="Right Command Threshold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider x:Name="RightThreshold" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Text="Down Command Threshold" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider x:Name="DownThreshold" Grid.Row="2" Grid.Column="1"/>
+            <TextBlock Text="Left Command Threshold" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider x:Name="LeftThreshold" Grid.Row="3" Grid.Column="1"/>
+            
+            <Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,0"/>
 
-                <ComboBox materialDesign:HintAssist.Hint="Headset"
-                      materialDesign:HintAssist.IsFloating="True"
-                      x:Name="Headsets"
-                      DisplayMemberPath="id" Grid.Row="2"
-                      IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
-                    <ComboBox.Text>
-                        <Binding Path="SelectedHeadset" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
+            <TextBlock Text="Command Focus Time" Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider x:Name="FocusTime" Grid.Row="5" Grid.Column="1" Minimum="1" Maximum="10" TickFrequency="0.01"/>
 
-                <ComboBox materialDesign:HintAssist.Hint="Profile"
-                      materialDesign:HintAssist.IsFloating="True"
-                      x:Name="Profiles" Grid.Row="3"
-                      IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}">
-                    <ComboBox.Text>
-                        <Binding Path="SelectedProfile" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </ComboBox.Text>
-                </ComboBox>
+            <Separator Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,40"/>
 
-                <DockPanel Grid.Row="4" LastChildFill="False">
-                    <Button x:Name="ChangeSessionStatus" Margin="5" 
-                            Content="{Binding IsSessionOpen, Converter={StaticResource BooleanToStringSelectConverter},
-                            ConverterParameter=Close Session|Create Session}" 
-                            DockPanel.Dock="Right" VerticalAlignment="Bottom"
-                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+            <TextBlock Text="Offline Mode Enable" Grid.Row="7" Grid.Column="0"/>
+            <ToggleButton Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0"/>
 
-                    <Button x:Name="RefreshInsight" Content="Refresh" Margin="5"
-                            DockPanel.Dock="Right" VerticalAlignment="Bottom"
-                            Style="{StaticResource MaterialDesignRaisedButton}"
-                            IsEnabled="{Binding IsSessionOpen, Converter={StaticResource InvertBooleanConverter}}"/>
-                </DockPanel>
-
-            </Grid>
-        </Border>
-    </materialDesign:DialogHost>
+        </Grid>
+    </Border>
 </UserControl>

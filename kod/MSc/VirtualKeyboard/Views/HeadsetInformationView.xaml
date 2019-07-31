@@ -12,7 +12,7 @@
         <converters:PercentageToBrushConverter x:Key="PercentageToBrushConverter"/>
     </UserControl.Resources>
 
-    <Grid cal:Message.Attach="[Event Loaded] = [Action Initialize()]">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>

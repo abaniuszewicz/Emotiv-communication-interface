@@ -15,13 +15,10 @@ namespace VirtualKeyboard.ViewModels
     {
         private bool _isDrawerOpen;
 
-        public ObservableCollection<PropertyChangedBase> Views { get; }
-            = new ObservableCollection<PropertyChangedBase>()
-            {
-                new KeyboardViewModel()
-            };
+        public ObservableCollection<PropertyChangedBase> Views { get; } = new ObservableCollection<PropertyChangedBase>();
 
-        public SettingsViewModel Settings { get; } = new SettingsViewModel();
+        public ConnectionViewModel ConnectionViewModel { get; } = new ConnectionViewModel();
+        public SettingsViewModel SettingsViewModel { get; } = new SettingsViewModel();
 
         public bool IsDrawerOpen
         {
@@ -38,9 +35,10 @@ namespace VirtualKeyboard.ViewModels
             IsDrawerOpen = false;
         }
 
-        public void Exit()
+        public MainViewModel()
         {
-            System.Windows.Application.Current.Shutdown();
+            Views.Add(new KeyboardViewModel(SettingsViewModel, ConnectionViewModel));
+            Views.Add(new MessengerViewModel(ConnectionViewModel.Insight));
         }
     }
 }
