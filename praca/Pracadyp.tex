@@ -660,10 +660,22 @@ Platforma OpenBCI umożliwia również współpracę z innymi programami do anal
 
 \chapter{Projekt wirtualnej klawiatury}
 \section{Założenia projektowe}
-\section{Wybór urządzenia rejestrującego}
-\section{Dobór narzędzi}
+
+\section{Wybór narzędzi}
+\subsection{Urządzenia rejestrujące}
+Wybierając urządzenie rejestrujące poszukiwano urządzenia, które (1) jest nieinwazyjne, (2) posiada rozwinięte SDK oraz bazę przykładowych aplikacji, (3) zapewnia sprzętowe wsparcie w zakresie detekcji komend mentalnych, (4) jest przystępne cenowo -- kosztuje poniżej 500 \$. Dodatkową zaletą urządzenia, aczkolwiek niewymaganą do realizacji niniejszej pracy, byłaby (6) możliwość rejestracji dodatkowych sygnałów, na przykład przy użyciu akcelerometru. Wyboru dokonywano spośród urządzeń opisanych w rozdziale \vref{chap:headsets}.
+
+W przypadku OpenBCI Ultracortex \textit{Mark IV}, jednym z jego mankamentów jest wysoka cena -- nawet w przypadku zakupu najtańszego rozwiązania, a więc hełmu do samodzielnego druku oraz montażu wraz z układem Ganglion Board, cena wynosiła 500 \$. Po doliczeniu do tej kwoty wymaganych elektrod cena znacznie wzrasta. W przypadku oferowanego przez firmę OpenBCI \href{https://shop.openbci.com/collections/frontpage/products/d-i-y-neurotechnologists-starter-kit}{Starter Kitu}, który zawiera wszystkie wymagane peryferiale, cena wynosi blisko 950 \$. Samodzielność montażu w odczuciu autora pracy jest ryzykownym posunięciem w przypadku tak delikatnych oraz precyzyjnych urządzeń, tym bardziej że nie jest to standardowy model sprzedaży tej gamy urządzeń. Niewątpliwą zaletą urządzeń OpenBCI jest ich otwartoźródłowość -- oprogramowanie jest dostępne na serwisie \href{https://github.com/OpenBC}{GitHub}. Inną zaletą jest jego duża popularność oraz integracja z wieloma programami do analizy danych, jak na przykład MATLAB.
+
+Urządzenia Muse 2 oraz MindWave Mobile 2 w odczuciu autora są narzędziami mało precyzyjnymi, nie nadającymi się do wykorzystania w celach badawczych. Ich zaletami jest łatwość nakładania, niska cena oraz \textit{smukłość}, która prawdopodobnie pozwala na długie sesję bez odczuwania dyskomfortu związanego z naciskiem urządzenia. Wadą Muse 2 jest brak SDK dla programistów. Wadą MindWave Mobile 2 jest liczba elektrod rejestrujących -- urządzenie jest wyposażone w wyłącznie jedną.
+
+Emotiv Insight oraz EPOC+ są bardzo popularne wśród osób zajmujących się tematyką BCI. Za pomocą rozbudowanego API pozwalają na detekcję nie tylko aktywności mózgu w poszczególnych pasmach, ale również komend mentalnych oraz mimiki. Ze względu na wykorzystywany protokół komunikacyjny, są uniwersalne pod względem platformy programistycznej oraz języka programowania. Ich największym mankamentem jest brak darmowego dostępu do \textit{surowych} danych EEG -- żeby je uzyskać trzeba wykupić licencję. Urządzenie EPOC+ charakteryzuje się lepszymi parametrami niż Insight, jednak jest od niego droższe. Inną jego wadą jest rodzaj czujników; EPOC+ używa nasączanych solą fizjologiczną, podczas kiedy czujniki w Insight są wykonane z półsuchego polimeru.
+
+Ostatecznie zakupiono urządzenie Emotiv Insight. Nabyto najnowszą wersję urządzenia; premiera modelu odbyła się w maju 2019 roku. Niniejsza praca jest jednym z pierwszych projektów powstających na jego nowej odsłonie. Głównym czynnikiem przemawiającym na jego korzyść był dostęp do zaawansowanego API, który znacznie wspomoże realizację pracy. Urządzenie posiada również atrakcyjną cenę, w odczuciu autora, w przypadku omówionych urządzeń, Emotiv Insight zapewnia najlepszy stosunek ceny do oferowanych możliwości.
+
+
 \subsection{Język programowania}
-Wybierając język programowania poszukiwano języka, który: (1) jest językiem wysokiego poziomu, (2) jest językiem obiektowym, (3) umożliwia łatwe tworzenie interfejsu użytkownika, (4) posiada kompleksową dokumentację, (5) charakteryzuje się potencjałem przyszłego rozwoju oraz (6) dużą popularnością. 
+Wybierając język programowania poszukiwano języka, który (1) jest językiem wysokiego poziomu, (2) jest językiem obiektowym, (3) umożliwia łatwe tworzenie interfejsu użytkownika, (4) posiada kompleksową dokumentację, (5) charakteryzuje się potencjałem przyszłego rozwoju oraz (6) dużą popularnością. 
 
 Języki wysokiego poziomu ułatwiają proces tworzenia oprogramowania, zwiększając czytelność kodu oraz poziom jego abstrakcji. Pozwalają na zdystansowanie się od warstwy sprzętowej komputera oraz większe skupienie się na aspektach związanych z logiką programu.
 
@@ -691,7 +703,7 @@ Wybranie języka C\# wiąże się również z wyborem technologii tworzenia inte
 \subsection{Środowisko programistyczne}
 Najpopularniejszymi środowiskami programistycznymi do języka C\# są \href{https://visualstudio.microsoft.com/vs/}{Visual Studio}, \href{https://www.jetbrains.com/rider/}{Rider} oraz \href{https://code.visualstudio.com}{Visual Studio Code}.
 
-Zarówno Visual Studio jak i Rider są bardzo zaawansowanymi środowiskami. Oba programy posiadają funkcjonalności usprawniające tworzenie kodu, jego debugowanie, integrację testów oraz zarządzanie projektem, co czyni je niezwykle potężnymi narzędziami do pracy z językiem C\#. Główne różnice sprowadzają się do dwóch cech:
+Zarówno Visual Studio jak i Rider są bardzo zaawansowanymi środowiskami. Oba programy posiadają funkcjonalności usprawniające tworzenie kodu, jego debugowanie, integrację testów oraz zarządzanie projektem, co czyni je niezwykle potężnymi narzędziami do pracy z językiem C\#. W odczuciu autora główne różnice sprowadzają się do dwóch cech:
 \begin{enumerate}
     \item Visual Studio posiada darmową wersję Community, podczas kiedy Rider, pomijając miesięczną wersję trial, wymaga zakupienia licencji,
     \item Rider zapewnia znacznie więcej funkcjonalności dotyczących inspekcji kodu, czyli wykrywania oraz zastępowania jego fragmentów w celu ich uproszczenia lub uniknięcia potencjalnych błędów\cite{rider}. 
@@ -702,6 +714,7 @@ Visual Studio Code, pomimo iż z definicji jest edytorem kodu, a nie zintegrowan
 Ostatecznie zdecydowano się na zrealizowanie projektu, wykorzystując do tego celu Visual Studio. Rider został odrzucony ze względu na konieczność zakupienia licencji oraz jego krótki okres obecności na rynku, przez co opinie na jego temat mogą nie być obiektywne. Visual Studio Code nie zostało wybrane ze względu na swoje nikłe możliwości w zakresie refaktoryzacji kodu.
 
 \subsection{System kontroli wersji}
+Jako system kontroli wersji wybrano Git. Opracowana aplikacja jest hostowana w prywatnym, niedostępnym dla osób postronnych, repozytorium na serwisie \href{www.github.com}{GitHub}
 
 \section{Omówienie aplikacji}
 \subsection{Struktura kodu źródłowego}
