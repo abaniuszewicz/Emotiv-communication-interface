@@ -30,6 +30,7 @@ namespace HeadsetController.Headset
         private int _wirelessSignalLevel;
         private int _af3Quality, af4Quality, t7Quality, t8Quality, pzQuality;
         private double _pushLevel, _pullLevel, _leftLevel, _rightLevel;
+        private double _blinkLevel;
 
         #endregion
 
@@ -172,6 +173,16 @@ namespace HeadsetController.Headset
             }
         }
 
+        public double BlinkLevel
+        {
+            get => _blinkLevel;
+            set
+            {
+                _blinkLevel = value;
+                OnPropertyChanged(nameof(BlinkLevel));
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -180,7 +191,7 @@ namespace HeadsetController.Headset
         {
             OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
             OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
-            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.com, Enums.StreamsEnum.dev });
+            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.com, Enums.StreamsEnum.dev, Enums.StreamsEnum.fac });
         }
 
         #endregion

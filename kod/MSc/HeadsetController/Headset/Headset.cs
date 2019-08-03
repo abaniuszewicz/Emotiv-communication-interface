@@ -23,6 +23,7 @@ namespace HeadsetController.Headset
         public event Action<string> OnRequest;
         public event Action<ComDataSampleObject> OnMentalCommandUpdate;
         public event Action<DevDataSampleObject> OnDeviceInformationUpdate;
+        public event Action<FacDataSampleObject> OnFacialExpressionUpdate;
 
         #endregion
 
@@ -90,6 +91,8 @@ namespace HeadsetController.Headset
                     OnMentalCommandUpdate?.Invoke(Parser.Deserialize<ComDataSampleObject>(message));
                 else if (jObject.ContainsKey("dev")) //device information update
                     OnDeviceInformationUpdate?.Invoke(Parser.Deserialize<DevDataSampleObject>(message));
+                else if (jObject.ContainsKey("fac")) //facial expression update
+                    OnFacialExpressionUpdate?.Invoke(Parser.Deserialize<FacDataSampleObject>(message));
                 return;
             }
 

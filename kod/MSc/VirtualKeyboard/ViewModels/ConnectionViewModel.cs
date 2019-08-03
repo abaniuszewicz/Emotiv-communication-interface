@@ -39,7 +39,7 @@ namespace VirtualKeyboard.ViewModels
             }
         }
 
-        public bool CanCreateSession => !string.IsNullOrWhiteSpace(Insight.ClientId)
+        public bool CanChangeSessionStatus => !string.IsNullOrWhiteSpace(Insight.ClientId)
                                   && !string.IsNullOrWhiteSpace(Insight.ClientSecret)
                                   && SelectedHeadset != null
                                   && !string.IsNullOrWhiteSpace(SelectedProfile);
@@ -52,7 +52,7 @@ namespace VirtualKeyboard.ViewModels
                 _selectedHeadset = value;
                 Insight.HeadsetObject = SelectedHeadset;
                 NotifyOfPropertyChange(() => SelectedHeadset);
-                NotifyOfPropertyChange(() => CanCreateSession);
+                NotifyOfPropertyChange(() => CanChangeSessionStatus);
             }
         }
 
@@ -63,7 +63,7 @@ namespace VirtualKeyboard.ViewModels
             {
                 _selectedProfile = value;
                 NotifyOfPropertyChange(() => SelectedProfile);
-                NotifyOfPropertyChange(() => CanCreateSession);
+                NotifyOfPropertyChange(() => CanChangeSessionStatus);
             }
         }
 

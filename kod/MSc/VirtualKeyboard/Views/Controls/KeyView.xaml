@@ -13,14 +13,13 @@
     </UserControl.Resources>
 
     <Grid>
-        <Border x:Name="Border" BorderThickness="5" CornerRadius="3"
+        <Border x:Name="Border" BorderThickness="6" CornerRadius="3"
                 BorderBrush="{StaticResource SecondaryAccentBrush}" 
                 Visibility="{Binding IsSelected, ElementName=KeyUserControl, 
                     Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <Button x:Name="Button" Click="ButtonBase_OnClick"  Margin="5" 
-                    MouseEnter="Button_OnMouseEnter" MouseLeave="Button_OnMouseLeave"
-                    GotFocus="Button_OnGotFocus" LostFocus="Button_OnLostFocus"
-                    Content="{Binding Key, ElementName=KeyUserControl}"
-                    Height="{Binding}"/>
+        <Button x:Name="Button" Click="ButtonBase_OnClick"  Margin="5"
+                GotFocus="Button_OnGotFocus"
+                Content="{Binding Key, ElementName=KeyUserControl}"
+                Height="{Binding}"/>
     </Grid>
 </UserControl>

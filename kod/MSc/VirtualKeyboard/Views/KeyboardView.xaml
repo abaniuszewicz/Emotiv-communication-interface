@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" 
-              KeyboardNavigation.DirectionalNavigation="Contained" 
+              KeyboardNavigation.DirectionalNavigation="Cycle" 
               KeyboardNavigation.TabNavigation="Contained"
               MinWidth="450" MinHeight="300">
             <Grid.RowDefinitions>
@@ -54,60 +54,63 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <controls:KeyView Key="Z" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="0" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[0]}" Grid.Row="0" Grid.Column="4"/>
 
-            <controls:KeyView Key="←" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="1" Grid.Column="3"/>
-            <controls:KeyView Key="M" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="1" Grid.Column="4"/>
-            <controls:KeyView Key="3" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="1" Grid.Column="5"/>
 
-            <controls:KeyView Key="." cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="2" Grid.Column="2"/>
-            <controls:KeyView Key="X" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="2" Grid.Column="3"/>
-            <controls:KeyView Key="O" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="2" Grid.Column="4"/>
-            <controls:KeyView Key="G" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="2" Grid.Column="5"/>
-            <controls:KeyView Key="4" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="2" Grid.Column="6"/>
+            <controls:KeyView Content="{Binding Keys[1]}" Grid.Row="1" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[2]}" Grid.Row="1" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[3]}" Grid.Row="1" Grid.Column="5"/>
 
-            <controls:KeyView Key="," cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="1"/>
-            <controls:KeyView Key="J" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="2"/>
-            <controls:KeyView Key="C" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="3"/>
-            <controls:KeyView Key="T" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="4"/>
-            <controls:KeyView Key="D" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="5"/>
-            <controls:KeyView Key="P" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="6"/>
-            <controls:KeyView Key="5" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="3" Grid.Column="7"/>
+            <controls:KeyView Content="{Binding Keys[4]}" Grid.Row="2" Grid.Column="2"/>
+            <controls:KeyView Content="{Binding Keys[5]}" Grid.Row="2" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[6]}" Grid.Row="2" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[7]}" Grid.Row="2" Grid.Column="5"/>
+            <controls:KeyView Content="{Binding Keys[8]}" Grid.Row="2" Grid.Column="6"/>
 
-            <controls:KeyView Key="2" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="0"/>
-            <controls:KeyView Key="Y" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="1"/>
-            <controls:KeyView Key="R" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="2"/>
-            <controls:KeyView Key="N" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="3"/>
-            <controls:KeyView Key="E" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="4"/>
-            <controls:KeyView Key="A" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="5"/>
-            <controls:KeyView Key="S" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="6"/>
-            <controls:KeyView Key="F" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="7"/>
-            <controls:KeyView Key="0" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="4" Grid.Column="8"/>
+            <controls:KeyView Content="{Binding Keys[9]}" Grid.Row="3" Grid.Column="1"/>
+            <controls:KeyView Content="{Binding Keys[10]}" Grid.Row="3" Grid.Column="2"/>
+            <controls:KeyView Content="{Binding Keys[11]}" Grid.Row="3" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[12]}" Grid.Row="3" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[13]}" Grid.Row="3" Grid.Column="5"/>
+            <controls:KeyView Content="{Binding Keys[14]}" Grid.Row="3" Grid.Column="6"/>
+            <controls:KeyView Content="{Binding Keys[15]}" Grid.Row="3" Grid.Column="7"/>
 
-            <controls:KeyView Key="↵" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="1"/>
-            <controls:KeyView Key="Q" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="2"/>
-            <controls:KeyView Key="U" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="3"/>
-            <controls:KeyView Key="I" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="4"/>
-            <controls:KeyView Key="L" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="5"/>
-            <controls:KeyView Key="B" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="6"/>
-            <controls:KeyView Key="6" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="5" Grid.Column="7"/>
+            <controls:KeyView Content="{Binding Keys[16]}" Grid.Row="4" Grid.Column="0"/>
+            <controls:KeyView Content="{Binding Keys[17]}" Grid.Row="4" Grid.Column="1"/>
+            <controls:KeyView Content="{Binding Keys[18]}" Grid.Row="4" Grid.Column="2"/>
+            <controls:KeyView Content="{Binding Keys[19]}" Grid.Row="4" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[20]}" Grid.Row="4" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[21]}" Grid.Row="4" Grid.Column="5"/>
+            <controls:KeyView Content="{Binding Keys[22]}" Grid.Row="4" Grid.Column="6"/>
+            <controls:KeyView Content="{Binding Keys[23]}" Grid.Row="4" Grid.Column="7"/>
+            <controls:KeyView Content="{Binding Keys[24]}" Grid.Row="4" Grid.Column="8"/>
 
-            <controls:KeyView Key="␣" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="6" Grid.Column="2"/>
-            <controls:KeyView Key="K" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="6" Grid.Column="3"/>
-            <controls:KeyView Key="H" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="6" Grid.Column="4"/>
-            <controls:KeyView Key="V" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="6" Grid.Column="5"/>
-            <controls:KeyView Key="7" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="6" Grid.Column="6"/>
+            <controls:KeyView Content="{Binding Keys[25]}" Grid.Row="5" Grid.Column="1"/>
+            <controls:KeyView Content="{Binding Keys[26]}" Grid.Row="5" Grid.Column="2"/>
+            <controls:KeyView Content="{Binding Keys[27]}" Grid.Row="5" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[28]}" Grid.Row="5" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[29]}" Grid.Row="5" Grid.Column="5"/>
+            <controls:KeyView Content="{Binding Keys[30]}" Grid.Row="5" Grid.Column="6"/>
+            <controls:KeyView Content="{Binding Keys[31]}" Grid.Row="5" Grid.Column="7"/>
 
-            <controls:KeyView Key="9" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="7" Grid.Column="3"/>
-            <controls:KeyView Key="W" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="7" Grid.Column="4"/>
-            <controls:KeyView Key="8" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="7" Grid.Column="5"/>
+            <controls:KeyView Content="{Binding Keys[32]}" Grid.Row="6" Grid.Column="2"/>
+            <controls:KeyView Content="{Binding Keys[33]}" Grid.Row="6" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[34]}" Grid.Row="6" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[35]}" Grid.Row="6" Grid.Column="5"/>
+            <controls:KeyView Content="{Binding Keys[36]}" Grid.Row="6" Grid.Column="6"/>
 
-            <controls:KeyView Key="1" cal:Message.Attach="[Event Pressed] = [Action Pressed($source)]" Grid.Row="8" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[37]}" Grid.Row="7" Grid.Column="3"/>
+            <controls:KeyView Content="{Binding Keys[38]}" Grid.Row="7" Grid.Column="4"/>
+            <controls:KeyView Content="{Binding Keys[39]}" Grid.Row="7" Grid.Column="5"/>
+
+            <controls:KeyView Content="{Binding Keys[40]}" Grid.Row="8" Grid.Column="4"/>
+
+            <controls:KeyView Content="{Binding Keys[41]}" Grid.Row="8" Grid.Column="8"/>
         </Grid>
 
         <TextBox x:Name="Message" materialDesign:HintAssist.Hint="Message" TextWrapping="Wrap" FontSize="24"
                  IsReadOnly="True" Focusable="False" CharacterCasing="Upper" VerticalContentAlignment="Stretch"
-                 HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True"
                  Grid.Row="1" Grid.Column="0"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  attachedProperties:TextBoxExtensions.AlwaysScrollToEnd="True"/>

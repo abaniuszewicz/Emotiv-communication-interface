@@ -23,7 +23,7 @@
                     <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                                   DockPanel.Dock="Top" HorizontalAlignment="Right"
                                   IsChecked="{Binding IsDrawerOpen}"/>
-                    <ListBox x:Name="Views" ItemsSource="{Binding Views}" DisplayMemberPath="Name">
+                    <ListBox x:Name="Views" ItemsSource="{Binding Views}" DisplayMemberPath="Name" SelectedIndex="0">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel cal:Message.Attach="[Event MouseUp] = [Action CloseDrawer()]"/>
@@ -46,7 +46,7 @@
                             <ContentControl cal:View.Model="{Binding SettingsViewModel}"/>
                         </materialDesign:PopupBox>
                         <materialDesign:PopupBox DockPanel.Dock="Right" StaysOpen="True" PlacementMode="LeftAndAlignTopEdges" Margin="10,0,10,0"
-                                                 ToolTip="Manage Connection">
+                                                 ToolTip="Connection">
                             <materialDesign:PopupBox.ToggleContent>
                                 <materialDesign:PackIcon Kind="BluetoothSettings" Height="25" Width="25" Foreground="{StaticResource MaterialDesignDarkForeground}"/>
                             </materialDesign:PopupBox.ToggleContent>

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:VirtualKeyboard.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -19,7 +20,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
                         <Grid x:Name="TemplateRoot" SnapsToDevicePixels="True">
-                            <Path x:Name="PART_Track" HorizontalAlignment="Left" Stretch="Fill" StrokeLineJoin="Round" Stroke="Black" StrokeThickness="1.5" Data="M 0 110 90 110 65 90 85 90 120 120 85 150 65 150 90 130 0 130 Z" SnapsToDevicePixels="True">
+                            <Path x:Name="PART_Track" HorizontalAlignment="Left" Stretch="Fill" StrokeLineJoin="Round" Stroke="Black" StrokeThickness="1.5" Data="M 0 110 90 110 65 90 85 90 120 120 85 150 65 150 90 130 0 130 Z">
                                 <Path.Fill>
                                     <MultiBinding>
                                         <MultiBinding.Converter>
@@ -33,7 +34,7 @@
                                     </MultiBinding>
                                 </Path.Fill>
                             </Path>
-                            <Rectangle HorizontalAlignment="Left" x:Name="PART_Indicator" SnapsToDevicePixels="True"/>
+                            <Rectangle HorizontalAlignment="Left" x:Name="PART_Indicator"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -72,30 +73,30 @@
                     <RotateTransform Angle="270"/>
                 </Grid.LayoutTransform>
                 <ProgressBar x:Name="PowerUp" Value="{Binding Insight.PushLevel}" Style="{StaticResource ArrowProgressBar}"/>
-                <Rectangle Width="1" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" 
+                <Rectangle Width="3" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" StrokeThickness="2"
                                Margin="{Binding Settings.UpThreshold, Converter={StaticResource FocusThresholdToMarginConverter}, Mode=OneWay}"/>
             </Grid>
-            <Slider Value="{Binding Insight.PushLevel}" Grid.Row="0" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center"/>
+            <Slider Value="{Binding Insight.PushLevel}" Grid.Row="0" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" Margin="0,1,0,0"/>
 
             <Grid Grid.Row="2" Grid.Column="4">
                 <Grid.LayoutTransform>
                     <RotateTransform Angle="0"/>
                 </Grid.LayoutTransform>
                 <ProgressBar x:Name="PowerRight" Value="{Binding Insight.RightLevel}" Style="{StaticResource ArrowProgressBar}"/>
-                <Rectangle Width="1" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left"
+                <Rectangle Width="3" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" StrokeThickness="2"
                                Margin="{Binding Settings.RightThreshold, Converter={StaticResource FocusThresholdToMarginConverter}, Mode=OneWay}"/>
             </Grid>
-            <Slider Value="{Binding Insight.RightLevel}" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" Orientation="Horizontal"/>
+            <Slider Value="{Binding Insight.RightLevel}" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,1,0"/>
 
             <Grid Grid.Row="4" Grid.Column="2">
                 <Grid.LayoutTransform>
                     <RotateTransform Angle="90"/>
                 </Grid.LayoutTransform>
                 <ProgressBar x:Name="PowerDown" Value="{Binding Insight.PullLevel}" Style="{StaticResource ArrowProgressBar}"/>
-                <Rectangle Width="1" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left"
+                <Rectangle Width="3" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" StrokeThickness="2"
                                Margin="{Binding Settings.DownThreshold, Converter={StaticResource FocusThresholdToMarginConverter}, Mode=OneWay}"/>
             </Grid>
-            <Slider Value="{Binding Insight.PullLevel}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical">
+            <Slider Value="{Binding Insight.PullLevel}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical"  Margin="0,0,0,1">
                 <Slider.LayoutTransform>
                     <RotateTransform Angle="180"/>
                 </Slider.LayoutTransform>
@@ -106,17 +107,21 @@
                     <RotateTransform Angle="180"/>
                 </Grid.LayoutTransform>
                 <ProgressBar x:Name="PowerLeft" Value="{Binding Insight.LeftLevel}" Style="{StaticResource ArrowProgressBar}"/>
-                <Rectangle Width="1" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left"
+                <Rectangle Width="3" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" StrokeThickness="2"
                                Margin="{Binding Settings.LeftThreshold, Converter={StaticResource FocusThresholdToMarginConverter}, Mode=OneWay}"/>
             </Grid>
-            <Slider Value="{Binding Insight.LeftLevel}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+            <Slider Value="{Binding Insight.LeftLevel}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal"  Margin="1,0,0,0">
                 <Slider.LayoutTransform>
                     <RotateTransform Angle="180"/>
                 </Slider.LayoutTransform>
             </Slider>
 
-            <Viewbox Grid.Row="2" Grid.Column="2" >
-                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" IsIndeterminate="True"/>
+            <Viewbox Grid.Row="2" Grid.Column="2">
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
+                        Content="{materialDesign:PackIcon CursorDefaultClickOutline, Size=30}" cal:Message.Attach="[Event Click] = [Action Select($args)]"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" 
+                        materialDesign:ButtonProgressAssist.Value="{Binding Insight.SelectLevel}"
+                        materialDesign:ButtonProgressAssist.Minimum="0" materialDesign:ButtonProgressAssist.Maximum="1"/>
             </Viewbox>
         </Grid>
     </Viewbox>

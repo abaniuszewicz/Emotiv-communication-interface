@@ -42,6 +42,7 @@ namespace VirtualKeyboard.ViewModels
             SettingsViewModel = new SettingsViewModel() { Settings = SettingsSerializer.Deserialize() };
             Views.Add(new KeyboardViewModel(SettingsViewModel, ConnectionViewModel));
             Views.Add(new MessengerViewModel(ConnectionViewModel.Insight));
+            Views.Add(new AboutViewModel());
         }
 
         private void Current_Exit(object sender, ExitEventArgs e)

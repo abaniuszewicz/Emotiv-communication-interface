@@ -76,6 +76,7 @@
     <Compile Include="Services\API\Responses\BCI\TrainingResponse.cs" />
     <Compile Include="Services\API\Responses\DataSubscriptions\ComDataSampleObject.cs" />
     <Compile Include="Services\API\Responses\DataSubscriptions\DevDataSampleObject.cs" />
+    <Compile Include="Services\API\Responses\DataSubscriptions\FacDataSampleObject.cs" />
     <Compile Include="Services\API\Responses\DataSubscriptions\SubscribeResponse.cs" />
     <Compile Include="Services\API\Responses\DataSubscriptions\UnsubscribeResponse.cs" />
     <Compile Include="Services\API\Responses\Headsets\ControlDeviceResponse.cs" />

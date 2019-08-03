@@ -35,19 +35,24 @@ namespace VirtualKeyboard.ViewModels
             _insight = insight;
             BindingOperations.EnableCollectionSynchronization(MessageHistory, new object());
             _insight.OnResponse += Received;
+            _insight.OnRequest += Sent;
         }
 
         public void Send()
         {
             _insight.SendRequest(Request);
-            MessageHistory.Add($"{DateTime.Now:dd-MM-yyyy hh:mm:ss.ffff} sent:{Environment.NewLine}{Request}");
-            NotifyOfPropertyChange(() => MessageHistory);
             Request = string.Empty;
         }
 
         private void Received(string message)
         {
             MessageHistory.Add($"{DateTime.Now:dd-MM-yyyy hh:mm:ss.ffff} received:{Environment.NewLine}{message}");
+            NotifyOfPropertyChange(() => MessageHistory);
+        }
+
+        public void Sent(string message)
+        {
+            MessageHistory.Add($"{DateTime.Now:dd-MM-yyyy hh:mm:ss.ffff} sent:{Environment.NewLine}{message}");
             NotifyOfPropertyChange(() => MessageHistory);
         }
     }

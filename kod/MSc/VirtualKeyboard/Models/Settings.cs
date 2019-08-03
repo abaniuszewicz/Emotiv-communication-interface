@@ -16,7 +16,8 @@ namespace VirtualKeyboard.Models
         private double _rightThreshold;
         private double _downThreshold;
         private double _leftThreshold;
-        private double _focusTime;
+        private double _selectThreshold;
+        private int _focusTime;
         private bool _isOfflineModeEnabled;
 
         [DataMember]
@@ -64,7 +65,18 @@ namespace VirtualKeyboard.Models
         }
 
         [DataMember]
-        public double FocusTime
+        public double SelectThreshold
+        {
+            get => _selectThreshold;
+            set
+            {
+                _selectThreshold = value;
+                NotifyOfPropertyChange(() => SelectThreshold);
+            }
+        }
+
+        [DataMember]
+        public int FocusTime
         {
             get => _focusTime;
             set

@@ -29,6 +29,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -43,16 +44,18 @@
             <Slider Value="{Binding Settings.DownThreshold}" Grid.Row="2" Grid.Column="1"/>
             <TextBlock Text="Left Command Threshold" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom"/>
             <Slider Value="{Binding Settings.LeftThreshold}" Grid.Row="3" Grid.Column="1"/>
+            <TextBlock Text="Select Command Threshold" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider Value="{Binding Settings.SelectThreshold}" Grid.Row="4" Grid.Column="1"/>
             
-            <Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,0"/>
+            <Separator Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,0"/>
 
-            <TextBlock Text="Command Focus Time" Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom"/>
-            <Slider Value="{Binding Settings.FocusTime}" Grid.Row="5" Grid.Column="1" Minimum="0.1" Maximum="10" TickFrequency="0.01"/>
+            <TextBlock Text="Command Focus Time" Grid.Row="6" Grid.Column="0" VerticalAlignment="Bottom"/>
+            <Slider Value="{Binding Settings.FocusTime}" Grid.Row="6" Grid.Column="1" Minimum="1" Maximum="2500" TickFrequency="1" ToolTip="Command focus time in ms"/>
 
-            <Separator Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,40"/>
+            <Separator Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,40,0,40"/>
 
-            <TextBlock Text="Offline Mode Enable" Grid.Row="7" Grid.Column="0"/>
-            <ToggleButton IsChecked="{Binding Settings.IsOfflineModeEnabled}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Text="Offline Mode Enable" Grid.Row="8" Grid.Column="0"/>
+            <ToggleButton IsChecked="{Binding Settings.IsOfflineModeEnabled}" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0"/>
 
         </Grid>
     </Border>

@@ -658,7 +658,63 @@ OpenBCI dostarcza również bibliotekę Brainflow, która służy do analizy dan
 Platforma OpenBCI umożliwia również współpracę z innymi programami do analizy sygnałów, m.in. \href{https://www.mathworks.com/products/matlab.html}{MATLAB}, \href{https://www.neuromore.com/}{Neuromore}, \href{http://openvibe.inria.fr/}{OpenVIBE}, \href{https://github.com/sccn/labstreaminglayer}{LabStreamingLayer} oraz \href{http://www.shifz.org/brainbay/}{BrainBay}.
 
 
-\chapter{Projekt systemu}
+\chapter{Projekt wirtualnej klawiatury}
+\section{Założenia projektowe}
+\section{Wybór urządzenia rejestrującego}
+\section{Dobór narzędzi}
+\subsection{Język programowania}
+Wybierając język programowania poszukiwano języka, który: (1) jest językiem wysokiego poziomu, (2) jest językiem obiektowym, (3) umożliwia łatwe tworzenie interfejsu użytkownika, (4) posiada kompleksową dokumentację, (5) charakteryzuje się potencjałem przyszłego rozwoju oraz (6) dużą popularnością. 
+
+Języki wysokiego poziomu ułatwiają proces tworzenia oprogramowania, zwiększając czytelność kodu oraz poziom jego abstrakcji. Pozwalają na zdystansowanie się od warstwy sprzętowej komputera oraz większe skupienie się na aspektach związanych z logiką programu.
+
+Języki obiektowe ułatwiają tworzenie dużych aplikacji. Programuje się w nich z użyciem obiektów, które stanowią instancje klas, które z kolei są definicją zmiennych, pól oraz metod dla obiektów danego typu. Wśród paradygmatów programowania obiektowego możemy wyróżnić abstrakcję, hermetyzację, polimorfizm oraz dziedziczenie.
+
+Interfejs użytkownika umożliwia osobie użytkującej system na interakcję z oprogramowaniem. Wybrany język programowania powinien mieć zapewnioną łatwość tworzenia graficznych interfejsów; ich tworzenie powinno być możliwe natywnie, bez konieczności używania zewnętrznych bibliotek. 
+
+Język powinien mieć kompleksową oraz dobrze sformułowaną dokumentację. Dokumentacja techniczna stanowi źródło częstych odniesień w procesie powstawania oprogramowania, a zatem powinna być łatwo dostępna i umożliwiać szybkie odnajdywanie w niej potrzebnych informacji.
+
+Potencjał przyszłego rozwoju pozwoli autorowi na wykorzystanie umiejętności zdobytych w trakcie realizacji niniejszej pracy w przyszłym życiu zawodowym. Uwzględnienie tego kryterium przy wyborze danej technologii stanowi dobrą formę motywacji, która jest kluczowa do sprawnej realizacji pracy.
+
+Używając języków o dużej popularności znacznie łatwiej jest posiłkować się serwisami dla programistów, takimi jak na przykład \href{www.stackoverflow.com}{Stack Overflow}. Dzięki swojej zaangażowanej społeczności, ułatwiają one proces rozwiązywania ewentualnych problemów, które mogą wystąpić w trakcie tworzenia oprogramowania.
+
+Wśród wstępnie wyselekcjonowanych języków programowania znalazły się języki C++, C\#, Java oraz JavaScript.
+
+JavaScript został wyeliminowany jako pierwszy, ze względu na fakt, iż interpretacja kodu w nim tworzonego jest zależna od przeglądarki internetowej. Wymusza to testowanie oprogramowania na różnych wersjach przeglądarek, co w efekcie wydłuża czas powstawania aplikacji. Inną wadą JavaScript jest brak dostępu do zaawansowanych technik debugowania, do których dostęp istnieje w przypadku języków kompilowanych.
+
+C++, pomimo wielu dostępnych materiałów oraz zaawansowanego narzędzia do tworzenia interfejsów użytkownika w postaci \href{www.qt.io}{Qt}, został wykluczony ze względu na brak jego znajomości przez autora pracy.
+
+Dokonując ostatecznego wyboru pomiędzy C\# oraz Javą, zdecydowano się zrealizować aplikację w języku C\#. Autor pracy posiada większe doświadczenie w pracy z tym językiem, przez co realizacja  w nim oprogramowania będzie w większym stopniu pozbawiona antywzorców oraz wykonana w zgodzie z ogólnie przyjętymi standardami. 
+
+Wybranie języka C\# wiąże się również z wyborem technologii tworzenia interfejsu graficznego; wyboru dokonywano spośród Windows Forms (WinForms), Windows Presentation Foundation (WPF) oraz Universal Windows Platform (UWP). Zdecydowano się skorzystać z WPF ze względu na dodatkowe możliwości jakie oferuje pod kątem dostosowywania interfejsu użytkownika w odniesieniu do WinForms oraz brakiem ograniczeń, którymi charakteryzują się aplikacje uniwersalne\cite{winformswpfuwp}. 
+
+
+\subsection{Środowisko programistyczne}
+Najpopularniejszymi środowiskami programistycznymi do języka C\# są \href{https://visualstudio.microsoft.com/vs/}{Visual Studio}, \href{https://www.jetbrains.com/rider/}{Rider} oraz \href{https://code.visualstudio.com}{Visual Studio Code}.
+
+Zarówno Visual Studio jak i Rider są bardzo zaawansowanymi środowiskami. Oba programy posiadają funkcjonalności usprawniające tworzenie kodu, jego debugowanie, integrację testów oraz zarządzanie projektem, co czyni je niezwykle potężnymi narzędziami do pracy z językiem C\#. Główne różnice sprowadzają się do dwóch cech:
+\begin{enumerate}
+    \item Visual Studio posiada darmową wersję Community, podczas kiedy Rider, pomijając miesięczną wersję trial, wymaga zakupienia licencji,
+    \item Rider zapewnia znacznie więcej funkcjonalności dotyczących inspekcji kodu, czyli wykrywania oraz zastępowania jego fragmentów w celu ich uproszczenia lub uniknięcia potencjalnych błędów\cite{rider}. 
+\end{enumerate}
+
+Visual Studio Code, pomimo iż z definicji jest edytorem kodu, a nie zintegrowanym środowiskiem programistycznym, posiada wiele funkcjonalności pełnoprawnego IDE. Posiada między innymi wsparcie dla debugowania kodu, wersjonowania oprogramowania, uzupełniania kodu oraz kolorowania składni. Jego możliwości mogą być powiększane przez obszerną bazę rozszerzeń. Do jego zalet zależy znaczna szybkość, przejrzysty interfejs oraz cross-platformowość. Wadami narzędzia są niskie możliwości w zakresie inspekcji kodu oraz debugowania. VS Code jest darmowe.
+
+Ostatecznie zdecydowano się na zrealizowanie projektu, wykorzystując do tego celu Visual Studio. Rider został odrzucony ze względu na konieczność zakupienia licencji oraz jego krótki okres obecności na rynku, przez co opinie na jego temat mogą nie być obiektywne. Visual Studio Code nie zostało wybrane ze względu na swoje nikłe możliwości w zakresie refaktoryzacji kodu.
+
+\subsection{System kontroli wersji}
+
+\section{Omówienie aplikacji}
+\subsection{Struktura kodu źródłowego}
+\subsection{Algorytm działania}
+\subsection{Wybór komend mentalnych}
+\subsection{Komunikacja z urządzeniem}
+\subsection{Proces decyzyjny}
+\section{Omówienie interfejsu użytkownika}
+\subsection{Zakładka \textit{Virtual Keyboard}}
+\subsection{Zakładka \textit{Messenger}}
+\subsection{Zakładka \textit{About}}
+\subsection{Zakładka \textit{Connection}}
+\subsection{Zakładka \textit{Settings}}
 
 \chapter{Badania opracowanego systemu}
 \section{Badanie wpływu zakłóceń}

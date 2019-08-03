@@ -102,6 +102,7 @@
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Utilities\SettingsSerializer.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\DPadViewModel.cs" />
     <Compile Include="ViewModels\HeadsetInformationViewModel.cs" />
     <Compile Include="ViewModels\KeyboardViewModel.cs" />
@@ -109,6 +110,9 @@
     <Compile Include="ViewModels\ConnectionViewModel.cs" />
     <Compile Include="ViewModels\MessengerViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AttachedProperties\TextBoxExtensions.cs" />
     <Compile Include="Views\Controls\IKey.cs" />
     <Compile Include="Views\DPadView.xaml.cs">
@@ -171,6 +175,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DPadView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

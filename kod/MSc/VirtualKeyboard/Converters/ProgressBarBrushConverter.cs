@@ -20,6 +20,9 @@ namespace VirtualKeyboard.Converters
     // Copyright (C) 2004,2005 by Microsoft Corporation.  All rights reserved.
     //
     //---------------------------------------------------------------------------
+    /// <summary>
+    /// The ProgressBarBrushConverter class
+    /// </summary>
     public class ProgressBarBrushConverter : IMultiValueConverter
     {
         /// <summary>
@@ -81,8 +84,8 @@ namespace VirtualKeyboard.Converters
 
             double drawnWidth = 0.0; // The total width drawn to the brush so far
 
-            double blockWidth = 1.0;
-            double blockGap = -0.6; // <-- was 2.0
+            double blockWidth = 6.0;
+            double blockGap = -2.0; // <-- was 2.0
             double blockTotal = blockWidth + blockGap;
 
             // For the indeterminate case, just draw a portion of the width

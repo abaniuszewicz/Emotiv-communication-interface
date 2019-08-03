@@ -33,12 +33,14 @@ namespace VirtualKeyboard.Views.Controls
             InitializeComponent();
         }
 
-        private void Button_OnMouseEnter(object sender, MouseEventArgs e) => IsSelected = true;
-        private void Button_OnMouseLeave(object sender, MouseEventArgs e) => IsSelected = false;
-        private void Button_OnGotFocus(object sender, RoutedEventArgs e) => IsSelected = true;
-        private void Button_OnLostFocus(object sender, RoutedEventArgs e) => IsSelected = false;
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e) => Pressed?.Invoke(this, e);
+        public void InvokePressed() => Pressed?.Invoke(this, EventArgs.Empty);
+
         public void MoveFocus(FocusNavigationDirection direction) => Button?.MoveFocus(new TraversalRequest(direction));
 
+        private void Button_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            IsSelected = true;
+        }
     }
 }
