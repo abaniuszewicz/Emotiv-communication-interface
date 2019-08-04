@@ -77,6 +77,7 @@
 \RequirePackage{multirow}
 \RequirePackage{subcaption}
 \RequirePackage{float}
+\RequirePackage{dirtree}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0

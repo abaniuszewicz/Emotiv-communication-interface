@@ -17,12 +17,14 @@ namespace VirtualKeyboard.Utilities
 
         public static void Serialize(Models.Settings settings)
         {
-            File.WriteAllText(_settingsFilePath, JsonConvert.SerializeObject(settings, Formatting.Indented, new JsonSerializerSettings() {NullValueHandling = NullValueHandling.Include}));
+            File.WriteAllText(_settingsFilePath,
+                JsonConvert.SerializeObject(settings, Formatting.Indented,
+                    new JsonSerializerSettings() {NullValueHandling = NullValueHandling.Include}));
         }
 
         public static Models.Settings Deserialize()
         {
-            return File.Exists( _settingsFilePath)
+            return File.Exists(_settingsFilePath)
                 ? JsonConvert.DeserializeObject<Models.Settings>(File.ReadAllText(_settingsFilePath))
                 : new Models.Settings(); //file does not exists
         }

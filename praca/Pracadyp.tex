@@ -663,15 +663,15 @@ Platforma OpenBCI umożliwia również współpracę z innymi programami do anal
 
 \section{Wybór narzędzi}
 \subsection{Urządzenia rejestrujące}
-Wybierając urządzenie rejestrujące poszukiwano urządzenia, które (1) jest nieinwazyjne, (2) posiada rozwinięte SDK oraz bazę przykładowych aplikacji, (3) zapewnia sprzętowe wsparcie w zakresie detekcji komend mentalnych, (4) jest przystępne cenowo -- kosztuje poniżej 500 \$. Dodatkową zaletą urządzenia, aczkolwiek niewymaganą do realizacji niniejszej pracy, byłaby (6) możliwość rejestracji dodatkowych sygnałów, na przykład przy użyciu akcelerometru. Wyboru dokonywano spośród urządzeń opisanych w rozdziale \vref{chap:headsets}.
+Wybierając urządzenie rejestrujące poszukiwano urządzenia, które (1) jest nieinwazyjne, (2) posiada rozwinięte SDK oraz bazę przykładowych aplikacji, (3) zapewnia sprzętowe wsparcie w zakresie detekcji komend mentalnych, (4) jest przystępne cenowo -- kosztuje poniżej 500 \$. Dodatkową zaletą urządzenia, aczkolwiek niewymaganą do realizacji niniejszej pracy, byłaby (6) możliwość rejestracji dodatkowych sygnałów, na przykład przy użyciu akcelerometru. Wyboru dokonywano spośród urządzeń omówionych w rozdziale \vref{chap:headsets}.
 
-W przypadku OpenBCI Ultracortex \textit{Mark IV}, jednym z jego mankamentów jest wysoka cena -- nawet w przypadku zakupu najtańszego rozwiązania, a więc hełmu do samodzielnego druku oraz montażu wraz z układem Ganglion Board, cena wynosiła 500 \$. Po doliczeniu do tej kwoty wymaganych elektrod cena znacznie wzrasta. W przypadku oferowanego przez firmę OpenBCI \href{https://shop.openbci.com/collections/frontpage/products/d-i-y-neurotechnologists-starter-kit}{Starter Kitu}, który zawiera wszystkie wymagane peryferiale, cena wynosi blisko 950 \$. Samodzielność montażu w odczuciu autora pracy jest ryzykownym posunięciem w przypadku tak delikatnych oraz precyzyjnych urządzeń, tym bardziej że nie jest to standardowy model sprzedaży tej gamy urządzeń. Niewątpliwą zaletą urządzeń OpenBCI jest ich otwartoźródłowość -- oprogramowanie jest dostępne na serwisie \href{https://github.com/OpenBC}{GitHub}. Inną zaletą jest jego duża popularność oraz integracja z wieloma programami do analizy danych, jak na przykład MATLAB.
+W przypadku OpenBCI Ultracortex \textit{Mark IV}, jednym z jego mankamentów jest wysoka cena -- nawet w przypadku zakupu najtańszego wariantu, a więc hełmu do samodzielnego druku oraz montażu wraz z układem Ganglion Board, cena wynosiła 500 \$. Po doliczeniu do tej kwoty wymaganych elektrod cena znacznie wzrasta. W przypadku oferowanego przez firmę OpenBCI \href{https://shop.openbci.com/collections/frontpage/products/d-i-y-neurotechnologists-starter-kit}{Starter Kitu}, który zawiera wszystkie wymagane peryferiale, cena wynosi blisko 950 \$. Samodzielność montażu w odczuciu autora pracy jest ryzykownym posunięciem w przypadku tak delikatnych oraz precyzyjnych urządzeń, tym bardziej że nie jest to standardowy model sprzedaży tej gamy urządzeń. Niewątpliwą zaletą urządzeń OpenBCI jest ich otwartoźródłowość -- oprogramowanie jest dostępne na serwisie \href{https://github.com/OpenBC}{GitHub}. Inną zaletą jest jego duża popularność oraz integracja z wieloma programami do analizy danych, jak na przykład MATLAB.
 
 Urządzenia Muse 2 oraz MindWave Mobile 2 w odczuciu autora są narzędziami mało precyzyjnymi, nie nadającymi się do wykorzystania w celach badawczych. Ich zaletami jest łatwość nakładania, niska cena oraz \textit{smukłość}, która prawdopodobnie pozwala na długie sesję bez odczuwania dyskomfortu związanego z naciskiem urządzenia. Wadą Muse 2 jest brak SDK dla programistów. Wadą MindWave Mobile 2 jest liczba elektrod rejestrujących -- urządzenie jest wyposażone w wyłącznie jedną.
 
 Emotiv Insight oraz EPOC+ są bardzo popularne wśród osób zajmujących się tematyką BCI. Za pomocą rozbudowanego API pozwalają na detekcję nie tylko aktywności mózgu w poszczególnych pasmach, ale również komend mentalnych oraz mimiki. Ze względu na wykorzystywany protokół komunikacyjny, są uniwersalne pod względem platformy programistycznej oraz języka programowania. Ich największym mankamentem jest brak darmowego dostępu do \textit{surowych} danych EEG -- żeby je uzyskać trzeba wykupić licencję. Urządzenie EPOC+ charakteryzuje się lepszymi parametrami niż Insight, jednak jest od niego droższe. Inną jego wadą jest rodzaj czujników; EPOC+ używa nasączanych solą fizjologiczną, podczas kiedy czujniki w Insight są wykonane z półsuchego polimeru.
 
-Ostatecznie zakupiono urządzenie Emotiv Insight. Nabyto najnowszą wersję urządzenia; premiera modelu odbyła się w maju 2019 roku. Niniejsza praca jest jednym z pierwszych projektów powstających na jego nowej odsłonie. Głównym czynnikiem przemawiającym na jego korzyść był dostęp do zaawansowanego API, który znacznie wspomoże realizację pracy. Urządzenie posiada również atrakcyjną cenę, w odczuciu autora, w przypadku omówionych urządzeń, Emotiv Insight zapewnia najlepszy stosunek ceny do oferowanych możliwości.
+Ostatecznie zakupiono urządzenie Emotiv Insight. Nabyto najnowszą wersję urządzenia; premiera modelu odbyła się w maju 2019 roku. Niniejsza praca jest jednym z pierwszych projektów powstających na jego nowej odsłonie. Głównym czynnikiem przemawiającym na jego korzyść był dostęp do zaawansowanego API, które dobrze wpasowuje się w założenia pracy. Urządzenie posiada również atrakcyjną cenę; w opinii autora spośród omówionych modeli Emotiv Insight zapewnia najlepszy stosunek ceny do oferowanych możliwości.
 
 
 \subsection{Język programowania}
@@ -718,6 +718,60 @@ Jako system kontroli wersji wybrano Git. Opracowana aplikacja jest hostowana w p
 
 \section{Omówienie aplikacji}
 \subsection{Struktura kodu źródłowego}
+Rozwiązanie (\textit{ang.} Solution) zostało podzielone na dwa projekty: HeadsetController oraz VirtualKeyboard. Wydzielenie osobnych projektów odseparowało logikę związaną z obsługą samego hełmu oraz z wirtualną klawiaturą -- umożliwia to dołączanie projektu HeadsetController do innych aplikacji, nawet tych niewykonanych w języku C\#, bez konieczności ingerencji w jego kod. Struktura rozwiązania w postaci drzewa została przedstawiona na rysunku \vref{fig:solution_structure}.
+
+\begin{figure}[!htb]
+	\centering
+    \begin{minipage}{\textwidth}
+        \dirtree{%
+        .1 Solution 'MSc'.
+        .2 HeadsetController.
+        .3 Headset/.
+        .3 Services/.
+        .4 API/.
+        .5 Requests/.
+        .5 Responses/.
+        .5 Utils/.
+        .2 VirtualKeyboard.
+        .3 Converters/.
+        .3 Models/.
+        .3 Resources/.
+        .3 Utilities/.
+        .3 ValidationRules/.
+        .3 ViewModels/.
+        .3 Views/.
+        .4 AttachedProperties/.
+        .4 Controls/.
+        }
+    \end{minipage}\\
+	\caption{Struktura rozwiązania przedstawiona w postaci drzewa\label{fig:solution_structure}}\source{Opracowanie własne}
+\end{figure}
+
+
+HeadsetController jest biblioteką służącą do komunikacji z urządzeniem. Jest projektem o typie wynikowym DLL\footnote{DLL (\textit{ang.} Dynamic-link library) -- biblioteka łączona dynamicznie; rodzaj biblioteki łączonej z programem dopiero w trakcie jego wykonywania.} (output type: class library). Nie stanowi samodzielnej aplikacji; jest przeznaczony do bycia dołączonym do innych projektów. W projekcie znajdują się dwa główne foldery: \path{Headset} oraz \path{Services}. 
+
+Do folderu \path{Headset} należą klasy \path{Headset.cs} oraz \path{Insight.cs}. \path{Headset.cs} jest klasą abstrakcyjną realizującą niskopoziomową komunikację z urządzeniami Emotiv -- zajmuje się przetwarzaniem danych otrzymanych protokołem WebSocket, a następnie, na podstawie zawartości otrzymanej wiadomości, wywoływaniem odpowiednich eventów. \path{Insight.cs} stanowi programową reprezentację hełmu Emotiv Insight; umożliwia dostęp do jego parametrów, na przykład poziomu naładowania, jakości połączenia poszczególnych elektrod lub \textit{siły} komend mentalnych. Dziedziczy po klasie \path{Headset.cs}.
+
+W folderze \path{Services} znajdują klasy \path{JsonParser.cs} oraz \path{WebSocket.cs}, które stanowią klasy opakowujące (\textit{ang.} wrapper) na operacje kolejno na formacie JSON oraz protokole WebSocket. Dzięki zastosowaniu takiego podejścia, wewnętrzna implementacja tych klas jest ukryta przed użytkownikami biblioteki. Dla programisty dostępne są wyłącznie wysokopoziomowe metody niezbędne do pracy z urządzeniem, co wpisuje się w zasadę hermetyzacji. W tym folderze znajduje się również folder \path{API}, który zawiera trzy podkatalogi: \path{Requests}, \path{Responses} oraz \path{Utils}. Pierwsze dwa z nich zawierają definicję zapytań oraz odpowiedzi, pogrupowanych w dalsze foldery zgodnie z nomenklaturą zawartą w \href{https://emotiv.gitbook.io/cortex-api/}{dokumentacji} protokołu komunikacyjnego urządzenia. Folder \path{Utils} zawiera klasę \path{Enums.cs}, w której umieszczone są typy wyliczeniowe wykorzystywane do komunikacji.
+
+Projekt VirtualKeyboard jest aplikacją Windows (output type: Windows application) wykorzystującą strukturę interfejsu Windows Presentation Foundation (WPF). Zawiera 7 głównych folderów: \path{Converters}, \path{Models}, \path{Resources}, \path{Utilities}, \path{ValidationRules}, \path{ViewModels} oraz \path{Views}.
+
+Katalog \path{Converters} zawiera implementacje interfejsów \lstinline[language={[Sharp]C}]{IValueConverter} oraz \linebreak \lstinline[language={[Sharp]C}]{IMultiValueConverter}. Są w nim zawarte konwertery umożliwiające stosowanie niestandardowej logiki do tworzenia powiązań między interfejsem użytkownika, a właściwościami (\textit{ang.} properties) w aplikacji. Przykładem zaimplementowanego konwertera może być \path{BooleanToVisibilityConverter.cs}, który zwraca wartość typu wyliczeniowego \lstinline[language={[Sharp]C}]{Visibility} na podstawie przekazanej zmiennej typu \lstinline[language={[Sharp]C}]{boolean}. I tak, dla parametru \lstinline[language={[Sharp]C}]{true} zwraca wartość \lstinline[language={[Sharp]C}]{Visibility.Visible}, a dla \lstinline[language={[Sharp]C}]{false} -- \lstinline[language={[Sharp]C}]{Visibility.Hidden}.
+
+Folder \path{Models} zawiera klasy odpowiedzialne za logikę biznesową aplikacji. Jako że przeważająca część logiki jest umieszczona w klasie \path{Insight.cs} znajdującej się w projekcie HeadsetController, w tym folderze umieszczona jest wyłącznie klasa \path{Settings.cs}. Przechowuje ona ustawienia dotyczące progów aktywacji dla poszczególnych komend mentalnych, czasu skupienia wymaganego do ich aktywacji oraz wartość określającą czy włączony został tryb offline aplikacji. Klasa jest deserializowana z pliku \path{settings.json} wraz ze startem aplikacji oraz serializowana do niego podczas jej zamknięcia. Dzięki zastosowaniu mechanizmu serializacji użytkownik nie traci ustawień poprzedniej sesji.
+
+Folder \path{Resources} zawiera graficzne zasoby wykorzystywane w aplikacji. Przechowywana jest tu między innymi ikona aplikacji -- \path{keyboard.ico}.
+
+W katalogu \path{Utilities} znajduje się klasa \path{SettingsSerializer.cs}, która odpowiada za serializację oraz deserializację klasy \path{Settings.cs} oraz jej zapis/odczyt z pliku. Plik wynikowy \path{settings.json} zostaje umieszczony w folderze, w którym znajduje się aplikacja.
+
+Folder \path{ValidationRules} zawiera klasę \path{NotEmptyValidationRule.cs}, która jest wykorzystywana do potwierdzenia poprawności wprowadzonych przez użytkownika ustawień połączenia z hełmem Emotiv Insight.
+
+Katalog \path{ViewModels} zawiera tak zwane \textit{ViewModele}, czyli klasy implementujące interfejs \lstinline[language={[Sharp]C}]{INotifyPropertyChanged}, które stanowią centrum wykorzystywanego w aplikacji wzorca MVVM\footnote{MVVM (\textit{ang.} Model--View--ViewModel) -- wzorzec architektury oprogramowania zapewniający separację warstw UI oraz biznesowej; silnie zakorzeniony w aplikacjach WPF.)}. Za pomocą mechanizmu komend oraz wiązania danych (\textit{ang.} data binding) są one połączone z widokami.
+
+Ostatni katalog, \path{Views}, zawiera definicje widoków w postaci plików \lstinline[language={[Sharp]C}]{XAML}. Zawarte są w nim również foldery \path{AttachedProperties}, w których przechowywane są właściwości rozszerzające zdefiniowane kontrolki, oraz \path{Controls}, w którym znajduje się definicja stworzonej przez autora pracy kontrolki \path{KeyView}, która jest składową opracowanej klawiatury.  
+
+
+
 \subsection{Algorytm działania}
 \subsection{Wybór komend mentalnych}
 \subsection{Komunikacja z urządzeniem}
