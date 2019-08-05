@@ -708,6 +708,8 @@
 }
 \DeclareNameAlias{default}{family-given}
 \renewcommand*{\revsdnamepunct}{}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput
