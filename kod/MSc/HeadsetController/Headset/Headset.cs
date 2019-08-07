@@ -62,7 +62,7 @@ namespace HeadsetController.Headset
                 if (Parser.GetTokenAsString(msg, "id") != request.id.ToString())
                     return;
 
-                OnResponse -= WaitResponseMatch; //self-unsubscribe after match
+                OnResponse -= WaitResponseMatch; //unsubscribe after match
                 tcs.SetResult(Parser.Deserialize<Response<T>>(msg));
             }
             OnResponse += WaitResponseMatch;
