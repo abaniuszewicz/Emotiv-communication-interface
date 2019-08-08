@@ -78,6 +78,7 @@
 \RequirePackage{subcaption}
 \RequirePackage{float}
 \RequirePackage{dirtree}
+\RequirePackage{xcolor}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
@@ -184,11 +185,11 @@
 \renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
 
 \newcommand{\code}[3]{
-	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2}}
+	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\medskip}}
 }
 
 \newcommand{\codeinput}[5]{
-	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2}}
+	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\medskip}}
 	\lstinputlisting[#5]{./code/#4}
 }
 
@@ -710,6 +711,32 @@
 \renewcommand*{\revsdnamepunct}{}
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
+
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+\lstdefinelanguage{json}{
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \endinput
