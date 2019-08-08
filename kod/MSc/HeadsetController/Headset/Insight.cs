@@ -200,7 +200,7 @@ namespace HeadsetController.Headset
 
         private void Insight_OnMentalCommandUpdate(ComDataSampleObject com)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         private void Insight_OnDeviceInformationUpdate(DevDataSampleObject dev)
@@ -229,7 +229,7 @@ namespace HeadsetController.Headset
         public async Task Authorize()
         {
             var authorizeResponse = SendRequest<AuthorizeResponse>(new AuthorizeRequest(new AuthorizeParameter(ClientId, ClientSecret)));
-            CortexToken = (await authorizeResponse).result.cortexToken;
+            CortexToken = (await authorizeResponse).result?.cortexToken;
         }
 
         public async Task CreateSession()

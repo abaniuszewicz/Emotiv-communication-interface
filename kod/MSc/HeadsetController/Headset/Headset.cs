@@ -57,13 +57,13 @@ namespace HeadsetController.Headset
         {
             var tcs = new TaskCompletionSource<Response<T>>();
 
-            void WaitResponseMatch(string msg)
+            void WaitResponseMatch(string response)
             {
-                if (Parser.GetTokenAsString(msg, "id") != request.id.ToString())
+                if (Parser.GetTokenAsString(response, "id") != request.id.ToString())
                     return;
 
                 OnResponse -= WaitResponseMatch; //unsubscribe after match
-                tcs.SetResult(Parser.Deserialize<Response<T>>(msg));
+                tcs.SetResult(Parser.Deserialize<Response<T>>(response));
             }
             OnResponse += WaitResponseMatch;
             SendRequest(request);

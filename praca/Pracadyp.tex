@@ -38,16 +38,19 @@
 % Data wydania tematu w SIWE/eDziekanacie
 \datawydania{01.11.2018}
 
-% Data złożenia pracy w eDziekanacie
-\datazlozenia{TODO}
+% Data dopuszczenia pracy do egzaminu (wypełnia Dziekanat)
+\datazlozenia{......................................}
 
 % Miejsce złożenia pracy (odkomentować i wypełnić jeżeli inne niż Szczecin)
 %\miejsce{}
 
+% Rok złożenia pracy (zmienić, jeśli inny niż 2019)
+\date{2019}
+
 % Imię i nazwisko opiekuna - wpisujemy w dopełniaczu
 \opiekun{dr. inż. Roberta Krupińskiego}
 
-% Katedra, Zakład lub Zespół Dydaktyczny
+% Katedra, Instytut, Zakład lub Zespół Dydaktyczny
 % (Wydział wpisujemy po przecinku tylko jeśli inny niż WE)
 \jednostka{Katedra Przetwarzania Sygnałów i~Inżynierii Multimedialnej}
 
@@ -660,6 +663,19 @@ Platforma OpenBCI umożliwia również współpracę z innymi programami do anal
 
 \chapter{Projekt wirtualnej klawiatury}
 \section{Założenia projektowe}
+Przed przystąpieniem do realizacji projektu wirtualnej klawiatury sformułowano założenia przedstawione poniżej.
+
+\begin{enumerate}
+    \item Aplikacja powinna umożliwiać wprowadzanie następujących znaków: liter A--Z, cyfr 0--9 oraz symboli przecinka i kropki. Powinna również umożliwiać wstawianie spacji, przejście do nowej linii oraz usunięcie ostatniego znaku.
+    \item Wprowadzona wiadomość powinna być wyświetlana na interfejsie użytkownika. Wysłanie (zaakceptowanie) wiadomości powinno odczytać ją przy pomocy syntezatora mowy.
+    \item Domyślnym językiem aplikacji powinien być język angielski.
+    \item Nawigacja po klawiaturze oraz selekcja (wciśnięcie) poszczególnych klawiszy powinna odbywać się głównie z wykorzystaniem poleceń mentalnych. Opcjonalnie, jeżeli jest to konieczne, oprócz poleceń mentalnych mogą zostać wykorzystane do tego celu inne sygnały pozyskane z jednostki akwizycyjnej, na przykład EOG czy EMG.
+    \item Aplikacja powinna umożliwiać sterowanie manualne (bez wykorzystania hełmu) w celu łatwego przetestowania algorytmów selekcji.
+    \item Poszczególne parametry algorytmu obsługi klawiatury powinny być konfigurowalne dla użytkownika.
+    \item Aplikacja powinna mieć zaimplementowany mechanizm zapisywania ostatnio sprecyzowanych parametrów algorytmu.
+    \item Użytkownik aplikacji nie powinien musieć w sposób bezpośredni \textit{porozumiewać} się z API urządzenia; nie powinien w ogóle musieć znać jego protokołu komunikacyjnego.
+    \item Aplikacja powinna mieć zaimplementowany mechanizm bezpośredniej wymiany wiadomości z urządzeniem, jednak jego użytkowanie powinno być całkowicie opcjonalne i niewymagane do sprawnej pracy z urządzeniem.
+\end{enumerate}
 
 \section{Wybór narzędzi}
 \subsection{Urządzenia rejestrujące}
@@ -781,22 +797,21 @@ Istotną kwestią jest wybór odpowiednich poleceń mentalnych do obsługi wirtu
 
 
 \subsection{Komunikacja z urządzeniem}
-Połączenie z \href{https://emotiv.gitbook.io/cortex-api/}{Cortex API}, czyli wrapperem SDK Emotiv, odbywa się przy wykorzystaniu protokołu WebSocket oraz formatu JSON. Do nawiązania połączenia z hełmem wymagany jest Bluetooth 4.0 lub klucz sprzętowy USB (\textit{ang.} USB dongle).
+Komunikacja z \href{https://emotiv.gitbook.io/cortex-api/}{Cortex API}, czyli wrapperem SDK Emotiv, odbywa się przy wykorzystaniu protokołu WebSocket oraz formatu danych JSON. Do nawiązania połączenia z hełmem wymagany jest Bluetooth w wersji 4.0 lub klucz sprzętowy USB (\textit{ang.} USB dongle).
 
-W celu uzyskania identyfikatora aplikacji (\textit{ang.} application ID) koniecznego do wygenerowania identyfikatora klienta (\textit{ang.} client ID) oraz sekretu (\textit{ang.} client secret) zarejestrowano aplikację \textit{ict\_master} na stronie Emotiv; utworzono również konto EmotivID. Uzyskane w ten sposób dane umożliwiają autoryzację w Cortex API, pozwalając tym samym na otrzymywanie wyników wysłanych zapytań.
+W celu uzyskania identyfikatora aplikacji (\textit{ang.} application ID) koniecznego do wygenerowania identyfikatora klienta (\textit{ang.} client ID) oraz sekretu (\textit{ang.} client secret), zarejestrowano aplikację \textit{ict\_master} na stronie Emotiv; utworzono również konto EmotivID. Uzyskane w ten sposób dane umożliwiają autoryzację w Cortex API, pozwalając tym samym na otrzymywanie wyników wystosowanych zapytań.
 
-Przy uruchomieniu aplikacji nawiązywane jest szyfrowane połączenie \textit{wss} (\textit{ang.} WebSocket Secure). Komunikacja odbywa się z wykorzystaniem protokołu \href{https://www.jsonrpc.org/specification}{JSON-RPC 2.0}. Każde zapytanie składa się z pól definiujących wersję JSON-RPC (\textit{jsonrpc}), nazwy metody (\textit{method}), parametrów metody (\textit{params}, o ile wymagane) oraz identyfikatora zapytania (\textit{id}). Otrzymany wynik zapytania zawiera specyfikację wersji JSON-RPC (\textit{jsonrpc}), wyniku (\textit{result}) lub błędu (\textit{error}), oraz identyfikatora zapytania (\textit{id}). Przykładowe zapytanie zostało pokazane na kodzie źródłowym TODO\ref{code:sample_request}; przykładowa odpowiedź na nie znajduje się na kodzie źródłowym TODO\ref{code:sample_response}.
+Podczas uruchomienia aplikacji nawiązywane jest szyfrowane połączenie \textit{wss} (\textit{ang.} WebSocket Secure). Komunikacja odbywa się z wykorzystaniem protokołu \href{https://www.jsonrpc.org/specification}{JSON-RPC 2.0}, w którym każde zapytanie składa się z pól definiujących wersję JSON-RPC (\textit{jsonrpc}), nazwę wywoływanej metody (\textit{method}), jej parametrów (\textit{params}, o ile wymagane) oraz identyfikatora zapytania (\textit{id}). Otrzymany wynik zawiera specyfikację wersji JSON-RPC (\textit{jsonrpc}), wynik (\textit{result}) lub błąd (\textit{error}), oraz identyfikator zapytania (\textit{id}). Przykładowe zapytanie zostało pokazane na kodzie źródłowym \ref{code:sample_request}; przykładowa odpowiedź na nie znajduje się na kodzie źródłowym \ref{code:sample_response}.
 
 \code{Przykładowe zapytanie Cortex API}{\cite{cortexdoc}}{\label{code:sample_request}}
 \begin{lstlisting}[language=json]
 {
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "generateNewToken",
+    "method": "authorize",
     "params": {
-        "cortexToken": "xxx",
-        "clientId": "...",
-        "clientSecret": "..."
+        "clientId": "xxx",
+        "clientSecret": "yyy"
     }
 }
 \end{lstlisting}
@@ -807,14 +822,19 @@ Przy uruchomieniu aplikacji nawiązywane jest szyfrowane połączenie \textit{ws
     "id": 1,
     "jsonrpc": "2.0",
     "result": {
-        "cortexToken": "yyy"
+        "cortexToken":"zzz",
+        "warning": {
+            "code": 6,
+            "message": "...",
+            "licenseUrl": "https://..."
+        }
     }
 }
 \end{lstlisting}
 
-W celu minimalizacji liczby błędów komunikacji postanowiono zaimplementować kompletną bibliotekę zapytań oraz ich wyników. Opracowano w tym celu klasy \path{Request} oraz \path{Response}.
+W celu minimalizacji liczby błędów komunikacji postanowiono zaimplementować kompletną bibliotekę zapytań oraz ich wyników. Opracowano w tym celu klasy \path{Request}, \path{Response} oraz klasy reprezentujące wszystkie możliwe zapytania, ich parametry oraz wyniki. 
 
-Klasa \path{Request}, pokazana na kodzie źródłowym TODO\ref{code:request}, stanowi klasę bazową dla wszystkich zapytań Cortex API. Klasy zapytań, dziedzicząc po niej, uzyskują dostęp do zawartych w niej właściwości (\textit{ang.} properties). Dzięki temu zyskują mechanizm automatycznej numeracji \textit{id} zapytania, którego niepowtarzalność jest kluczowa do poprawnej identyfikacji odebranych wyników; uzyskują również automatyczne przydzielanie wersji protokołu JSON-RPC, która jest stała w obrębie Cortex API. Dodatkowo, dzięki zastosowaniu słowa kluczowego \lstinline[language={[Sharp]C}]{abstract}, klasa bazowa wymusza redefinicję właściwości \lstinline[language={[Sharp]C}]{method}, która jest unikalna dla każdego rodzaju zapytania.
+Klasa \path{Request}, pokazana na kodzie źródłowym \ref{code:request}, stanowi klasę bazową dla wszystkich zapytań Cortex API. Klasy zapytań, dziedzicząc po niej, uzyskują dostęp do zawartych w niej właściwości (\textit{ang.} properties). Dzięki temu zyskują mechanizm automatycznego przydzielania \textit{id} zapytania, którego niepowtarzalność jest kluczowa do poprawnej identyfikacji odebranych wyników; uzyskują również automatyczne przypisanie wersji protokołu JSON-RPC, która jest stała w obrębie Cortex API. Dodatkowo, dzięki zastosowaniu słowa kluczowego \lstinline[language=C]{abstract}, klasa bazowa wymusza redefinicję właściwości \lstinline[language={[Sharp]C}]{method}, która jest unikalna dla każdego rodzaju zapytania.
 
 \code{Kod klasy Request}{Opracowanie własne}{\label{code:request}}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -828,7 +848,7 @@ public abstract class Request : IRequest
 }
 \end{lstlisting}
 
-Przykładem klasy dziedziczącej po \path{Request} może być \path{AuthorizeRequest}. Jej kod został przedstawiony na kodzie źródłowym TODO\ref{code:authorizeRequest}. Oprócz nadpisania w wierszu 3 właściwości \lstinline[language={[Sharp]C}]{method} wartością odpowiednią dla swojego zapytania, wprowadza ona właściwość \lstinline[language={[Sharp]C}]{@params}\footnote{W języku C\# \lstinline[language={[Sharp]C}]{params} jest słowem kluczowym i nie jest może być użyte jako identyfikator w programie, chyba że zostanie poprzedzone prefiksem \lstinline[language={[Sharp]C}]{@}.} typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. 
+Przykładem klasy dziedziczącej po \path{Request} może być \path{AuthorizeRequest}. Jej kod został przedstawiony na kodzie źródłowym \ref{code:authorizeRequest}. Oprócz nadpisania w wierszu 3 właściwości \lstinline[language={[Sharp]C}]{method} wartością odpowiednią dla swojego zapytania, wprowadza ona właściwość \lstinline[language={[Sharp]C}]{@params}\footnote{W języku C\# \lstinline[language={[Sharp]C}]{params} jest słowem kluczowym i nie jest może być użyte jako identyfikator w programie, chyba że zostanie poprzedzone prefiksem \lstinline[language={[Sharp]C}]{@}.} typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. 
 
 \code{Kod klasy AuthorizeRequest}{Opracowanie własne}{\label{code:authorizeRequest}}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -844,7 +864,7 @@ public class AuthorizeRequest : Request
 }
 \end{lstlisting}
 
-Kod klasy \path{AuthorizeParameter} został pokazany na kodzie źródłowym TODO\ref{code:authorizeParameter}. Poprzez definicję sygnatury konstruktora, zawartej w wierszu 8, wymusza ona przekazanie parametrów, które są wymagane dla danego zapytania, w tym przypadku \lstinline[language={[Sharp]C}]{clientId} oraz \lstinline[language={[Sharp]C}]{clientSecret}, na etapie tworzenia obiektu; parametry opcjonalne, \lstinline[language={[Sharp]C}]{license} oraz \lstinline[language={[Sharp]C}]{debit}, nie wymagają przekazania przez konstruktor.
+Kod klasy \path{AuthorizeParameter} został pokazany na kodzie źródłowym \ref{code:authorizeParameter}. Poprzez sygnaturę konstruktora, zawartą w wierszu 8, wymusza ona przekazanie parametrów, które są wymagane dla danego zapytania (\lstinline[language={[Sharp]C}]{clientId} oraz \lstinline[language={[Sharp]C}]{clientSecret}) na etapie tworzenia obiektu; parametry opcjonalne (\lstinline[language={[Sharp]C}]{license} oraz \lstinline[language={[Sharp]C}]{debit}) nie wymagają przekazania przez konstruktor i mogą pozostać nieprzydzielone.
 
 \code{Kod klasy AuthorizeParameter}{Opracowanie własne}{\label{code:authorizeParameter}}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -863,6 +883,30 @@ public class AuthorizeParameter
 }
 \end{lstlisting}
 
+Wysłanie zapytania odbywa się przy użyciu metody \lstinline[language={[Sharp]C}]{SendRequest} przedstawionej na kodzie źródłowym \ref{code:send_request}. Jako parametr przyjmuje ona zapytanie implementujące interfejs \lstinline[language={[Sharp]C}]{IRequest}, a więc wszystkie zapytania dziedziczące po klasie \lstinline[language={[Sharp]C}]{Request}. Wartością zwracaną jest \lstinline[language={[Sharp]C}]{Response<T>}, gdzie \lstinline[language={[Sharp]C}]{T} jest typem generycznym implementującym interfejs \lstinline[language={[Sharp]C}]{IResult}. W ciele tej metody odbywa się kojarzenie uzyskanych odpowiedzi z wysłanymi zapytaniami. W linii 13 następuje zasubskrybowanie wydarzenia (\textit{ang.} event) \lstinline[language={[Sharp]C}]{OnResponse}, dzięki czemu każdorazowe jego zgłoszenie spowoduje wywołanie lokalnej funkcji \lstinline[language={[Sharp]C}]{WaitResponseMatch}, w której, jeżeli \lstinline[language={[Sharp]C}]{id} zapytania oraz otrzymanej odpowiedzi są takie same, następuje odsubskrybowanie rzeczonej funkcji oraz przydzielenie otrzymanej odpowiedzi do wyniku zapytania. Ponieważ metoda \lstinline[language={[Sharp]C}]{SendRequest} jest asynchroniczna, nie blokuje ona interfejsu użytkownika w trakcie oczekiwania na odpowiedź.
+
+\code{Kod metody SendRequest}{Opracowanie własne}{\label{code:send_request}}
+\begin{lstlisting}[language={[Sharp]C}]
+public async Task<Response<T>> SendRequest<T>(IRequest request) where T : IResult
+{
+    var tcs = new TaskCompletionSource<Response<T>>();
+
+    void WaitResponseMatch(string response)
+    {
+        if (Parser.GetTokenAsString(response, "id") != request.id.ToString())
+            return;
+
+        OnResponse -= WaitResponseMatch; //unsubscribe after match
+        tcs.SetResult(Parser.Deserialize<Response<T>>(response));
+    }
+    OnResponse += WaitResponseMatch;
+    SendRequest(request);
+
+    return await tcs.Task;
+}
+\end{lstlisting}
+
+Kod klasy \lstinline[language={[Sharp]C}]{Response} został pokazany na kodzie źródłowym \ref{code:response}. Posiada on definicje wszystkich pól definiowanych przez standard JSON-RPC. W celu utworzenia jej instancji należy poprzez parametr generyczny \lstinline[language={[Sharp]C}]{T} sprecyzować jej typ, który musi implementować interfejs \lstinline[language={[Sharp]C}]{IResult}.
 
 \code{Kod klasy Response}{Opracowanie własne}{\label{code:response}}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -881,6 +925,59 @@ public class Response<T> where T : IResult
     }
 }
 \end{lstlisting}
+
+Przykładem implementacji interfejsu \lstinline[language={[Sharp]C}]{IResult} jest klasa \lstinline[language={[Sharp]C}]{AuthorizeResponse}, pokazana na kodzie źródłowym \ref{code:authorize_response}.
+
+\code{Kod klasy AuthorizeResponse}{Opracowanie własne}{\label{code:authorize_response}}
+\begin{lstlisting}[language={[Sharp]C}]
+public class AuthorizeResponse : IResult
+{
+    public string cortexToken { get; }
+    public object warning { get; }
+
+    [JsonConstructor]
+    private AuthorizeResponse(string cortexToken, object warning)
+    {
+        this.cortexToken = cortexToken;
+        this.warning = warning;
+    }
+}
+\end{lstlisting}
+
+Przykładowo, chcąc uzyskać Cortex Token, który jest niezbędny do większości zapytań Cortex API, należy wywołać metodę \lstinline[language={[Sharp]C}]{SendRequest}, przekazując do niej obiekt klasy \lstinline[language={[Sharp]C}]{AuthorizeRequest} z parametrem typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. Z uzyskanej odpowiedzi typu \lstinline[language={[Sharp]C}]{Result<AuthorizeResponse>} możliwe jest odczytanie \lstinline[language={[Sharp]C}]{cortexToken}. Zapytanie to oraz jego wynik pokazano na kodzie źródłowym \ref{code:request_response}. Wartością \lstinline[language={[Sharp]C}]{"xxx"} oznaczono \lstinline[language={[Sharp]C}]{clientId}, a \lstinline[language={[Sharp]C}]{"yyy"} \lstinline[language={[Sharp]C}]{clientSecret}.
+
+\code{Sposób wysłania zapytania AuthorizeRequest oraz odczytania odpowiedzi AuthorizeResponse}{Opracowanie własne}{\label{code:request_response}}
+\begin{lstlisting}[language={[Sharp]C}]
+var authorizeResponse = SendRequest<AuthorizeResponse>(new AuthorizeRequest(new AuthorizeParameter("xxx", "yyy")));
+CortexToken = (await authorizeResponse).result?.cortexToken;
+\end{lstlisting}
+
+Wykorzystując wewnętrzny mechanizm serializacji zapytanie jest przekształcane do postaci pokazanej na kodzie źródłowym \ref{code:request_sent}, a następnie wysyłane przy użyciu metody \lstinline[language={[Sharp]C}]{SendRequest} pokazanej na kodzie źródłowym \ref{code:send_request}. Odpowiedź na to zapytanie została pokazana na kodzie źródłowym \ref{code:response_received}. Obie wiadomości są tożsame z przykładami zaczerpniętymi z dokumentacji, pokazanymi na kodach źródłowych \ref{code:sample_request} oraz \ref{code:sample_response}.
+
+\code{Zserializowane zapytanie AuthorizeRequest}{Opracowanie własne}{\label{code:request_sent}}
+\begin{lstlisting}[language=json]
+{
+    "method": "authorize",
+    "params": {
+        "clientId": "xxx",
+        "clientSecret": "yyy"
+    },
+    "id": 1,
+    "jsonrpc": "2.0"
+}
+\end{lstlisting}
+
+\code{Odpowiedź otrzymana na zapytanie AuthorizeRequest}{Opracowanie własne}{\label{code:response_received}}
+\begin{lstlisting}[language=json]
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "result": {
+        "cortexToken": "zzz"
+    }
+}
+\end{lstlisting}
+
 
 
 \subsection{Proces decyzyjny}

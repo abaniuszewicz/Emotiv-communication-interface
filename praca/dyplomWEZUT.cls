@@ -2,6 +2,8 @@
 \ProvidesClass{dyplomWEZUT}[2017/06/01 Szablon Pracy Dyplomowej na WE ZUT]
 
 %% CHANGELOG
+% v1.2 [06.02.2019]
+% * Drobne korekty (strona tytułowa, oświadczenie) wynikające ze zmiany Zarządzenia Rektora 
 %
 % v1.1 [01.06.2017] {M. Tecław}
 % * Dokończona konfiguracja layoutu dla kodów źródłowych
@@ -160,7 +162,7 @@
 	breakindent=18pt,
 	breakatwhitespace,
 	breaklines,
-	postbreak=\space,
+	postbreak=\mbox{$\hookrightarrow$\space},
 	extendedchars=true,
 	columns=[c]flexible,
 	keepspaces=true,
@@ -251,10 +253,10 @@
 		% nr albumu, kierunek studiów, specjalność, forma studiów
 		\liner{nr albumu: \@nralbumu}{0pt}
 		\liner{kierunek studiów: \@kierunek}{0pt}
-		\liner{forma studiów: studia \@formastudiow}{0pt}
 		\ifx\@showspec\on
 			\liner{specjalność: \@specjalnosc}{0pt}
 		\fi
+		\liner{forma studiów: studia \@formastudiow}{0pt}
 		\vspace{38pt}
 		% Tytuł pracy w języku polskim
 		\lineb[\large]{\MakeUppercase{\@title}}{38pt}
@@ -274,7 +276,7 @@
 	
 		\begin{flushleft}
 			\liner[\footnotesize]{Data wydania tematu pracy: \@datawydania~r.}{3pt}
-			\liner[\footnotesize]{Data złożenia pracy: \@datazlozenia~r.}{18pt}
+			\liner[\footnotesize]{Data dopuszczenia pracy do egzaminu: \@datazlozenia}{18pt}
 		\end{flushleft}
 		
 		\liner{\@miejsce, \@date}{0pt}
@@ -297,14 +299,14 @@
 \vspace{24pt}
 
 \normalsize
-\noindent Oświadczam, że praca {\@rodzajpracy} pn.\par
+\noindent Oświadczam, że praca dyplomowa {\@rodzajpracy} pn.\par
 \noindent ,,\@title''\par
 \noindent napisana pod kierunkiem:\par
 \noindent \@opiekun\par
-\noindent jest w~całości moim samodzielnym autorskim opracowaniem sporządzonym przy wykorzystaniu wykazanej w~pracy literatury przedmiotu i~materiałów źródłowych.\par
-\noindent Złożona w dziekanacie Wydziału Elektrycznego treść mojej pracy dyplomowej w~formie elektronicznej jest zgodna z~treścią w~formie pisemnej.\par
+\noindent jest w~całości moim samodzielnym autorskim opracowaniem, sporządzonym przy wykorzystaniu wykazanej w~pracy literatury przedmiotu i~materiałów źródłowych.\par
+\noindent Złożona w Dziekanacie Wydziału Elektrycznego treść mojej pracy dyplomowej w~formie elektronicznej jest zgodna z~treścią w~formie pisemnej.\par
 \vspace{12pt}
-\noindent Oświadczam ponadto, że złożona w~dziekanacie praca dyplomowa ani jej fragmenty nie były wcześniej przedmiotem procedur procesu dyplomowania związanych z~uzyskaniem tytułu zawodowego w~uczelniach wyższych.\par
+\noindent Oświadczam ponadto, że złożona w~Dziekanacie praca dyplomowa, ani jej fragmenty nie były wcześniej przedmiotem procedur procesu dyplomowania związanych z~uzyskaniem tytułu zawodowego w~uczelniach wyższych.\par
 \vspace{72pt}
 
 \footnotesize\hfill................................................\hspace*{36pt}\par
