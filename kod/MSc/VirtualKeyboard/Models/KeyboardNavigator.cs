@@ -104,6 +104,7 @@ namespace VirtualKeyboard.Models
         private void _leftTimer_Tick(object sender, EventArgs e) => OnLeftCommand?.Invoke();
         private void _rightTimer_Tick(object sender, EventArgs e) => OnRightCommand?.Invoke();
         private void _selectTimer_Tick(object sender, EventArgs e) => Select(null);
+
         public void Select(RoutedEventArgs args)
         {
             if (args != null)

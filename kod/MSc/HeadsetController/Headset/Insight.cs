@@ -191,7 +191,7 @@ namespace HeadsetController.Headset
         {
             OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
             OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
-            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.com, Enums.StreamsEnum.dev, Enums.StreamsEnum.fac });
+            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.dev, Enums.StreamsEnum.com, Enums.StreamsEnum.fac });
         }
 
         #endregion

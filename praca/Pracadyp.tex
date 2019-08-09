@@ -55,10 +55,10 @@
 \jednostka{Katedra Przetwarzania Sygnałów i~Inżynierii Multimedialnej}
 
 % Słowa kluczowe
-\slowakluczowe{Interfejs mózg--komputer, Elektroencefalografia, Elektromiografia, Wirtualna klawiatura}
+\slowakluczowe{Interfejs mózg--komputer, Wirtualna klawiatura, Elektroencefalografia, Elektromiografia}
 
 % Słowa kluczowe po angielsku
-\keywords{Brain--computer interface, Electroencephalography, Electromyography, Virtual keyboard}
+\keywords{Brain--computer interface, Virtual keyboard, Electroencephalography, Electromyography}
 
 %% ----------------------- Koniec definicji danych -----------------------------
 
@@ -859,7 +859,7 @@ public abstract class Request : IRequest
 }
 \end{lstlisting}
 
-Przykładem klasy dziedziczącej po \path{Request} może być \path{AuthorizeRequest}. Jej kod został przedstawiony na kodzie źródłowym \ref{code:authorizeRequest}. Oprócz nadpisania w wierszu 3 właściwości \lstinline[language={[Sharp]C}]{method} wartością odpowiednią dla swojego zapytania, wprowadza ona właściwość \lstinline[language={[Sharp]C}]{@params}\footnote{W języku C\# \lstinline[language={[Sharp]C}]{params} jest słowem kluczowym i nie jest może być użyte jako identyfikator w programie, chyba że zostanie poprzedzone prefiksem \lstinline[language={[Sharp]C}]{@}.} typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. 
+Przykładem klasy dziedziczącej po \path{Request} może być \path{AuthorizeRequest}. Jej kod został przedstawiony na kodzie źródłowym \ref{code:authorizeRequest}. Oprócz nadpisania w wierszu 3 właściwości \lstinline[language={[Sharp]C}]{method} wartością odpowiednią dla swojego zapytania, wprowadza ona właściwość \lstinline[language={C}]{@params}\footnote{W języku C\# \lstinline[language={C}]{params} jest słowem kluczowym i nie jest może być użyte jako identyfikator w programie, o ile nie zostanie poprzedzone prefiksem \lstinline[language={[Sharp]C}]{@}.} typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. 
 
 \code{Kod klasy AuthorizeRequest}{Opracowanie własne}{\label{code:authorizeRequest}}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -993,10 +993,69 @@ Wykorzystując wewnętrzny mechanizm serializacji zapytanie jest przekształcane
 \end{lstlisting}
 
 
-
 \subsection{Proces decyzyjny}
+Proces decyzyjny, obejmujący zmianę selekcji aktualnie wybranego klawisza oraz jego \textit{wciśnięcie} (akceptację), odbywa się w oparciu o dane otrzymane od Cortex API. Po otwarciu sesji następuje zasubskrybowanie trzech strumieni danych: informacyjnego, komend mentalnych oraz mimiki. Subskrypcja powoduje przesyłanie w regularnych odstępach czasu obiektów w postaci formatu JSON. Zawartość wiadomości oraz jej częstotliwość zależą od rodzaju strumienia danych. Częstotliwość próbkowania dla strumienia informacyjnego, komend mentalnych oraz mimiki wynosi kolejno 128 Hz, 8 Hz oraz 32 Hz\cite{cortexdoc}.
+
+O ile strumień informacyjny nie jest bezpośrednio wykorzystywany do podejmowania decyzji, tak informacje w nim zawarte są niezwykle istotne dla użytkownika urządzenia. Przesłane paczki zawierają dane na temat stanu hełmu: poziom naładowania jego baterii oraz jakość (siła) sygnału z poszczególnych czujników. Jakość sygnału jest uśredniana do pojedynczej wartości procentowej oznaczonej na interfejsie użytkownika jako \textit{Contact Quality} (patrz rozdział \vref{subsec:virtualkeyboard}). Użytkownik, celem osiągnięcia jak najwyższej jakości połączenia, może korygować położenie czujników na głowie, bazując na diagramie przedstawiającym głowę ze schematycznie oznaczonymi czujnikami, który został umieszczony w interfejsie użytkownika. W zależności od osiągniętej wartości dla poszczególnych czujników, ich kolor będzie zmieniał się z czarnego przez czerwony, pomarańczowy aż do zielonego dla jakości połączenia kolejno bardzo złej, złej, dobrej oraz bardzo dobrej. Im lepsza łączność elektrod ze skórą głowy, tym wyniki pozostałych strumieni można uznać za bardziej miarodajne.
+
+Dane strumieni komend mentalnych oraz mimiki mają zbliżony format, dlatego zostaną omówione na przykładzie wyłącznie jednej komendy -- wyobrażenia ruchu w prawo. Pozostałe komendy, czyli wyobrażenie ruchu w dół, w lewo, w górę oraz uniesienie brwi, zostały zaimplementowane w analogiczny sposób.
+
+Przy stworzeniu instancji klasy \lstinline[language={[Sharp]C}]{KeyboardNavigator} (patrz kod źródłowy \ref{code:keyboard_navigator}) następuje przekazanie do niej w konstruktorze obiektów \lstinline[language={[Sharp]C}]{Insight} oraz \lstinline[language={[Sharp]C}]{Settings}; referencje te zostają zapisane w klasie. Za sprawą interfejsu \lstinline[language={[Sharp]C}]{INotifyPropertyChanged}, implementowanego przez obie te klasy, następuje subskrypcja zmian wartości ich właściwości. W~konstruktorze następuje również ustawienie wartości czasomierza (\textit{ang.} timer) na wartość sprecyzowaną w zakładce \textit{Settings} oraz zasubskrybowanie wydarzenia informującego o upłynięciu odliczanego przez niego czasu.
+
+\code{Kod konstruktora klasy KeyboardNavigator}{Opracowanie własne}{\label{code:keyboard_navigator}}
+\begin{lstlisting}[language={[Sharp]C}]
+public KeyboardNavigator(Insight insight, Settings settings)
+{
+    Insight = insight;
+    Settings = settings;
+
+    Insight.PropertyChanged += Insight_PropertyChanged;
+    Settings.PropertyChanged += Settings_PropertyChanged;
+
+    _rightTimer.Interval = TimeSpan.FromMilliseconds(Settings.FocusTime);
+    _rightTimer.Tick += _rightTimer_Tick;
+}
+\end{lstlisting}
+
+W momencie zgłoszenia wydarzenia \lstinline[language={[Sharp]C}]{PropertyChanged} przez obiekt \lstinline[language={[Sharp]C}]{Insight} następuje wywołanie metody \lstinline[language={[Sharp]C}]{Insight_PropertyChanged}, pokazanej na kodzie źródłowym \ref{code:insight_propertychanged}. Metoda ta sprawdza jaka wartość została zmodyfikowana; jeżeli jest to siła skupienia na komendzie \textit{w prawo}, sprawdzane jest czy został przekroczony próg jej aktywacji, definiowany przez użytkownika w zakładce \textit{Settings}. Jeżeli tak -- następuje włączenie czasomierza \lstinline[language={[Sharp]C}]{_rightTimer}; jeżeli nie, timer jest wyłączany.
+
+\code{Kod metody Insight\_PropertyChanged}{Opracowanie własne}{\label{code:insight_propertychanged}}
+\begin{lstlisting}[language={[Sharp]C}]
+private void Insight_PropertyChanged(object sender, PropertyChangedEventArgs e)
+{
+    if (e.PropertyName == "RightLevel" && Insight.RightLevel >= Settings.RightThreshold)
+        _rightTimer.Start();
+    else if (e.PropertyName == "RightLevel")
+        _rightTimer.Stop();
+}
+\end{lstlisting}
+
+Załączenie czasomierza, zgodnie z subskrypcją złożoną w kodzie źródłowym \ref{code:keyboard_navigator} w linii 10, powoduje wywołanie metody \lstinline[language={[Sharp]C}]{_rightTimer_Tick} co każde upłynięcie jego okresu. Jego okres, podobnie jak próg aktywacji poszczególnych komend, jest definiowany przez użytkownika w zakładce \textit{Settings}. Wywołana wtedy metoda, pokazana na kodzie źródłowym \ref{code:timer_tick}, zgłasza wydarzenie \lstinline[language={[Sharp]C}]{OnRightCommand}, które odpowiada za przesunięcie selekcji na klawiaturze o jeden klawisz w prawo.
+
+\code{Kod metody \_rightTimer\_Tick}{Opracowanie własne}{\label{code:timer_tick}}
+\begin{lstlisting}[language={[Sharp]C}]
+private void _rightTimer_Tick(object sender, EventArgs e) => OnRightCommand?.Invoke();
+\end{lstlisting}
+
+W celu umożliwienia edycji ustawień w trakcie działania aplikacji (a nie wyłącznie na etapie jej uruchomienia) śledzone są również zmiany w klasie \lstinline[language={[Sharp]C}]{Settings}. Każdorazowa zmiana właściwości określającej częstość zgłaszania komend powoduje uaktualnienie wartości przypisanej do timera. Odpowiada za to metoda \lstinline[language={[Sharp]C}]{Settings_PropertyChanged}, pokazana na kodzie źródłowym \ref{code:settings_propertychanged}.
+
+\code{Kod metody Settings\_PropertyChanged}{Opracowanie własne}{\label{code:settings_propertychanged}}
+\begin{lstlisting}[language={[Sharp]C}]
+private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+{
+    if (e.PropertyName != "FocusTime")
+        return;
+
+    _rightTimer.Interval = TimeSpan.FromMilliseconds(Settings.FocusTime);
+}
+\end{lstlisting}
+
+
+
+
+
 \section{Omówienie interfejsu użytkownika}
-\subsection{Zakładka \textit{Virtual Keyboard}}
+\subsection{Zakładka \textit{Virtual Keyboard}\label{subsec:virtualkeyboard}}
 \subsection{Zakładka \textit{Messenger}}
 \subsection{Zakładka \textit{About}}
 \subsection{Zakładka \textit{Connection}}

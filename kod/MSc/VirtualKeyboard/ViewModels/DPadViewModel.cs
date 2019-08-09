@@ -26,5 +26,7 @@ namespace VirtualKeyboard.ViewModels
             Settings = settings;
             KeyboardNavigator = new KeyboardNavigator(Insight, Settings);
         }
+
+        public void Select(RoutedEventArgs args) => KeyboardNavigator.Select(args);
     }
 }
