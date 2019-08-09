@@ -81,6 +81,7 @@
 \RequirePackage{float}
 \RequirePackage{dirtree}
 \RequirePackage{xcolor}
+\RequirePackage{lscape}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
@@ -187,11 +188,11 @@
 \renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
 
 \newcommand{\code}[3]{
-	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\medskip}}
+	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\bigskip}}
 }
 
 \newcommand{\codeinput}[5]{
-	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\medskip}}
+	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\bigskip}}
 	\lstinputlisting[#5]{./code/#4}
 }
 

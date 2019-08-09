@@ -55,10 +55,10 @@
 \jednostka{Katedra Przetwarzania Sygnałów i~Inżynierii Multimedialnej}
 
 % Słowa kluczowe
-\slowakluczowe{BCI, Elektroencefalografia}
+\slowakluczowe{Interfejs mózg--komputer, Elektroencefalografia, Elektromiografia, Wirtualna klawiatura}
 
 % Słowa kluczowe po angielsku
-\keywords{BCI, Electroencephalography}
+\keywords{Brain--computer interface, Electroencephalography, Electromyography, Virtual keyboard}
 
 %% ----------------------- Koniec definicji danych -----------------------------
 
@@ -86,8 +86,12 @@ TODO
 \cel{TODO}
 
 \zakres{TODO}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Wstęp do tematyki interfejsów mózg--komputer}
+W rozdziale pierwszym zawarto wstęp do tematyki interfejsów mózg--komputer. Na treść rozdziału składa się sformułowanie definicji BCI, omówienie podstawowych, niezbędnych do zrozumienia pracy pojęć związanych z układem nerwowym oraz przedstawienie charakteru parametrów rejestrowanych przez urządzenia do akwizycji aktywności mózgu. Omówione zostały również rodzaje interfejsów mózg--komputer, z wyszczególnieniem podziału na inwazyjne, nieinwazyjne oraz \textit{inne}, zawierające podziały rzadziej spotykane w literaturze. W tym rozdziale został poruszony również problem przetwarzania pozyskanych przebiegów aktywności mózgu, w szczególności ich filtracji, ekstrakcji cech oraz klasyfikacji. Rozdział zamyka zestawienie pięciu potencjalnych zastosowań interfejsów mózg--komputer, omówienie sposobu integracji w nie BCI, korzyści z niej wynikających, ich ograniczeń oraz znanych implementacji.
+
 \section{Czym jest oraz jak działa interfejs mózg--komputer}
 Interfejs mózg--komputer (\textit{ang.} BCI -- brain--computer interface) jest układem, który przekształca aktywność ośrodkowego układu nerwowego w polecenia dla zewnętrznego urządzenia wykonawczego. BCI pracuje w zamkniętej pętli, w której można wyróżnić sześć etapów: (1) rejestrację aktywności mózgu, (2) usunięcie szumów, (3) ekstrakcję cech, (4) klasyfikację sygnałów, (5) wydanie polecenia oraz (6) sprzężenie zwrotne\cite{bci_foundations}. Taka definicja prowadzi do konkluzji, iż interfejs mózg--komputer stwarza dodatkowy efektor dla układu nerwowego\cite{bci_principles}.
 
@@ -135,7 +139,7 @@ Wprowadzenie na rynek inwazyjnych interfejsów mózg--komputer wymaga dalszych b
 \subsection{Interfejsy nieinwazyjne}
 Nieinwazyjne interfejsy mózg--komputer pozwalają na akwizycję sygnałów niewymagającą ingerencji w strukturę czaszki ani nawet skórę głowy. Technologie nieinwazyjne do estymacji sygnałów wykorzystują zmiany w ciśnieniu krwi lub fluktuacje pola elektrycznego oraz magnetycznego, spowodowane aktywnością neuronów w konkretnej części mózgu\cite{bci_introduction}.
 
-Trendem na przestrzeni ostatnich lat jest stosowanie interfejsów wykorzystujących EEG. Pomiary elektroencefalograficzne są niedrogim, wygodnym oraz uniwersalnym pod względem środowiska wykorzystania sposobem rejestracji aktywności mózgu, czego konsekwencją jest rozwój komercyjnych rozwiązań\footnote{Przykłady dostępnych komercyjnie nieinwazyjnych interfejsów mózg--komputer wykorzystujących sygnały EEG zostały omówione w rozdziale \ref{chap:headsets}.} oraz narastająca liczba publikacji naukowych w tym temacie. Z drugiej strony, interfejsy wykorzystujące MEG\footnote{MEG (\textit{ang.} magnetoencephalography) -- magnetoencefalografia} są kosztowne oraz niepraktyczne w codziennym użytkowaniu, przez co stanowią jedynie narzędzie badawcze dla technologii BCI\cite{bci_principles}.
+Trendem na przestrzeni ostatnich lat jest stosowanie interfejsów wykorzystujących EEG. Pomiary elektroencefalograficzne są niedrogim, wygodnym oraz uniwersalnym pod względem środowiska wykorzystania sposobem rejestracji aktywności mózgu, czego konsekwencją jest rozwój komercyjnych rozwiązań\footnote{Przykłady dostępnych komercyjnie nieinwazyjnych interfejsów mózg--komputer wykorzystujących sygnały EEG zostały omówione w rozdziale \vref{chap:headsets}.} oraz narastająca liczba publikacji naukowych w tym temacie. Z drugiej strony, interfejsy wykorzystujące MEG\footnote{MEG (\textit{ang.} magnetoencephalography) -- magnetoencefalografia} są kosztowne oraz niepraktyczne w codziennym użytkowaniu, przez co stanowią jedynie narzędzie badawcze dla technologii BCI\cite{bci_principles}.
 
 Interfejsy nieinwazyjne są bardziej podatne na zakłócenia pochodzące ze środowiska z racji braku ekranowania elektrod czaszką, jak ma to miejsce w pomiarach inwazyjnych.
 
@@ -151,7 +155,7 @@ Literatura \cite{bci_neuroimaging} wyszczególnia również metody NIRS oraz fTC
 {Sposoby nieinwazyjnej akwizycji aktywności mózgu\label{fig:non_invasive}}
 {Opracowanie własne na podstawie \cite{bci_neuroimaging}}
 
-Nieinwazyjne interfejsy mózg--komputer są postrzegane jako najbezpieczniejsze oraz najtańsze BCI\cite{bci_trends}. Należy mieć jednak na uwadze, że w tej gamie interfejsów istnieje znaczna rozpiętość cenowa, od około 200\$ za urządzenie w przypadku tych wykorzystujących EEG, do aż 2--3 milionów \$ w przypadku rejestratorów magnetoencefalograficznych\cite{bci_neuroimaging}.
+Nieinwazyjne interfejsy mózg--komputer są postrzegane jako najbezpieczniejsze oraz najtańsze BCI\cite{bci_trends}. Należy mieć jednak na uwadze, że w tej gamie interfejsów istnieje znaczna rozpiętość cenowa, od około 200 \$ za urządzenie w przypadku tych wykorzystujących EEG, do aż 2--3 milionów \$ w przypadku rejestratorów magnetoencefalograficznych\cite{bci_neuroimaging}.
 
 
 \subsection{Inne rodzaje interfejsów}
@@ -184,8 +188,6 @@ Wyzwaniami stawianymi przed tym rodzajem interfejsów są\cite{bci_introduction}
 \end{itemize}
 
 Interfejsy dwukierunkowe zostały poruszone w literaturze \cite{bci_introduction,bci_bidir1,bci_bidir2}.
-
-
 
 
 \section{Przetwarzanie sygnałów}
@@ -371,13 +373,19 @@ Innym zastosowaniem interfejsów mózg--komputer jest wydawanie poleceń za pomo
 Zintegrowanie BCI z grami komputerowymi wiąże się nie tylko ze znacznymi inwestycjami ze strony producentów gier, ale również samych graczy, którzy będą musieli zakupić urządzenia rejestrujące aktywność mózgu. Należy zwrócić uwagę na fakt, że rozgrywki często prowadzone są przez długi okres, a więc wymogiem stawianym przed systemami rejestrującymi jest ich wygoda. Nie mogą one ograniczać ruchów użytkownika ani jego pola widzenia. Wadą rozwiązania jest fakt, iż gracze często generują napięcia mięśniowe, co będzie prowadziło do powstawania artefaktów w przypadku urządzeń rejestrujących sygnały EEG. Rozwiązaniem tego problemu może być ulepszenie algorytmów filtracji sygnałów lub stosowanie systemów hybrydowych EEG/EMG, a więc rejestrujących oraz wykorzystujących aktywność zarówno mózgu, jak i mięśni\cite{bci_introduction}.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Charakterystyka wybranych urządzeń komercyjnych\label{chap:headsets}}
+W rozdziale drugim zostały omówione wybrane urządzenia pozwalające na rejestrację aktywności mózgu. Zebrane urządzenia stanowią nieinwazyjne jednostki akwizycyjne, które są dostępne w sprzedaży detalicznej w cenie nieprzekraczającej 1000 \$. Przenalizowano sześć urządzeń czterech różnych producentów, w szczególności ich parametry, rodzaj oraz umiejscowienie czujników oraz dostępne narzędzia programistyczne. W przypadku każdego urządzenia wyszczególniono również jego cenę oraz, jeśli dotyczy, model licencjonowania.
+
+
 \section{Emotiv Insight\label{section:insight}}
 Insight (patrz rysunek \vref{fig:insight}) jest produktem wprowadzonym na rynek w roku 2015 przez firmę Emotiv przy wsparciu crowdfundingu na portalu \href{www.kickstarter.com}{kickstarter}. Jest produktem do użytku codziennego, głównie za sprawą minimalistycznego designu oraz braku konieczności stosowania żelów przewodzących, przeznaczonym do mniej precyzyjnych zastosowań.
 
 Jest wyposażony w pięć czujników właściwych oraz dwa referencyjne. Lokalizacja czujników została przedstawiona na rysunku \vref{fig:insight_area}. Czas ubrania oraz ustawienia urządzenia oscyluje w granicach 1--2 minut. Parametry urządzenia zostały zestawione w tabeli \vref{tab:insight}.
 
-Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 299\$.
+Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 299 \$.
 
 \rysunek{insight}
 {Hełm Emotiv Insight\label{fig:insight}}
@@ -407,7 +415,8 @@ Firma Emotiv dostarcza do swoich rozwiązań API\footnote{API (\textit{ang.} app
 
 Cortex jest wrapperem SDK\footnote{SDK (\textit{ang.} software development kit) -- Zestaw narzędzi dla programistów niezbędny w tworzeniu aplikacji korzystających z danej biblioteki.\label{foot:sdk}} firmy EMOTIV. Zapewnia on, w zależności od rodzaju zakupionej licencji, dostęp do różnych strumieni danych z hełmów. Jest kompatybilny z systemami Mac OS oraz Windows. Umożliwia programowanie w językach Java, C\#, C++, Python, Ruby, JavaScript (Node.js) oraz PHP.
 
-Licencja Cortex jest dostępna w trzech planach:
+\pagebreak
+Licencja Cortex jest dostępna w trzech planach omówionych poniżej.
 \begin{description}
     \item [Darmowa] \hfill
     \begin{itemize}
@@ -418,7 +427,7 @@ Licencja Cortex jest dostępna w trzech planach:
         \item Motion data API,
         \item nielimitowana ilość sesji na 3 urządzeniach.
     \end{itemize}
-    \item [Niekomercyjna pro -- \$55-99/miesiąc] \hfill
+    \item [Niekomercyjna pro -- 55--99 \$/miesiąc] \hfill
     \begin{itemize}
         \item Wszystkie API z licencji darmowej,
         \item Raw EEG API,
@@ -441,7 +450,7 @@ EPOC+, pokazany na rysunku \vref{fig:epoc}, został wprowadzony na rynek w 2013 
 
 Jest wyposażony w 14 kanałów właściwych oraz 2 referencyjne (dokładna lokalizacja sensorów została przedstawiona na rysunku \vref{fig:epoc_area}). W odróżnieniu od Emotiv Insight, omówionego w rozdziale \vref{section:insight}, wymaga stosowania \textit{mokrych} elektrod, pokrytych nasączonym solą fizjologiczną filcem. Ze względu na większą ilość czujników niż w Emotiv Insight, czas ubrania oraz przygotowania urządzenia do pracy wynosi około 3--5 minut. Parametry hełmu zostały przedstawione w tabeli \vref{tab:epoc}.
 
-Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799\$.
+Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799 \$.
 
 \rysunek{epoc}
 {Hełm Emotiv EPOC+\label{fig:epoc}}
@@ -475,7 +484,6 @@ Muse/Muse 2 są urządzeniami wspomagającymi medytację, które pozwalają na r
 
 Oba urządzenia są z wyglądu bardzo do siebie podobne. Nowsze, Muse 2 (pokazane na rysunku \vref{fig:muse2}), w odniesieniu do poprzedniej wersji, zostało \textit{odchudzone}, przez co nabrało bardziej eleganckiego wyglądu oraz zyskało niższy profil z dodatkowymi czujnikami\cite{muse_comparison_article}. Dodano również miękkie w dotyku wykończenie.
 
-\FloatBarrier
 \rysunek{muse2}
 {Opaska Muse 2\label{fig:muse2}}
 {\cite{muse2}}
@@ -486,7 +494,7 @@ Obie opaski są wyposażone w 7 czujników, w tym 3 referencyjne (patrz rysunek 
 {Rozmieszczenie sensorów w opasce Muse\label{fig:muse_area}}
 {\cite{muse_specification}}
 
-Koszt Muse wynosi 219€; Muse 2 -- 269€.
+Koszt Muse wynosi 219 €; Muse 2 -- 269 €.
 
 \tabela{Parametry Muse oraz Muse 2\label{tab:muse}}
 {Opracowanie własne na podstawie \cite{muse_comparison} oraz \cite{muse_specification}}
@@ -518,8 +526,8 @@ Muse posiada oferty skierowane do następujących grup:
 
     Aplikacja oferuje dwa rodzaje subskrypcji:
     \begin{enumerate}
-        \item miesięczną w cenie 39\$/miesiąc,
-        \item roczną w cenie 33\$/miesiąc; w tej opcji dodatkowo otrzymujemy za darmo urządzenie Muse.
+        \item miesięczną w cenie 39 \$/miesiąc,
+        \item roczną w cenie 33 \$/miesiąc; w tej opcji dodatkowo otrzymujemy za darmo urządzenie Muse.
     \end{enumerate}
 
     \item [Naukowców] -- w ramach narzędzi dla naukowców Muse oferuje dostęp do MusePlayer oraz MuseLab. MusePlayer służy do rejestrowania, ponownego odtwarzania, przekierowywania oraz przetwarzania danych z opasek. Umożliwia konwersję z natywnego typu danych (.muse) na inne (.txt, .mat, .csv). MuseLab wykorzystuje się do wizualizacji danych.
@@ -531,7 +539,7 @@ MindWave Mobile 2 zbudowane jest z opaski na głowę, klipsu na ucho oraz ramien
 
 Parametry urządzenia zostały zestawione w tabeli \vref{tab:mindwave}.
 
-Koszt urządzenia na dzień 25 czerwca 2019 roku wynosi 100\$.
+Koszt urządzenia na dzień 25 czerwca 2019 roku wynosi 100 \$.
 
 \rysunekbig{mindwave}
 {Hełm MindWave Mobile 2\label{fig:mindwave}}
@@ -561,7 +569,7 @@ NeuroSky dostarcza swoje API dla systemów iOS, Android, macOS oraz Windows. Dar
     \item [Protokół komunikacji MindSet] -- zawiera specyfikacje protokołu komunikacyjnego; pozwala na integrację hełmu z dowolną platformą/językiem programowania.
 \end{description}
 
-Dodatkowo można wykupić narzędzia dla naukowców w cenie 500\$, na które składają się\cite{mindwave_research}:
+Dodatkowo można wykupić narzędzia dla naukowców w cenie 500 \$, na które składają się\cite{mindwave_research}:
 
 \begin{description}
     \item [NeuroView] -- aplikacja do wyświetlania oraz zapisywania danych EEG w czasie rzeczywistym. Pozwala na rejestrację \textit{czystego} sygnału EEG, jego poszczególnych składowych oraz odczytów \textit{NeuroSky eSense} dla skupienia oraz medytacji. Umożliwia eksport do plików CSV.
@@ -578,9 +586,9 @@ Czas założenia oraz uruchomienia hełmu wynosi poniżej 30 sekund.
 
 Produkt można kupić w trzech wariantach:
 \begin{enumerate}
-    \item Do samodzielnego druku --- dostarczane są wszystkie części hełmu oprócz tych, które można wydrukować na drukarce 3D. Hełm należy zmontować samodzielnie na podstawie \href{https://docs.openbci.com/Headware/01-Ultracortex-Mark-IV#ultracortex-mark-iv-assembly-instructions}{dokumentacji}. Cena: 300--400\$.
-    \item Niezmontowany --- dostarczane są wszystkie części hełmu, również z tymi, które można wydrukować na drukarce 3D. Hełm należy zmontować samodzielnie na podstawie \href{https://docs.openbci.com/Headware/01-Ultracortex-Mark-IV#ultracortex-mark-iv-assembly-instructions}{dokumentacji}. Cena: 500--600\$.
-    \item Zmontowany --- dostarczany jest całkowicie zmontowany hełm. Cena: 700--850\$.
+    \item Do samodzielnego druku --- dostarczane są wszystkie części hełmu oprócz tych, które można wydrukować na drukarce 3D. Hełm należy zmontować samodzielnie na podstawie \href{https://docs.openbci.com/Headware/01-Ultracortex-Mark-IV#ultracortex-mark-iv-assembly-instructions}{dokumentacji}. Cena: 300--400 \$.
+    \item Niezmontowany --- dostarczane są wszystkie części hełmu, również z tymi, które można wydrukować na drukarce 3D. Hełm należy zmontować samodzielnie na podstawie \href{https://docs.openbci.com/Headware/01-Ultracortex-Mark-IV#ultracortex-mark-iv-assembly-instructions}{dokumentacji}. Cena: 500--600 \$.
+    \item Zmontowany --- dostarczany jest całkowicie zmontowany hełm. Cena: 700--850 \$.
 \end{enumerate}
 
 \rysunekbig{markiv}
@@ -591,7 +599,7 @@ Produkt można kupić w trzech wariantach:
 {Rozmieszczenie sensorów w hełmie Ultracortex Mark IV\label{fig:markiv_area}}
 {\cite{markiv_shop}}
 
-Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwięzłe opisy dostępnych układów. Parametry hełmu \textit{Mark IV} w połączeniu z kompatybilnymi płytkami zamieszczono w tabeli \vref{tab:markiv}.
+Dodatkowo należy zakupić wybraną płytkę OpenBCI. W dalszej części rozdziału zamieszczono opisy dostępnych układów. Parametry hełmu \textit{Mark IV} w połączeniu z kompatybilnymi płytkami zamieszczono w tabeli \vref{tab:markiv}.
 
 \begin{description}
     \item [Ganglion Board] -- Ganglion (patrz rysunek \vref{fig:ganglion}) posiada 4 kanały, które mogą być użyte do mierzenia sygnałów EMG, EKG lub EEG\cite{ganglion_shop}. Częstotliwość próbkowania wynosi 200 Hz.
@@ -602,7 +610,7 @@ Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwi�
 
     Komunikacja bezprzewodowa jest realizowana z wykorzystaniem \href{https://www.sparkfun.com/simblee}{Simblee BLE}, modułu Bluetooth 4.0 kompatybilnego z Arduino, który pozwala na łatwą integrację z IoT\footnote{IoT (\textit{ang.} Internet of Things) -- Internet rzeczy. Koncepcja zgodnie z którą urządzenia mogą komunikować się ze sobą, wykorzystując do tego celu internet.}. Moduł umieszczony na płytce Ganglion jest zaprogramowany i gotowy do pracy, jednak część jego wyprowadzeń pozostaje dostępna dla użytkownika do celów własnych.
 
-    Koszt układu to 200\$.
+    Koszt układu to 200 \$.
 
     \item[Cyton Board] -- Cyton, pokazany na rysunku \vref{fig:cyton}, jest kompatybilny z Arduino, posiada 8 kanałów oraz 32-bitowy procesor\cite{cyton_shop}. Podobnie jak Gangalion, może być wykorzystany do mierzenia aktywności mięśni, serca lub mózgu. Dane próbkowane są z częstotliwością 250 Hz.
 
@@ -610,9 +618,9 @@ Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwi�
     {OpenBCI Cyton Board\label{fig:cyton}}
     {\cite{cyton_shop}}
 
-    Do komunikacji bezprzewodowej wykorzystywany jest moduł \href{https://eu.mouser.com/new/rfdigital/rf-digital-rfduino/}{RFduino}. Komunikacja z komputerem może być realizowana przy pomocy adaptera OpenBCI USB lub, jeżeli komputer posiada tę opcję, wbudowanego modułu BLE\footnote{BLE (\textit{ang.} Bluetooth Low Energy) -- technologia sieci bezprzewodowej o poborze mocy niższym niż w konwencjonalnych modułach Bluetooth.}.
+    Do komunikacji bezprzewodowej wykorzystywany jest moduł \href{https://eu.mouser.com/new/rfdigital/rf-digital-rfduino/}{RFduino}. Komunikacja z komputerem może być realizowana przy pomocy adaptera OpenBCI USB lub, jeżeli komputer posiada tę technologię, wbudowanego modułu BLE.
 
-    Koszt płytki to 500\$.
+    Koszt płytki to 500 \$.
 
     \item[Cyton + Daisy Board] -- Ten układ zawiera opisaną wcześniej płytkę Cyton oraz Daisy, która jest \textit{wpinana} w płytkę Cyton. Układ pokazano na rysunku \vref{fig:cyton_daisy}.
 
@@ -625,43 +633,46 @@ Dodatkowo należy zakupić wybraną płytkę OpenBCI. Poniżej zamieszczono zwi�
     Koszt układu to 950 \$. Płytka Daisy nie może być zakupiona oddzielnie.
 \end{description}
 
-
-\tabela{Parametry Ultracortex \textit{Mark IV} w połączeniu z kompatybilnymi układami\label{tab:markiv}}
-{Opracowanie własne na podstawie \cite{markiv_shop}, \cite{ganglion_shop},\cite{cyton_shop} oraz \cite{cytondaisy_shop}}
-{
-    \begin{threeparttable}
-        \begin{tabular}{l|l|l|l}
-            Parametr & Ganglion & Cyton & Cyton + Daisy \\\hline\hline
-            Ilość kanałów & 4 & 8 & 16\\
-            Umiejscowienie elektrod & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a}\\
-            Rodzaj czujników & Suche & Suche & Suche\\
-            Rozdzielczość & 24 bit & 24 bit & 24 bit\\
-            Częstotliwość próbkowania & 200 Hz & 250 Hz & 250 Hz\\
-            Rejestrowane parametry & EMG, EKG, EEG\tnote{b} & EMG, EKG, EEG\tnote{b}  & EMG, EKG, EEG\tnote{b}\\
-            Detekcja ruchu & 3 osiowy akcelerometr & 3 osiowy akcelerometr & 3 osiowy akcelerometr\\
-            Kompatybilność & macOS, Windows, Linux & macOS, Windows, Linux & macOS, Windows, Linux\\
-            Łączność & BLE 4.0 przez adapter & BLE & BLE\\
-            Zasilanie & 6V (4 baterie AA) & 6V (4 baterie AA) & 6V (4 baterie AA)\\
-        \end{tabular}
-        \begin{tablenotes}
-            \item[a] \footnotesize \textit{Mark IV} wspiera 35 lokalizacji według standardu 10-20. Punkty w których można umieścić elektrody pokazano na rysunku \vref{fig:markiv_area}.
-            \item[b] \footnotesize Sensory nie są dołączane do płytek i należy je zakupić oddzielnie.
-        \end{tablenotes}
-    \end{threeparttable}
-}
-
 Oprogramowanie OpenBCI jest open source'owe i jest dostępne na \href{https://github.com/OpenBCI}{ich profilu na GitHubie}.
 
-Głównym narzędziem do wizualizacji, nagrywania oraz komunikacji z płytkami jest OpenBCI GUI\cite{markiv_software_gui}. Narzędzie jest kompatybilne z systemami macOS, Windows oraz Linux. Pozwala na filtrowanie oraz przetwarzanie danych w czasie rzeczywistym. Dodatkowo pozwala na przekierowywanie danych wykorzystując protokoły UDP, OSC, LSL oraz port szeregowy.
+Głównym narzędziem do wizualizacji, nagrywania oraz komunikacji z płytkami jest OpenBCI GUI\cite{markiv_software_gui}. Narzędzie jest kompatybilne z systemami macOS, Windows oraz Linux. Pozwala na filtrowanie oraz przetwarzanie danych w czasie rzeczywistym; umożliwia również przekierowywanie danych wykorzystując protokoły UDP, OSC, LSL oraz port szeregowy.
 
-Do komunikacji z płytkami używane są OpenBCI Ganglion SDK oraz OpenBCI Cyton SDK. Wykorzystują one protokół oparty na znakach ASCII\footnote{ASCII (\textit{ang.} American Standard Code for Information Interchange) -- siedmiobitowy system służący do kodowania znaków.}.
-
-OpenBCI dostarcza również bibliotekę Brainflow, która służy do analizy danych EMG, EKG oraz EEG\cite{markiv_software_brainflow}. Została ona napisana w języku C/C++, jednak zawiera nakładki na języki Python, Java, R, C++\footnote{Pomimo, że sama biblioteka napisana jest w C/C++, dodano nakładkę na język C++ w celu zapewnienia wysokopoziomowej warstwy abstrakcji.}, Matlab oraz C\#.
+Do komunikacji z układami stosowane są narzędzia OpenBCI Ganglion SDK oraz OpenBCI Cyton SDK, wykorzystujące protokół oparty na znakach ASCII\footnote{ASCII (\textit{ang.} American Standard Code for Information Interchange) -- siedmiobitowy system służący do kodowania znaków.}. OpenBCI dostarcza również bibliotekę Brainflow, która służy do analizy danych EMG, EKG oraz EEG\cite{markiv_software_brainflow}. Umożliwia ona programowanie w językach Python, Java, R, C++\footnote{Mimo iż biblioteka została napisana jest w C/C++, dodano nakładkę na język C++ w celu zapewnienia warstwy abstrakcji.}, Matlab oraz C\#.
 
 Platforma OpenBCI umożliwia również współpracę z innymi programami do analizy sygnałów, m.in. \href{https://www.mathworks.com/products/matlab.html}{MATLAB}, \href{https://www.neuromore.com/}{Neuromore}, \href{http://openvibe.inria.fr/}{OpenVIBE}, \href{https://github.com/sccn/labstreaminglayer}{LabStreamingLayer} oraz \href{http://www.shifz.org/brainbay/}{BrainBay}.
 
+\begin{landscape}
+    \tabela{Parametry Ultracortex \textit{Mark IV} w połączeniu z kompatybilnymi układami\label{tab:markiv}}
+    {Opracowanie własne na podstawie \cite{markiv_shop,ganglion_shop,cyton_shop,cytondaisy_shop}}
+    {
+        \begin{threeparttable}
+            \begin{tabular}{l|l|l|l}
+                Parametr & Ganglion & Cyton & Cyton + Daisy \\\hline\hline
+                Ilość kanałów & 4 & 8 & 16\\
+                Umiejscowienie elektrod & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a}\\
+                Rodzaj czujników & Suche & Suche & Suche\\
+                Rozdzielczość & 24 bit & 24 bit & 24 bit\\
+                Częstotliwość próbkowania & 200 Hz & 250 Hz & 250 Hz\\
+                Rejestrowane parametry & EMG, EKG, EEG\tnote{b} & EMG, EKG, EEG\tnote{b}  & EMG, EKG, EEG\tnote{b}\\
+                Detekcja ruchu & 3 osiowy akcelerometr & 3 osiowy akcelerometr & 3 osiowy akcelerometr\\
+                Kompatybilność & macOS, Windows, Linux & macOS, Windows, Linux & macOS, Windows, Linux\\
+                Łączność & BLE 4.0 przez adapter & BLE & BLE\\
+                Zasilanie & 6V (4 baterie AA) & 6V (4 baterie AA) & 6V (4 baterie AA)\\
+            \end{tabular}
+            \begin{tablenotes}
+                \item[a] \footnotesize \textit{Mark IV} wspiera 35 lokalizacji według standardu 10-20. Punkty w których można umieścić elektrody pokazano na rysunku \vref{fig:markiv_area}.
+                \item[b] \footnotesize Sensory nie są dołączane do płytek i należy je zakupić oddzielnie.
+            \end{tablenotes}
+        \end{threeparttable}
+    }
+\end{landscape}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Projekt wirtualnej klawiatury}
+W rozdziale trzecim omówiono opracowaną aplikację. W pierwszej części rozdziału sformułowano założenia projektowe. Dalej omówiono zagadnienia związane z doborem narzędzi wymaganych do realizacji pracy, w tym urządzenia rejestrującego aktywność mózgu, języka programowania, środowiska programistycznego oraz systemu kontroli wersji. Kolejną częścią jest omówienie samej aplikacji, z wyszczególnieniem struktury jej kodu źródłowego, algorytmu działania, protokołu komunikacyjnego urządzenia rejestrującego, metodyki treningu detekcji komend mentalnych oraz procesu decyzyjnego aplikacji. Rozdział zawiera również omówienie interfejsu użytkownika.  
+
 \section{Założenia projektowe}
 Przed przystąpieniem do realizacji projektu wirtualnej klawiatury sformułowano założenia przedstawione poniżej.
 
@@ -774,7 +785,7 @@ Projekt VirtualKeyboard jest aplikacją Windows (output type: Windows applicatio
 
 Katalog \path{Converters} zawiera implementacje interfejsów \lstinline[language={[Sharp]C}]{IValueConverter} oraz \linebreak \lstinline[language={[Sharp]C}]{IMultiValueConverter}. Są w nim zawarte konwertery umożliwiające stosowanie niestandardowej logiki do tworzenia powiązań między interfejsem użytkownika, a właściwościami (\textit{ang.} properties) w aplikacji. Przykładem zaimplementowanego konwertera może być \path{BooleanToVisibilityConverter.cs}, który zwraca wartość typu wyliczeniowego \lstinline[language={[Sharp]C}]{Visibility} na podstawie przekazanej zmiennej typu \lstinline[language={[Sharp]C}]{boolean}. I tak, dla parametru \lstinline[language={[Sharp]C}]{true} zwraca wartość \lstinline[language={[Sharp]C}]{Visibility.Visible}, a dla \lstinline[language={[Sharp]C}]{false} -- \lstinline[language={[Sharp]C}]{Visibility.Hidden}.
 
-Folder \path{Models} zawiera klasy odpowiedzialne za logikę biznesową aplikacji. Jako że przeważająca część logiki jest umieszczona w klasie \path{Insight.cs} znajdującej się w projekcie HeadsetController, w tym folderze umieszczona jest wyłącznie klasa \path{Settings.cs}. Przechowuje ona ustawienia dotyczące progów aktywacji dla poszczególnych komend mentalnych, czasu skupienia wymaganego do ich aktywacji oraz wartość określającą czy włączony został tryb offline aplikacji. Klasa jest deserializowana z pliku \path{settings.json} wraz ze startem aplikacji oraz serializowana do niego podczas jej zamknięcia. Dzięki zastosowaniu mechanizmu serializacji użytkownik nie traci ustawień poprzedniej sesji.
+Folder \path{Models} zawiera klasy odpowiedzialne za logikę biznesową aplikacji. Umieszczona jest w nim klasa \path{Settings.cs}, przechowująca ustawienia dotyczące progów aktywacji dla poszczególnych komend mentalnych, czasu skupienia wymaganego do ich aktywacji oraz wartości określającej czy włączony został tryb offline aplikacji. Klasa jest deserializowana z pliku \path{settings.json} wraz ze startem aplikacji oraz serializowana do niego podczas jej zamknięcia. Dzięki zastosowaniu mechanizmu serializacji użytkownik nie traci ustawień poprzedniej sesji. W folderze \path{Models} znajduje się również definicja klasy \path{KeyboardNavigator.cs}, która odpowiada za proces decyzyjny dotyczący wyboru aktualnie zaznaczonego klawisza klawiatury oraz jego wciśnięcia.
 
 Folder \path{Resources} zawiera graficzne zasoby wykorzystywane w aplikacji. Przechowywana jest tu między innymi ikona aplikacji -- \path{keyboard.ico}.
 
@@ -834,7 +845,7 @@ Podczas uruchomienia aplikacji nawiązywane jest szyfrowane połączenie \textit
 
 W celu minimalizacji liczby błędów komunikacji postanowiono zaimplementować kompletną bibliotekę zapytań oraz ich wyników. Opracowano w tym celu klasy \path{Request}, \path{Response} oraz klasy reprezentujące wszystkie możliwe zapytania, ich parametry oraz wyniki. 
 
-Klasa \path{Request}, pokazana na kodzie źródłowym \ref{code:request}, stanowi klasę bazową dla wszystkich zapytań Cortex API. Klasy zapytań, dziedzicząc po niej, uzyskują dostęp do zawartych w niej właściwości (\textit{ang.} properties). Dzięki temu zyskują mechanizm automatycznego przydzielania \textit{id} zapytania, którego niepowtarzalność jest kluczowa do poprawnej identyfikacji odebranych wyników; uzyskują również automatyczne przypisanie wersji protokołu JSON-RPC, która jest stała w obrębie Cortex API. Dodatkowo, dzięki zastosowaniu słowa kluczowego \lstinline[language=C]{abstract}, klasa bazowa wymusza redefinicję właściwości \lstinline[language={[Sharp]C}]{method}, która jest unikalna dla każdego rodzaju zapytania.
+Klasa \path{Request}, pokazana na kodzie źródłowym \ref{code:request}, stanowi klasę bazową dla wszy\-stkich zapytań Cortex API. Klasy zapytań, dziedzicząc po niej, uzyskują dostęp do zawartych w niej właściwości (\textit{ang.} properties). Dzięki temu zyskują mechanizm automatycznego przydzielania \textit{id} zapytania, którego niepowtarzalność jest kluczowa do poprawnej identyfikacji odebranych wyników; uzyskują również automatyczne przypisanie wersji protokołu JSON-RPC, która jest stała w obrębie Cortex API. Dodatkowo, dzięki zastosowaniu słowa kluczowego \lstinline[language=C]{abstract}, klasa bazowa wymusza redefinicję właściwości \lstinline[language={[Sharp]C}]{method}, która jest unikalna dla każdego rodzaju zapytania.
 
 \code{Kod klasy Request}{Opracowanie własne}{\label{code:request}}
 \begin{lstlisting}[language={[Sharp]C}]
@@ -883,29 +894,6 @@ public class AuthorizeParameter
 }
 \end{lstlisting}
 
-Wysłanie zapytania odbywa się przy użyciu metody \lstinline[language={[Sharp]C}]{SendRequest} przedstawionej na kodzie źródłowym \ref{code:send_request}. Jako parametr przyjmuje ona zapytanie implementujące interfejs \lstinline[language={[Sharp]C}]{IRequest}, a więc wszystkie zapytania dziedziczące po klasie \lstinline[language={[Sharp]C}]{Request}. Wartością zwracaną jest \lstinline[language={[Sharp]C}]{Response<T>}, gdzie \lstinline[language={[Sharp]C}]{T} jest typem generycznym implementującym interfejs \lstinline[language={[Sharp]C}]{IResult}. W ciele tej metody odbywa się kojarzenie uzyskanych odpowiedzi z wysłanymi zapytaniami. W linii 13 następuje zasubskrybowanie wydarzenia (\textit{ang.} event) \lstinline[language={[Sharp]C}]{OnResponse}, dzięki czemu każdorazowe jego zgłoszenie spowoduje wywołanie lokalnej funkcji \lstinline[language={[Sharp]C}]{WaitResponseMatch}, w której, jeżeli \lstinline[language={[Sharp]C}]{id} zapytania oraz otrzymanej odpowiedzi są takie same, następuje odsubskrybowanie rzeczonej funkcji oraz przydzielenie otrzymanej odpowiedzi do wyniku zapytania. Ponieważ metoda \lstinline[language={[Sharp]C}]{SendRequest} jest asynchroniczna, nie blokuje ona interfejsu użytkownika w trakcie oczekiwania na odpowiedź.
-
-\code{Kod metody SendRequest}{Opracowanie własne}{\label{code:send_request}}
-\begin{lstlisting}[language={[Sharp]C}]
-public async Task<Response<T>> SendRequest<T>(IRequest request) where T : IResult
-{
-    var tcs = new TaskCompletionSource<Response<T>>();
-
-    void WaitResponseMatch(string response)
-    {
-        if (Parser.GetTokenAsString(response, "id") != request.id.ToString())
-            return;
-
-        OnResponse -= WaitResponseMatch; //unsubscribe after match
-        tcs.SetResult(Parser.Deserialize<Response<T>>(response));
-    }
-    OnResponse += WaitResponseMatch;
-    SendRequest(request);
-
-    return await tcs.Task;
-}
-\end{lstlisting}
-
 Kod klasy \lstinline[language={[Sharp]C}]{Response} został pokazany na kodzie źródłowym \ref{code:response}. Posiada on definicje wszystkich pól definiowanych przez standard JSON-RPC. W celu utworzenia jej instancji należy poprzez parametr generyczny \lstinline[language={[Sharp]C}]{T} sprecyzować jej typ, który musi implementować interfejs \lstinline[language={[Sharp]C}]{IResult}.
 
 \code{Kod klasy Response}{Opracowanie własne}{\label{code:response}}
@@ -944,12 +932,38 @@ public class AuthorizeResponse : IResult
 }
 \end{lstlisting}
 
-Przykładowo, chcąc uzyskać Cortex Token, który jest niezbędny do większości zapytań Cortex API, należy wywołać metodę \lstinline[language={[Sharp]C}]{SendRequest}, przekazując do niej obiekt klasy \lstinline[language={[Sharp]C}]{AuthorizeRequest} z parametrem typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. Z uzyskanej odpowiedzi typu \lstinline[language={[Sharp]C}]{Result<AuthorizeResponse>} możliwe jest odczytanie \lstinline[language={[Sharp]C}]{cortexToken}. Zapytanie to oraz jego wynik pokazano na kodzie źródłowym \ref{code:request_response}. Wartością \lstinline[language={[Sharp]C}]{"xxx"} oznaczono \lstinline[language={[Sharp]C}]{clientId}, a \lstinline[language={[Sharp]C}]{"yyy"} \lstinline[language={[Sharp]C}]{clientSecret}.
+Wysłanie zapytania odbywa się przy użyciu metody \lstinline[language={[Sharp]C}]{SendRequest} przedstawionej na kodzie źródłowym \ref{code:send_request}. Jako parametr przyjmuje ona zapytanie implementujące interfejs \lstinline[language={[Sharp]C}]{IRequest}, a więc wszystkie zapytania dziedziczące po klasie \lstinline[language={[Sharp]C}]{Request}. Wartością zwracaną jest \lstinline[language={[Sharp]C}]{Response<T>}, gdzie \lstinline[language={[Sharp]C}]{T} jest typem generycznym implementującym interfejs \lstinline[language={[Sharp]C}]{IResult}. W ciele tej metody odbywa się kojarzenie uzyskanych odpowiedzi z wysłanymi zapytaniami. W linii 13 następuje zasubskrybowanie wydarzenia (\textit{ang.} event) \lstinline[language={[Sharp]C}]{OnResponse}, dzięki czemu każdorazowe jego zgłoszenie spowoduje wywołanie lokalnej funkcji \lstinline[language={[Sharp]C}]{WaitResponseMatch}, w której, jeżeli \lstinline[language={[Sharp]C}]{id} zapytania oraz otrzymanej odpowiedzi są takie same, następuje odsubskrybowanie rzeczonej funkcji oraz przydzielenie otrzymanej odpowiedzi do wyniku zapytania. Ponieważ metoda \lstinline[language={[Sharp]C}]{SendRequest} jest asynchroniczna, nie blokuje ona interfejsu użytkownika w trakcie oczekiwania na odpowiedź.
 
-\code{Sposób wysłania zapytania AuthorizeRequest oraz odczytania odpowiedzi AuthorizeResponse}{Opracowanie własne}{\label{code:request_response}}
+\code{Kod metody SendRequest}{Opracowanie własne}{\label{code:send_request}}
 \begin{lstlisting}[language={[Sharp]C}]
-var authorizeResponse = SendRequest<AuthorizeResponse>(new AuthorizeRequest(new AuthorizeParameter("xxx", "yyy")));
-CortexToken = (await authorizeResponse).result?.cortexToken;
+public async Task<Response<T>> SendRequest<T>(IRequest request) where T : IResult
+{
+    var tcs = new TaskCompletionSource<Response<T>>();
+
+    void WaitResponseMatch(string response)
+    {
+        if (Parser.GetTokenAsString(response, "id") != request.id.ToString())
+            return;
+
+        OnResponse -= WaitResponseMatch; //unsubscribe after match
+        tcs.SetResult(Parser.Deserialize<Response<T>>(response));
+    }
+    OnResponse += WaitResponseMatch;
+    SendRequest(request);
+
+    return await tcs.Task;
+}
+\end{lstlisting}
+
+Na przykład, chcąc uzyskać Cortex Token, który jest niezbędny do autoryzacji większości zapytań Cortex API, należy wywołać metodę \lstinline[language={[Sharp]C}]{SendRequest}, przekazując do niej obiekt klasy \lstinline[language={[Sharp]C}]{AuthorizeRequest} z parametrem typu \lstinline[language={[Sharp]C}]{AuthorizeParameter}. Z uzyskanej odpowiedzi typu \lstinline[language={[Sharp]C}]{Response<AuthorizeResponse>} możliwe jest odczytanie \lstinline[language={[Sharp]C}]{cortexToken}. Operacje te, zawarte w metodzie \lstinline[language={[Sharp]C}]{Authorize}, pokazano na kodzie źródłowym \ref{code:request_response}. Wartością \lstinline[language={[Sharp]C}]{"xxx"} oznaczono \lstinline[language={[Sharp]C}]{clientId}, a \lstinline[language={[Sharp]C}]{"yyy"} \lstinline[language={[Sharp]C}]{clientSecret}.
+
+\code{Kod metody Authorize}{Opracowanie własne}{\label{code:request_response}}
+\begin{lstlisting}[language={[Sharp]C}]
+public async Task Authorize()
+{
+    var authorizeResponse = SendRequest<AuthorizeResponse>(new AuthorizeRequest(new AuthorizeParameter("xxx", "yyy")));
+    CortexToken = (await authorizeResponse).result?.cortexToken;
+}
 \end{lstlisting}
 
 Wykorzystując wewnętrzny mechanizm serializacji zapytanie jest przekształcane do postaci pokazanej na kodzie źródłowym \ref{code:request_sent}, a następnie wysyłane przy użyciu metody \lstinline[language={[Sharp]C}]{SendRequest} pokazanej na kodzie źródłowym \ref{code:send_request}. Odpowiedź na to zapytanie została pokazana na kodzie źródłowym \ref{code:response_received}. Obie wiadomości są tożsame z przykładami zaczerpniętymi z dokumentacji, pokazanymi na kodach źródłowych \ref{code:sample_request} oraz \ref{code:sample_response}.

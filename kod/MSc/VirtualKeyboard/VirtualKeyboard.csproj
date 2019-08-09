@@ -98,6 +98,7 @@
     <Compile Include="Converters\ObjectToBooleanConverter.cs" />
     <Compile Include="Converters\PercentageToBrushConverter.cs" />
     <Compile Include="Converters\ProgressBarBrushConverter.cs" />
+    <Compile Include="Models\KeyboardNavigator.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Utilities\SettingsSerializer.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />

@@ -46,11 +46,11 @@ namespace VirtualKeyboard.ViewModels
                 VoiceAge.NotSet, 0,
                 CultureInfo.GetCultureInfo("en-US"));
 
-            HeadsetInformationViewModel.DPadViewModel.OnUpCommand += () => Navigate(FocusNavigationDirection.Up);
-            HeadsetInformationViewModel.DPadViewModel.OnDownCommand += () => Navigate(FocusNavigationDirection.Down);
-            HeadsetInformationViewModel.DPadViewModel.OnLeftCommand += () => Navigate(FocusNavigationDirection.Left);
-            HeadsetInformationViewModel.DPadViewModel.OnRightCommand += () => Navigate(FocusNavigationDirection.Right);
-            HeadsetInformationViewModel.DPadViewModel.OnSelectCommand += () => Keys.First(k => k.IsSelected).InvokePressed();
+            HeadsetInformationViewModel.DPadViewModel.KeyboardNavigator.OnUpCommand += () => Navigate(FocusNavigationDirection.Up);
+            HeadsetInformationViewModel.DPadViewModel.KeyboardNavigator.OnDownCommand += () => Navigate(FocusNavigationDirection.Down);
+            HeadsetInformationViewModel.DPadViewModel.KeyboardNavigator.OnLeftCommand += () => Navigate(FocusNavigationDirection.Left);
+            HeadsetInformationViewModel.DPadViewModel.KeyboardNavigator.OnRightCommand += () => Navigate(FocusNavigationDirection.Right);
+            HeadsetInformationViewModel.DPadViewModel.KeyboardNavigator.OnSelectCommand += () => Keys.First(k => k.IsSelected).InvokePressed();
 
             var keys = new[] { "Z", "←", "M", "3", ".", "X", "O", "G", "4", ",", "J", "C", "T", "D", "P", "5", "2", "Y", "R", "N", "E", "A", "S", "F", "0", "↵", "Q", "U", "I", "L", "B", "6", "␣", "K", "H", "V", "7", "9", "W", "8", "1"};
             foreach (var k in keys)
