@@ -81,6 +81,10 @@ namespace VirtualKeyboard.ViewModels
                     Message += Environment.NewLine;
                     break;
 
+                case "␣":
+                    Message += " ";
+                    break;
+
                 default:
                     Message += key.Key;
                     break;

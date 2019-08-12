@@ -799,6 +799,22 @@ Ostatni katalog, \path{Views}, zawiera definicje widoków w postaci plików \lst
 
 
 \subsection{Algorytm działania}
+Na rysunku \vref{fig:algorithm} przedstawiono schemat blokowy algorytmu aplikacji.
+
+\begin{figure}
+	\centering\includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{graphic/flowchart.pdf}\\
+	\caption{Schemat blokowy algorytmu aplikacji\label{fig:algorithm}}\source{Opracowanie własne}
+\end{figure}
+
+W momencie uruchomienia aplikacji następuje wczytanie ustawień zapisanych w pliku \path{settings.json}; plik zapisany jest w formacie JSON. W celu załadowania jego danych następuje deserializacja do obiektu klasy \path{Settings.cs}.
+
+Po uruchomieniu aplikacji użytkownik powinien nałożyć hełm Emotiv Insight, dążąc przy tym do uzyskania jak najwyższej jakości sygnału. Jakość sygnału jest uśredniana do pojedynczej wartości procentowej oznaczonej na interfejsie użytkownika jako \textit{Contact Quality} (patrz rozdział \vref{subsec:virtualkeyboard}). Użytkownik może korygować położenie czujników na głowie, bazując na diagramie przedstawiającym głowę ze schematycznie oznaczonymi czujnikami, który został umieszczony w interfejsie użytkownika. Maksymalna możliwa do osiągnięcia jakość będzie różna w zależności od użytkownika; niezależnie od osiągniętych wartości praca z hełmem będzie możliwa, jednak im wyższa jakość połączenia, tym bardziej miarodajne będą sygnały odebrane z urządzenia.
+
+W celu wykonania dowolnej komendy, a więc przesunięcia selekcji \textit{w górę}, \textit{w dół}, \textit{w prawo}, \textit{w lewo} lub \textit{wciśnięcia} klawisza, należy skupić się na danej akcji. Aplikacja, w momencie przekroczenia poziomu skupienia dla danej komendy zdefiniowanego w zakładce \textit{Settings}, wykona żądaną akcję. Jeżeli akcją będzie wciśnięcie klawisza z danym znakiem, zostanie on dodany do okna wiadomości znajdującego się w interfejsie użytkownika. Jeżeli akcją będzie wciśnięcie klawisza \textit{SEND}, tekst znajdujący się aktualnie w oknie wiadomości zostanie przeczytany przy użyciu syntezatora mowy, a następnie skasowany.
+
+W momencie zamknięcia aplikacji wywoływana jest metoda zapisująca aktualnie zdefiniowane ustawienia. Odbywa się to poprzez serializację obiektu klasy \path{Settings.cs} do pliku \path{settings.json}.
+
+
 \subsection{Trening detekcji komend mentalnych}
 Poprzez swoje API Emotiv Insight umożliwia wykrywanie maksymalnie do 5 komend mentalnych, stanu neutralnego oraz wybranych czterech spośród następujących trzynastu wyobrażeń: pchnięcia, przyciągnięcia, uniesienia, opuszczenia, przesunięcia w lewo, przesunięcia w prawo, obrotu zgodnie ze wskazówkami zegara, obrotu przeciwnie do wskazówek zegara, obrotu w przód, obrotu w tył, obrotu w lewo, obrotu w prawo oraz zniknięcia. Dodatkowo wspomaga detekcję stanów emocjonalnych, to jest ekscytacji, długotrwałej ekscytacji, stresu, zaangażowania, odprężenia, zainteresowania oraz skupienia. Spośród mimiki umożliwia wykrywanie mrugnięcia, \textit{puszczenia oczka}, zmarszczenia brwi, uniesienia brwi, uśmiechu i zaciśnięcia zębów.
 
@@ -996,7 +1012,7 @@ Wykorzystując wewnętrzny mechanizm serializacji zapytanie jest przekształcane
 \subsection{Proces decyzyjny}
 Proces decyzyjny, obejmujący zmianę selekcji aktualnie wybranego klawisza oraz jego \textit{wciśnięcie} (akceptację), odbywa się w oparciu o dane otrzymane od Cortex API. Po otwarciu sesji następuje zasubskrybowanie trzech strumieni danych: informacyjnego, komend mentalnych oraz mimiki. Subskrypcja powoduje przesyłanie w regularnych odstępach czasu obiektów w postaci formatu JSON. Zawartość wiadomości oraz jej częstotliwość zależą od rodzaju strumienia danych. Częstotliwość próbkowania dla strumienia informacyjnego, komend mentalnych oraz mimiki wynosi kolejno 128 Hz, 8 Hz oraz 32 Hz\cite{cortexdoc}.
 
-O ile strumień informacyjny nie jest bezpośrednio wykorzystywany do podejmowania decyzji, tak informacje w nim zawarte są niezwykle istotne dla użytkownika urządzenia. Przesłane paczki zawierają dane na temat stanu hełmu: poziom naładowania jego baterii oraz jakość (siła) sygnału z poszczególnych czujników. Jakość sygnału jest uśredniana do pojedynczej wartości procentowej oznaczonej na interfejsie użytkownika jako \textit{Contact Quality} (patrz rozdział \vref{subsec:virtualkeyboard}). Użytkownik, celem osiągnięcia jak najwyższej jakości połączenia, może korygować położenie czujników na głowie, bazując na diagramie przedstawiającym głowę ze schematycznie oznaczonymi czujnikami, który został umieszczony w interfejsie użytkownika. W zależności od osiągniętej wartości dla poszczególnych czujników, ich kolor będzie zmieniał się z czarnego przez czerwony, pomarańczowy aż do zielonego dla jakości połączenia kolejno bardzo złej, złej, dobrej oraz bardzo dobrej. Im lepsza łączność elektrod ze skórą głowy, tym wyniki pozostałych strumieni można uznać za bardziej miarodajne.
+O ile strumień informacyjny nie jest bezpośrednio wykorzystywany do podejmowania decyzji, tak informacje w nim zawarte są niezwykle istotne dla użytkownika urządzenia. Przesłane paczki zawierają dane na temat stanu hełmu: poziom naładowania jego baterii oraz jakość (siła) sygnału z poszczególnych czujników. Im lepsza łączność elektrod ze skórą głowy, tym wyniki pozostałych strumieni można uznać za bardziej miarodajne.
 
 Dane strumieni komend mentalnych oraz mimiki mają zbliżony format, dlatego zostaną omówione na przykładzie wyłącznie jednej komendy -- wyobrażenia ruchu w prawo. Pozostałe komendy, czyli wyobrażenie ruchu w dół, w lewo, w górę oraz uniesienie brwi, zostały zaimplementowane w analogiczny sposób.
 
@@ -1056,10 +1072,71 @@ private void Settings_PropertyChanged(object sender, System.ComponentModel.Prope
 
 \section{Omówienie interfejsu użytkownika}
 \subsection{Zakładka \textit{Virtual Keyboard}\label{subsec:virtualkeyboard}}
+Widok zakładki \textit{Virtual Keyboard} został pokazany na rysunku \vref{fig:virtual_keyboard}.
+
+\rysunekwidth{virtual_keyboard}
+{Widok zakładki \textit{Virtual Keyboard}\label{fig:virtual_keyboard}}
+{Opracowanie własne}
+
+\textit{Virtual Keyboard} jest domyślnym widokiem wyświetlanym po uruchomieniu aplikacji. Można w nim wydzielić cztery segmenty omówione poniżej.
+
+\begin{description}
+    \item [Moduł klawiatury] -- znajdująca się w lewym górnym rogu aplikacji klawiatura składa się z 42 klawiszy: liter A--Z, cyfr 0--9, znaków spacji, enter (nowa linia), przecinka, kropki, \textit{backspace} oraz znajdującego się w jej prawym dolnym rogu klawisza \textit{SEND}. Aktualnie wybrany klawisz jest oznaczany czerwoną ramką.
+    
+    Układ klawiatury jest rozwiązaniem autorskim, mającym na celu minimalizację liczby \textit{ruchów} potrzebnych do sprawnej komunikacji. Bazuje on na częstotliwości występowania liter w alfabecie angielskim, którą przyjął Samuel Morse opracowując swój alfabet\cite{morse}. Przyjętym przez autora priorytetem było (1) minimalizacja liczby ruchów oraz (2) minimalizacja liczby \textit{zakrętów} koniecznych do zaznaczenia danej litery, zakładając że poruszamy się ze środka klawiatury (litery \textit{E}).
+    \item [Moduł okna wiadomości] -- znajduje się pod klawiaturą. Wyświetla tekst aktualnie wprowadzanej wiadomości. W momencie \textit{wyboru} znaku, jest on dodawany do wiadomości. Po wyborze klawisza \textit{SEND} następuje odczytanie tekstu wiadomości z użyciem syntezatora mowy, a następnie jego wyczyszczenie.
+    \item [Moduł informacyjny] -- znajduje się w prawym górnym rogu aplikacji. Dostarcza w czasie rzeczywistym informacji na temat stanu Emotiv Insight: poziomu naładowania, jakości połączenia poszczególnych czujników oraz średniej jakości połączenia \textit{Contact Quality}. Dzięki schematycznemu przedstawieniu czujników na diagramie głowy, możliwe jest łatwe zlokalizowanie czujników o niskiej jakości połączenia, a następnie korekta ich powierzchni styku. W zależności od aktualnej jakości połączenia, kolor czujników będzie się zmieniał z czarnego przez czerwony, pomarańczowy aż do zielonego dla jakości połączenia kolejno bardzo złej, złej, dobrej oraz bardzo dobrej.
+    \item [Moduł pada kierunkowego] -- pad kierunkowy (\textit{ang.} directional pad, d-pad) znajduje się w prawym dolnym rogu aplikacji. Składa się on z czterech strzałek kierunkowych oraz przycisku znajdującego się między nimi. 
+    
+    Poziom wypełnienia strzałek reprezentuje \textit{siłę} skupienia się w danym momencie na odpowiadającej mu komendzie. Czerwoną linią został oznaczony próg aktywacji (\textit{ang.} threshold) danej komendy, po przekroczeniu którego następuje wykonanie powiązanej akcji. Użytkownik może edytować próg każdej z komend w zakładce \textit{Settings}. 
+
+    Przycisk pomiędzy strzałkami odpowiada za \textit{wciśnięcie} (selekcję) aktualnie oznaczonego przycisku. Podobnie jak strzałki kierunkowe, threshold przycisku jest edytowalny w zakładce \textit{Settings}. Skupienie się na komendzie selekcji jest sygnalizowane użytkownikowi przez wypełnianie okrągłego paska postępu znajdującego się naokoło przycisku.
+\end{description}
+
+
 \subsection{Zakładka \textit{Messenger}}
+Zakładka \textit{Messenger}, pokazana na rysunku \vref{fig:messenger}, umożliwia bezpośrednią wymianę wiadomości z Cortex API.
+
+\rysunekwidth{messenger}
+{Widok zakładki \textit{Messenger}\label{fig:messenger}}
+{Opracowanie własne}
+
+W górnej części okna znajduje się historia, zawierająca zarówno wysłane jak i odebrane wiadomości. Wiadomości dodawane są w kolejności chronologicznej zgodnie z następującym formatem: 
+\begin{align*}
+    &data \quad czas \quad typ:\\
+    &tekst\\
+\end{align*}
+\begin{align*}
+    \text{gdzie:}\\
+    data &- \text{data wysłania/odebrania wiadomości w formacie DD-MM-RRRR}\\
+    czas &- \text{czas wysłania/odebrania wiadomości w formacie HH-MM-SS.FFFF}\\
+    typ  &- \text{typ wiadomości; sent lub received dla kolejno wysłanej lub odebranej}\\
+    tekst &- \text{zawartość wiadomości}
+\end{align*}
+
+W dolnej części okna znajduje się pole do wpisywania wiadomości. Obok pola znajduje się przycisk służący do wysłania aktualnie wprowadzonego tekstu.
+
+
+
 \subsection{Zakładka \textit{About}}
+\rysunekwidth{about}
+{Widok zakładki \textit{About}\label{fig:about}}
+{Opracowanie własne}
+
+
 \subsection{Zakładka \textit{Connection}}
+\rysunektwo
+{connection_before}
+{connection_after}
+{Przed otwarciem sesji\label{fig:connection_before}}
+{Po otwarciu sesji\label{fig:connection_after}}
+{Widok zakładki \textit{Connection}\label{fig:connection}}
+{Opracowanie własne}
+
 \subsection{Zakładka \textit{Settings}}
+\rysunekbig{settings}
+{Widok zakładki \textit{Settings}}
+{Opracowanie własne}
 
 \chapter{Badania opracowanego systemu}
 \section{Badanie wpływu zakłóceń}

@@ -681,17 +681,24 @@
 \end{figure}
 }
 %
+\newcommand{\rysunekwidth}[4][default]{
+	\begin{figure}[!htb]
+		\centering\includegraphics[width=\textwidth,keepaspectratio]{graphic/#2}\\
+		\ifthenelse{\equal{#1}{default}}{\caption{#3}}{\caption[#1]{#3}}\source{#4}
+	\end{figure}
+	}
+%
 \newcommand{\rysunektwo}[7]{
-	\begin{figure}
+	\begin{figure}[!htb]
 		\centering
-		\begin{subfigure}{.5\textwidth}
+		\begin{subfigure}{.49\textwidth}
 		  \centering
-		  \includegraphics[width=.4\linewidth,keepaspectratio]{graphic/#1}
+		  \includegraphics[width=0.9\linewidth,keepaspectratio]{graphic/#1}
 		  \caption{#3}
 		\end{subfigure}%
-		\begin{subfigure}{.5\textwidth}
+		\begin{subfigure}{.49\textwidth}
 		  \centering
-		  \includegraphics[width=.4\linewidth,keepaspectratio]{graphic/#2}
+		  \includegraphics[width=0.9\linewidth,keepaspectratio]{graphic/#2}
 		  \caption{#4}
 		\end{subfigure}
 		\caption{#5}

@@ -191,7 +191,6 @@ namespace HeadsetController.Headset
         {
             OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
             OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
-            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.dev, Enums.StreamsEnum.com, Enums.StreamsEnum.fac });
         }
 
         #endregion
@@ -200,7 +199,7 @@ namespace HeadsetController.Headset
 
         private void Insight_OnMentalCommandUpdate(ComDataSampleObject com)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void Insight_OnDeviceInformationUpdate(DevDataSampleObject dev)
@@ -213,11 +212,11 @@ namespace HeadsetController.Headset
                 return; //corrupted data
 
             //possible values: 0-4, multiply *25 to get 0-100 (percentage)
-            Af3Quality = contactQuality[0] * 25;
-            t7Quality = contactQuality[1] * 25;
-            pzQuality = contactQuality[2] * 25;
-            t8Quality = contactQuality[3] * 25;
-            af4Quality = contactQuality[4] * 25;
+            Af3Quality= contactQuality[0] * 25;
+            T7Quality = contactQuality[1] * 25;
+            PzQuality = contactQuality[2] * 25;
+            T8Quality = contactQuality[3] * 25;
+            Af4Quality = contactQuality[4] * 25;
         }
 
         public async Task<List<HeadsetObject>> GetAvailableHeadsets()
@@ -245,6 +244,7 @@ namespace HeadsetController.Headset
 
             var createSessionResponse = SendRequest<SessionObject>(new CreateSessionRequest(new CreateSessionParameter(CortexToken, Enums.StatusCreateEnum.open)));
             SessionObject = (await createSessionResponse).result;
+            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.dev, Enums.StreamsEnum.com, Enums.StreamsEnum.fac });
             OnPropertyChanged(nameof(IsSessionOpen));
         }
 
