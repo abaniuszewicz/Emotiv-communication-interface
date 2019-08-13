@@ -188,11 +188,11 @@
 \renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
 
 \newcommand{\code}[3]{
-	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\bigskip}}
+	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\vspace{\baselineskip}}}
 }
 
 \newcommand{\codeinput}[5]{
-	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\bigskip}}
+	\lstset{caption={[#1]#1#3\hfill\break\hfill Źródło: #2\vspace{\baselineskip}}}
 	\lstinputlisting[#5]{./code/#4}
 }
 
