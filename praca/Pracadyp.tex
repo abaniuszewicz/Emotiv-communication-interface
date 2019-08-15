@@ -21,7 +21,7 @@
 \nralbumu{33816}
 
 % Tytuł pracy
-\title{Algorytmy poleceń mentalnych  w~interfejsach mózg--komputer}
+\title{Algorytmy poleceń mentalnych w~interfejsach mózg--komputer}
 
 % Tytuł pracy w języku angielskim
 \tytulang{Algorithms of~mental commands in~brain--computer interfaces}
@@ -55,10 +55,10 @@
 \jednostka{Katedra Przetwarzania Sygnałów i~Inżynierii Multimedialnej}
 
 % Słowa kluczowe
-\slowakluczowe{Interfejsy mózg--komputer, Wirtualna klawiatura, Elektroencefalografia}
+\slowakluczowe{Interfejs mózg--komputer, Wirtualna klawiatura, Elektroencefalografia}
 
 % Słowa kluczowe po angielsku
-\keywords{Brain--computer interfaces, Virtual keyboard, Electroencephalography}
+\keywords{Brain--computer interface, Virtual keyboard, Electroencephalography}
 
 %% ----------------------- Koniec definicji danych -----------------------------
 
@@ -70,35 +70,34 @@
 \begin{streszczenie}
 W niniejszej pracy przedstawiono zagadnienia związane z opracowaniem układu wirtualnej klawiatury sterowanej przy użyciu urządzenia do rejestracji aktywności mózgu. Główną motywacją projektu było stworzenie systemu opartego o interfejs mózg--komputer, który umożliwiłby na przykład przywrócenie zdolności sprawnej komunikacji werbalnej osobom z zaburzeniami mowy.
 
-Praca została podzielona na cztery rozdziały. W rozdziale pierwszym zawarto wstęp do tematyki interfejsów mózg--komputer. W rozdziale drugim scharakteryzowano wybrane urządzenia komercyjne, umożliwiające rejestrację aktywności mózgu. W rozdziale trzecim przedstawiono opracowany projekt wirtualnej klawiatury. W ostatnim, czwartym rozdziale, zawarto wyniki badań opracowanego systemu. Pracę zamyka spis bibliograficzny opiewający na 49(TODO) pozycji.  
+Praca została podzielona na cztery rozdziały. W rozdziale pierwszym zawarto wstęp do tematyki interfejsów mózg--komputer. W rozdziale drugim scharakteryzowano wybrane urządzenia komercyjne, umożliwiające rejestrację aktywności mózgu. W rozdziale trzecim przedstawiono opracowany projekt wirtualnej klawiatury. W ostatnim, czwartym rozdziale, zawarto wyniki badań opracowanego systemu. Pracę zamyka spis bibliograficzny opiewający na 49 pozycji.  
 \end{streszczenie}
 
 \begin{abstract}
 This thesis presents development process of virtual keyboard controlled with brain activity acquisition device. The main motivation of this project was to create a new, brain--com\-pu\-ter interface based system, which would allow, for example, to restore verbal communication ability for people with speech disorders.
 
-Thesis was divided into four chapters. The first chapter contains an introduction to the subject of brain--computer interfaces. The second chapter characterizes some of commercially--available devices that allow brain activity recording. The third chapter presents design of virtual keyboard. The last, fourth chapter, contains results of system tests. This thesis provides bibliographic list with total of 49(TODO) items.
+Thesis was divided into four chapters. The first chapter contains an introduction to the subject of brain--computer interfaces. The second chapter characterizes some of commercially--available devices that allow brain activity recording. The third chapter presents design of virtual keyboard. The last, fourth chapter, contains results of system tests. This thesis provides bibliographic list with total of 49 items.
 \end{abstract}
 
 \maketitle
 
 \begin{wprowadzenie}
-    Interfejsy mózg--komputer, stanowiące 
+    W związku z postępującą komputeryzacją otaczającego nas świata zmienia się sposób interakcji człowieka z oprogramowaniem. Konwencjonalne metody prezentacji danych są coraz częściej wspierane przez innowacyjne technologie, w związku z czym konieczne staje się również opracowanie nowych metod ich akwizycji. Szczególnie obiecujące wydają się tutaj stosowane w interfejsach mózg--komputer urządzenia rejestrujące aktywność mózgu, które, zapewniając sposób pozyskiwania poleceń pozostający do tej pory w sferze fantastyki naukowej, coraz śmielej wkraczają w codzienne życie.
 
-    W związku z dynamicznym rozwojem dziedziny interfejsów mózg--komputer, kontrolowanie urządzeń przy wykorzystaniu aktywności mózgu przestaje być koncepcją wyrwaną z fantastyki naukowej. Urządzenia rejestrujące stają się coraz bardziej osiągalne, zarówno w kontekście wzrostu ich dostępności, jak i spadku ich ceny.
-
-    Badania naukowe z tematyki interfejsów mózg--komputer często są przeprowadzane w warunkach laboratoryjnych, z wykorzystaniem sprzętu bardzo wysokiej jakości, przeważnie niedostępnego dla użytkownika końcowego.
-
-    Dodatkowym czynnikiem przyspieszającym rozwój tej dziedziny jest mnogość jej zastosowań.
+    Spośród wielu zastosowań interfejsów mózg--komputer wyróżnić można przywrócenie zdolności komunikacji osobom, które z powodu poważnych schorzeń nie były do tej pory w stanie korzystać z dostępnych interfejsów komunikacyjnych. Medycyna nie jest jednak jedyną dziedziną nauki, która może zyskać na swojej integracji z BCI: sfera ich zastosowań jest znacznie szersza, praktycznie nieograniczona, co przekładać się będzie na wzrost znaczenia tej technologii w procesie interakcji z komputerem.
+    
+    Badaniom interfejsów mózg--komputer, nad wyraz skomplikowanym ze względu na ich silną interdyscyplinarność, zostało poświęconych w ostatnich latach wiele artykułów. Wśród nich można zauważyć pewną właściwość -- znaczna część przeprowadzana jest z wykorzystaniem specjalistycznych urządzeń oraz oprogramowania, nierzadko w warunkach laboratoryjnych. Oczywistym jest, iż użytkownik końcowy nie będzie wykorzystywał sprzętu tak wysokiej jakości oraz przebywał w tak odizolowanym środowisku; koniecznością wydaje się zatem weryfikacja możliwości coraz to bardziej osiągalnych, szczególnie w kontekście wzrostu dostępności oraz spadku ceny, urządzeń komercyjnych.
 \end{wprowadzenie}
 
 \cel
 {
-Celem pracy było opracowanie układu wirtualnej klawiatury sterowanej przy użyciu urządzenia do rejestracji aktywności mózgu. Na realizację celu składała się analiza dostępnych komercyjnie rozwiązań BCI (\textit{ang.} brain--computer interfaces -- interfejsów mózg--komputer), opracowanie algorytmu sterowania wykorzystującego komendy mentalne oraz zbadanie wpływu zakłóceń oraz parametrów algorytmu na jego skuteczność. 
+Celem pracy było wykonanie układu wirtualnej klawiatury sterowanej przy użyciu urządzenia do rejestracji aktywności mózgu. Na realizację celu składała się analiza dostępnych komercyjnie urządzeń rejestrujących, opracowanie algorytmu sterowania wykorzystującego komendy mentalne oraz zbadanie wpływu zakłóceń oraz parametrów algorytmu na jego skuteczność. 
 }
 
 \zakres
 {
-W ramach pracy przeanalizowano sześć urządzeń do rejestracji aktywności mózgu; spośród nich wybrano jedno, na bazie którego wykonano układ wirtualnej klawiatury. Opracowano aplikację w jęzuku C\#, która, wykorzystując sterowanie za pomocą rejestrowanych komend mentalnych, pozwala na wprowadzanie tekstu, a następnie jego syntezę do postaci dźwiękowej. (TODO podsumować badania) 
+W ramach pracy przeanalizowano sześć urządzeń do rejestracji aktywności mózgu, spośród których wybrano jedno, na bazie którego wykonano układ wirtualnej klawiatury. Opracowano aplikację w jęzuku C\#, która, wykorzystując sterowanie za pomocą rejestrowanych komend mentalnych, pozwala na wprowadzanie tekstu, a następnie jego syntezę do postaci dźwiękowej.
+(TODO podsumować badania)
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -685,7 +684,7 @@ Platforma OpenBCI umożliwia również współpracę z innymi programami do anal
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Projekt wirtualnej klawiatury}
-W rozdziale trzecim omówiono opracowaną aplikację. W pierwszej części rozdziału sformułowano założenia projektowe. Dalej omówiono zagadnienia związane z doborem narzędzi wymaganych do realizacji pracy, w tym urządzenia rejestrującego aktywność mózgu, języka programowania, środowiska programistycznego oraz systemu kontroli wersji. Kolejną częścią jest omówienie samej aplikacji, z wyszczególnieniem struktury jej kodu źródłowego, algorytmu działania, protokołu komunikacyjnego urządzenia rejestrującego, metodyki treningu detekcji komend mentalnych oraz procesu decyzyjnego aplikacji. Rozdział zawiera również omówienie interfejsu użytkownika.  
+W rozdziale trzecim omówiono opracowaną aplikację. W pierwszej części rozdziału sformułowano założenia projektowe. Dalej omówiono zagadnienia związane z doborem narzędzi wymaganych do realizacji pracy, w tym urządzenia rejestrującego aktywność mózgu, języka programowania, środowiska programistycznego oraz systemu kontroli wersji. Kolejną częścią jest omówienie samej aplikacji, z wyszczególnieniem struktury jej kodu źródłowego, algorytmu działania, metodyki treningu detekcji komend mentalnych, protokołu komunikacyjnego urządzenia rejestrującego oraz procesu decyzyjnego aplikacji. Rozdział zawiera również omówienie interfejsu użytkownika.  
 
 \section{Założenia projektowe}
 Przed przystąpieniem do realizacji projektu wirtualnej klawiatury sformułowano założenia przedstawione poniżej.
@@ -830,13 +829,13 @@ W momencie zamknięcia aplikacji wywoływana jest metoda zapisująca aktualnie z
 
 
 \subsection{Trening detekcji komend mentalnych}
-Poprzez swoje API Emotiv Insight umożliwia wykrywanie maksymalnie do 5 komend mentalnych, stanu neutralnego oraz wybranych czterech spośród następujących trzynastu wyobrażeń: pchnięcia, przyciągnięcia, uniesienia, opuszczenia, przesunięcia w lewo, przesunięcia w prawo, obrotu zgodnie ze wskazówkami zegara, obrotu przeciwnie do wskazówek zegara, obrotu w przód, obrotu w tył, obrotu w lewo, obrotu w prawo oraz zniknięcia. Dodatkowo wspomaga detekcję stanów emocjonalnych, to jest ekscytacji, długotrwałej ekscytacji, stresu, zaangażowania, odprężenia, zainteresowania oraz skupienia. Spośród mimiki umożliwia wykrywanie mrugnięcia, \textit{puszczenia oczka}, zmarszczenia brwi, uniesienia brwi, uśmiechu i zaciśnięcia zębów.
+Poprzez swoje API Emotiv Insight umożliwia wykrywanie maksymalnie do 5 komend mentalnych: stanu neutralnego oraz wybranych czterech spośród następujących trzynastu wyobrażeń: pchnięcia, przyciągnięcia, uniesienia, opuszczenia, przesunięcia w lewo, przesunięcia w prawo, obrotu zgodnie ze wskazówkami zegara, obrotu przeciwnie do wskazówek zegara, obrotu w przód, obrotu w tył, obrotu w lewo, obrotu w prawo oraz zniknięcia. Dodatkowo wspomaga detekcję stanów emocjonalnych, to jest ekscytacji, długotrwałej ekscytacji, stresu, zaangażowania, odprężenia, zainteresowania oraz skupienia. Spośród mimiki umożliwia wykrywanie mrugnięcia, \textit{puszczenia oczka}, zmarszczenia brwi, uniesienia brwi, uśmiechu i zaciśnięcia zębów.
 
 Wykorzystując aplikację EmotivBCI możliwe jest trenowanie detekcji poszczególnych komend mentalnych w czasie rzeczywistym. Trening jest interaktywny; użytkownik, obserwując wirtualny sześcian, \textit{wyobraża} sobie kolejne komendy, a system rejestruje aktywność mózgu związaną z danym wyobrażeniem. W miarę postępu oraz nasilania skupienia na danej akcji sześcian wykonuje wyobrażoną czynność, na przykład obraca się w prawo lub znika. Trening detekcji mimiki, podobnie jak komend mentalnych, jest również interaktywny -- użytkownik obserwuje postęp na wirtualnym awatarze. 
 
-Istotną kwestią jest wybór odpowiednich poleceń mentalnych do obsługi wirtualnej klawiatury. Intuicyjność interakcji z systemem pozwoli użytkownikowi na szybsze przyswojenie zasady sterowania oraz zniweluje ilość błędów związanych z myleniem poleceń. Opracowany projekt wymaga pięciu komend: przesunięcia selekcji w górę, w dół, w prawo, w lewo oraz akceptację (\textit{wciśnięcie}) aktualnie oznaczonego klawisza. O ile w przypadku przesunięcia selekcji dobór komend mentalnych wydaje się oczywisty (są to polecenia \textit{uniesienie}, \textit{opuszczenie}, \textit{przesunięcie w lewo} i \textit{przesunięcie w prawo}), to komenda akceptacji wyboru wymaga głębszej analizy; czy powinno to być \textit{pchnięcie}, symulujące wciśnięcie klawisza klawiatury, a może \textit{przyciągnięcie}, czyli zwolnienie klawisza i przejście do wyboru kolejnej litery? Należy mieć również na uwadze, iż zwiększona ilość komend możliwych do wykrywania będzie prowadziła do powiększenia stopy błędu detekcji. Ponieważ w niniejszej aplikacji akceptacja selekcji jest kluczowym poleceniem, postanowiono wykorzystać do niego detekcję wyrazów twarzy. Zdecydowano, iż będzie za nią odpowiadać \textit{mrugnięcie}, które osiągało najkorzystniejszy stosunek poprawnych do omyłkowych klasyfikacji spośród dostępnych możliwości detekcji.
+Istotną kwestią jest wybór odpowiednich poleceń mentalnych do obsługi wirtualnej klawiatury. Intuicyjność interakcji z systemem pozwoli użytkownikowi na szybsze przyswojenie zasady sterowania oraz zniweluje ilość błędów związanych z myleniem poleceń. Opracowany projekt wymaga pięciu komend: przesunięcia selekcji w górę, w dół, w prawo, w lewo oraz akceptację (\textit{wciśnięcie}) aktualnie oznaczonego klawisza. O ile w przypadku przesunięcia selekcji dobór komend mentalnych wydaje się oczywisty (są to polecenia \textit{uniesienie}, \textit{opuszczenie}, \textit{przesunięcie w lewo} i \textit{przesunięcie w prawo}), to komenda akceptacji wyboru wymaga głębszej analizy; czy powinno to być \textit{pchnięcie}, symulujące wciśnięcie klawisza klawiatury, a może \textit{przyciągnięcie}, czyli zwolnienie klawisza i przejście do wyboru kolejnej litery? Należy mieć również na uwadze, iż zwiększona ilość komend możliwych do wykrywania będzie prowadziła do powiększenia stopy błędu detekcji. Ponieważ w niniejszej aplikacji akceptacja selekcji jest kluczowym poleceniem, postanowiono wykorzystać do niego detekcję wyrazów twarzy. Zdecydowano, iż będzie za nią odpowiadać \textit{zmarszczenie brwi}, które osiągało najkorzystniejszy stosunek poprawnych do omyłkowych klasyfikacji spośród dostępnych możliwości detekcji.
 
-Zrzuty ekranu z procesu treningu komend pokazano na rysunku \vref{fig:training}. Na rysunkach \vref{fig:training_mental_all} oraz \vref{fig:training_facial_all} pokazano zestawienie wszystkich wytrenowanych modeli detekcji. Na rysunkach \vref{fig:training_mental_left} oraz \vref{fig:training_facial_blink} zaprezentowano zrzuty ekranu wykonane w trakcie rozpoznania przez aplikację \textit{EmotivBCI} wytrenowanych wzorców.
+Zrzuty ekranu z procesu treningu komend pokazano na rysunku \vref{fig:training}. Na rysunkach \vref{fig:training_mental_all} oraz \vref{fig:training_facial_all} pokazano zestawienie wszystkich wytrenowanych modeli detekcji. Na rysunkach \vref{fig:training_mental_left} oraz \vref{fig:training_facial_frown} zaprezentowano zrzuty ekranu wykonane w trakcie rozpoznania przez aplikację \textit{EmotivBCI} wytrenowanych wzorców.
 
 \begin{figure}
     \centering
@@ -860,8 +859,8 @@ Zrzuty ekranu z procesu treningu komend pokazano na rysunku \vref{fig:training}.
     \quad
     \begin{subfigure}[b]{0.475\textwidth}   
         \centering 
-        \includegraphics[width=\textwidth, keepaspectratio]{graphic/facial_blink}
-        \caption{Obserwacja w trybie \textit{Live Mode} podczas wykonania akcji \textit{mrugnięcia}\label{fig:training_facial_blink}}   
+        \includegraphics[width=\textwidth, keepaspectratio]{graphic/facial_frown}
+        \caption{Obserwacja w trybie \textit{Live Mode} podczas wykonania akcji \textit{zmarszczenia brwi}\label{fig:training_facial_frown}}   
     \end{subfigure}
     \caption{Proces treningu komend z wykorzystaniem aplikacji \textit{EmotivBCI}\label{fig:training}}
     \source{Opracowanie własne}
@@ -1076,7 +1075,7 @@ Proces decyzyjny, obejmujący zmianę selekcji aktualnie wybranego klawisza oraz
 
 O ile strumień informacyjny nie jest bezpośrednio wykorzystywany do podejmowania decyzji, tak informacje w nim zawarte są niezwykle istotne dla użytkownika urządzenia. Przesłane paczki zawierają dane na temat stanu hełmu: poziom naładowania jego baterii oraz jakość (siła) sygnału z poszczególnych czujników. Im lepsza łączność elektrod ze skórą głowy, tym wyniki pozostałych strumieni można uznać za bardziej miarodajne.
 
-Dane strumieni komend mentalnych oraz mimiki mają zbliżony format, dlatego zostaną omówione na przykładzie wyłącznie jednej komendy -- wyobrażenia ruchu w prawo. Pozostałe komendy, czyli wyobrażenie ruchu w dół, w lewo, w górę oraz mrugnięcie, zostały zaimplementowane w analogiczny sposób.
+Dane strumieni komend mentalnych oraz mimiki mają zbliżony format, dlatego zostaną omówione na przykładzie wyłącznie jednej komendy -- wyobrażenia ruchu w prawo. Pozostałe komendy, czyli wyobrażenie ruchu w dół, w lewo, w górę oraz zmarszczenie brwi, zostały zaimplementowane w analogiczny sposób.
 
 Przy stworzeniu instancji klasy \lstinline[language={[Sharp]C}]{KeyboardNavigator} (patrz kod źródłowy \vref{code:keyboard_navigator}) następuje przekazanie do niej w konstruktorze obiektów \lstinline[language={[Sharp]C}]{Insight} oraz \lstinline[language={[Sharp]C}]{Settings}; referencje te zostają zapisane w klasie. Za sprawą interfejsu \lstinline[language={[Sharp]C}]{INotifyPropertyChanged}, implementowanego przez obie te klasy, następuje subskrypcja zmian wartości ich właściwości. W~konstruktorze następuje również ustawienie wartości czasomierza (\textit{ang.} timer) na wartość sprecyzowaną w zakładce \textit{Settings} oraz zasubskrybowanie wydarzenia informującego o upłynięciu odliczanego przez niego czasu.
 
