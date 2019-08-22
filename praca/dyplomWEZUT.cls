@@ -82,6 +82,7 @@
 \RequirePackage{dirtree}
 \RequirePackage{xcolor}
 \RequirePackage{lscape}
+\RequirePackage{afterpage}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0
