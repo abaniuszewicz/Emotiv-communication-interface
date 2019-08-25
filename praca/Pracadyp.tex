@@ -1239,6 +1239,7 @@ Aktualna wartość definiowana przy pomocy suwaka jest widoczna po kliknięciu w
 Na dole zakładki znajduje się przełącznik pozwalający na włączenie tak zwanego \textit{Offline Mode}. W tym trybie na oknie \textit{Virtual Keyboard} widoczne są suwaki, pozwalające na ręczną symulację aktualnego skupienia dla poszczególnych komend.
 
 \chapter{Badania opracowanego systemu}
+
 \section{Wpływ ilości komend oraz ich sesji treningowych na poprawność detekcji}
 Trening komend mentalnych, detekcji mimiki oraz badanie poprawności ich wykrywania wykonano w oprogramowaniu EmotivBCI.
 
@@ -1252,7 +1253,7 @@ W przypadku \textit{próby skupienia} (S) komenda była uznawana za wykonaną po
 
 \begin{figure}[htbp]
 	\centering\includegraphics[height=6cm,width=0.8\textwidth,keepaspectratio]{graphic/emotivbci}\\
-	\caption[Sposób \textit{uznawania} komendy mentalnej]{Sposób \textit{uznawania} komendy mentalnej; jeżeli sześcian wychylił się co najmniej na oznaczone (przezroczyste) pozycje, komenda była uznawana za \textit{zaliczoną}\label{fig:cube}}\source{Opracowanie własne}
+	\caption[Sposób \textit{uznawania} komendy mentalnej]{Sposób \textit{uznawania} komendy mentalnej; jeżeli sześcian wychylił się co najmniej na oznaczone (przezroczyste) pozycje, komenda była uznawana za zaliczoną\label{fig:cube}}\source{Opracowanie własne}
 \end{figure}
 
 Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawiono na Rysunku \vref{fig:training_emotiv}.
@@ -1319,26 +1320,38 @@ Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawion
     \end{figure}
 }
 
-W odczuciu autora trening pierwszej komendy (patrz Rysunek \vref{fig:training_emotiv_up}) był najbardziej satysfakcjonujący; jego rezultat -- poruszenie się sześcianu treningowego -- był możliwy do uzyskania z dwudziestoprocentową skutecznością już od pierwszej sesji treningowej. Przy sesji drugiej oraz trzeciej skuteczność spadła do dziesięciu procent. Autor zaobserwował wtedy znacznie większe \textit{drganie}\footnote{Poprzez \textit{drganie} sześcianu autor ma na myśli jego przemieszczenie się w pożądanym kierunku, jednak bez przekroczenia progu definiowanego jako zaliczenie komendy. Takie wychylenia najczęściej następowały kilkukrotnie, jedno po drugim.} sześcianu podczas skupiania się na komendzie, co nie miało miejsca w przypadku pierwszej sesji, w której, jeżeli nastąpiło skupienie, to sześcian wychylał się aż do samej krawędzi ekranu. Przy sesjach od piątej do ósmej, obok bardzo wysokiego wzrostu poziomu prawidłowych detekcji podczas skupienia, nastąpił również wzrost błędnych detekcji podczas utrzymywania \textit{stanu neutralnego}. Sesja dziewiąta wydaje się być najbardziej optymalnym wynikiem osiągniętym dla komendy \textit{uniesienia}; podczas niej skuteczność detekcji w trakcie skupienia wyniosła osiemdziesiąt procent przy jedynych trzydziestu procent podczas braku skupienia. Maksymalny stosunek poprawnych do złych/braku detekcji wyniósł dziewięćdziesiąt procent i został osiągnięty w sesji siódmej, ósmej oraz dziesiątej, przy czym spośród nich ostatnia sesja charakteryzowała się najniższym błędem podczas braku skupienia wynoszącym pięćdziesiąt procent.
+W odczuciu autora trening pierwszej komendy (patrz Rysunek \vref{fig:training_emotiv_up}) był najbardziej satysfakcjonujący; jego rezultat -- poruszenie się sześcianu treningowego -- był możliwy do uzyskania z dwudziestoprocentową skutecznością już od pierwszej sesji treningowej. Przy sesji drugiej oraz trzeciej skuteczność spadła do dziesięciu procent. Autor zaobserwował wtedy znacznie większe \textit{drganie}\footnote{Poprzez \textit{drganie} sześcianu autor ma na myśli jego przemieszczenie się w pożądanym kierunku, jednak bez przekroczenia progu definiowanego jako zaliczenie komendy. Takie wychylenia najczęściej następowały kilkukrotnie, jedno po drugim.} sześcianu podczas skupiania się na komendzie, co nie miało miejsca w przypadku pierwszej sesji, w której, jeżeli nastąpiło skupienie, to sześcian wychylał się aż do samej krawędzi ekranu. Przy sesjach od piątej do ósmej, obok bardzo wysokiego wzrostu poziomu prawidłowych detekcji podczas skupienia, nastąpił również wzrost błędnych detekcji podczas utrzymywania \textit{stanu neutralnego}. Sesja dziewiąta wydaje się być najbardziej optymalnym wynikiem osiągniętym dla komendy \textit{uniesienia}: podczas niej skuteczność detekcji w trakcie skupienia wyniosła osiemdziesiąt procent przy jedynych trzydziestu procent podczas braku skupienia. Maksymalny stosunek poprawnych do złych/braku detekcji wyniósł dziewięćdziesiąt procent i został osiągnięty w sesji siódmej, ósmej oraz dziesiątej, przy czym spośród nich ostatnia sesja charakteryzowała się najniższym błędem podczas braku skupienia wynoszącym pięćdziesiąt procent.
+
+Wyniki uzyskane podczas treningu drugiej komendy pokazano na Rysunku \vref{fig:training_emotiv_right}. Detekcja podczas skupienia na komendzie osiąga zauważalnie gorsze wyniki niż podczas treningu pierwszej komendy. Przez pierwsze cztery sesje treningowe autor nie był w stanie sprawić, aby sześcian wychylił się na tyle, by zostało to uznane jako zaliczona próba. Przy sesji piątej poprawność detekcji wyniosła jedynie dziesięć procent, jednak podczas sesji szóstej i siódmej spadła ona z powrotem do zera procent, co pozwala sądzić, iż sesja piąta była po prostu błędem pomiarowym. Od sesji ósmej do dziewiątej następuje liniowy wzrost poprawności detekcji podczas skupienia do poziomu dwudziestu procent, co stanowi maksimum osiągnięte dla tej komendy. Przy ostatniej sesji stosunek zaliczonych detekcji do ilości prób wyniósł dziesięć procent. Przy drugiej komendzie osiągnięto bardzo niski współczynnik detekcji podczas braku skupienia. Malejąc z czterdziestu procent po pierwszym treningu, osiągnął zero procent przy treningu trzecim i pozostał na tym pułapie przez wszystkie pozostałe treningi tej komendy.
+
+Trzecia komenda związana była z innym rodzajem wyobrażenia niż dwie poprzednie. Nie angażowała ona kory ruchowej; autor spodziewał się więc, iż pozwoli ona na łatwiejszą detekcję polecenia, a tym samym na osiągnięcie lepszego rezultatu w stanie skupienia. Uzyskane wyniki dla tej komendy przedstawiono na Rysunku \vref{fig:training_emotiv_down}. Detekcja podczas skupienia na komendzie nie była osiągalna przez pierwsze trzy sesje treningowe, jednak kolejne dwie przyniosły wzrost jej skuteczności do poziomu dziesięciu procent. Po szóstym treningu stosunek poprawnych detekcji do ilości prób wyniósł czterdzieści procent, co stanowiło jego wartość szczytową. Sesje od siódmej do dziesiątej zapewniły kolejno dwadzieścia, dwadzieścia, trzydzieści oraz trzydzieści procent poprawnych detekcji. Detekcja podczas braku skupienia charakteryzowała się wartością niezerową jedynie podczas sesji od czwartej do szóstej. Jej maksymalna wartość wyniosła dwadzieścia procent. Charakterystyczna dla treningu tej komendy była łatwość, z jaką autor był w stanie poruszyć sześcianem w pożądanym kierunku, jednak bez możliwości utrzymania poziomu \textit{skupienia} pozwalającego na wychylenie się aż do progu zaliczenia próby. Na uwagę zasługuje również fakt większej ilości uzyskanych komunikatów \textit{Great training}\footnote{Aplikacja EmotivBCI po zakończeniu sesji treningowej wyświetla ocenę \textit{jakości} treningu w skali od zera do stu, definiującą \textit{spójność} z poprzednimi sesjami \cite{emotivbcidoc}. Wartości powyżej siedemdziesięciu pięciu opatrzone są komunikatem \textit{Great training}.} niż miało to miejsce w przypadku innych komend.
+
+Podczas treningu ostatniej komendy mentalnej (patrz Rysunek \vref{fig:training_emotiv_left}) można było zaobserwować trend rosnący w przypadku detekcji podczas skupienia. Jej maksymalna skuteczność osiągnęła trzydzieści procent podczas ósmej oraz dziesiątej sesji treningowej. Detekcja podczas braku skupienia pozostawała zerowa; wyjątkiem była sesji szósta, w której osiągnęła dziesięć procent. 
+
+Wyniki poszczególnych sesji treningowych detekcji zmarszczenia brwi pokazano na Rysunku \vref{fig:training_emotiv_frown}. Na pierwszy rzut oka widać znaczną przewagę detekcji mimiki nad detekcją komend mentalnych przyjmując jako kryterium porównawcze stosunek poprawnych detekcji w stanie skupienia/wykonania do odbytej ilości prób. Komendy mentalne, nie licząc \textit{uniesienia}, nie osiągnęły poziomu nawet pięćdziesięciu procent, podczas kiedy zmarszczenie brwi charakteryzuje się stałym, niezależnym od liczby treningów, stuprocentowym poziomem detekcji. Wysoki poziom detekcji wiąże się jednak z wysoką stopą błędnych klasyfikacji podczas braku wykonania akcji. Kolejne sesje treningowe obniżają ją jednak z poziomu siedemdziesięciu procent dla pierwszej do pięćdziesięciu procent w przypadku ostatniej sesji. Autor zaobserwował, iż detekcje podczas braku skupienia następowały jedynie w przypadku wykonywania innych czynności, jak na przykład ruch gałek ocznych czy wzięcie głębokiego oddechu, jednak postanowił nie ograniczać tych akcji, gdyż w jego opinii stanowić będą one naturalny proces użytkowania urządzenia.
+
+Na podstawie opracowanych wyników można wysunąć wniosek, iż wraz ze wzrostem ilości komend mentalnych, spada ich stopa poprawnych detekcji podczas skupienia. Odwrotna sytuacja ma miejsce w przypadku detekcji w \textit{stanie neutralnym} -- po dodaniu drugiej komendy i przeprowadzeniu trzech treningów osiąga ona wartość zerową, przekraczając ją jedynie w przypadku czterech spośród dwudziestu czterech sesji treningowych. W przypadku detekcji mimiki, która charakteryzowała się stuprocentową poprawnością detekcji podczas wykonania zmarszczenia brwi, kolejne treningi powodują obniżenie błędnych detekcji w przypadku \textit{stanu neutralnego}.
+
+Stosunkowa słaba detekcja komend mentalnych mogła być spowodowana nikłą separacją poszczególnych poleceń. Separację można oszacować na podstawie schematu przestrzeni mózgowej wygenerowanego przez program EmotivBCI, który pokazano na Rysunku \vref{fig:brainmap}. Należy zwrócić uwagę, iż izolacja poleceń nie jest stała i zmienia się w przypadku kolejnych treningów: na podstawie Rysunków \vref{fig:brainmap_two} oraz \vref{fig:brainmap_three} można zauważyć, iż polecenia \textit{uniesienia} oraz \textit{przesunięcia w prawo} są oddalone siebie, po czym, po dodaniu polecenia \textit{opuszczenia}, znacznie się zbliżają. Podobna sytuacja ma miejsce w przypadku polecenia \textit{opuszczenia}, jak pokazano na Rysunku \vref{fig:brainmap_four}. Według producenta urządzenia pożądaną sytuacją jest jak największa separacja sygnałów, na przykład do poziomu pokazanego na Rysunku \vref{fig:brainmap_recommended}. Wiązać się ona będzie z łatwiejszym wywoływaniem poszczególnych komend \cite{emotivbcidoc}.
 
 \begin{figure}[htb]
     \begin{subfigure}{0.49\textwidth}
     \includegraphics[width=\linewidth]{graphic/2commands}
-    \caption{Po treningu dwóch komend}
+    \caption{Po treningu dwóch komend\label{fig:brainmap_two}}
     \end{subfigure}\hspace*{\fill}
     \begin{subfigure}{0.49\textwidth}
     \includegraphics[width=\linewidth]{graphic/3commands}
-    \caption{Po treningu trzech komend}
+    \caption{Po treningu trzech komend\label{fig:brainmap_three}}
     \end{subfigure}
     
     \medskip
     \begin{subfigure}{0.49\textwidth}
     \includegraphics[width=\linewidth]{graphic/4commands}
-    \caption{Po treningu czterech komend}
+    \caption{Po treningu czterech komend\label{fig:brainmap_four}}
     \end{subfigure}\hspace*{\fill}
     \begin{subfigure}{0.49\textwidth}
     \includegraphics[width=\linewidth]{graphic/propercommands}
-    \caption{Zalecany rezultat}
+    \caption{Zalecany rezultat\label{fig:brainmap_recommended}}
     \end{subfigure}
     
     \caption{Schemat przestrzeni mózgowej uzyskany w programie EmotivBCI\label{fig:brainmap}}

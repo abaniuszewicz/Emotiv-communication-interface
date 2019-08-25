@@ -63,7 +63,7 @@ xlim([1 10]); ylim([0 100])
 xlabel('Numer treningu'); ylabel('Stosunek detekcji do iloœci prób [%]');
 plot(training,frown_focus_ok * 10, '-o');
 plot(training,frown_nofocus_bad * 10, '--o');
-legend('Detekcja podczas skupienia','Detekcja podczas braku skupienia','Location','northwest');
+legend('Detekcja podczas wykonania','Detekcja podczas braku wykonania','Location','northwest');
 
 set(up, 'Units', 'Inches');
 pos = get(up, 'Position');
