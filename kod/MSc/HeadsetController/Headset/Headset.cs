@@ -46,7 +46,7 @@ namespace HeadsetController.Headset
 
         #region Requests
 
-        public void SendRequest(IRequest request)
+        private void SendRequest(IRequest request)
         {
             var msg = Parser.Serialize(request);
             OnRequest?.Invoke(msg);
@@ -64,6 +64,24 @@ namespace HeadsetController.Headset
 
                 OnResponse -= WaitResponseMatch; //unsubscribe after match
                 tcs.SetResult(Parser.Deserialize<Response<T>>(response));
+            }
+            OnResponse += WaitResponseMatch;
+            SendRequest(request);
+
+            return await tcs.Task;
+        }
+
+        public async Task<string> SendRequestRaw(IRequest request)
+        {
+            var tcs = new TaskCompletionSource<string>();
+
+            void WaitResponseMatch(string response)
+            {
+                if (Parser.GetTokenAsString(response, "id") != request.id.ToString())
+                    return;
+
+                OnResponse -= WaitResponseMatch; //unsubscribe after match
+                tcs.SetResult(response);
             }
             OnResponse += WaitResponseMatch;
             SendRequest(request);

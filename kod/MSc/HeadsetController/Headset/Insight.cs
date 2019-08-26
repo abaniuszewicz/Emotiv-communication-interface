@@ -5,12 +5,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using HeadsetController.Annotations;
+using HeadsetController.Services.API.Requests.AdvancedBCI;
 using HeadsetController.Services.API.Requests.Authentication;
 using HeadsetController.Services.API.Requests.BCI;
 using HeadsetController.Services.API.Requests.DataSubscription;
 using HeadsetController.Services.API.Requests.Headsets;
 using HeadsetController.Services.API.Requests.Sessions;
 using HeadsetController.Services.API.Responses;
+using HeadsetController.Services.API.Responses.AdvancedBCI;
 using HeadsetController.Services.API.Responses.Authentication;
 using HeadsetController.Services.API.Responses.BCI;
 using HeadsetController.Services.API.Responses.DataSubscriptions;
@@ -29,8 +31,8 @@ namespace HeadsetController.Headset
         private int _batteryLevel;
         private int _wirelessSignalLevel;
         private int _af3Quality, af4Quality, t7Quality, t8Quality, pzQuality;
-        private double _pushLevel, _pullLevel, _leftLevel, _rightLevel;
-        private double _blinkLevel;
+        private double _liftLevel, _dropLevel, _leftLevel, _rightLevel;
+        private double _frownLevel;
 
         #endregion
 
@@ -133,23 +135,23 @@ namespace HeadsetController.Headset
             }
         }
 
-        public double PushLevel
+        public double LiftLevel
         {
-            get => _pushLevel;
+            get => _liftLevel;
             set
             {
-                _pushLevel = value;
-                OnPropertyChanged(nameof(PushLevel));
+                _liftLevel = value;
+                OnPropertyChanged(nameof(LiftLevel));
             }
         }
 
-        public double PullLevel
+        public double DropLevel
         {
-            get => _pullLevel;
+            get => _dropLevel;
             set
             {
-                _pullLevel = value;
-                OnPropertyChanged(nameof(PullLevel));
+                _dropLevel = value;
+                OnPropertyChanged(nameof(DropLevel));
             }
         }
 
@@ -173,13 +175,13 @@ namespace HeadsetController.Headset
             }
         }
 
-        public double BlinkLevel
+        public double FrownLevel
         {
-            get => _blinkLevel;
+            get => _frownLevel;
             set
             {
-                _blinkLevel = value;
-                OnPropertyChanged(nameof(BlinkLevel));
+                _frownLevel = value;
+                OnPropertyChanged(nameof(FrownLevel));
             }
         }
 
@@ -191,16 +193,12 @@ namespace HeadsetController.Headset
         {
             OnDeviceInformationUpdate += Insight_OnDeviceInformationUpdate;
             OnMentalCommandUpdate += Insight_OnMentalCommandUpdate;
+            OnFacialExpressionUpdate += Insight_OnFacialCommandUpdate;
         }
 
         #endregion
 
         #region Methods
-
-        private void Insight_OnMentalCommandUpdate(ComDataSampleObject com)
-        {
-            //throw new NotImplementedException();
-        }
 
         private void Insight_OnDeviceInformationUpdate(DevDataSampleObject dev)
         {
@@ -217,6 +215,32 @@ namespace HeadsetController.Headset
             PzQuality = contactQuality[2] * 25;
             T8Quality = contactQuality[3] * 25;
             Af4Quality = contactQuality[4] * 25;
+        }
+
+        private void Insight_OnMentalCommandUpdate(ComDataSampleObject com)
+        {
+            var command = com.com.FirstOrDefault() as string;
+            var value = Convert.ToDouble(com.com.LastOrDefault());
+
+            if (command == "lift")
+                LiftLevel = value;
+            else if (command == "right")
+                RightLevel = value;
+            else if (command == "drop")
+                DropLevel = value;
+            else if (command == "left")
+                LeftLevel = value;
+        }
+
+        private void Insight_OnFacialCommandUpdate(FacDataSampleObject fac)
+        {
+            var command = fac.fac.ToList()[1] as string;
+            var value = Convert.ToDouble(fac.fac.ToList()[2]);
+
+            if (command != "frown" && value > FrownLevel)
+                FrownLevel = 0;
+            else
+                FrownLevel = value;
         }
 
         public async Task<List<HeadsetObject>> GetAvailableHeadsets()
@@ -244,7 +268,6 @@ namespace HeadsetController.Headset
 
             var createSessionResponse = SendRequest<SessionObject>(new CreateSessionRequest(new CreateSessionParameter(CortexToken, Enums.StatusCreateEnum.open)));
             SessionObject = (await createSessionResponse).result;
-            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.dev, Enums.StreamsEnum.com, Enums.StreamsEnum.fac });
             OnPropertyChanged(nameof(IsSessionOpen));
         }
 
@@ -288,6 +311,8 @@ namespace HeadsetController.Headset
             await SendRequest<SetupProfileResponse>(new SetupProfileRequest(new SetupProfileParameter(CortexToken, Enums.StatusSetupEnum.load, name)));
             //update profile name
             CurrentProfile = (await SendRequest<GetCurrentProfileResponse>(new GetCurrentProfileRequest(new GetCurrentProfileParameter(CortexToken, HeadsetObject?.id)))).result.name;
+            //hook up to data streams
+            Subscribe(new List<Enums.StreamsEnum>() { Enums.StreamsEnum.dev, Enums.StreamsEnum.com, Enums.StreamsEnum.fac });
             OnPropertyChanged(nameof(CurrentProfile));
         }
 

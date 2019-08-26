@@ -66,13 +66,13 @@ namespace VirtualKeyboard.Models
 
         private void Insight_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "PushLevel" && Insight.PushLevel >= Settings.UpThreshold)
+            if (e.PropertyName == "LiftLevel" && Insight.LiftLevel >= Settings.UpThreshold)
                 _upTimer.Start();
-            else if (e.PropertyName == "PushLevel")
+            else if (e.PropertyName == "LiftLevel")
                 _upTimer.Stop();
-            else if (e.PropertyName == "PullLevel" && Insight.PullLevel >= Settings.DownThreshold)
+            else if (e.PropertyName == "DropLevel" && Insight.DropLevel >= Settings.DownThreshold)
                 _downTimer.Start();
-            else if (e.PropertyName == "PullLevel")
+            else if (e.PropertyName == "DropLevel")
                 _downTimer.Stop();
             else if (e.PropertyName == "RightLevel" && Insight.RightLevel >= Settings.RightThreshold)
                 _rightTimer.Start();
@@ -82,9 +82,9 @@ namespace VirtualKeyboard.Models
                 _leftTimer.Start();
             else if (e.PropertyName == "LeftLevel")
                 _leftTimer.Stop();
-            else if (e.PropertyName == "BlinkLevel" && Insight.BlinkLevel >= Settings.SelectThreshold)
+            else if (e.PropertyName == "FrownLevel" && Insight.FrownLevel >= Settings.SelectThreshold)
                 _selectTimer.Start();
-            else if (e.PropertyName == "BlinkLevel")
+            else if (e.PropertyName == "FrownLevel")
                 _selectTimer.Stop();
         }
 
@@ -97,6 +97,7 @@ namespace VirtualKeyboard.Models
             _downTimer.Interval = TimeSpan.FromMilliseconds(Settings.FocusTime);
             _rightTimer.Interval = TimeSpan.FromMilliseconds(Settings.FocusTime);
             _leftTimer.Interval = TimeSpan.FromMilliseconds(Settings.FocusTime);
+            _selectTimer.Interval = TimeSpan.FromMilliseconds(Settings.FocusTime);
         }
 
         private void _upTimer_Tick(object sender, EventArgs e) => OnUpCommand?.Invoke();

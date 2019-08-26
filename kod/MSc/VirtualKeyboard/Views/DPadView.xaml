@@ -72,7 +72,7 @@
                 <Grid.LayoutTransform>
                     <RotateTransform Angle="270"/>
                 </Grid.LayoutTransform>
-                <ProgressBar x:Name="PowerUp" Value="{Binding Insight.PushLevel}" Style="{StaticResource ArrowProgressBar}"/>
+                <ProgressBar x:Name="PowerUp" Value="{Binding Insight.LiftLevel}" Style="{StaticResource ArrowProgressBar}"/>
                 <Rectangle Width="3" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" StrokeThickness="2"
                                Margin="{Binding Settings.UpThreshold, Converter={StaticResource FocusThresholdToMarginConverter}, Mode=OneWay}"/>
             </Grid>
@@ -92,7 +92,7 @@
                 <Grid.LayoutTransform>
                     <RotateTransform Angle="90"/>
                 </Grid.LayoutTransform>
-                <ProgressBar x:Name="PowerDown" Value="{Binding Insight.PullLevel}" Style="{StaticResource ArrowProgressBar}"/>
+                <ProgressBar x:Name="PowerDown" Value="{Binding Insight.DropLevel}" Style="{StaticResource ArrowProgressBar}"/>
                 <Rectangle Width="3" Fill="{StaticResource SecondaryAccentBrush}" Height="14" HorizontalAlignment="Left" StrokeThickness="2"
                                Margin="{Binding Settings.DownThreshold, Converter={StaticResource FocusThresholdToMarginConverter}, Mode=OneWay}"/>
             </Grid>
@@ -120,7 +120,7 @@
                 <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
                         Content="{materialDesign:PackIcon CursorDefaultClickOutline, Size=30}" cal:Message.Attach="[Event Click] = [Action Select($args)]"
                         materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" 
-                        materialDesign:ButtonProgressAssist.Value="{Binding Insight.SelectLevel}"
+                        materialDesign:ButtonProgressAssist.Value="{Binding Insight.FrownLevel}"
                         materialDesign:ButtonProgressAssist.Minimum="0" materialDesign:ButtonProgressAssist.Maximum="1"/>
             </Viewbox>
         </Grid>
