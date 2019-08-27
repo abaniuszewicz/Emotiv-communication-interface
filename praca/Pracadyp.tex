@@ -1240,7 +1240,7 @@ Na dole zakładki znajduje się przełącznik pozwalający na włączenie tak zw
 
 \chapter{Badania opracowanego systemu}
 
-\section{Wpływ ilości komend oraz ilości sesji treningowych na poprawność detekcji}
+\section{Wpływ ilości komend oraz ilości sesji treningowych na poprawność detekcji\label{sec:training_sessions}}
 Trening komend mentalnych, detekcji mimiki oraz badanie poprawności ich wykrywania wykonano w oprogramowaniu EmotivBCI.
 
 W przypadku komend mentalnych zastosowano inną strategię niż początkowo zakładano: autor, zamiast skupiać się na wyobrażeniu ruchu w górę, w prawo, w dół lub w lewo, powiązał te komendy z innymi, bardziej abstrakcyjnymi wyobrażeniami. Było to spowodowane niemożnością osiągnięcia wystarczającej \textit{siły} komendy w przypadku początkowo zakładanej strategii. Kierując się wskazówkami zawartymi w dokumentacji EmotivBCI, akcje komend mentalnych zostały powiązane z wyobrażeniami angażującymi różne części mózgu. I tak, kolejno dla \textit{uniesienia}, \textit{przesunięcia w prawo}, \textit{opuszczenia} oraz \textit{przesunięcia w lewo}, jest to wyobrażenie ruchu języka, wyobrażenie ruchu prawego kciuka, liczenie w głowie co $3$ ($3, 6, 9, 12, \dots$) oraz przywołanie w pamięci wspomnienia z gry komputerowej. 
@@ -1249,41 +1249,39 @@ Każdą komendę trenowano dziesięciokrotnie. Trening komend poprzedzało dzies
 
 Badaniu podlegała poprawność detekcji komendy podczas jej wyobrażenia lub wykonania, oraz jej korelacja z niepożądaną detekcją w trakcie utrzymywania \textit{stanu neutralnego}\footnote{\textit{Stan neutralny} -- stan, w którym nie następuje skupienie na poleceniu lub wykonanie akcji; rozluźnienie, odprężenie.}. Badanie wykonywano po każdym treningu. Składało się ono z dwudziestu piętnastosekundowych prób, z których dziesięć było skupieniem się na komendzie, a dziesięć zachowywaniem \textit{stanu neutralnego}. Skupienie się oraz zachowywanie \textit{stanu neutralnego} było wykonywane na zmianę.
 
-W przypadku \textit{próby skupienia} (S) komenda była uznawana za wykonaną poprawnie jeżeli w trakcie jej wyobrażenia nastąpił ruch sześcianu treningowego do odpowiadającej komendzie strefy (patrz Rysunek \vref{fig:cube}). W przypadku detekcji mimiki komenda była zaliczana jeżeli nastąpiło powtórzenie jej przez awatara (patrz Rysunek \vref{fig:training_facial_frown}). Jeżeli w ciągu piętnastosekundowej próby komenda nie została wykonana lub została wykonana inna komenda niż oczekiwana, próba nie była zaliczana. Próba \textit{braku skupienia} (NS) była uznawana za zaliczoną jeżeli w jej trakcie nie nastąpiło wykonanie żadnej akcji, która byłaby definiowana jako zaliczona \textit{próba skupienia}.
+W przypadku \textit{próby skupienia} (S) komenda była uznawana za wykonaną poprawnie jeżeli w trakcie jej wyobrażenia nastąpił ruch sześcianu treningowego do odpowiadającej komendzie strefy (patrz Rysunek \vref{fig:cube}). W przypadku detekcji mimiki komenda była zaliczana jeżeli nastąpiło powtórzenie jej przez awatara (patrz Rysunek \vref{fig:training_facial_frown}). Jeżeli w ciągu piętnastosekundowej próby komenda nie została wykonana lub została wykonana inna komenda niż oczekiwana, próba nie była zaliczana. W próbie \textit{braku skupienia} (NS) komenda była uznawana za wykonaną jeśli w trakcie zachowania \textit{stanu neutralnego} nastąpiło wykonanie jakiejkolwiek akcji, która byłaby definiowana jako zaliczona \textit{próba skupienia}.
 
 \begin{figure}[htbp]
 	\centering\includegraphics[height=6cm,width=0.8\textwidth,keepaspectratio]{graphic/emotivbci}\\
-	\caption[Sposób \textit{uznawania} komendy mentalnej]{Sposób \textit{uznawania} komendy mentalnej; jeżeli sześcian wychylił się co najmniej na oznaczone (przezroczyste) pozycje, komenda była uznawana za zaliczoną\label{fig:cube}}\source{Opracowanie własne}
+	\caption[Sposób \textit{uznawania} komendy mentalnej]{Sposób \textit{uznawania} komendy mentalnej; jeżeli sześcian wychylił się co najmniej na oznaczone (przezroczyste) pozycje, komenda była uznawana za wykonaną\label{fig:cube}}\source{Opracowanie własne}
 \end{figure}
 
 Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawiono na Rysunku \vref{fig:training_emotiv}.
 
 \afterpage{
     \begin{landscape}
-        \tabela{Wyniki treningu uzyskane w programie EmotivBCI \label{tab:training_emotiv}}
+        \tabela{Wpływ ilości sesji treningowych na poprawność detekcji \label{tab:training_emotiv}}
         {Opracowanie własne}
         {
             \begin{threeparttable}
-                \begin{tabular}{r|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
-                    \multicolumn{1}{c|}{\multirow{3}{1.5cm}{Numer treningu}} & \multicolumn{20}{c}{Komenda} \\ \cline{2-21} 
-                    \multicolumn{1}{c|}{} & \multicolumn{4}{c|}{Uniesienie} & \multicolumn{4}{c|}{Przesunięcie w prawo} & \multicolumn{4}{c|}{Opuszczenie} & \multicolumn{4}{c|}{Przesunięcie w lewo} & \multicolumn{4}{c}{Zmarszczenie brwi} \\ \cline{2-21} 
-                    \multicolumn{1}{c|}{} & S + & S -- & NS + & NS -- & S + & S -- & NS + & NS -- & S + & S -- & NS + & NS -- & S + & S -- & NS + & NS -- & S + & S -- & NS + & NS -- \\ \hline \hline
-                    1 & 2 & 8 & 10 & 0 & 0 & 10 & 6 & 4 & 0 & 10 & 10 & 0 & 0 & 10 & 10 & 0 & 10 & 0 & 3 & 7 \\ \hline
-                    2 & 1 & 9 & 10 & 0 & 0 & 10 & 8 & 2 & 0 & 10 & 10 & 0 & 0 & 10 & 10 & 0 & 10 & 0 & 4 & 6 \\ \hline
-                    3 & 1 & 9 & 10 & 0 & 0 & 10 & 10 & 0 & 0 & 10 & 10 & 0 & 0 & 10 & 10 & 0 & 10 & 0 & 4 & 6 \\ \hline
-                    4 & 8 & 2 & 6 & 4 & 0 & 10 & 10 & 0 & 1 & 9 & 8 & 2 & 1 & 9 & 10 & 0 & 10 & 0 & 4 & 6 \\ \hline
-                    5 & 6 & 4 & 8 & 2 & 1 & 9 & 10 & 0 & 1 & 9 & 9 & 1 & 1 & 9 & 10 & 0 & 10 & 0 & 6 & 4 \\ \hline
-                    6 & 8 & 2 & 5 & 5 & 0 & 10 & 10 & 0 & 4 & 6 & 9 & 1 & 2 & 8 & 9 & 1 & 10 & 0 & 5 & 5 \\ \hline
-                    7 & 9 & 1 & 4 & 6 & 0 & 10 & 10 & 0 & 2 & 8 & 10 & 0 & 1 & 9 & 10 & 0 & 10 & 0 & 6 & 4 \\ \hline
-                    8 & 9 & 1 & 3 & 7 & 1 & 9 & 10 & 0 & 2 & 8 & 10 & 0 & 3 & 7 & 10 & 0 & 10 & 0 & 4 & 6 \\ \hline
-                    9 & 8 & 2 & 7 & 3 & 2 & 8 & 10 & 0 & 3 & 7 & 10 & 0 & 2 & 8 & 10 & 0 & 10 & 0 & 5 & 5 \\ \hline
-                    10 & 9 & 1 & 5 & 5 & 1 & 9 & 10 & 0 & 3 & 7 & 10 & 0 & 3 & 7 & 10 & 0 & 10 & 0 & 5 & 5 \\
-                    \end{tabular}
+                \begin{tabularx}{\linewidth}{r|X|X|X|X|X|X|X|X|X|X}
+                    \multicolumn{1}{c|}{\multirow{3}{1.5cm}{Numer treningu}} & \multicolumn{10}{c}{Komenda} \\ \cline{2-11} 
+                    \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{Uniesienie} & \multicolumn{2}{c|}{Przesunięcie w prawo} & \multicolumn{2}{c|}{Opuszczenie} & \multicolumn{2}{c|}{Przesunięcie w lewo} & \multicolumn{2}{c}{Zmarszczenie brwi} \\ \cline{2-11} 
+                    \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c}{NS} \\ \hline
+                    1 & 20\% & 0\% & 0\% & 40\% & 0\% & 0\% & 0\% & 0\% & 100\% & 70\% \\ \hline
+                    2 & 10\% & 0\% & 0\% & 20\% & 0\% & 0\% & 0\% & 0\% & 100\% & 60\% \\ \hline
+                    3 & 10\% & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% & 100\% & 60\% \\ \hline
+                    4 & 80\% & 40\% & 0\% & 0\% & 10\% & 20\% & 10\% & 0\% & 100\% & 60\% \\ \hline
+                    5 & 60\% & 20\% & 10\% & 0\% & 10\% & 10\% & 10\% & 0\% & 100\% & 40\% \\ \hline
+                    6 & 80\% & 50\% & 0\% & 0\% & 40\% & 10\% & 20\% & 10\% & 100\% & 50\% \\ \hline
+                    7 & 90\% & 60\% & 0\% & 0\% & 20\% & 0\% & 10\% & 0\% & 100\% & 40\% \\ \hline
+                    8 & 90\% & 70\% & 10\% & 0\% & 20\% & 0\% & 30\% & 0\% & 100\% & 60\% \\ \hline
+                    9 & 80\% & 30\% & 20\% & 0\% & 30\% & 0\% & 20\% & 0\% & 100\% & 50\% \\ \hline
+                    10 & 90\% & 50\% & 10\% & 0\% & 30\% & 0\% & 30\% & 0\% & 100\% & 50\% \\
+                \end{tabularx}
                 \begin{tablenotes}
-                    \item [S +] Podczas skupienia na komendzie została ona wykonana (więcej = lepiej)
-                    \item [S --] Podczas skupienia na komendzie nie została ona wykonana lub została wykonana inna komenda (mniej = lepiej)
-                    \item [NS +] Podczas braku skupienia na komendzie (stan neutralny) nie została wykonana komenda (więcej = lepiej)
-                    \item [NS --] Podczas braku skupienia na komendzie (stan neutralny) została wykonana komenda (mniej = lepiej)
+                    \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas skupienia (więcej = lepiej)
+                    \item NS --- Stosunek wykonanych akcji do ilości prób podczas braku skupienia (mniej = lepiej)
                 \end{tablenotes}
             \end{threeparttable}
         }
@@ -1315,7 +1313,7 @@ Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawion
         \caption{Zmarszczenie brwi\label{fig:training_emotiv_frown}}
         \end{subfigure}\hspace*{\fill}
         
-        \caption{Wyniki treningu uzyskane w programie EmotivBCI\label{fig:training_emotiv}}
+        \caption{Wpływ ilości sesji treningowych na poprawność detekcji\label{fig:training_emotiv}}
         \source{Opracowanie własne}
     \end{figure}
 }
@@ -1359,6 +1357,91 @@ Stosunkowa słaba detekcja komend mentalnych mogła być spowodowana nikłą sep
 \end{figure}
 
 \section{Wpływ parametrów opracowanej aplikacji na poprawność detekcji}
+
+
+\tabela{Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji zmarszczenia brwi\label{tab:parameter_frown}}
+{Opracowanie własne}
+{
+    \begin{threeparttable}
+        \begin{tabularx}{.95\linewidth}{r|X|X|X|X|X|X}
+            \multicolumn{1}{c|}{\multirow{2}{*}{Threshold}} & \multicolumn{2}{c|}{CFT = 500 ms} & \multicolumn{2}{c|}{CFT = 1500 ms} & \multicolumn{2}{c}{CFT = 2500 ms} \\ \cline{2-7} 
+            \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c}{NS} \\ \hline
+            0,1 & 50\% & 30\% & 50\% & 20\% & 50\% & 0\% \\ \hline
+            0,2 & 70\% & 20\% & 80\% & 20\% & 30\% & 0\% \\ \hline
+            0,3 & 90\% & 20\% & 80\% & 0\% & 10\% & 0\% \\ \hline
+            0,4 & 100\% & 10\% & 90\% & 0\% & 0\% & 0\% \\ \hline
+            0,5 & 90\% & 0\% & 100\% & 0\% & 0\% & 0\% \\ \hline
+            0,6 & 100\% & 0\% & 100\% & 0\% & 0\% & 0\% \\ \hline
+            0,7 & 80\% & 0\% & 50\% & 0\% & 0\% & 0\% \\ \hline
+            0,8 & 80\% & 0\% & 20\% & 0\% & 0\% & 0\% \\ \hline
+            0,9 & 70\% & 0\% & 10\% & 0\% & 0\% & 0\% \\ \hline
+            1 & 70\% & 0\% & 10\% & 0\% & 0\% & 0\% \\
+        \end{tabularx}
+        \begin{tablenotes}
+            \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas wykonania (więcej = lepiej)
+            \item NS --- Stosunek wykonanych akcji do ilości prób podczas braku wykonania (mniej = lepiej)
+        \end{tablenotes}
+    \end{threeparttable}
+}
+
+\tabela{Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji komendy mentalnej \textit{uniesienie}\label{tab:parameter_up}}
+{Opracowanie własne}
+{
+    \begin{threeparttable}
+        \begin{tabularx}{.95\linewidth}{r|X|X|X|X|X|X}
+            \multirow{2}{*}{Threshold} & \multicolumn{2}{c|}{CFT = 500 ms} & \multicolumn{2}{c|}{CFT = 1500 ms} & \multicolumn{2}{c}{CFT = 2500 ms} \\ \cline{2-7} 
+            \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c}{NS} \\ \hline
+            0,1 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% \\ \hline
+            0,2 & 100\% & 100\% & 100\% & 100\% & 60\% & 60\% \\ \hline
+            0,3 & 100\% & 100\% & 80\% & 70\% & 50\% & 60\% \\ \hline
+            0,4 & 100\% & 90\% & 60\% & 50\% & 50\% & 40\% \\ \hline
+            0,5 & 90\% & 90\% & 10\% & 0\% & 10\% & 0\% \\ \hline
+            0,6 & 80\% & 90\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            0,7 & 60\% & 70\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            0,8 & 40\% & 30\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            0,9 & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            1 & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% \\
+        \end{tabularx}
+        \begin{tablenotes}
+            \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas skupienia (więcej = lepiej)
+            \item NS --- Stosunek wykonanych akcji do ilości prób podczas braku skupienia (mniej = lepiej)
+        \end{tablenotes}
+    \end{threeparttable}
+}
+
+\begin{figure}[htbp]
+    \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{graphic/up500}
+    \caption{Uniesienie, CFT = 500 ms\label{fig:up500}}
+    \end{subfigure}\hspace*{\fill}
+    \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{graphic/up1500}
+    \caption{Uniesienie, CFT = 1500 ms\label{fig:up1500}}
+    \end{subfigure}
+    
+    \medskip
+    \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{graphic/up2500}
+    \caption{Uniesienie, CFT = 2500 ms\label{fig:up2500}}
+    \end{subfigure}\hspace*{\fill}
+    \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{graphic/frown500}
+    \caption{Zmarszczenie brwi, CFT = 500 ms\label{fig:frown500}}
+    \end{subfigure}
+    
+    \medskip
+    \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{graphic/frown1500}
+    \caption{Zmarszczenie brwi, CFT = 1500 ms\label{fig:frown1500}}
+    \end{subfigure}\hspace*{\fill}
+    \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{graphic/frown2500}
+    \caption{Zmarszczenie brwi, CFT = 2500 ms\label{fig:frown2500}}
+    \end{subfigure}
+    
+    \caption[Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji]{Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji; żółtymi liniami oznaczono bazowy poziom detekcji osiągnięty po 10 sesjach treningowych (patrz rozdział \vref{sec:training_sessions}) \label{fig:parameter}}
+    \source{Opracowanie własne}
+\end{figure}
 
 
 

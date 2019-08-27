@@ -83,6 +83,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{lscape}
 \RequirePackage{afterpage}
+\RequirePackage{tabularx}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % Paragraph indent 10mm, skip 0

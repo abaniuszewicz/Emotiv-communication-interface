@@ -30,7 +30,7 @@ hold on
 xlim([1 10]); ylim([0 100])
 xlabel('Numer treningu'); ylabel('Stosunek detekcji do iloœci prób [%]');
 plot(training, up_focus_ok * 10, '-o');
-plot(training,up_nofocus_bad * 10, '--o');
+plot(training,up_nofocus_bad * 10, '--s');
 legend('Detekcja podczas skupienia','Detekcja podczas braku skupienia','Location','northwest');
 
 right = figure;
@@ -38,7 +38,7 @@ hold on
 xlim([1 10]); ylim([0 100])
 xlabel('Numer treningu'); ylabel('Stosunek detekcji do iloœci prób [%]');
 plot(training,right_focus_ok * 10, '-o');
-plot(training,right_nofocus_bad * 10, '--o');
+plot(training,right_nofocus_bad * 10, '--s');
 legend('Detekcja podczas skupienia','Detekcja podczas braku skupienia','Location','northwest');
 
 down = figure;
@@ -46,7 +46,7 @@ hold on
 xlim([1 10]); ylim([0 100])
 xlabel('Numer treningu'); ylabel('Stosunek detekcji do iloœci prób [%]');
 plot(training,down_focus_ok * 10, '-o');
-plot(training,down_nofocus_bad * 10, '--o');
+plot(training,down_nofocus_bad * 10, '--s');
 legend('Detekcja podczas skupienia','Detekcja podczas braku skupienia','Location','northwest');
 
 left = figure;
@@ -54,7 +54,7 @@ hold on
 xlim([1 10]); ylim([0 100])
 xlabel('Numer treningu'); ylabel('Stosunek detekcji do iloœci prób [%]');
 plot(training,left_focus_ok * 10, '-o');
-plot(training,left_nofocus_bad * 10, '--o');
+plot(training,left_nofocus_bad * 10, '--s');
 legend('Detekcja podczas skupienia','Detekcja podczas braku skupienia','Location','northwest');
 
 frown = figure;
@@ -62,7 +62,7 @@ hold on
 xlim([1 10]); ylim([0 100])
 xlabel('Numer treningu'); ylabel('Stosunek detekcji do iloœci prób [%]');
 plot(training,frown_focus_ok * 10, '-o');
-plot(training,frown_nofocus_bad * 10, '--o');
+plot(training,frown_nofocus_bad * 10, '--s');
 legend('Detekcja podczas wykonania','Detekcja podczas braku wykonania','Location','northwest');
 
 set(up, 'Units', 'Inches');
