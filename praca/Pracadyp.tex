@@ -1239,7 +1239,7 @@ Aktualna wartość definiowana przy pomocy suwaka jest widoczna po kliknięciu w
 Na dole zakładki znajduje się przełącznik pozwalający na włączenie tak zwanego \textit{Offline Mode}. W tym trybie na oknie \textit{Virtual Keyboard} widoczne są suwaki, pozwalające na ręczną symulację aktualnego skupienia dla poszczególnych komend.
 
 \chapter{Badania opracowanego systemu}
-W rozdziale czwartym zawarto badania opracowanego systemu. Na badania składają się przeanalizowanie wpływu ilości komend oraz ich sesji treningowych na stopę detekcji, zarówno w trakcie utrzymywanie skupienia (lub wykonywania akcji zmarszczenia brwi), jak i podczas zachowywania \textit{stanu neutralnego}. Do badań zalicza się również sprawdzenie zależności pomiędzy końcową stopą detekcji, a parametrami opracowanej aplikacji. Rozdział zamykają subiektywne uwagi autora na temat pracy z urządzeniem.  
+W rozdziale czwartym zawarto badania opracowanego systemu. Na badania składają się przeanalizowanie wpływu ilości komend oraz ich sesji treningowych na stopę detekcji, zarówno w trakcie utrzymywanie skupienia (lub wykonywania akcji zmarszczenia brwi), jak i podczas zachowywania \textit{stanu neutralnego}. Do badań zalicza się również sprawdzenie zależności pomiędzy końcową stopą detekcji, a parametrami opracowanej aplikacji. Rozdział zamykają subiektywne uwagi autora na temat opracowanego systemu.
 
 \section{Wpływ ilości komend oraz ilości sesji treningowych na poprawność detekcji\label{sec:training_sessions}}
 Trening komend mentalnych, detekcji mimiki oraz badanie poprawności ich wykrywania wykonano w oprogramowaniu EmotivBCI.
@@ -1358,14 +1358,14 @@ Stosunkowa słaba detekcja komend mentalnych mogła być spowodowana nikłą sep
 \end{figure}
 
 
-\section{Wpływ parametrów opracowanej aplikacji na poprawność detekcji}
+\section{Wpływ parametrów opracowanej aplikacji na poprawność detekcji\label{sec:parameter}}
 Badania dokonywano przy użyciu opracowanego interfejsu użytkownika. Rejestrowanie poprawności wykonanych poleceń następowało w zakładce \textit{Virtual Keyboard} (patrz rozdział \vref{subsec:virtualkeyboard}); do zmiany parametrów aplikacji w trakcie jej działania wykorzystano zakładkę \textit{Settings} (patrz rozdział \vref{subsec:settings}).
 
 Wpływ parametrów opracowanej aplikacji na poprawność detekcji zbadano na przykładzie komendy mentalnej uniesienia oraz detekcji zmarszczenia brwi. Badania przeprowadzano po dziesięciokrotnym wytrenowaniu poleceń. W przypadku uniesienia, wszystkie inne komendy mentalne zostały wyłączone, aby nie wpływały na wynik pomiaru.
 
-Dla każdej kombinacji dwóch parametrów \textit{Threshold} ($0.1, 0.2, \dots, 1.0$) oraz \textit{Command Focus Time} (CFT; 500 ms, 1500 ms oraz 2500 ms) wykonano badanie składające się z dwóch części: dziesięciu piętnastosekundowych prób skupienia/wykonania akcji (S) oraz dziesięciu tak samo długich prób nieskupienia/niewykonywania akcji (NS). Próby następowały na zmianę.
+Dla każdej kombinacji dwóch parametrów \textit{Threshold} ($0.1, 0.2, \dots, 1.0$) oraz \textit{Command Focus Time} (CFT; $500$ ms, $1500$ ms oraz $2500$ ms) wykonano badanie składające się z dwóch części: dziesięciu piętnastosekundowych prób skupienia/wykonania akcji (S) oraz dziesięciu tak samo długich prób nieskupienia/niewykonywania akcji (NS). Próby następowały na zmianę.
 
-Próba była zaliczana jeżeli w jej trakcie nastąpiło: (1) dla komendy mentalnej uniesienia -- przesunięcie kursora selekcji o jedną pozycję w górę, lub (2) dla detekcji zmarszczenia brwi -- jednorazowe \textit{wciśnięcie} przycisku dla detekcji zmarszczenia brwi. W przypadku wystąpienia kilku akcji, to jest przesunięcia kursora o kilka pól albo parokrotnego \textit{wciśnięcia} klawisza, lub nie wykonania akcji wcale, próba nie była zaliczana.
+Próba była zaliczana jeżeli w jej trakcie nastąpiło: (1) dla komendy mentalnej uniesienia -- przesunięcie kursora selekcji o jedną pozycję w górę, lub (2) dla detekcji zmarszczenia brwi -- jednorazowe \textit{wciśnięcie} przycisku dla detekcji zmarszczenia brwi. W przypadku nie wykonania akcji lub wystąpienia jej więcej niż raz, to jest przesunięcia kursora o kilka pól albo kilkukrotnego wciśnięcia klawisza, próba nie była zaliczana.
 
 Wyniki uzyskane dla uniesienia zestawiono w Tabeli \vref{tab:parameter_up}; dla zmarszczenia brwi w Tabeli \vref{tab:parameter_frown}. Zostały one przedstawione również na Rysunku \vref{fig:parameter}.
 
@@ -1376,14 +1376,14 @@ Wyniki uzyskane dla uniesienia zestawiono w Tabeli \vref{tab:parameter_up}; dla 
         \begin{tabularx}{.95\linewidth}{r|X|X|X|X|X|X}
             \multirow{2}{*}{Threshold} & \multicolumn{2}{c|}{CFT = 500 ms} & \multicolumn{2}{c|}{CFT = 1500 ms} & \multicolumn{2}{c}{CFT = 2500 ms} \\ \cline{2-7} 
             \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c}{NS} \\ \hline\hline
-            0,1 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% \\ \hline
-            0,2 & 100\% & 100\% & 100\% & 100\% & 60\% & 60\% \\ \hline
-            0,3 & 100\% & 100\% & 80\% & 70\% & 50\% & 60\% \\ \hline
-            0,4 & 100\% & 90\% & 60\% & 50\% & 50\% & 40\% \\ \hline
-            0,5 & 90\% & 90\% & 10\% & 0\% & 10\% & 0\% \\ \hline
-            0,6 & 80\% & 90\% & 0\% & 0\% & 0\% & 0\% \\ \hline
-            0,7 & 60\% & 70\% & 0\% & 0\% & 0\% & 0\% \\ \hline
-            0,8 & 40\% & 30\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            0,1 & 0\% & 100\% & 0\% & 100\% & 0\% & 100\% \\ \hline
+            0,2 & 0\% & 100\% & 0\% & 100\% & 30\% & 60\% \\ \hline
+            0,3 & 0\% & 100\% & 20\% & 70\% & 40\% & 60\% \\ \hline
+            0,4 & 10\% & 90\% & 40\% & 50\% & 40\% & 40\% \\ \hline
+            0,5 & 10\% & 90\% & 10\% & 0\% & 10\% & 0\% \\ \hline
+            0,6 & 20\% & 70\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            0,7 & 20\% & 60\% & 0\% & 0\% & 0\% & 0\% \\ \hline
+            0,8 & 10\% & 20\% & 0\% & 0\% & 0\% & 0\% \\ \hline
             0,9 & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% \\ \hline
             1 & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% \\
         \end{tabularx}
@@ -1401,16 +1401,16 @@ Wyniki uzyskane dla uniesienia zestawiono w Tabeli \vref{tab:parameter_up}; dla 
         \begin{tabularx}{.95\linewidth}{r|X|X|X|X|X|X}
             \multicolumn{1}{c|}{\multirow{2}{*}{Threshold}} & \multicolumn{2}{c|}{CFT = 500 ms} & \multicolumn{2}{c|}{CFT = 1500 ms} & \multicolumn{2}{c}{CFT = 2500 ms} \\ \cline{2-7} 
             \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c|}{NS} & \multicolumn{1}{c|}{S} & \multicolumn{1}{c}{NS} \\ \hline\hline
-            0,1 & 50\% & 30\% & 50\% & 20\% & 50\% & 0\% \\ \hline
-            0,2 & 70\% & 20\% & 80\% & 20\% & 30\% & 0\% \\ \hline
-            0,3 & 90\% & 20\% & 80\% & 0\% & 10\% & 0\% \\ \hline
-            0,4 & 100\% & 10\% & 90\% & 0\% & 0\% & 0\% \\ \hline
-            0,5 & 90\% & 0\% & 100\% & 0\% & 0\% & 0\% \\ \hline
-            0,6 & 100\% & 0\% & 100\% & 0\% & 0\% & 0\% \\ \hline
-            0,7 & 80\% & 0\% & 50\% & 0\% & 0\% & 0\% \\ \hline
-            0,8 & 80\% & 0\% & 20\% & 0\% & 0\% & 0\% \\ \hline
-            0,9 & 70\% & 0\% & 10\% & 0\% & 0\% & 0\% \\ \hline
-            1 & 70\% & 0\% & 10\% & 0\% & 0\% & 0\% \\
+            0,1 & 40\% & 30\% & 100\% & 20\% & 90\% & 0\% \\ \hline
+            0,2 & 50\% & 20\% & 100\% & 20\% & 60\% & 0\% \\ \hline
+            0,3 & 70\% & 20\% & 100\% & 0\% & 60\% & 0\% \\ \hline
+            0,4 & 80\% & 10\% & 100\% & 0\% & 30\% & 0\% \\ \hline
+            0,5 & 80\% & 0\% & 80\% & 0\% & 0\% & 0\% \\ \hline
+            0,6 & 90\% & 0\% & 80\% & 0\% & 0\% & 0\% \\ \hline
+            0,7 & 100\% & 0\% & 70\% & 0\% & 0\% & 0\% \\ \hline
+            0,8 & 90\% & 0\% & 60\% & 0\% & 0\% & 0\% \\ \hline
+            0,9 & 60\% & 0\% & 20\% & 0\% & 0\% & 0\% \\ \hline
+            1 & 20\% & 0\% & 0\% & 0\% & 0\% & 0\% \\
         \end{tabularx}
         \begin{tablenotes}
             \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas wykonania (więcej = lepiej)
@@ -1449,31 +1449,66 @@ Wyniki uzyskane dla uniesienia zestawiono w Tabeli \vref{tab:parameter_up}; dla 
     \caption{Zmarszczenie brwi, CFT = 2500 ms\label{fig:frown2500}}
     \end{subfigure}
     
-    \caption[Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji]{Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji; żółtymi liniami oznaczono bazowy poziom detekcji osiągnięty po 10 sesjach treningowych (patrz rozdział \vref{sec:training_sessions}) \label{fig:parameter}}
+    \caption{Wpływ parametrów \textit{Threshold} oraz \textit{Command Focus Time} na poprawność detekcji\label{fig:parameter}}
     \source{Opracowanie własne}
 \end{figure}
 
-W przypadku komendy mentalnej uniesienia można zauważyć, że zwiększanie parametru \textit{Command Focus Time} silnie wpływa na zmniejszenie progu wykrywalności komendy, zarówno w trakcie skupienia, jak i zachowywania \textit{stanu neutralnego}. Wzrost tego parametru powoduje szybsze opadanie charakterystyki wykrywalności: w stanie skupienia dla CFT = 500 ms spada ona poniżej 70\% przy progu 0.7, dla CFT = 1500 ms przy progu 0.4, a dla CFT = 2500 ms już przy progu 0.2. Podobne wyniki osiągane są w \textit{stanie neutralnym}: kolejno 0.8, 0.5 oraz 0.2 dla tych samych CFT.
+W przypadku komendy mentalnej uniesienia można zauważyć, że zwiększanie parametru \textit{Command Focus Time} powoduje zwiększenie wykrywalności podczas skupienia z maksymalnego poziomu dwudziestu procent dla CFT = 500 ms do czterdziestu procent dla CFT = 1500 ms oraz 2500 ms. Jego jedyną korelacją z detekcją podczas zachowywania \textit{stanu neutralnego} wydaje się być przyspieszenie opadania jej charakterystyki -- dla dowolnego CFT nadal rozciąga się ona w całym możliwym zakresie, jednak moment rozpoczęcia jej opadania zmienia się wraz z CFT: Dla 500 ms charakterystyka zaczyna opadać przy \textit{Thresholdzie} 0.4, dla 1500 ms -- 0.3 oraz dla 2500 ms -- 0.2. Przesunięcie spowodowane jest eliminacją wpływu fluktuacji, których prawdopodobieństwo występowania na poziomie przekraczającym próg zmniejsza się wraz ze wzrostem CFT.
 
-Zwiększanie parametru \textit{Threshold}, podobnie jak CFT, powoduje zmniejszenie stopy wykrywalności komendy. Dla wartości wynoszącej 0.1 wykrywalność jest stuprocentowa dla wszystkich przebadanych CFT; związane jest to z występującymi fluktuacjami, które przekraczają ten poziom nawet podczas braku skupienia. Maksymalnym progiem, przy którym następowało jeszcze wykrywanie komendy, było 0.8 dla CFT = 500 ms oraz 0.5 dla CFT = 1500 ms i 2500 ms. Można zauważyć, iż dla dowolnego CFT wzrost tego parametru o 0.5 od wartości, w której następuje pierwszy spadek wykrywalności, powoduje spadek wykrywalności komendy do poziomu 0\% (przy CFT = 1500 ms wystarczy nawet zmiana o 0.4).
+Zwiększanie parametru \textit{Threshold} powoduje, po przekroczeniu pewnej jego wartości zależnej od CFT, wzrost stopnia wykrywalności komendy mentalnej podczas skupienia oraz jego spadek podczas braku skupienia. Wzrost detekcji podczas skupienia następuje jedynie przy zwiększeniu progu o około 0.2÷0.3 od wartości dla której nastąpił jej pierwszy wzrost, następnie skuteczność zaczyna spadać. Maksymalny poziom wykrywalności komendy w stanie skupienia został osiągnięty przy progu 0.6 oraz 0.7 dla CFT wynoszącego 500 ms, 0.4 dla CFT 1500 ms oraz 0.3 i 0.4 dla CFT na poziomie 2500 ms. Jedynym przedziałem, w którymi poziom detekcji był jednocześnie zerowy w \textit{stanie neutralnym} i dodatni w stanie skupienia, był próg od 0.5 do 0.6 dla CFT 1500 ms oraz 2500 ms.
 
-Parametr \textit{Command Focus Time} ma podobny wpływ na detekcję zmarszczenia brwi jak na wykrywalność komend mentalnych -- jego zwiększenie powoduje szybsze opadanie charakterystyk wykonania akcji oraz \textit{stanu neutralnego}. Jego wysokie wartości w przypadku detekcji mimiki mają jednak bardzo poważną wadę: długotrwałe utrzymywanie napięcia mięśni (CFT = 1500 ms oraz 2500 ms) powodowało u autora duży dyskomfort fizyczny. Częste wykonywanie akcji \textit{wciśnięcia klawisza} przez tak długi okres czasu powodowało ból mięśni marszczących brwi.
+Parametr \textit{Command Focus Time} ma podobny wpływ na detekcję zmarszczenia brwi jak na wykrywalność komend mentalnych -- jego zwiększenie powoduje przesunięcie charakterystyk detekcji w lewo, skutkując szybszym opadaniem ich opadaniem. Wraz ze z jego wzrostem eliminowane są również wielokrotne detekcje przy pojedynczym wykonaniu akcji. Jego wysokie wartości w przypadku detekcji mimiki mają jednak bardzo poważną wadę: długotrwałe utrzymywanie napięcia mięśni (CFT = 1500 ms oraz 2500 ms) powodowało u autora duży dyskomfort fizyczny. Częste wykonywanie akcji \textit{wciśnięcia klawisza} powodowało ból mięśni marszczących brwi.
 
-W przypadku detekcji zmarszczenia brwi parametr \textit{Threshold} pozwolił na skuteczne odfiltrowanie fałszywych detekcji podczas zachowywania \textit{stanu neutralnego}. Już próg na poziomie 0.1 dla CFT = 500 ms pozwolił na zmniejszenie stopy detekcji podczas braku skupienia z pięćdziesięciu do trzydziestu procent. Wartym odnotowania jest również fakt, iż dla CFT = 500 ms oraz 1500 ms, klasyfikacja podczas wykonywania akcji początkowo rośnie wraz ze zwiększaniem \textit{Thresholdu}. Spowodowane jest to faktem, iż przy niskich progu następuje często kilkukrotne wywołanie komendy, co spowodowane jest występującymi fluktuacjami; zwiększanie parametru \textit{Threshold} pozwala je wyeliminować.
+W przypadku detekcji zmarszczenia brwi parametr \textit{Threshold} pozwolił na skuteczne odfiltrowanie fałszywych detekcji podczas zachowywania \textit{stanu neutralnego}. Już próg na poziomie 0.1 dla CFT = 500 ms pozwolił na ograniczenie niepożądanych detekcji podczas braku skupienia do trzydziestu procent. Wartym odnotowania jest również fakt, iż dla CFT wynoszącego 500 ms klasyfikacja podczas wykonywania akcji początkowo rośnie wraz ze zwiększaniem \textit{Thresholdu}. Spowodowane jest to faktem, iż przy niskim progu komendy często wywołane są z powodu występujących fluktuacji, a nie wskutek faktycznej akcji użytkownika; zwiększanie parametru \textit{Threshold} pozwala wyeliminować to zachowanie.
 
-Na podstawie otrzymanych wyników można zauważyć, iż wzrost zarówno \textit{Command Focus Time}, jak i \textit{Thresholdu}, powoduje spadek niepożądanych detekcji w trakcie \textit{stanu neutralnego} dla obu rodzajów komend; dla komend mentalnych pociąga to ze sobą dodatkowo spadek poprawnych detekcji w trakcie skupienia. W przypadku detekcji zmarszczenia brwi zwiększanie obu parametrów powodowało wzrost tolerancji na dodatkowe akcje wykonywane przez użytkownika, takie jak na przykład ruch gałek ocznych czy obracanie głową, nie klasyfikując ich błędnie jako zmarszczenie brwi. Wzrost samego parametru \textit{Threshold} powodował nawet wzrost stopy detekcji podczas stanu skupienia\footnote{Dla \textit{Command Focus Time} wynoszącego 500 ms oraz 1500 ms.}. 
+Reasumując, na podstawie otrzymanych wyników można zauważyć, iż prawidłowa manipulacja parametrami \textit{Command Focus Time} oraz \textit{Threshold} pozwala na osiągnięcie lepszych wyników detekcji podczas skupienia oraz obniżenie liczby fałszywych detekcji podczas \textit{stanu neutralnego}. Zmiana CFT pomaga wyeliminować kilkukrotne wykonanie komendy podczas jednorazowego wykonania akcji lub utrzymania skupienia. Próg aktywacji, z kolei, pozwala na redukcję wpływu fluktuacji powodowanych przez organizm oraz środowisko zewnętrzne. 
 
-Odpowiedni dobór tych parametrów jest indywidualny dla każdego użytkownika i powinien uwzględniać, obok maksymalnie wysokiej stopy detekcji podczas stanu skupienia, jego indywidualne preferencje. W przypadku autora pracy były to: (1) brak błędnych detekcji w \textit{stanie neutralnym} oraz (2) możliwie niski czas skupienia na komendzie \textit{Command Focus Time}. Przyjmując takie kryteria autorowi najlepiej pracowało się z CFT wynoszącym 1500 ms i \textit{Thresholdem} na poziomie 0.5. W przypadku detekcji zmarszczenia brwi było to CFT wynoszące 500 ms oraz próg na poziomie 0.6.
+Odpowiedni dobór tych parametrów jest indywidualny dla każdego użytkownika i powinien uwzględniać, obok maksymalnie wysokiej stopy detekcji podczas stanu skupienia, jego indywidualne preferencje. W przypadku autora pracy były to: (1) brak błędnych detekcji w \textit{stanie neutralnym} oraz (2) możliwie niski czas skupienia na komendzie \textit{Command Focus Time}. Przyjmując takie kryteria autorowi najlepiej pracowało się z komendą mentalną uniesienia przy CFT wynoszącym 1500 ms i \textit{Thresholdem} na poziomie 0.5. W przypadku detekcji zmarszczenia brwi było to CFT wynoszące 500 ms oraz próg na poziomie 0.7.
 
 
 \section{Uwagi dotyczące opracowanego systemu}
-Wpływ zakłóceń: włosy
+\subsection{Wpływ zakłóceń}
+Hełm wydaje się być w miarę odporny na zakłócenia mogące powstawać na skutek kontaktu elektrod z włosami. Uzyskanie jakości połączenia na poziomie 95÷100\% nie było trudnym zadaniem -- już samo początkowe nałożenie zapewniało poziom około 70÷80\%, a dalsze \textit{dostrajanie} poszczególnych czujników nie zajmowało więcej niż dwie minuty. Autor nie musiał w trakcie realizacji pracy korzystać z dołączonej do zestawu soli fizjologicznej, która służy do zwiększenia przewodności.
 
-Komfort noszenia: zdjęcie
+Autor zauważył zakłócenia poziomu komend mentalnych występujące w przypadku zmiennej mimiki twarzy. Przykładem może być mruganie, które powodowało skoki aktualnego poziomu komendy mentalnej uniesienia. Zmiany tego parametru mogą być związane z (1) błędną separacją sygnałów EMG oraz EEG lub (2) wzrostem aktywności w korze wzrokowej, której aktywność mogła stanowić \textit{model} detekcji tego polecenia. O ile artefakty wynikające z sygnałów EMG mogą być wyeliminowane, tak redukcja aktywności w poszczególnych częściach mózgu na skutek niezwiązany z celowym wywoływaniem komendy wydaje się być trudna do odfiltrowania.
 
-Ściągnięcie i założenie powoduje niewykrywanie uprzednio wytrenowanych komend
+Nie zarejestrowano negatywnego wpływu innych urządzeń elektronicznych lub sieci energetycznej, prawdopodobnie z powodu wbudowanych w urządzenie filtrów wycinających.
 
-Przy jednej komendzie jako tako działa, ale jest to związane pewnie raczej z wykrywaniem ogólnie skupienia na czymś, a nie konkretnej komendy. Przy P300 takie podejście jednobitowe by się sprawdziło lepiej.
+\subsection{Komfort pracy}
+Używanie hełmu, szczególnie w trakcie sesji trwających ponad dwie godziny, powoduje znaczny dyskomfort fizyczny. Hełm w trakcie pracy powoduje spory nacisk na głowę, co prowadzi do powstawania śladów na skórze. Ślady powstałe w wyniku półtoragodzinnej pracy z urządzeniem pokazano na Rysunku \vref{fig:headset_marks}.
+
+\begin{figure}[htb]
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{graphic/headset_before}
+        \caption{Autor w trakcie użytkowania hełmu}
+    \end{subfigure}\hspace*{\fill}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\linewidth]{graphic/headset_after}
+        \caption{Ślady na skórze pozostawione przez hełm}
+    \end{subfigure}
+
+    \caption{Wpływ używania hełmu na skórę głowy\label{fig:headset_marks}}
+    \source{Opracowanie własne}
+\end{figure}
+
+Dodatkowym problemem jest przesuwanie się urządzenia w ciągu normalnego trybu pracy. Wywoływanie komend związanych z detekcją mimiki, na przykład zmarszczenia brwi, powoduje lekkie przemieszczanie się elektrod, co w trakcie długotrwałych sesji będzie prowadziło do spadku poziomu wykrywalności komend na skutek pozornej zmiany miejsca wzmożonej aktywności w mózgu, a w konsekwencji nierozpoznania wytrenowanych uprzednio wzorców.
+
+\subsection{Trening}
+Pomimo iż urządzenie zachowuje uprzednio zrealizowane treningi, ich powtórne użycie po zdjęciu oraz nałożeniu hełmu charakteryzuje znacznie słabszą wykrywalnością niż w trakcie ćwiczenia. W praktyce po wyćwiczeniu układu do końcowych poziomów rozpoznawania komend zaprezentowanych w rozdziałach \vref{sec:training_sessions} oraz \vref{sec:parameter}, przy zrealizowaniu tej samej próby następnego dnia, poziomy detekcji wynoszą około zera procent. Zjawisko to występuje głównie dla komend mentalnych i ma mniejszy wpływ w przypadku detekcji mimiki.
+
+Problem braku powtórnej używalności sesji treningowych jest o tyle poważny, że ich wykonanie zajmuje około 1÷1.5 godziny\footnote{Dokładny czas będzie różny w zależności od użytkownika urządzenia; podano czas właściwy dla autora pracy.\label{foot:time}}, co stanowi sporą część z około ośmiogodzinnego czasu pracy urządzenia na jednym ładowaniu. Sprawę dodatkowo komplikuje fakt, iż podczas używania urządzenia, zgodnie z ostrzeżeniami zawartymi w jego dokumentacji, nie wolno go ładować. Prowadzi to do skrócenia faktycznego czasu pracy systemu do 6.5÷7 godzin\footnote{Patrz przyp. \vref{foot:time}}.
+
+Należy mieć również na uwadze, iż sam proces treningu nie jest łatwym zadaniem. Wymaga on ciągłego skupienia, a wiele treningów nie jest zaliczanych z powodu osiągnięcia niskiej oceny. Konieczność powtarzania tego procesu codziennie, a nawet kilka razy dziennie, może prowadzić do frustracji użytkownika urządzenia, a w konsekwencji zaprzestania używania systemu. 
+
+\subsection{Detekcja komend}
+Emotiv Insight, rzekomo \textit{wspierający} detekcję do 4 komend mentalnych\footnote{Wyłączając detekcję \textit{stanu neutralnego}}, ma w opinii autora trudności z rozpoznaniem wzorca nawet jednego polecenia. Dodawanie kolejnych komend możliwych do wykrycia tylko obniża ich i tak niski poziom detekcji aż do całkowitego zaniku albo wprowadzenia dużej losowości. Autor miał przy tym często wrażenie, że Cortex API nie rozpoznaje faktycznych wzorców poleceń tylko sam stan skupienia się użytkownika urządzenia.
+
+W przypadku detekcji mimiki rezultaty są bardzo zadowalające -- urządzenie jest w stanie wykryć każdą akcje użytkownika, jednocześnie nie dostarczając fałszywych detekcji. Poprawienie \textit{oficjalnego} stosunku detekcji było jednak możliwe tylko dzięki wykorzystaniu API urządzenia i odpowiednim dostrojeniu parametrów opracowanej aplikacji. 
+
+Bardzo słabe wyniki detekcji komend mentalnych dyskwalifikują opracowany system jako pełnoprawny interfejs komunikacyjny. O ile selekcja klawiszy działa bez zarzutu, tak poruszanie się po nich przy użyciu wyobrażeń przypomina wybór kierunku przy użyciu szumu i jest całkowicie losowe bądź nie działa wcale. Warte zbadania wydaje się zastosowania innego hełmu z rodziny Emotiv, na przykład Emotiv EPOC+, który posiada więcej elektrod i mógłby zapewnić lepszą rozpoznawalność wzorców detekcji komend mentalnych, przy bardzo niskim narzucie pracy dzięki temu samemu API.
+
+Alternatywą dla całego systemu wykorzystującą Emotiv Insight może być jego modyfikacja do podejścia jednobitowego wykorzystującego wyłącznie detekcję mimiki. W takim systemie klawisze klawiatury podświetlałyby się po kolei, a użytkownik, chcąc \textit{wcisnąć} któryś z nich, wykonywałby zmarszczenie brwi.
+
 
 \FloatBarrier
 \begin{zakonczenie}\label{chap:zakonczenie}
