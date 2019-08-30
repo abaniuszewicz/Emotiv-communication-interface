@@ -316,7 +316,7 @@
 \noindent\hfill podpis dyplomanta\hspace*{55pt}\par
 \vspace{12pt}
 \normalsize
-\noindent Szczecin, dn. \@datazlozenia~r.\par
+\noindent Szczecin, dn. ...........................\par
 
 %% Streszczenie pracy / Abstract
 \clearpage\thispagestyle{empty}
