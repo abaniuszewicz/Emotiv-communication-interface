@@ -70,13 +70,13 @@
 \begin{streszczenie}
 W niniejszej pracy przedstawiono zagadnienia związane z opracowaniem układu wirtualnej klawiatury sterowanej przy użyciu urządzenia do rejestracji aktywności mózgu. Główną motywacją projektu było stworzenie interfejsu mózg--komputer (\textit{ang.} BCI -- brain--computer interface), który umożliwiłby na przykład przywrócenie zdolności sprawnej komunikacji werbalnej osobom z zaburzeniami mowy.
 
-Praca została podzielona na cztery rozdziały. W rozdziale pierwszym zawarto wstęp do tematyki interfejsów mózg--komputer. W rozdziale drugim scharakteryzowano wybrane urządzenia komercyjne, umożliwiające rejestrację aktywności mózgu. W rozdziale trzecim przedstawiono opracowany projekt wirtualnej klawiatury. W ostatnim, czwartym rozdziale, zawarto wyniki badań opracowanego systemu. Pracę zamyka spis bibliograficzny opiewający na 49 pozycji.  
+Praca została podzielona na cztery rozdziały. W rozdziale pierwszym zawarto wstęp do tematyki interfejsów mózg--komputer. W rozdziale drugim scharakteryzowano wybrane urządzenia komercyjne, umożliwiające rejestrację aktywności mózgu. W rozdziale trzecim przedstawiono opracowany projekt wirtualnej klawiatury. W ostatnim, czwartym rozdziale, zawarto wyniki badań opracowanego systemu. Pracę zamyka spis bibliograficzny opiewający na 51 pozycji.  
 \end{streszczenie}
 
 \begin{abstract}
 This thesis presents development process of virtual keyboard controlled with brain activity acquisition device. The main motivation of this project was to create a brain--computer interface, which would allow, for example, to restore verbal communication ability for people with speech disorders.
 
-Thesis was divided into four chapters. The first chapter contains an introduction to the subject of brain--computer interfaces. The second chapter characterizes some of commercially--available devices that allow brain activity recording. The third chapter presents design of virtual keyboard. The last, fourth chapter, contains results of system tests. This thesis provides bibliographic list with total of 49 items.
+Thesis was divided into four chapters. The first chapter contains an introduction to the subject of brain--computer interfaces. The second chapter characterizes some of commercially--available devices that allow brain activity recording. The third chapter presents design of virtual keyboard. The last, fourth chapter, contains results of system tests. This thesis provides bibliographic list with total of 51 items.
 \end{abstract}
 
 \maketitle
@@ -96,7 +96,7 @@ Celem pracy było wykonanie układu wirtualnej klawiatury sterowanej przy użyci
 
 \zakres
 {
-W ramach pracy przeanalizowano sześć urządzeń do rejestracji aktywności mózgu, spośród których wybrano jedno, na bazie którego wykonano układ wirtualnej klawiatury. Opracowano aplikację w jęzuku C\#, która, wykorzystując sterowanie za pomocą rejestrowanych komend mentalnych, pozwala na wprowadzanie tekstu, a następnie jego syntezę do postaci dźwiękowej. Zbadano równiez wpływ ilości komend, ich sesji treningowych oraz parametrów opracowanej aplikacji na skuteczność detekcji.
+W ramach pracy przeanalizowano sześć urządzeń do rejestracji aktywności mózgu, spośród których wybrano jedno, na bazie którego wykonano układ wirtualnej klawiatury. Opracowano aplikację w jęzuku C\#, która, wykorzystując sterowanie za pomocą rejestrowanych komend mentalnych, pozwala na wprowadzanie tekstu, a następnie jego syntezę do postaci dźwiękowej. Zbadano równiez wpływ liczby komend, ich sesji treningowych oraz parametrów opracowanej aplikacji na skuteczność detekcji.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -206,7 +206,7 @@ Interfejsy dwukierunkowe zostały poruszone w literaturze~\cite{bci_introduction
 
 \section{Przetwarzanie sygnałów}
 \subsection{Usunięcie szumów}
-Sygnały EEG charakteryzują się bardzo niskim współczynnikiem SNR\footnote{SNR (\textit{ang.} signal-to-noise ratio) -- stosunek sygnału do szumu}~\cite{bci_trends}. Z tego powodu przed przystąpieniem do ich analizy należy najpierw usunąć z nich możliwie największą ilość artefaktów. Przykładowe przebiegi zakłóceń zostały pokazane na Rysunku \vref{fig:eeg_noise}.
+Sygnały EEG charakteryzują się bardzo niskim współczynnikiem SNR\footnote{SNR (\textit{ang.} signal-to-noise ratio) -- stosunek sygnału do szumu}~\cite{bci_trends}. Z tego powodu przed przystąpieniem do ich analizy należy najpierw usunąć z nich możliwie największą liczbę artefaktów. Przykładowe przebiegi zakłóceń zostały pokazane na Rysunku \vref{fig:eeg_noise}.
 
 Pierwszym typem zakłóceń są zakłócenia pochodzące ze środowiska, w którym jest rejestrowany sygnał EEG. Można do nich zaliczyć między innymi zakłócenia od sieci energetycznej oraz elektroniki (komputerów, telefonów, routerów Wi-Fi i tym podobnych). Najprostszym sposobem minimalizacji ich wpływu na sygnał wyjściowy jest eliminacja źródeł zakłóceń -- przeprowadzenie akwizycji sygnałów z dala od miast, usunięcie zbędnych urządzeń z otoczenia, zastąpienie, o ile to możliwe, zasilania niezbędnych urządzeń prądem przemiennym na rzecz prądu stałego. Innym sposobem jest wykorzystanie klatki Faradaya.
 
@@ -344,9 +344,9 @@ Osoby sparaliżowane niekiedy są w stanie sterować wózkiem inwalidzkim, używ
 
 Kontrola wózka inwalidzkiego może odbywać się przy wykorzystaniu sterowania \textit{nisko-} lub \textit{wysokopoziomowego}.
 
-Sterowanie niskopoziomowe można zrealizować przez translację sygnałów odebranych z urządzenia rejestrującego aktywność mózgu na komendy opisujące ruch wózka (\textit{ruch do przodu}, \textit{zawróć}, \textit{przyspiesz}), z zastrzeżeniem, że użytkownik wydaje je w sposób bezpośredni. Ten rodzaj sterowania wymaga zamontowania czujników na wózku, które uniemożliwią wykonanie niedozwolonych manewrów, na przykład uderzenia w inną osobę lub przedmiot. Do zalet rozwiązania można zaliczyć wysoki stopień kontroli osoby użytkującej wózek nad sposobem przemieszczania oraz stosunkowo małą ilość wymaganych komend mentalnych do podstawowego sterowania. Do wad należy konieczność wydawania poleceń ruchu w sposób ciągły, co może prowadzić do znużenia użytkownika, a w konsekwencji samoczynnego \textit{rozstrajania się} układu sterowania.
+Sterowanie niskopoziomowe można zrealizować przez translację sygnałów odebranych z urządzenia rejestrującego aktywność mózgu na komendy opisujące ruch wózka (\textit{ruch do przodu}, \textit{zawróć}, \textit{przyspiesz}), z zastrzeżeniem, że użytkownik wydaje je w sposób bezpośredni. Ten rodzaj sterowania wymaga zamontowania czujników na wózku, które uniemożliwią wykonanie niedozwolonych manewrów, na przykład uderzenia w inną osobę lub przedmiot. Do zalet rozwiązania można zaliczyć wysoki stopień kontroli osoby użytkującej wózek nad sposobem przemieszczania oraz stosunkowo małą liczbę wymaganych komend mentalnych do podstawowego sterowania. Do wad należy konieczność wydawania poleceń ruchu w sposób ciągły, co może prowadzić do znużenia użytkownika, a w konsekwencji samoczynnego \textit{rozstrajania się} układu sterowania.
 
-Sterowanie wysokopoziomowe polega na wydawaniu poleceń dotyczących celu ruchu (\textit{kuchnia}, \textit{łazienka}). Podejście to wiąże się z koniecznością stosowania wózków o wysokim stopniu autonomiczności. Zaletą tego rozwiązania jest odciążenie użytkownika od konieczności utrzymywania ciągłego skupienia na kierunku oraz prędkości ruchu, wyeliminowanie wpływu zakłóceń odbieranych w trakcie przemieszczania się oraz, po zapewnieniu skutecznych algorytmów i odpowiedniej ilości czujników, bezpieczniejsze poruszanie się w środowisku. Do wad zaliczyć należy większą ilość komend, które należy zdefiniować (co najmniej po jednej dla każdego pomieszczenia), mniejszą precyzję ruchu, spowodowaną odgórnym określeniem miejsca w pomieszczeniu, do którego użytkownik chce się przemieścić oraz konieczność zdefiniowania i zmapowania każdego środowiska, w którym będzie poruszał się wózek.
+Sterowanie wysokopoziomowe polega na wydawaniu poleceń dotyczących celu ruchu (\textit{kuchnia}, \textit{łazienka}). Podejście to wiąże się z koniecznością stosowania wózków o wysokim stopniu autonomiczności. Zaletą tego rozwiązania jest odciążenie użytkownika od konieczności utrzymywania ciągłego skupienia na kierunku oraz prędkości ruchu, wyeliminowanie wpływu zakłóceń odbieranych w trakcie przemieszczania się oraz, po zapewnieniu skutecznych algorytmów i odpowiedniej liczby czujników, bezpieczniejsze poruszanie się w środowisku. Do wad zaliczyć należy większą liczbę komend, które należy zdefiniować (co najmniej po jednej dla każdego pomieszczenia), mniejszą precyzję ruchu, spowodowaną odgórnym określeniem miejsca w pomieszczeniu, do którego użytkownik chce się przemieścić oraz konieczność zdefiniowania i zmapowania każdego środowiska, w którym będzie poruszał się wózek.
 
 Mimo obiecujących wstępnych rezultatów, wykorzystanie interfejsów mózg--kom\-pu\-ter do zadania sterowania wózkami inwalidzkimi jest trudne do zrealizowania z powodu braku niezawodnych, przenośnych i łatwych w użyciu urządzeń rejestrujących. Inną przeszkodą jest brak wózków o wystarczającym stopniu autonomiczności, które byłyby zdalne do pracy w codziennym środowisku~\cite{bci_introduction}.
 
@@ -360,7 +360,7 @@ Można wyróżnić trzy główne sposoby wsparcia rehabilitacji medycznej przez 
 \end{description}
 Należy nadmienić, iż te sposoby nie są wzajemnie wykluczające -- ich połączenie pozwala na zwiększenie znaczenia BCI w tej dziedzinie nauki.
 
-Interfejsy mózg--komputer, poprzez stopniową integrację z neurorehabilitacją, mogą pomóc między innymi osobom dotkniętym udarem mózgu, który często powoduje długotrwałą niepełnosprawność ruchową oraz zaburzenia funkcji poznawczych. Wiele badań wykazuje, iż technika nieinwazyjnej stymulacji mózgu jest skuteczna, nawet w przypadku przewlekłego uszkodzenia mózgu~\cite{bci_lab}. Duża ilość osób rokrocznie dotykanych udarem stanowi badania w tym zakresie niezwykle istotnymi dla społeczeństwa.
+Interfejsy mózg--komputer, poprzez stopniową integrację z neurorehabilitacją, mogą pomóc między innymi osobom dotkniętym udarem mózgu, który często powoduje długotrwałą niepełnosprawność ruchową oraz zaburzenia funkcji poznawczych. Wiele badań wykazuje, iż technika nieinwazyjnej stymulacji mózgu jest skuteczna, nawet w przypadku przewlekłego uszkodzenia mózgu~\cite{bci_lab}. Duża liczba osób rokrocznie dotykanych udarem stanowi badania w tym zakresie niezwykle istotnymi dla społeczeństwa.
 
 Stosowanie BCI do wspomagania leczenia funkcji poznawczych wymaga skrupulatnej identyfikacji sygnałów mózgowych, które są możliwe do uzyskania. Może to być trudne, ponieważ nie wszystkie stany mózgu są tak dobrze scharakteryzowane, jak te związane z funkcjami motorycznymi~\cite{bci_handbook}.
 
@@ -370,7 +370,7 @@ Wykorzystanie interfejsów mózg--komputer do nadzorowania skupienia użytkownik
 
 W związku z postępującą automatyzacją pojazdów, kierowca jest odciążany od wykonywania żmudnych zadań, takich jak utrzymywanie stałej prędkości czy przełączanie między światłami mijania oraz drogowymi. Wraz z dalszym progresem coraz więcej czynności wykonywanych jest przez sam samochód, podczas kiedy rola osoby znajdującej się w fotelu kierowcy sprowadza się do nadzoru i reagowania w niebezpiecznych sytuacjach. Może to prowadzić, w szczególności na trasach o znacznej długości, do sytuacji nadmiernego zaufania do systemu sterowania, w której to kierowca przestanie zwracać uwagę na działania pojazdu. Interfejs mózg--komputer mógłby w tym momencie sygnalizować spadek skupienia kierowcy lub wymuszać bezpieczny postój pojazdu do momentu, w którym kierujący pojazdem będzie w stanie kontynuować podróż.
 
-Badania przeprowadzone przez naukowców z \textit{Berlin BCI} wykazały, iż istnieje zależność pomiędzy spadkiem koncentracji, a wzrostem mocy w paśmie alpha\footnote{Pasmo alpha - pasmo fal elektromagnetycznych o częstotliwości 8÷12 Hz i amplitudzie w zakresie 20÷80 μV~\cite[str. 17]{bci_handbook}.}~\cite{bci_applications}. Badanie polegało na sklasyfikowaniu 2000 bagaży jako bezpiecznych lub niebezpiecznych na podstawie ich prześwietleń. Wykonano je w 10 turach po 200 bagaży. Zarejestrowaną zależność pomiędzy parametrem CII (\textit{ang.} concentration insufficiency index), a stopą błędu przedstawiono na Rysunku \vref{fig:attention}. Na podstawie badania można wywnioskować, iż spadek koncentracji (wzrost parametru CII) prowadził do wzmożenia ilości popełnianych błędów. Uczestnicy rzeczonego badania na okres następujący bezpośrednio po przerwie wykazywali znacznie niższy stopień błędu. Tę zależność można wykorzystać do określenia momentów, w których pracownik powinien udać się na przerwę lub, w przypadku długotrwałej nikłej koncentracji, zakończyć swoją zmianę.
+Badania przeprowadzone przez naukowców z \textit{Berlin BCI} wykazały, iż istnieje zależność pomiędzy spadkiem koncentracji, a wzrostem mocy w paśmie alpha\footnote{Pasmo alpha - pasmo fal elektromagnetycznych o częstotliwości 8÷12 Hz i amplitudzie w zakresie 20÷80 μV~\cite[str. 17]{bci_handbook}.}~\cite{bci_applications}. Badanie polegało na sklasyfikowaniu 2000 bagaży jako bezpiecznych lub niebezpiecznych na podstawie ich prześwietleń. Wykonano je w 10 turach po 200 bagaży. Zarejestrowaną zależność pomiędzy parametrem CII (\textit{ang.} concentration insufficiency index), a stopą błędu przedstawiono na Rysunku \vref{fig:attention}. Na podstawie badania można wywnioskować, iż spadek koncentracji (wzrost parametru CII) prowadził do wzmożenia liczby popełnianych błędów. Uczestnicy rzeczonego badania na okres następujący bezpośrednio po przerwie wykazywali znacznie niższy stopień błędu. Tę zależność można wykorzystać do określenia momentów, w których pracownik powinien udać się na przerwę lub, w przypadku długotrwałej nikłej koncentracji, zakończyć swoją zmianę.
 
 \rysunekbig[Zależność między stopniem skupienia, a stopą błędu]{attention}
 {Zależność pomiędzy stopniem skupienia CII, a stopą błędu. Pionowe linie po zakończeniu dwustupróbkowych bloków oznaczają moment przerwy.\label{fig:attention}}
@@ -413,7 +413,7 @@ Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 299 \$.
 {Opracowanie własne na podstawie~\cite{emotiv_comparison}}
 {
     \begin{tabular}{l|l}
-        Ilość kanałów & 5 (+2 referencyjne)\\
+        Liczba kanałów & 5 (+2 referencyjne)\\
         Umiejscowienie elektrod & AF3, AF4, T7, T8, Pz\\
         Czujniki referencyjne & DMS/DRL\\
         Rodzaj czujników & Półsuchy polimer\\
@@ -439,14 +439,14 @@ Licencja Cortex jest dostępna w trzech planach omówionych poniżej.
         \item Frequency Bands API,
         \item Facial Expressions API,
         \item Motion data API,
-        \item nielimitowana ilość sesji na 3 urządzeniach.
+        \item nielimitowana liczba sesji na 3 urządzeniach.
     \end{itemize}
     \item [Niekomercyjna pro -- 55--99 \$/miesiąc] \hfill
     \begin{itemize}
         \item Wszystkie API z licencji darmowej,
         \item Raw EEG API,
         \item oprogramowanie EmotivPRO,
-        \item nielimitowana ilość sesji na 3 urządzeniach.
+        \item nielimitowana liczba sesji na 3 urządzeniach.
     \end{itemize}
     \item [Komercyjna] \hfill
     \begin{itemize}
@@ -462,7 +462,7 @@ Oprogramowanie EmotivPRO~\cite{emotiv_pro}, dostępne w licencjach niekomercyjne
 \section{Emotiv EPOC+\label{section:epoc}}
 EPOC+, pokazany na Rysunku \vref{fig:epoc}, został wprowadzony na rynek w 2013 roku przez firmę Emotiv. Został zaprojektowany do badań wykorzystujących EEG oraz zaawansowanych zastosowań BCI~\cite{emotiv_epoc}.
 
-Jest wyposażony w 14 kanałów właściwych oraz 2 referencyjne (dokładna lokalizacja sensorów została przedstawiona na Rysunku \vref{fig:epoc_area}). W odróżnieniu od Emotiv Insight, omówionego w rozdziale \vref{section:insight}, wymaga stosowania \textit{mokrych} elektrod, pokrytych nasączonym solą fizjologiczną filcem. Ze względu na większą ilość czujników niż w Emotiv Insight, czas ubrania oraz przygotowania urządzenia do pracy wynosi około 3--5 minut. Parametry hełmu zostały przedstawione w Tabeli \vref{tab:epoc}.
+Jest wyposażony w 14 kanałów właściwych oraz 2 referencyjne (dokładna lokalizacja sensorów została przedstawiona na Rysunku \vref{fig:epoc_area}). W odróżnieniu od Emotiv Insight, omówionego w rozdziale \vref{section:insight}, wymaga stosowania \textit{mokrych} elektrod, pokrytych nasączonym solą fizjologiczną filcem. Ze względu na większą liczbę czujników niż w Emotiv Insight, czas ubrania oraz przygotowania urządzenia do pracy wynosi około 3--5 minut. Parametry hełmu zostały przedstawione w Tabeli \vref{tab:epoc}.
 
 Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799 \$.
 
@@ -478,7 +478,7 @@ Koszt produktu na dzień 21 kwietnia 2019 roku wynosi 799 \$.
 {Opracowanie własne na podstawie~\cite{emotiv_comparison}}
 {
     \begin{tabular}{l|l}
-        Ilość kanałów & 14 (+2 referencyjne)\\
+        Liczba kanałów & 14 (+2 referencyjne)\\
         Umiejscowienie elektrod & AF3, AF4, F3, F4, FC5, FC6, F7, F8, T7, T8, P7, P8, O1, O2\\
         Czujniki referencyjne & DMS/DRL\\
         Rodzaj czujników & Nasączane solą fizjologiczną\\
@@ -516,7 +516,7 @@ Koszt Muse wynosi 219 €; Muse 2 -- 269 €.
     \begin{threeparttable}
         \begin{tabular}{l|l|l}
             Parametr & Muse & Muse 2 \\\hline\hline
-            Ilość kanałów & 4 (+ 3 referencyjne) & 4 (+3 referencyjne)\\
+            Liczba kanałów & 4 (+ 3 referencyjne) & 4 (+3 referencyjne)\\
             Umiejscowienie elektrod & TP9, AF7, AF8, TP10\tnote{a} & TP9, AF7, AF8, TP10\tnote{a} \\
             Czujniki referencyjne & CMS/DRL & CMS/DRL \\
             Rodzaj czujników & Suche srebrne/silikonowe & Suche srebrne/silikonowe \\
@@ -563,7 +563,7 @@ Koszt urządzenia na dzień 25 czerwca 2019 roku wynosi 100 \$.
 {Opracowanie własne na podstawie~\cite{mindwave}}
 {
     \begin{tabular}{l|l}
-        Ilość kanałów & 1\\
+        Liczba kanałów & 1\\
         Umiejscowienie elektrod & FP1\\
         Czujniki referencyjne & \textit{brak danych}\\
         Rodzaj czujników & \textit{brak danych}\\
@@ -663,7 +663,7 @@ Platforma OpenBCI umożliwia również współpracę z innymi programami do anal
         \begin{threeparttable}
             \begin{tabular}{l|l|l|l}
                 Parametr & Ganglion & Cyton & Cyton + Daisy \\\hline\hline
-                Ilość kanałów & 4 & 8 & 16\\
+                Liczba kanałów & 4 & 8 & 16\\
                 Umiejscowienie elektrod & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a} & Konfigurowalne\tnote{a}\\
                 Rodzaj czujników & Suche & Suche & Suche\\
                 Rozdzielczość & 24 bit & 24 bit & 24 bit\\
@@ -709,7 +709,7 @@ Wybierając urządzenie rejestrujące poszukiwano urządzenia, które (1) jest n
 
 W przypadku OpenBCI Ultracortex \textit{Mark IV}, jednym z jego mankamentów jest wysoka cena -- nawet w przypadku zakupu najtańszego wariantu, a więc hełmu do samodzielnego druku oraz montażu wraz z układem Ganglion Board, cena wynosiła 500 \$. Po doliczeniu do tej kwoty wymaganych elektrod cena znacznie wzrasta. W przypadku oferowanego przez firmę OpenBCI \href{https://shop.openbci.com/collections/frontpage/products/d-i-y-neurotechnologists-starter-kit}{Starter Kitu}, który zawiera wszystkie wymagane peryferiale, cena wynosi blisko 950 \$. Samodzielność montażu w odczuciu autora pracy jest ryzykownym posunięciem w przypadku tak delikatnych oraz precyzyjnych urządzeń, tym bardziej że nie jest to standardowy model sprzedaży tej gamy urządzeń. Niewątpliwą zaletą urządzeń OpenBCI jest ich otwartoźródłowość -- oprogramowanie jest dostępne na serwisie \href{https://github.com/OpenBC}{GitHub}. Inną zaletą jest jego duża popularność oraz integracja z wieloma programami do analizy danych, jak na przykład MATLAB.
 
-Urządzenia Muse 2 oraz MindWave Mobile 2 w odczuciu autora są narzędziami mało precyzyjnymi, nie nadającymi się do wykorzystania w celach badawczych. Ich zaletami jest łatwość nakładania, niska cena oraz \textit{smukłość}, która prawdopodobnie pozwala na długie sesję bez odczuwania dyskomfortu związanego z naciskiem urządzenia. Wadą Muse 2 jest brak SDK dla programistów. Wadą MindWave Mobile 2 jest liczba elektrod rejestrujących -- urządzenie jest wyposażone w wyłącznie jedną.
+Urządzenia Muse 2 oraz MindWave Mobile 2 w odczuciu autora są narzędziami mało precyzyjnymi, nie nadającymi się do wykorzystania w celach badawczych. Ich zaletami jest łatwość nakładania, niska cena oraz \textit{smukłość}, która prawdopodobnie pozwala na długie sesję bez odczuwania dyskomfortu związanego z naciskiem urządzenia. Wadą Muse 2 jest brak SDK dla programistów. Wadą MindWave Mobile 2 jest liczba elektrod rejestrujących -- urządzenie jest wyposażone wyłącznie w jedną.
 
 Emotiv Insight oraz EPOC+ są bardzo popularne wśród osób zajmujących się tematyką BCI. Za pomocą rozbudowanego API pozwalają na detekcję nie tylko aktywności mózgu w poszczególnych pasmach, ale również komend mentalnych oraz mimiki. Ze względu na wykorzystywany protokół komunikacyjny, są uniwersalne pod względem platformy programistycznej oraz języka programowania. Ich największym mankamentem jest brak darmowego dostępu do \textit{surowych} danych EEG -- żeby je uzyskać trzeba wykupić licencję. Urządzenie EPOC+ charakteryzuje się lepszymi parametrami niż Insight, jednak jest od niego droższe. Inną jego wadą jest rodzaj czujników; EPOC+ używa nasączanych solą fizjologiczną, podczas kiedy czujniki w Insight są wykonane z półsuchego polimeru.
 
@@ -835,7 +835,7 @@ Poprzez swoje API Emotiv Insight umożliwia wykrywanie maksymalnie do 5 komend m
 
 Wykorzystując aplikację EmotivBCI możliwe jest trenowanie detekcji poszczególnych komend mentalnych w czasie rzeczywistym. Trening jest interaktywny; użytkownik, obserwując wirtualny sześcian, \textit{wyobraża} sobie kolejne komendy, a system rejestruje aktywność mózgu związaną z danym wyobrażeniem. W miarę postępu oraz nasilania skupienia na danej akcji sześcian wykonuje wyobrażoną czynność, na przykład obraca się w prawo lub znika. Trening detekcji mimiki, podobnie jak komend mentalnych, jest również interaktywny -- użytkownik obserwuje postęp na wirtualnym awatarze. 
 
-Istotną kwestią jest wybór odpowiednich poleceń mentalnych do obsługi wirtualnej klawiatury. Intuicyjność interakcji z systemem pozwoli użytkownikowi na szybsze przyswojenie zasady sterowania oraz zniweluje ilość błędów związanych z myleniem poleceń. Opracowany projekt wymaga pięciu komend: przesunięcia selekcji w górę, w dół, w prawo, w lewo oraz akceptację (\textit{wciśnięcie}) aktualnie oznaczonego klawisza. O ile w przypadku przesunięcia selekcji dobór komend mentalnych wydaje się oczywisty (są to polecenia \textit{uniesienie}, \textit{opuszczenie}, \textit{przesunięcie w lewo} i \textit{przesunięcie w prawo}), to komenda akceptacji wyboru wymaga głębszej analizy; czy powinno to być \textit{pchnięcie}, symulujące wciśnięcie klawisza klawiatury, a może \textit{przyciągnięcie}, czyli zwolnienie klawisza i przejście do wyboru kolejnej litery? Należy mieć również na uwadze, iż zwiększona ilość komend możliwych do wykrywania będzie prowadziła do powiększenia stopy błędu detekcji. Ponieważ w niniejszej aplikacji akceptacja selekcji jest kluczowym poleceniem, postanowiono wykorzystać do niego detekcję wyrazów twarzy. Zdecydowano, iż będzie za nią odpowiadać \textit{zmarszczenie brwi}, które osiągało najkorzystniejszy stosunek poprawnych do omyłkowych klasyfikacji spośród dostępnych możliwości detekcji.
+Istotną kwestią jest wybór odpowiednich poleceń mentalnych do obsługi wirtualnej klawiatury. Intuicyjność interakcji z systemem pozwoli użytkownikowi na szybsze przyswojenie zasady sterowania oraz zniweluje liczbę błędów związanych z myleniem poleceń. Opracowany projekt wymaga pięciu komend: przesunięcia selekcji w górę, w dół, w prawo, w lewo oraz akceptację (\textit{wciśnięcie}) aktualnie oznaczonego klawisza. O ile w przypadku przesunięcia selekcji dobór komend mentalnych wydaje się oczywisty (są to polecenia \textit{uniesienie}, \textit{opuszczenie}, \textit{przesunięcie w lewo} i \textit{przesunięcie w prawo}), to komenda akceptacji wyboru wymaga głębszej analizy; czy powinno to być \textit{pchnięcie}, symulujące wciśnięcie klawisza klawiatury, a może \textit{przyciągnięcie}, czyli zwolnienie klawisza i przejście do wyboru kolejnej litery? Należy mieć również na uwadze, iż zwiększona liczba komend możliwych do wykrywania będzie prowadziła do powiększenia stopy błędu detekcji. Ponieważ w niniejszej aplikacji akceptacja selekcji jest kluczowym poleceniem, postanowiono wykorzystać do niego detekcję wyrazów twarzy. Zdecydowano, iż będzie za nią odpowiadać \textit{zmarszczenie brwi}, które osiągało najkorzystniejszy stosunek liczby poprawnych do omyłkowych klasyfikacji spośród dostępnych możliwości detekcji.
 
 Zrzuty ekranu z procesu treningu komend pokazano na Rysunku \vref{fig:training}. Na Rysunkach \vref{fig:training_mental_all} oraz \vref{fig:training_facial_all} pokazano zestawienie wszystkich wytrenowanych modeli detekcji. Na Rysunkach \vref{fig:training_mental_left} oraz \vref{fig:training_facial_frown} zaprezentowano zrzuty ekranu wykonane w trakcie rozpoznania przez aplikację \textit{EmotivBCI} wytrenowanych wzorców.
 
@@ -1238,9 +1238,9 @@ Aktualna wartość definiowana przy pomocy suwaka jest widoczna po kliknięciu w
 Na dole zakładki znajduje się przełącznik pozwalający na włączenie tak zwanego \textit{Offline Mode}. W tym trybie na oknie \textit{Virtual Keyboard} widoczne są suwaki, pozwalające na ręczną symulację aktualnego skupienia dla poszczególnych komend.
 
 \chapter{Badania opracowanego systemu}
-W rozdziale czwartym zawarto badania opracowanego systemu. Na badania składają się przeanalizowanie wpływu ilości komend oraz ich sesji treningowych na stopę detekcji, zarówno w trakcie utrzymywanie skupienia (lub wykonywania akcji zmarszczenia brwi), jak i podczas zachowywania \textit{stanu neutralnego}. Do badań zalicza się również sprawdzenie zależności pomiędzy końcową stopą detekcji, a parametrami opracowanej aplikacji. Rozdział zamykają subiektywne uwagi autora na temat opracowanego systemu.
+W rozdziale czwartym zawarto badania opracowanego systemu. Na badania składają się przeanalizowanie wpływu liczby komend oraz liczby ich sesji treningowych na stopę detekcji, zarówno w trakcie utrzymywanie skupienia (lub wykonywania akcji zmarszczenia brwi), jak i podczas zachowywania \textit{stanu neutralnego}. Do badań zalicza się również sprawdzenie zależności pomiędzy końcową stopą detekcji, a parametrami opracowanej aplikacji. Rozdział zamykają subiektywne uwagi autora na temat opracowanego systemu.
 
-\section{Wpływ ilości komend oraz ilości sesji treningowych na poprawność detekcji\label{sec:training_sessions}}
+\section{Wpływ liczby komend oraz liczby sesji treningowych na poprawność detekcji\label{sec:training_sessions}}
 Trening komend mentalnych, detekcji mimiki oraz badanie poprawności ich wykrywania wykonano w oprogramowaniu EmotivBCI.
 
 W przypadku komend mentalnych zastosowano inną strategię niż początkowo zakładano: autor, zamiast skupiać się na wyobrażeniu ruchu w górę, w prawo, w dół lub w lewo, powiązał te komendy z innymi, bardziej abstrakcyjnymi wyobrażeniami. Było to spowodowane niemożnością osiągnięcia wystarczającej \textit{siły} komendy w przypadku początkowo zakładanej strategii. Kierując się wskazówkami zawartymi w dokumentacji EmotivBCI, akcje komend mentalnych zostały powiązane z wyobrażeniami angażującymi różne części mózgu. I tak, kolejno dla \textit{uniesienia}, \textit{przesunięcia w prawo}, \textit{opuszczenia} oraz \textit{przesunięcia w lewo}, jest to wyobrażenie ruchu języka, wyobrażenie ruchu prawego kciuka, liczenie w głowie co $3$ ($3, 6, 9, 12, \dots$) oraz przywołanie w pamięci wspomnienia z gry komputerowej. 
@@ -1260,7 +1260,7 @@ Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawion
 
 \afterpage{
     \begin{landscape}
-        \tabela{Wpływ ilości sesji treningowych na poprawność detekcji \label{tab:training_emotiv}}
+        \tabela{Wpływ liczby sesji treningowych na poprawność detekcji \label{tab:training_emotiv}}
         {Opracowanie własne}
         {
             \begin{threeparttable}
@@ -1279,9 +1279,9 @@ Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawion
                     9 & 80\% & 30\% & 20\% & 0\% & 30\% & 0\% & 20\% & 0\% & 100\% & 50\% \\ \hline
                     10 & 90\% & 50\% & 10\% & 0\% & 30\% & 0\% & 30\% & 0\% & 100\% & 50\% \\
                 \end{tabularx}
-                \begin{tablenotes}
-                    \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas skupienia (więcej = lepiej)
-                    \item NS --- Stosunek wykonanych akcji do ilości prób podczas braku skupienia (mniej = lepiej)
+                \begin{tablenotes}[online]
+                    \item [\hphantom{N}S] --- Stosunek liczby wykonanych akcji do liczby prób podczas skupienia (więcej = lepiej)
+                    \item [NS] --- Stosunek liczby wykonanych akcji do liczby prób podczas braku skupienia (mniej = lepiej)
                 \end{tablenotes}
             \end{threeparttable}
         }
@@ -1313,24 +1313,24 @@ Uzyskane wyniki zestawiono w Tabeli \vref{tab:training_emotiv} oraz przedstawion
         \caption{Zmarszczenie brwi\label{fig:training_emotiv_frown}}
         \end{subfigure}\hspace*{\fill}
         
-        \caption{Wpływ ilości sesji treningowych na poprawność detekcji\label{fig:training_emotiv}}
+        \caption{Wpływ liczby sesji treningowych na poprawność detekcji\label{fig:training_emotiv}}
         \source{Opracowanie własne}
     \end{figure}
 }
 
-W odczuciu autora trening pierwszej komendy (patrz Rysunek \vref{fig:training_emotiv_up}) był najbardziej satysfakcjonujący; jego rezultat -- poruszenie się sześcianu treningowego -- był możliwy do uzyskania z dwudziestoprocentową skutecznością już od pierwszej sesji treningowej. Przy sesji drugiej oraz trzeciej skuteczność spadła do dziesięciu procent. Autor zaobserwował wtedy znacznie większe \textit{drganie}\footnote{Poprzez \textit{drganie} sześcianu autor ma na myśli jego przemieszczenie się w pożądanym kierunku, jednak bez przekroczenia progu definiowanego jako zaliczenie komendy. Takie wychylenia najczęściej następowały kilkukrotnie, jedno po drugim.} sześcianu podczas skupiania się na komendzie, co nie miało miejsca w przypadku pierwszej sesji, w której, jeżeli nastąpił jakiekolwiek ruch sześcianu, to było to przemieszczenie aż do samej krawędzi ekranu. Przy sesjach od piątej do ósmej, obok bardzo silnego wzrostu poziomu prawidłowych detekcji podczas skupienia, nastąpił również wzrost błędnych detekcji podczas utrzymywania \textit{stanu neutralnego}. Sesja dziewiąta wydaje się być najbardziej optymalnym wynikiem osiągniętym dla komendy \textit{uniesienia}: podczas niej skuteczność detekcji w trakcie skupienia wyniosła osiemdziesiąt procent przy jedynych trzydziestu procent podczas braku skupienia. Maksymalny stosunek poprawnych do złych/braku detekcji wyniósł dziewięćdziesiąt procent i został osiągnięty w sesji siódmej, ósmej oraz dziesiątej, przy czym spośród nich ostatnia sesja charakteryzowała się najniższym błędem podczas braku skupienia wynoszącym pięćdziesiąt procent.
+W odczuciu autora trening pierwszej komendy (patrz Rysunek \vref{fig:training_emotiv_up}) był najbardziej satysfakcjonujący; jego rezultat -- poruszenie się sześcianu treningowego -- był możliwy do uzyskania z dwudziestoprocentową skutecznością już od pierwszej sesji treningowej. Przy sesji drugiej oraz trzeciej skuteczność spadła do dziesięciu procent. Autor zaobserwował wtedy znacznie większe \textit{drganie}\footnote{Poprzez \textit{drganie} sześcianu autor ma na myśli jego przemieszczenie się w pożądanym kierunku, jednak bez przekroczenia progu definiowanego jako zaliczenie komendy. Takie wychylenia najczęściej następowały kilkukrotnie, jedno po drugim.} sześcianu podczas skupiania się na komendzie, co nie miało miejsca w przypadku pierwszej sesji, w której, jeżeli nastąpił jakiekolwiek ruch sześcianu, to było to przemieszczenie aż do samej krawędzi ekranu. Przy sesjach od piątej do ósmej, obok bardzo silnego wzrostu poziomu prawidłowych detekcji podczas skupienia, nastąpił również wzrost błędnych detekcji podczas utrzymywania \textit{stanu neutralnego}. Sesja dziewiąta wydaje się być najbardziej optymalnym wynikiem osiągniętym dla komendy \textit{uniesienia}: podczas niej skuteczność detekcji w trakcie skupienia wyniosła osiemdziesiąt procent przy jedynych trzydziestu procent podczas braku skupienia. Maksymalny stosunek liczby poprawnych do liczby złych/braku detekcji wyniósł dziewięćdziesiąt procent i został osiągnięty w sesji siódmej, ósmej oraz dziesiątej, przy czym spośród nich ostatnia sesja charakteryzowała się najniższym błędem podczas braku skupienia wynoszącym pięćdziesiąt procent.
 
-Wyniki uzyskane podczas treningu drugiej komendy pokazano na Rysunku \vref{fig:training_emotiv_right}. Detekcja podczas skupienia na komendzie osiąga zauważalnie gorsze wyniki niż podczas treningu pierwszej komendy. Przez pierwsze cztery sesje treningowe autor nie był w stanie sprawić, aby sześcian wychylił się na tyle, by zostało to uznane jako zaliczona próba. Przy sesji piątej poprawność detekcji wyniosła jedynie dziesięć procent, jednak podczas sesji szóstej i siódmej spadła ona z powrotem do zera procent, co pozwala sądzić, iż detekcja podczas sesja piątej mogła być błędnie zmierzona. Od sesji ósmej do dziewiątej następuje liniowy wzrost poprawności detekcji podczas skupienia do poziomu dwudziestu procent, co stanowi maksimum osiągnięte dla tej komendy. Przy ostatniej sesji stosunek zaliczonych detekcji do ilości prób wyniósł dziesięć procent. Przy drugiej komendzie osiągnięto bardzo niski współczynnik detekcji podczas braku skupienia. Malejąc z czterdziestu procent po pierwszym treningu, osiągnął zero procent przy treningu trzecim i pozostał na tym pułapie przez wszystkie pozostałe treningi tej komendy.
+Wyniki uzyskane podczas treningu drugiej komendy pokazano na Rysunku \vref{fig:training_emotiv_right}. Liczba detekcji podczas skupienia na komendzie osiąga zauważalnie gorsze wyniki niż podczas treningu pierwszej komendy. Przez pierwsze cztery sesje treningowe autor nie był w stanie sprawić, aby sześcian wychylił się na tyle, by zostało to uznane jako zaliczona próba. Przy sesji piątej poprawność detekcji wyniosła jedynie dziesięć procent, jednak podczas sesji szóstej i siódmej spadła ona z powrotem do zera procent, co pozwala sądzić, iż liczba detekcji podczas sesji piątej mogła być błędnie zmierzona. Od sesji ósmej do dziewiątej następuje liniowy wzrost poprawności detekcji podczas skupienia do poziomu dwudziestu procent, co stanowi maksimum osiągnięte dla tej komendy. Przy ostatniej sesji stosunek liczby zaliczonych detekcji do liczby prób wyniósł dziesięć procent. Przy drugiej komendzie osiągnięto bardzo niski współczynnik detekcji podczas braku skupienia. Malejąc z czterdziestu procent po pierwszym treningu, osiągnął zero procent przy treningu trzecim i pozostał na tym pułapie przez wszystkie pozostałe treningi tej komendy.
 
-Trzecia komenda związana była z innym rodzajem wyobrażenia niż dwie poprzednie. Nie angażowała ona kory ruchowej; autor spodziewał się więc, iż pozwoli ona na łatwiejszą detekcję polecenia, a tym samym na osiągnięcie lepszego rezultatu w stanie skupienia. Wyniki uzyskane dla tej komendy przedstawiono na Rysunku \vref{fig:training_emotiv_down}. Detekcja podczas skupienia na komendzie nie była osiągalna przez pierwsze trzy sesje treningowe, jednak podczas kolejnych dwóch usytuowała się ona na poziomie dziesięciu procent. Po szóstym treningu stosunek poprawnych detekcji do ilości prób wyniósł czterdzieści procent, co stanowiło wartość szczytową dla tej komendy. Sesje od siódmej do dziesiątej zapewniły kolejno dwadzieścia, dwadzieścia, trzydzieści oraz trzydzieści procent poprawnych detekcji. Detekcja podczas braku skupienia charakteryzowała się wartością niezerową jedynie podczas sesji od czwartej do szóstej. Jej maksymalna wartość wyniosła dwadzieścia procent. Charakterystyczna dla treningu tej komendy była łatwość, z jaką autor był w stanie poruszyć sześcianem w pożądanym kierunku, jednak bez możliwości utrzymania poziomu \textit{skupienia} pozwalającego na wychylenie się aż do progu zaliczenia próby. Na uwagę zasługuje również fakt większej ilości uzyskanych komunikatów \textit{Great training}\footnote{Aplikacja EmotivBCI po zakończeniu sesji treningowej wyświetla ocenę \textit{jakości} treningu w skali od zera do stu, definiującą \textit{spójność} z poprzednimi sesjami \cite{emotivbcidoc}. Wartości powyżej siedemdziesięciu pięciu opatrzone są komunikatem \textit{Great training}.} niż miało to miejsce w przypadku innych komend.
+Trzecia komenda związana była z innym rodzajem wyobrażenia niż dwie poprzednie. Nie angażowała ona kory ruchowej; autor spodziewał się więc, iż pozwoli ona na łatwiejszą detekcję polecenia, a tym samym na osiągnięcie lepszego rezultatu w stanie skupienia. Wyniki uzyskane dla tej komendy przedstawiono na Rysunku \vref{fig:training_emotiv_down}. Detekcja podczas skupienia na komendzie nie była osiągalna przez pierwsze trzy sesje treningowe, jednak podczas kolejnych dwóch usytuowała się ona na poziomie dziesięciu procent. Po szóstym treningu stosunek liczby poprawnych detekcji do liczby prób wyniósł czterdzieści procent, co stanowiło wartość szczytową dla tej komendy. Sesje od siódmej do dziesiątej zapewniły kolejno dwadzieścia, dwadzieścia, trzydzieści oraz trzydzieści procent poprawnych detekcji. Liczba detekcji podczas braku skupienia charakteryzowała się wartością niezerową jedynie podczas sesji od czwartej do szóstej. Jej maksymalna wartość wyniosła dwadzieścia procent. Charakterystyczna dla treningu tej komendy była łatwość, z jaką autor był w stanie poruszyć sześcianem w pożądanym kierunku, jednak bez możliwości utrzymania poziomu \textit{skupienia} pozwalającego na wychylenie się aż do progu zaliczenia próby. Na uwagę zasługuje również fakt większej liczby uzyskanych komunikatów \textit{Great training}\footnote{Aplikacja EmotivBCI po zakończeniu sesji treningowej wyświetla ocenę \textit{jakości} treningu w skali od zera do stu, definiującą \textit{spójność} z poprzednimi sesjami \cite{emotivbcidoc}. Wartości powyżej siedemdziesięciu pięciu opatrzone są komunikatem \textit{Great training}.} niż miało to miejsce w przypadku innych komend.
 
-Podczas treningu ostatniej komendy mentalnej (patrz Rysunek \vref{fig:training_emotiv_left}) można było zaobserwować trend rosnący w przypadku detekcji podczas skupienia. Jej maksymalna skuteczność osiągnęła trzydzieści procent podczas ósmej oraz dziesiątej sesji treningowej. Detekcja podczas braku skupienia pozostawała zerowa; wyjątkiem była sesji szósta, w której osiągnęła dziesięć procent. 
+Podczas treningu ostatniej komendy mentalnej (patrz Rysunek \vref{fig:training_emotiv_left}) można było zaobserwować trend rosnący w przypadku detekcji podczas skupienia. Jej maksymalna skuteczność osiągnęła trzydzieści procent podczas ósmej oraz dziesiątej sesji treningowej. Liczba detekcji podczas braku skupienia pozostawała zerowa; wyjątkiem była sesji szósta, w której osiągnęła dziesięć procent. 
 
-Wyniki poszczególnych sesji treningowych detekcji zmarszczenia brwi pokazano na Rysunku \vref{fig:training_emotiv_frown}. Na pierwszy rzut oka widać znaczną przewagę detekcji mimiki nad detekcją komend mentalnych, przyjmując jako kryterium porównawcze stosunek poprawnych detekcji w stanie skupienia/wykonania do odbytej ilości prób. Komendy mentalne, nie licząc \textit{uniesienia}, nie osiągnęły poziomu nawet pięćdziesięciu procent, podczas kiedy zmarszczenie brwi charakteryzuje się stałym, niezależnym od liczby treningów, stuprocentowym poziomem detekcji. Wysoki poziom detekcji wiąże się jednak z wysoką stopą błędnych klasyfikacji podczas braku wykonania akcji. Kolejne sesje treningowe obniżają ją jednak z poziomu siedemdziesięciu procent dla pierwszej do pięćdziesięciu procent w przypadku ostatniej sesji. Autor zaobserwował, iż detekcje podczas braku skupienia następowały jedynie w przypadku wykonywania innych czynności, jak na przykład ruchu gałek ocznych czy wzięcia głębokiego oddechu, jednak postanowił nie ograniczać tych akcji, gdyż w jego opinii stanowić będą one naturalny proces użytkowania urządzenia.
+Wyniki poszczególnych sesji treningowych detekcji zmarszczenia brwi pokazano na Rysunku \vref{fig:training_emotiv_frown}. Na pierwszy rzut oka widać znaczną przewagę detekcji mimiki nad detekcją komend mentalnych, przyjmując jako kryterium porównawcze stosunek liczby poprawnych detekcji w stanie skupienia/wykonania do liczby odbytych prób. Komendy mentalne, nie licząc \textit{uniesienia}, nie osiągnęły poziomu nawet pięćdziesięciu procent, podczas kiedy zmarszczenie brwi charakteryzuje się stałym, niezależnym od liczby treningów, stuprocentowym poziomem detekcji. Wysoki poziom detekcji wiąże się jednak z wysoką stopą błędnych klasyfikacji podczas braku wykonania akcji. Kolejne sesje treningowe obniżają ją jednak z poziomu siedemdziesięciu procent dla pierwszej do pięćdziesięciu procent w przypadku ostatniej sesji. Autor zaobserwował, iż detekcje podczas braku skupienia następowały jedynie w przypadku wykonywania innych czynności, jak na przykład ruchu gałek ocznych czy wzięcia głębokiego oddechu, jednak postanowił nie ograniczać tych akcji, gdyż w jego opinii stanowić będą one naturalny proces użytkowania urządzenia.
 
 Na podstawie opracowanych wyników można wysunąć wniosek, iż dodawanie kolejnych możliwych do detekcji komend mentalnych powoduje obniżenie stopy poprawności ich detekcji podczas skupienia. Odwrotna sytuacja ma miejsce w przypadku detekcji w \textit{stanie neutralnym} -- po dodaniu drugiej komendy i przeprowadzeniu trzech treningów, osiąga ona wartość zerową, przekraczając ją jedynie w przypadku czterech spośród dwudziestu czterech sesji treningowych dla trzech ostatnich komend mentalnych. W przypadku detekcji mimiki, która charakteryzowała się stuprocentową poprawnością detekcji podczas wykonania zmarszczenia brwi, kolejne treningi powodują obniżenie błędnych detekcji w przypadku \textit{stanu neutralnego}.
 
-Stosunkowa słaba detekcja komend mentalnych mogła być spowodowana nikłą separacją poszczególnych poleceń. Separację można oszacować na podstawie schematu przestrzeni mózgowej wygenerowanego przez program EmotivBCI, który pokazano na Rysunku \vref{fig:brainmap}. Należy zwrócić uwagę, iż izolacja poleceń nie jest stała i zmienia się w przypadku kolejnych treningów. Na podstawie Rysunków \vref{fig:brainmap_two} oraz \vref{fig:brainmap_three} można zauważyć, iż polecenia \textit{uniesienia} oraz \textit{przesunięcia w prawo} są początkowo oddalone siebie, po czym, po dodaniu polecenia \textit{opuszczenia}, znacznie się zbliżają. Podobna sytuacja ma miejsce w przypadku polecenia \textit{opuszczenia}, jak pokazano na Rysunku \vref{fig:brainmap_four}. Według producenta urządzenia pożądaną sytuacją jest jak największa separacja sygnałów, na przykład do poziomu pokazanego na Rysunku \vref{fig:brainmap_recommended}. Wiązać się ona będzie z łatwiejszym wywoływaniem poszczególnych komend \cite{emotivbcidoc}.
+Stosunkowa słaba detekcja komend mentalnych mogła być spowodowana nikłą separacją poszczególnych poleceń. Separację można oszacować na podstawie schematu przestrzeni mózgowej wygenerowanego przez program EmotivBCI, który pokazano na Rysunku \vref{fig:brainmap}. Należy zwrócić uwagę, iż izolacja poleceń nie jest stała i zmienia się w przypadku kolejnych treningów. Na podstawie Rysunków \vref{fig:brainmap_two} oraz \vref{fig:brainmap_three} można zauważyć, iż polecenia \textit{uniesienia} oraz \textit{przesunięcia w prawo} są początkowo oddalone od siebie, po czym, po dodaniu polecenia \textit{opuszczenia}, znacznie się zbliżają. Podobna sytuacja ma miejsce w przypadku polecenia \textit{opuszczenia}, jak pokazano na Rysunku \vref{fig:brainmap_four}. Według producenta urządzenia pożądaną sytuacją jest jak największa separacja sygnałów, na przykład do poziomu pokazanego na Rysunku \vref{fig:brainmap_recommended}. Wiązać się ona będzie z łatwiejszym wywoływaniem poszczególnych komend \cite{emotivbcidoc}.
 
 \begin{figure}[htb]
     \begin{subfigure}{0.49\textwidth}
@@ -1386,9 +1386,9 @@ Wyniki uzyskane dla uniesienia zestawiono w Tabeli \vref{tab:parameter_up}; dla 
             0.9 & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% \\ \hline
             1 & 0\% & 0\% & 0\% & 0\% & 0\% & 0\% \\
         \end{tabularx}
-        \begin{tablenotes}
-            \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas skupienia (więcej = lepiej)
-            \item NS --- Stosunek wykonanych akcji do ilości prób podczas braku skupienia (mniej = lepiej)
+        \begin{tablenotes}[online]
+            \item [\hphantom{N}S] --- Stosunek liczby wykonanych akcji do liczby prób podczas skupienia na komendzie (więcej = lepiej)
+            \item [NS] --- Stosunek liczby wykonanych akcji do liczby prób podczas braku skupienia na komendzie (mniej = lepiej)
         \end{tablenotes}
     \end{threeparttable}
 }
@@ -1411,9 +1411,9 @@ Wyniki uzyskane dla uniesienia zestawiono w Tabeli \vref{tab:parameter_up}; dla 
             0.9 & 60\% & 0\% & 20\% & 0\% & 0\% & 0\% \\ \hline
             1 & 20\% & 0\% & 0\% & 0\% & 0\% & 0\% \\
         \end{tabularx}
-        \begin{tablenotes}
-            \item \hphantom{N}S --- Stosunek wykonanych akcji do ilości prób podczas wykonania (więcej = lepiej)
-            \item NS --- Stosunek wykonanych akcji do ilości prób podczas braku wykonania (mniej = lepiej)
+        \begin{tablenotes}[online]
+            \item [\hphantom{N}S] --- Stosunek liczby wykonanych akcji do liczby prób podczas wykonywania zmarszczenia brwi (więcej = lepiej)
+            \item [NS] --- Stosunek liczby wykonanych akcji do liczby prób podczas niewykonywania zmarszczenia brwi (mniej = lepiej)
         \end{tablenotes}
     \end{threeparttable}
 }
