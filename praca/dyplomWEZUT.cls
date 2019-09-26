@@ -49,7 +49,8 @@
 \RequirePackage[
 	unicode,
 	xetex,
-	bookmarksnumbered
+	bookmarksnumbered,
+	hidelinks
 ]{hyperref}
 \RequirePackage[figure]{hypcap}
 \RequirePackage[
