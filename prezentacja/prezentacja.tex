@@ -43,12 +43,17 @@ Wydział Elektryczny ZUT w Szczecinie}
   \tableofcontents[hideallsubsections]
 \end{frame}
 
-\section{Zakres pracy}
+\section{Cel i zakres pracy}
+
+\begin{frame}{Cel pracy}
+  Wykonanie układu wirtualnej klawiatury sterowanej przy użyciu urządzenia do rejestracji aktywności mózgu.
+\end{frame}
 
 \begin{frame}{Zakres pracy}
   \begin{enumerate}%[<+-|alert@+>]
     \item Analiza urządzeń do rejestracji aktywności mózgu.
     \item Projekt oraz wykonanie układu wirtualnej klawiatury.
+    \item Opracowanie algorytmu sterowania wykorzystującego komendy mentalne.
     \item Przeprowadzenie badań opracowanego układu.
   \end{enumerate}
 \end{frame}
@@ -56,7 +61,26 @@ Wydział Elektryczny ZUT w Szczecinie}
 \section{Wstęp do tematyki interfejsów mózg--komputer}
 
 \begin{frame}{Definicja}
-  \alert{Interfejs mózg--komputer} jest układem, który przetwarza aktywność ośrodkowego układu nerwowego w polecenia dla urządzenia wykonawczego.
+  \begin{itemize}[<+->]
+    \item[] \alert{Interfejs mózg--komputer} jest układem, który przetwarza aktywność ośrodkowego układu nerwowego w polecenia dla urządzenia wykonawczego.
+    \item[] Potencjalne zastosowania: nadzór skupienia, rehabilitacja, gry komputerowe.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Rodzaje interfejsów mózg--komputer}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{enumerate}[<+-|alert@+>]
+        \item Inwazyjne
+        \item Nieinwazyjne
+      \end{enumerate}
+    \end{column}
+    \hfill
+    \begin{column}{0.6\textwidth}
+      \only<1>{\img{invasive}{0.8\linewidth}{0.7\textheight}}
+      \only<2>{\img{non_invasive}{0.8\linewidth}{0.7\textheight}}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Podejścia do realizacji sterowania}
@@ -75,98 +99,6 @@ Wydział Elektryczny ZUT w Szczecinie}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Rodzaje interfejsów mózg--komputer}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-      \begin{enumerate}[<+-|alert@+>]
-        \item Inwazyjne
-        \item Nieinwazyjne
-        \item Inne
-          \begin{enumerate}[<.>]
-            \item Częściowo--inwazyjne
-            \item Stymulujące
-            \item Dwukierunkowe
-          \end{enumerate}
-      \end{enumerate}
-    \end{column}
-    \hfill
-    \begin{column}{0.6\textwidth}
-      \only<1>{\img{invasive}{0.8\linewidth}{0.7\textheight}}
-      \only<2>{\img{non_invasive}{0.8\linewidth}{0.7\textheight}}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Przetwarzanie sygnałów}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-      \begin{enumerate}[<+-|alert@+>]
-        \item Usunięcie szumów
-        \item Ekstrakcja cech
-        \item Klasyfikacja sygnałów
-      \end{enumerate}
-    \end{column}
-    \hfill
-    \begin{column}{0.6\textwidth}
-      \only<1>{
-        \begin{figure}[htb]
-          \centering
-          \begin{subfigure}{0.48\linewidth}
-          \includegraphics[width=\linewidth,keepaspectratio]{obrazy/eeg_noise_clean}
-          \caption{Czysty sygnał EEG}
-          \end{subfigure}\hspace*{\fill}
-          \begin{subfigure}{0.48\linewidth}
-          \includegraphics[width=\linewidth,keepaspectratio]{obrazy/eeg_noise_blink}
-          \caption{Mrugnięcie}
-          \end{subfigure}
-          
-          \medskip
-          \begin{subfigure}{0.48\linewidth}
-          \includegraphics[width=\linewidth,keepaspectratio]{obrazy/eeg_noise_eye}
-          \caption{Ruch gałki ocznej}
-          \end{subfigure}\hspace*{\fill}
-          \begin{subfigure}{0.48\linewidth}
-          \includegraphics[width=\linewidth,keepaspectratio]{obrazy/eeg_noise_line}
-          \caption{Zakłócenia sieci energetycznej}
-          \end{subfigure}
-          
-          \medskip
-          \begin{subfigure}{0.48\linewidth}
-          \includegraphics[width=\linewidth,keepaspectratio]{obrazy/eeg_noise_muscle}
-          \caption{Aktywność mięśni}
-          \end{subfigure}\hspace*{\fill}
-          \begin{subfigure}{0.48\linewidth}
-          \includegraphics[width=\linewidth,keepaspectratio]{obrazy/eeg_noise_pulse}
-          \caption{Tętno}
-          \end{subfigure}
-        \end{figure}
-      }
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Potencjalne zastosowania}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-      \begin{enumerate}[<+-|alert@+>]
-        \item Interfejs komunikacyjny
-        \item Sterowanie wózkiem inwalidzkim
-        \item Rehabilitacja
-        \item Nadzór skupienia
-        \item Gry komputerowe
-      \end{enumerate}
-    \end{column}
-    \hfill
-    \begin{column}{0.6\textwidth}
-      \only<1>{\img{communication}{0.8\linewidth}{0.4\textheight}}
-      \only<2>{\img{wheelchair}{0.8\linewidth}{0.4\textheight}}
-      \only<3>{\img{rehabilitation}{0.8\linewidth}{0.4\textheight}}
-      \only<4>{\img{attention}{0.8\linewidth}{0.4\textheight}}
-      \only<5>{\img{gaming}{0.8\linewidth}{0.4\textheight}}
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \section{Charakterystyka wybranych urządzeń komercyjnych}
 
 \begin{frame}{Cechy poszukiwanego urządzenia}
@@ -174,7 +106,7 @@ Wydział Elektryczny ZUT w Szczecinie}
     \item Nieinwazyjne
     \item Rozwinięte SDK
     \item Wsparcie w detekcji komend mentalnych
-    \item Cena poniżej 500 \$
+    \item Przystępna cena
   \end{enumerate}
 \end{frame}
 
@@ -194,7 +126,7 @@ Wydział Elektryczny ZUT w Szczecinie}
     \caption{Muse/Muse 2}
     \end{subfigure}
     \par\bigskip
-    \begin{subfigure}{0.2\linewidth}
+    \hspace*{\fill}\begin{subfigure}{0.2\linewidth}
     \includegraphics[width=\linewidth,keepaspectratio]{obrazy/mindwave}
     \caption{MindWave Mobile 2}
     \end{subfigure}\hspace*{\fill}
@@ -202,28 +134,11 @@ Wydział Elektryczny ZUT w Szczecinie}
     \includegraphics[width=\linewidth,keepaspectratio]{obrazy/markiv}
     \caption{OpenBCI Ultracortex Mark IV}
     \end{subfigure}\hspace*{\fill}
-    \begin{subfigure}{0.2\linewidth}
-    \includegraphics[width=\linewidth,keepaspectratio]{obrazy/ganglion}
-    \caption{OpenBCI Ganglion Board}
-    \end{subfigure}
   \end{figure}
 \end{frame}
 
 \section{Projekt wirtualnej klawiatury}
 
-\begin{frame}{Założenia}
-  \begin{enumerate}[<+-|alert@+>]
-    \item Możliwość wprowadzania znaków: A--Z, 0--9, przecinka, kropki, spacji, entera oraz backspace.
-    \item Wprowadzona wiadomość wyświetlana na interfejsie użytkownika.
-    \item Domyślny język: angielski.
-    \item Sterowanie z wykorzystaniem komend mentalnych. Opcjonalnie: EOG/EMG.
-    \item Tryb manualny (bez hełmu).
-    \item Konfigurowalne parametry algorytmu.
-    \item Zapisywanie/wczytywanie ostatnich ustawień.
-    \item Użytkownik nie musi znać API urządzenia.
-    \item Opcjonalnie: bezpośrednia wymiana wiadomości z urządzeniem.
-  \end{enumerate}
-\end{frame} 
 \begin{frame}{Wykorzystywane narzędzia}
   \begin{enumerate}
     \item Urządzenie rejestrujące: Emotiv Insight.
@@ -236,19 +151,17 @@ Wydział Elektryczny ZUT w Szczecinie}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}[<+-|alert@+>]
+        \item 4 komendy mentalne + 1 mimiczna
         \item Trening detekcji komend mentalnych
         \item Trening detekcji mimiki
       \end{enumerate}
     \end{column}
     \hfill
     \begin{column}{0.5\textwidth}
-      \only<1>{\img{emotivbci_left}{0.8\linewidth}{0.7\textheight}}
-      \only<2>{\img{facial_blink}{0.8\linewidth}{0.7\textheight}}
+      \only<2>{\img{emotivbci_left}{0.8\linewidth}{0.7\textheight}}
+      \only<3>{\img{facial_frown}{0.8\linewidth}{0.7\textheight}}
     \end{column}
   \end{columns}
-\end{frame}
-\begin{frame}{Proces decyzyjny}
-  \img{flowchart}{\linewidth}{0.8\textheight}
 \end{frame}
 \begin{frame}{Interfejs użytkownika: Virtual Keyboard}
   \img{virtual_keyboard}{\textwidth}{0.8\textheight}
@@ -256,34 +169,11 @@ Wydział Elektryczny ZUT w Szczecinie}
 \begin{frame}{Interfejs użytkownika: Messenger}
   \img{messenger}{\textwidth}{0.8\textheight}
 \end{frame}
-\begin{frame}{Interfejs użytkownika: About}
-  \img{about}{\textwidth}{0.8\textheight}
-\end{frame}
-\begin{frame}{Interfejs użytkownika: Connection}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \img{connection_before}{\linewidth}{0.5\textheight}
-    \end{column}
-    \hfill
-    \begin{column}{0.5\textwidth}
-      \img{connection_after}{\linewidth}{0.5\textheight}
-    \end{column}
-  \end{columns}
-\end{frame}
 \begin{frame}{Interfejs użytkownika: Settings}
-  \img{settings}{\textwidth}{0.6\textheight}
+  \img{settings}{\textwidth}{0.5\textheight}
 \end{frame}
 
 \section{Badania opracowanego systemu}
-\begin{frame}{Wpływ liczby komend oraz liczby sesji treningowych na poprawność detekcji}
-  \begin{itemize}
-    \item Badanie wykonane w oprogramowaniu EmotivBCI.
-    \item Każdą komendę trenowano dziesięciokrotnie.
-    \item Badanie po każdym treningu: 10x próba S, 10x próba NS. Każda próba 15 sekund.
-    \item Próba zaliczona: sześcian przesunięty/awatar powtórzył czynność.
-    \item Próba niezaliczona: brak akcji/zła akcja.
-  \end{itemize}
-\end{frame}
 \begin{frame}{Wpływ liczby komend oraz liczby sesji treningowych na poprawność detekcji}
   \begin{figure}[htb]
     \centering
@@ -311,16 +201,7 @@ Wydział Elektryczny ZUT w Szczecinie}
     \end{subfigure}\hspace*{\fill}
   \end{figure}
 \end{frame}
-\begin{frame}{Wpływ parametrów opracowanej aplikacji na poprawność detekcji}
-  \begin{itemize}
-    \item Badanie wykonywane w opracowanej aplikacji.
-    \item Badano dwie komendy: uniesienie oraz zmarszczenie brwi.
-    \item Badanie przeprowadzono po 10x treningu każdej z komend.
-    \item Dla każdej kombinacji parametrów CFT (500, 1500, 2500) i Threshold (0.1, 0.2,..., 1.0): 10x próba S, 10x próba NS. Każda próba 15 sekund.
-    \item Próba zaliczona: jednokrotne wykonanie akcji.
-    \item Próba niezaliczona: brak wykonania akcji/akcja wykonana kilkukrotnie.
-  \end{itemize}
-\end{frame}
+
 \begin{frame}{Wpływ parametrów opracowanej aplikacji na poprawność detekcji}
   \begin{figure}[htb]
     \centering
@@ -357,9 +238,7 @@ Wydział Elektryczny ZUT w Szczecinie}
       \begin{enumerate}[<+-|alert@+>]
         \item Wpływ zakłóceń\only<1>{: włosy, mimika, sieć}
         \item Ucisk urządzenia
-        \item Przesuwanie elektrod
         \item \textit{Reużywalność} treningu
-        \item Detekcja komend
       \end{enumerate}
     \end{column}
     \hfill
