@@ -23,4 +23,7 @@ In my thesis I've used:
 
 ## Thesis poster
 
-![Thesis poster](https://github.com/abaniuszewicz/MSc/blob/master/plakat/2019_2020-MGR-TI-Baniuszewicz.jpg)
+High quality thesis posters are available in this repository:
+
+* [JPG](https://github.com/abaniuszewicz/MSc/blob/master/plakat/2019_2020-MGR-TI-Baniuszewicz.jpg)
+* [PDF](https://github.com/abaniuszewicz/MSc/blob/master/plakat/2019_2020-MGR-TI-Baniuszewicz.pdf)
